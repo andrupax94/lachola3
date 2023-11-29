@@ -1,0 +1,14 @@
+ npm install
+ npm install -g @angular/cli
+npm install jquery --save
+"./node_modules/jquery/dist/jquery.min.js"
+npm i --save-dev @types/gsap
+ng serve --host=127.0.0.1
+composer install
+rm -f storage/framework/sessions/*
+cd
+git rm -r --cached .
+git add .
+git commit -m "Eliminar caché de archivos según .gitignore"
+git push
+ssh-keygen -t rsa -b 4096 -C "<tu_email>"
