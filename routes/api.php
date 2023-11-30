@@ -14,8 +14,9 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('/wpDirect', function (Request $request) {
+    return view('index');
 });
 Route::post('/getToken', [UserController::class, 'getToken']);
 Route::post('/dameSesion', [UserController::class, 'dameSesion']);
+
