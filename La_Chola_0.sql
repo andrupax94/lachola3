@@ -72,7 +72,6 @@ values
 (10, 'popayán', 'festival de cine colombiano', 'ficción','documental','animación','experimental','musical', 'cortometraje','largometraje', '2024-10-19', '2024-10-21', 'imagen10.jpg', 1, 0, 'b');
 
 
-
 alter table evento add (
 foreign key (id_social) references social(id_social)
 );
