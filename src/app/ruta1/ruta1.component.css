@@ -1,0 +1,32 @@
+.festivalNombre {
+    display: flex;
+    width: 150px;
+}
+
+td {
+    background-color: transparent;
+    padding: 5px;
+}
+
+td span,
+td {
+    font-size: 12px;
+    background-color: transparent;
+}
+
+tr:first-child>td {
+    font-size: 14px;
+    font-weight: bold;
+    background-color: transparent;
+}
+
+.festivalNombre div {
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 30%;
+    background-color: transparent;
+}
+
+.festivalNombre span {
+    width: 70%;
+}

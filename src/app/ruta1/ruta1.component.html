@@ -1,1 +1,33 @@
-<p>ruta1 works!</p>
+<table class="table table-primary table-bordered">
+    <tr>
+        <td>Festival</td>
+        <td>Descripcion</td>
+        <td>Categoria</td>
+        <td>Tipo Metraje</td>
+        <td>Fecha Inicio</td>
+        <td>Fecha Final</td>
+        <td>Tasa</td>
+        <td>Tipo</td>
+    </tr>
+    <tr *ngFor="let evento of eventoP">
+        <td>
+            <div class="festivalNombre">
+                <div class="img" style="background-image: url('assets/img/{{evento.Imagen}}');"></div>
+                <span>{{evento.Nombre}}</span>
+            </div>
+        </td>
+        <td>{{evento.Descripcion}}</td>
+        <td class="categoria">
+            <div *ngFor="let categoria of evento.Categoria" class="badge badge-secondary">{{categoria}}</div>
+        </td>
+        <td>
+            <div *ngFor="let metraje of evento.Tipo_de_metraje" class="badge badge-secondary">{{metraje}}</div>
+        </td>
+        <td>{{evento.Fecha_Inicio}}</td>
+        <td>{{evento.Fecha_final}}</td>
+        <td>{{evento.Tasa}}</td>
+        <td>
+            <div class="badge badge-secondary">{{evento.Tipo}}</div>
+        </td>
+    </tr>
+</table>
