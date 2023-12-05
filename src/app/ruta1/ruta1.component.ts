@@ -1,7 +1,7 @@
 import { eventoP } from './../tiposDatos/eventosP';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-
+import { environment } from 'src/environments/environment';
 @Component({
     selector: 'app-ruta1',
     templateUrl: './ruta1.component.html',
@@ -13,11 +13,11 @@ export class Ruta1Component {
     constructor(private http: HttpClient) { }
 
     ngOnInit() {
-       this.http.get<any>(this.apiUrl).subscribe((data)=>{
+
+       this.http.get<any>(environment.apiUrl+this.apiUrl).subscribe((data)=>{
             data.forEach((evento:eventoP) => {
                 this.eventoP.push(evento);
             });
-
 
        });
 

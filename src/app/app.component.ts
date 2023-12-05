@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'lachola';
+
+  public user:string|null;
+  constructor(){
+
+    console.log('====================================');
+    console.log(localStorage.getItem('user'));
+    console.log('====================================');
+    this.user=localStorage.getItem('user');
+  }
 }

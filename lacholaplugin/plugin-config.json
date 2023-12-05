@@ -1,0 +1,8 @@
+{
+    "name": "La Chola App",
+    "version": "1.0.0",
+    "description": "Aplicacion Para Marco",
+    "author": "Andres",
+    "license": "MIT",
+    "install_path": "eventos"
+}
