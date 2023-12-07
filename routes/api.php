@@ -21,4 +21,5 @@ Route::post('/wpDirect', function (Request $request) {
 Route::post('/getToken', [UserController::class, 'getToken']);
 Route::post('/dameSesion', [UserController::class, 'dameSesion']);
 Route::post('/extraeP', [python::class, 'extrae']);
+Route::post('/extraeP2', [python::class, 'extrae2']);
 

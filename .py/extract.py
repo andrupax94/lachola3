@@ -12,17 +12,49 @@ url = sys.argv[1]
 
 # Ahora puedes usar el parámetro como lo necesites en tu script
 def obtenerPagina(url):
-    response = requests.get(url)
-    if response.status_code == 200:
+    def obtenerRespuesta(url):
+        response = requests.get(url)
         soup = BeautifulSoup(response.text, 'html.parser')
-        title = soup.find(id='SIvCob').text
+        if response.status_code == 200:
+            return soup
+        else:
+            return False;
+
+    def case1():
+        soup=obtenerRespuesta('https://google.com')
+        title = 'Hola'
         data = {
             'titulo': title,
             'enlaces': extraerDatos(soup)
         }
         return data
-    else:
-        return {'error': f'Error al hacer la solicitud. Código de estado: {response.status_code}'}
+
+    def case2():
+
+        return "https://festhome.com/festivals"
+
+    def case3():
+
+        return "https://filmfreeway.com/festivals"
+
+    def default():
+        return "Caso por defecto"
+
+    # Definir un diccionario que mapea valores a funciones
+    switch_dict = {
+        "google": case1,
+        "festhome": case2,
+        "filmfreeway": case3,
+    }
+
+    # Definir la función switch que selecciona y ejecuta la función adecuada
+    def switch(case):
+        return switch_dict.get(case, default)()
+
+    # Ejemplo de uso
+    resultado = switch(url)
+    return resultado
+
 
 def extraerDatos(soup):
     links = soup.find_all('a')
