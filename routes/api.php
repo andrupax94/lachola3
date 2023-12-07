@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\python;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,4 +20,5 @@ Route::post('/wpDirect', function (Request $request) {
 });
 Route::post('/getToken', [UserController::class, 'getToken']);
 Route::post('/dameSesion', [UserController::class, 'dameSesion']);
+Route::post('/extraeP', [python::class, 'extrae']);
 
