@@ -1,0 +1,12 @@
+<div id="mensajes">
+  <div *ngFor="let msn of mensajes.getMensajes;let i=index" [attr.index]="i" [style]="'bottom:'+60*i+'px'" class="flexc">
+    <div [class]="'mensaje '+msn.tipo+' flexr'">
+      <div class="flexr">
+        <div></div>
+        <div></div>
+        <h5 [title]="msn.text">{{msn.text}}</h5>
+      </div>
+      <div></div>
+    </div>
+  </div>
+</div>

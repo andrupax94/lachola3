@@ -1,0 +1,12 @@
+<div id="modal" (click)="$event.stopPropagation()" [hidden]="!modales.activo" class="flexc">
+  <div class="flexc" id="modalPregunta" [hidden]="!modales.pregunta.activo===true">
+    <div>?</div>
+    <h3>{{modales.pregunta.h3}}</h3>
+    <hr>
+    <p>{{modales.pregunta.info}}</p>
+    <div class="flexr">
+      <button (click)="modales.pregunta.aceptar()">Si</button>
+      <button (click)="modales.cerrar()">No</button>
+    </div>
+  </div>
+</div>

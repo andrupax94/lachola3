@@ -1,1 +1,382 @@
+div#modal {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    background-color: #1d1d1d42;
+}
+
+div#modalPregunta {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background: white;
+    width: fit-content;
+    height: fit-content;
+    max-height: 450px;
+    justify-content: start;
+    border-radius: 5px;
+}
+
+div#modalPregunta>div:nth-child(1) {
+    color: white;
+    font-size: 86px;
+    font-weight: 700;
+    text-align: center;
+    width: 124px;
+    position: relative;
+    height: 124px;
+    border-radius: 64px;
+    background: linear-gradient(90deg, rgba(46, 49, 146, 1) 0%, rgba(48, 65, 152, 1) 10.33%, rgba(52, 90, 161, 1) 31.05%, rgba(54, 109, 168, 1) 52.51%, rgba(56, 119, 172, 1) 74.96%, rgba(56, 123, 173, 1) 100%);
+    margin: 0 auto;
+    top: -30px;
+}
+
+div#modalPregunta h3 {
+    width: 80%;
+    text-align: center;
+    font-weight: 700;
+    position: relative;
+    max-width: 350px;
+    margin: 0 auto;
+    color: #5C5B5B;
+}
+
+#modalPregunta hr {
+    width: 60%;
+    margin: 13px auto;
+}
+
+#modalPregunta p {
+    width: 80%;
+    max-width: 330px;
+    margin: 0px auto;
+    text-align: justify;
+    font-size: 14px;
+}
+
+#modalPregunta>div:last-child {
+    bottom: 0;
+    position: relative;
+    width: 100%;
+    padding: 10px;
+    height: 70px;
+    background-color: #EFEFEE;
+    margin-top: 20px;
+}
+
+#modalPregunta>div:last-child>button {
+    width: 120px;
+    background-color: white;
+    margin: 0 7px;
+    border-radius: 2px;
+    border: solid #4285C5 3px;
+    color: #4285C5;
+    font-weight: 700;
+    cursor: pointer;
+    transition: linear 0.1s;
+    transition-property: color, background-color;
+}
+
+#modalPregunta>div:last-child>button:hover {
+    color: white;
+    background-color: #4285C5;
+}
+
+div#popUpContainer {
+    width: 100%;
+    height: 100% !important;
+    position: absolute;
+    background-color: #00000030;
+    top: 0;
+    left: 0;
+    display: flex;
+    z-index: 1000;
+    flex-direction: column;
+    justify-content: center;
+}
+
+div#mensajes {
+    position: fixed;
+    width: 300px;
+    height: auto;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+}
+
+.mensaje {
+    justify-content: start;
+    height: 50px;
+    position: relative;
+    left: 0px;
+    overflow: hidden;
+    margin-top: 11px;
+}
+
+.mensaje>div {
+    display: flex;
+    flex-direction: row;
+}
+
+.mensaje>div:nth-child(1)>div:nth-child(1) {
+    position: relative;
+    width: 50px;
+    height: 100%;
+    background-size: 38%;
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 1;
+    margin-right: 19px;
+}
+
+.mensajeError>div:nth-child(1)>div:nth-child(1) {
+    background-color: #ED6467;
+    background-image: url("/assets/modales/error.svg");
+}
+
+.mensaje>div:nth-child(1)>div:nth-child(2) {
+    width: 50px;
+    height: 100%;
+    left: 8px;
+    position: absolute;
+    transform: skewX(-15deg);
+}
+
+.mensajeError>div:nth-child(2) {
+    background-color: #ED6467;
+}
+
+.mensaje>div:nth-child(1)>h5 {
+    font-weight: 700;
+    font-size: 13px;
+    padding: 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 213px;
+    overflow: hidden;
+    height: fit-content;
+    margin: auto 0;
+    text-transform: capitalize;
+}
+
+.mensajeError>h5 {
+    color: #D7494B;
+}
+
+#mensajes>div {
+    left: 200px;
+    position: absolute;
+    transition: 0.2s linear;
+    transition-property: top, bottom, margin-top, margin-bottom;
+}
+
+.mensaje>div:nth-child(1) {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    justify-content: start;
+    left: 292px;
+}
+
+.mensajeError>div:nth-child(1)>div:nth-child(2) {
+    background-color: #ED6467;
+}
+
+.mensajeError>div:nth-child(1)>h5 {
+    color: #b53133;
+}
+
+.mensaje>div:nth-child(2) {
+    width: 10px;
+    position: absolute;
+    right: 0;
+    height: 100%;
+}
+
+.mensajeError>div:nth-child(1) {
+    background-color: #F7BBBD;
+}
+
+.mensajeInfo>div:nth-child(1) {
+    background-color: #C4D9ED;
+}
+
+.mensajeInfo>div:nth-child(1)>div:nth-child(1) {
+    background-color: #4285C5;
+    background-image: url(/assets/modales/info.svg);
+    background-size: 22%;
+}
+
+.mensajeInfo>div:nth-child(1)>div:nth-child(2) {
+    background-color: #4285C5;
+}
+
+.mensajeInfo>div:nth-child(2) {
+    background-color: #4285C5;
+}
+
+.mensajeInfo>div:nth-child(1)>h5 {
+    color: #1660a7;
+}
+
+.mensajeOk>div:nth-child(1) {
+    background-color: #CFE7BB;
+}
+
+.mensajeOk>div:nth-child(1)>div:nth-child(1) {
+    background-color: #77BB41;
+    background-image: url(/assets/modales/ok.svg);
+    background-size: 41%;
+}
+
+.mensajeOk>div:nth-child(1)>div:nth-child(2) {
+    background-color: #77BB41;
+}
+
+.mensajeOk>div:nth-child(2) {
+    background-color: #77BB41;
+}
+
+.mensajeOk>div:nth-child(1)>h5 {
+    color: #4b841e;
+}
+
+.mensajeWarning>div:nth-child(1) {
+    background-color: #FDF9B8;
+}
+
+.mensajeWarning>div:nth-child(1)>div:nth-child(1) {
+    background-color: #FED01A;
+    background-image: url(/assets/modales/warning.svg);
+    background-size: 37%;
+}
+
+.mensajeWarning>div:nth-child(1)>div:nth-child(2) {
+    background-color: #FED01A;
+}
+
+.mensajeWarning>div:nth-child(2) {
+    background-color: #FED01A;
+}
+
+.mensajeWarning>div:nth-child(1)>h5 {
+    color: #D6AF0D;
+}
+
+
+/*Factory de carga */
+
+.carga {
+    width: 100% !important;
+    height: 100% !important;
+    top: 0 !important;
+    position: absolute !important;
+    left: 0 !important;
+    background-color: white;
+    display: flex;
+    flex-direction: column !important;
+    justify-content: center !important;
+    z-index: 2000 !important;
+}
+
+.cargaSmall>div {
+    width: 36px;
+    height: 36px;
+}
+
+.cargaMid>div {
+    width: 66px;
+    height: 66px;
+}
+
+.cargaBig>div {
+    width: 96px;
+    height: 96px;
+}
+
+.carga>div {
+    position: absolute;
+    padding: 0 !important;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: rotate(0deg);
+    border-radius: 100px;
+}
+
+.cargaSmall>div>div {
+    width: 36px;
+    height: 36px;
+    top: -36px;
+}
+
+.cargaMid>div>div {
+    width: 66px;
+    height: 66px;
+    top: -66px;
+}
+
+.cargaBig>div>div {
+    width: 96px;
+    height: 96px;
+    top: -96px;
+}
+
+.carga>div>div {
+    position: relative;
+    left: 0px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 70px;
+    -webkit-border-radius: 70px;
+    -moz-border-radius: 70px;
+    -ms-border-radius: 70px;
+    -o-border-radius: 70px;
+}
+
+.cargaSmall>div>div>div {
+    width: 36px;
+    height: 36px;
+    top: 36px;
+}
+
+.cargaMid>div>div>div {
+    width: 66px;
+    height: 66px;
+    top: 66px;
+}
+
+.cargaBig>div>div>div {
+    width: 96px;
+    height: 96px;
+    top: 96px;
+}
+
+.carga>div>div>div {
+    border: solid 4px rgb(61, 84, 136);
+    position: absolute;
+    border-radius: 70px;
+    left: 0px;
+    bottom: 0;
+    right: 0;
+    padding: 0 !important;
+    -webkit-border-radius: 70px;
+    -moz-border-radius: 70px;
+    -ms-border-radius: 70px;
+    -o-border-radius: 70px;
+}
+
+
 /* You can add global styles to this file, and also import other style files */

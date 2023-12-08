@@ -11,6 +11,8 @@ import { Ruta4Component } from './ruta4/ruta4.component';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { LogInComponent } from './log-in/log-in.component';
+import { PopUpsModule } from 'src/pop-ups/pop-ups.module';
+import * as $from from 'jquery';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +24,7 @@ import { LogInComponent } from './log-in/log-in.component';
   ],
   imports: [
     BrowserModule,
+    PopUpsModule,
     AppRoutingModule,
     HttpClientModule
   ],
