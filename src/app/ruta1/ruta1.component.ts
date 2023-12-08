@@ -14,7 +14,7 @@ export class Ruta1Component {
 
     ngOnInit() {
 
-       this.http.get<any>(environment.apiUrl+this.apiUrl).subscribe((data)=>{
+       this.http.get<any>(environment.back+this.apiUrl).subscribe((data)=>{
             data.forEach((evento:eventoP) => {
                 this.eventoP.push(evento);
             });

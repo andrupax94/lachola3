@@ -9,10 +9,10 @@ import { LogInComponent } from './log-in/log-in.component';
 
 const routes: Routes = [
   { path: '', component: LogInComponent},
-  { path: 'ruta1', component: Ruta1Component, canActivate: [authGuard] },
-  { path: 'ruta2', component: Ruta2Component, canActivate: [authGuard] },
-  { path: 'ruta3', component: Ruta3Component, canActivate: [authGuard] },
-  { path: 'ruta4', component: Ruta4Component, canActivate: [authGuard] },
+  { path: 'ruta1', component: Ruta1Component },
+  { path: 'ruta2', component: Ruta2Component },
+  { path: 'ruta3', component: Ruta3Component },
+  { path: 'ruta4', component: Ruta4Component },
   { path: 'logIn', component: LogInComponent},
   // Puedes agregar más rutas según sea necesario
 ];
