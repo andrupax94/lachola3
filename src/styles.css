@@ -1,3 +1,9 @@
+:root {
+    --color-primary: red;
+    --color-secondary: rgb(38, 38, 38);
+    --color-terciary: rgb(74, 74, 74);
+}
+
 div#modal {
     display: none;
     width: 100%;
@@ -273,109 +279,37 @@ div#mensajes {
 
 /*Factory de carga */
 
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 .carga {
-    width: 100% !important;
-    height: 100% !important;
-    top: 0 !important;
-    position: absolute !important;
-    left: 0 !important;
-    background-color: white;
-    display: flex;
-    flex-direction: column !important;
-    justify-content: center !important;
-    z-index: 2000 !important;
-}
-
-.cargaSmall>div {
-    width: 36px;
-    height: 36px;
-}
-
-.cargaMid>div {
-    width: 66px;
-    height: 66px;
-}
-
-.cargaBig>div {
-    width: 96px;
-    height: 96px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background-color: rgba(128, 128, 128, 0.196);
+    z-index: 1000;
 }
 
 .carga>div {
-    position: absolute;
-    padding: 0 !important;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    transform: rotate(0deg);
-    border-radius: 100px;
-}
-
-.cargaSmall>div>div {
-    width: 36px;
-    height: 36px;
-    top: -36px;
-}
-
-.cargaMid>div>div {
-    width: 66px;
-    height: 66px;
-    top: -66px;
-}
-
-.cargaBig>div>div {
-    width: 96px;
-    height: 96px;
-    top: -96px;
-}
-
-.carga>div>div {
+    display: block;
     position: relative;
-    left: 0px;
-    margin: auto;
-    overflow: hidden;
-    border-radius: 70px;
-    -webkit-border-radius: 70px;
-    -moz-border-radius: 70px;
-    -ms-border-radius: 70px;
-    -o-border-radius: 70px;
-}
-
-.cargaSmall>div>div>div {
-    width: 36px;
-    height: 36px;
-    top: 36px;
-}
-
-.cargaMid>div>div>div {
-    width: 66px;
-    height: 66px;
-    top: 66px;
-}
-
-.cargaBig>div>div>div {
-    width: 96px;
-    height: 96px;
-    top: 96px;
-}
-
-.carga>div>div>div {
-    border: solid 4px rgb(61, 84, 136);
-    position: absolute;
-    border-radius: 70px;
-    left: 0px;
-    bottom: 0;
-    right: 0;
-    padding: 0 !important;
-    -webkit-border-radius: 70px;
-    -moz-border-radius: 70px;
-    -ms-border-radius: 70px;
-    -o-border-radius: 70px;
+    top: calc(50% - 25px);
+    left: calc(50% - 25px);
+    border: 6px solid transparent;
+    border-radius: 100%;
+    border-top-color: var(--color-primary);
+    border-bottom-color: var(--color-secondary);
+    width: 50px;
+    height: 50px;
+    animation: loading 1.5s infinite linear;
 }
 
 

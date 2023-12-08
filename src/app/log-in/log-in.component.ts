@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MensajesService } from 'src/factory/mensajes.service';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CargaService } from 'src/factory/carga.service';
 
 @Component({
   selector: 'app-log-in',
@@ -8,14 +9,35 @@ import { MensajesService } from 'src/factory/mensajes.service';
   styleUrls: ['./log-in.component.css']
 })
 export class LogInComponent {
-constructor(private mensaje:MensajesService) {
+public logInForm: FormGroup;
+constructor(
+    private mensaje:MensajesService,
+    private formBuilder: FormBuilder,
+    private carga:CargaService,
+    ) {
+        this.logInForm = this.formBuilder.group({
+            username: ['', [Validators.required, Validators.maxLength(100)]],
+            password: ['', [
+                Validators.required,
+                Validators.minLength(8),
+            ]]
+        });
 
 }
+public submitLogIn() {
+    this.carga.to('body','',true);
+    this.carga.play();
+    setTimeout(()=>{
+        this.carga.pause();
+    },200);
+}
+
 ngOnInit(){
+
     $('.message a').click(function(){
         $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
      });
-     this.mensaje.add('ok','hola');
+
 }
 
 }

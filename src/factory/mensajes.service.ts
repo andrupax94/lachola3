@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import * as $from from 'jquery';
 import gsap from 'gsap';
 @Injectable({
   providedIn: 'root'

@@ -12,7 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { LogInComponent } from './log-in/log-in.component';
 import { PopUpsModule } from 'src/pop-ups/pop-ups.module';
+import {FormsModule,ReactiveFormsModule } from '@angular/forms';
 import * as $from from 'jquery';
+import gsap from 'gsap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +27,8 @@ import * as $from from 'jquery';
   imports: [
     BrowserModule,
     PopUpsModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule
   ],
