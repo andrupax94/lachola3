@@ -10,7 +10,6 @@ export class AppComponent {
 
   public user:string|null;
   constructor(){
-
     console.log('====================================');
     console.log(localStorage.getItem('user'));
     console.log('====================================');
