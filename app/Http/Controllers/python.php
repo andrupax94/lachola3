@@ -14,23 +14,16 @@ class python extends Controller
     public function extrae2(Request $request){
         // Crear un cliente HTTP
         $client = HttpClient::create();
-
         // Hacer una solicitud HTTP
         $response = $client->request('GET', 'https://festhome.com');
-
         // Obtener el contenido de la respuesta
         $htmlContent = $response->getContent();
-
         // Crear un objeto Crawler para analizar el contenido HTML
         $crawler = new Crawler($htmlContent);
-
         // Ahora puedes usar el Crawler para seleccionar elementos HTML, por ejemplo, obtener el título
         $title = $crawler->filter('h1')->text();
-
         // Imprimir el título
         return "Título: $title";
-
-
     }
     public function extrae(Request $request)
     {

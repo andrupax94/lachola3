@@ -44,6 +44,7 @@ class UserController extends Controller
             $user = session()->all();
             return response()->json($user);
         } else {
+            return response()->json('hola');
             return response()->json([
                 'codigo' => 2,
                 'mensaje' => 'No Login',

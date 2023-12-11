@@ -8,19 +8,16 @@ import { environment } from 'src/environments/environment';
     styleUrls: ['./ruta1.component.css']
 })
 export class Ruta1Component {
-    private apiUrl = '/assets/eventosP.json';
+    private apiUrl = 'assets/eventosP.json';
     public eventoP:eventoP[]=[];
     constructor(private http: HttpClient) { }
 
     ngOnInit() {
-
-       this.http.get<any>(environment.back+this.apiUrl).subscribe((data)=>{
+       this.http.get<any>(environment.public+this.apiUrl).subscribe((data)=>{
             data.forEach((evento:eventoP) => {
                 this.eventoP.push(evento);
             });
-
        });
-
     }
 
 }
