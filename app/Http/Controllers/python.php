@@ -13,7 +13,10 @@ class python extends Controller
 
     public function extrae2(Request $request){
         // Crear un cliente HTTP
-        $client = HttpClient::create();
+        $client = HttpClient::create([
+            'verify_peer' => true,
+            'cafile' => 'C:/laragon/etc/ssl/cacert.pem', // Ajusta la ruta según tu configuración
+        ]);
         // Hacer una solicitud HTTP
         $response = $client->request('GET', 'https://festhome.com');
         // Obtener el contenido de la respuesta
