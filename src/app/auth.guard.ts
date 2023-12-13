@@ -17,10 +17,13 @@ export class authGuard implements CanActivate{
 
         if (isLoggedIn) {
             const params = new HttpParams({fromString: 'name=term'});
-            this.http.post<any>(environment.back + 'dameSesion',{}).subscribe((data)=>{
-                console.log('====================================');
-                console.log(data);
-                console.log('====================================');
+            this.http.post<any>(environment.back + 'dameSesion',params,{}).subscribe((data)=>{
+                if(data.mensaje==='No Login'){
+                    // localStorage.removeItem('user');
+                }
+                else if(data.mensaje==='OK'){
+                    localStorage.setItem('user',data.user);
+                }
             });
 
             const currentUrl = window.location.hash;

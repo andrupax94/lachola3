@@ -42,14 +42,18 @@ class UserController extends Controller
     {
         if (session()->has('username')) {
             $user = session()->all();
-            return response()->json($user);
+            return response()->json([
+                'user' => $user,
+                'mensaje' => 'OK',
+                'error' => '',
+            ]);
+
         } else {
-            return response()->json('hola');
             return response()->json([
                 'codigo' => 2,
                 'mensaje' => 'No Login',
                 'error' => '',
-            ], 500);
+            ]);
         }
     }
 
