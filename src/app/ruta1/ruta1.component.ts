@@ -12,7 +12,6 @@ export class Ruta1Component {
     private apiUrl = 'assets/eventosP.json';
     public eventoP:eventoP[]=[];
     constructor(private http: HttpClient) { }
-
     ngOnInit() {
         const params = new HttpParams({fromString: 'name=term'});
         this.http.post<any>(environment.back + 'getEventos',params,{}).subscribe((data)=>{
@@ -20,7 +19,6 @@ export class Ruta1Component {
                 let aux:any=[];
                 aux.banner=evt["banner"];
            });
-
         });
     }
 
