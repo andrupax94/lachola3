@@ -1,0 +1,111 @@
+{
+  // Use IntelliSense para saber los atributos posibles.
+  // Mantenga el puntero para ver las descripciones de los existentes atributos.
+  // Para más información, visite: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+
+  "compounds": [
+    {
+      "name": "Launch Edge and attach DevTools",
+      "configurations": [
+        "Launch Microsoft Edge",
+        "Open Edge DevTools"
+      ]
+    },
+    {
+      "name": "Launch Edge and attach DevTools Headless",
+      "configurations": [
+        "Launch Microsoft Edge Headless",
+        "Open Edge DevTools"
+      ]
+    },
+
+  ],
+
+  "configurations": [
+    {
+      "name": "PHP DEBUG LINUX",
+      "type": "php",
+      "request": "launch",
+      "runtimeArgs": [
+        "-dxdebug.mode=debug",
+        "-dxdebug.start_with_request=yes",
+        "-S",
+        "localhost:3000",
+        "-t",
+        "public_html"
+
+      ],
+
+      "program": "",
+      "cwd": "${workspaceRoot}",
+      "port": 9003
+
+    },
+    {
+        "name": "PHP DEBUG Windows",
+        "type": "php",
+        "request": "launch",
+        "runtimeArgs": [
+          "-dxdebug.mode=debug",
+          "-dxdebug.start_with_request=yes",
+          "-S",
+          "lachola.test:80",
+          "-t",
+          "public"
+
+        ],
+
+        "program": "",
+        "cwd": "${workspaceRoot}",
+        "port": 9003
+
+      },
+
+
+    {
+      "type": "msedge",
+      "name": "Launch Microsoft Edge",
+      "request": "launch",
+      "webRoot": "${workspaceFolder}",
+      "runtimeArgs": [
+        "--remote-debugging-port=9222"
+      ],
+      "presentation": {
+        "hidden": false,
+      },
+      "url": "http://127.0.0.1:4200/",
+    },
+
+    {
+      "type": "msedge",
+      "name": "Launch Microsoft Edge Headless",
+      "request": "launch",
+      "webRoot": "${workspaceFolder}",
+      "runtimeArgs": [
+        "--headless",
+        "--remote-debugging-port=9222"
+      ],
+      "presentation": {
+        "hidden": false,
+      },
+      "url": "http://127.0.0.1:4200/",
+    },
+
+    {
+      "type": "vscode-edge-devtools.debug",
+      "name": "Open Edge DevTools",
+      "request": "attach",
+      "webRoot": "${workspaceFolder}/src",
+      "pathMapping": {
+          "/": "${workspaceFolder}/src"
+      },
+      "presentation": {
+        "hidden": false,
+      },
+
+    }
+  ],
+}
+
+
