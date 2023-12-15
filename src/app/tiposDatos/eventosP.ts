@@ -7,24 +7,25 @@ type tipo_festival='a'|'b'|'c';
 type fuente='festHome'|'movibeta'|'filmfreeway'|'shortfilmdepot'|'animationfestivals';
 export type eventoP = {
     id:number
-    tasa:number
-    telefono:string
-    fuente:fuente
-    facebook:string
-    correoElectronico:string
+    imagen:string
     nombre:string
-    web:string
-    instagram:string
-    ubicacion:string
-    youtube:string
-    industrias:string
+    descripcion:string
+    tasa:number
+    categoria:Set<categoria> // Propiedad opcional
+    tipo_metraje:Set<tipo_metraje>
+    tipo_festival:tipo_festival
     fechaInicio:Date
     fechaLimite:Date
-    imagen:string
     banner:string
-    tipo_metraje:Set<tipo_metraje>
+    telefono:string
+    correoElectronico:string
+    fuente:fuente,
+    url:string,
+    web:string
+    facebook:string
+    ubicacion:string
+    instagram:string
+    youtube:string
+    industrias:string
     twitterX:string
-    descripcion:string
-    tipo_festival:tipo_festival
-    categoria:Set<categoria> // Propiedad opcional
   };
