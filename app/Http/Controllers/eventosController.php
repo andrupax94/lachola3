@@ -66,6 +66,7 @@ class eventosController extends Controller
             $eventos[$key]["tipo_festival"] = isset($evento["acm_fields"]["tipo_festival"]) ? $evento["acm_fields"]["tipo_festival"] : "No especificado";
             $eventos[$key]["categoria"] = isset($evento["acm_fields"]["categoria"]) ? $evento["acm_fields"]["categoria"] : "No especificado";
 
+
             $eventos[$key]["tasa"]=($eventos[$key]["tasa"]==="") ? $eventos[$key]["tasa"] : "No Especificado";
             $eventos[$key]["telefono"]=($eventos[$key]["telefono"]==="") ? $eventos[$key]["telefono"] : "No Especificado";
             $eventos[$key]["fuente"]=($eventos[$key]["fuente"]==="") ? $eventos[$key]["fuente"] : "No Especificado";
