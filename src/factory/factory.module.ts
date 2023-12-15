@@ -1,6 +1,5 @@
 
 import { Injectable, Component, OnInit, Renderer2 } from '@angular/core';
-import * as $from from 'jquery';
 @Injectable({
     providedIn: 'root',
 })

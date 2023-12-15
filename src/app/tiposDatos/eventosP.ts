@@ -20,7 +20,7 @@ export type eventoP = {
     telefono:string
     correoElectronico:string
     fuente:fuente,
-    url:string,
+    url:string[],
     web:string
     facebook:string
     ubicacion:string

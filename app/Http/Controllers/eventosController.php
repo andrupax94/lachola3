@@ -67,27 +67,27 @@ class eventosController extends Controller
             $eventos[$key]["categoria"] = isset($evento["acm_fields"]["categoria"]) ? $evento["acm_fields"]["categoria"] : "No especificado";
 
 
-            $eventos[$key]["tasa"]=($eventos[$key]["tasa"]==="") ? $eventos[$key]["tasa"] : "No Especificado";
-            $eventos[$key]["telefono"]=($eventos[$key]["telefono"]==="") ? $eventos[$key]["telefono"] : "No Especificado";
-            $eventos[$key]["fuente"]=($eventos[$key]["fuente"]==="") ? $eventos[$key]["fuente"] : "No Especificado";
-            $eventos[$key]["facebook"]=($eventos[$key]["facebook"]==="") ? $eventos[$key]["facebook"] : "No Especificado";
-            $eventos[$key]["correoElectronico"]=($eventos[$key]["correoElectronico"]==="") ? $eventos[$key]["correoElectronico"] : "No Especificado";
-            $eventos[$key]["nombre"]=($eventos[$key]["nombre"]==="") ? $eventos[$key]["nombre"] : "No Especificado";
-            $eventos[$key]["web"]=($eventos[$key]["web"]==="") ? $eventos[$key]["web"] : "No Especificado";
-            $eventos[$key]["url"]=($eventos[$key]["url"]==="") ? $eventos[$key]["url"] : "No Especificado";
-            $eventos[$key]["instagram"]=($eventos[$key]["instagram"]==="") ? $eventos[$key]["instagram"] : "No Especificado";
-            $eventos[$key]["ubicacion"]=($eventos[$key]["ubicacion"]==="") ? $eventos[$key]["ubicacion"] : "No Especificado";
-            $eventos[$key]["youtube"]=($eventos[$key]["youtube"]==="") ? $eventos[$key]["youtube"] : "No Especificado";
-            $eventos[$key]["industrias"]=($eventos[$key]["industrias"]==="") ? $eventos[$key]["industrias"] : "No Especificado";
-            $eventos[$key]["fechaInicio"]=($eventos[$key]["fechaInicio"]==="") ? $eventos[$key]["fechaInicio"] : "No Especificado";
-            $eventos[$key]["fechaLimite"]=($eventos[$key]["fechaLimite"]==="") ? $eventos[$key]["fechaLimite"] : "No Especificado";
-            $eventos[$key]["imagen"]=($eventos[$key]["imagen"]==="") ? $eventos[$key]["imagen"] : "No Especificado";
-            $eventos[$key]["banner"]=($eventos[$key]["banner"]==="") ? $eventos[$key]["banner"] : "No Especificado";
-            $eventos[$key]["tipo_metraje"]=($eventos[$key]["tipo_metraje"]==="") ? $eventos[$key]["tipo_metraje"] : "No Especificado";
-            $eventos[$key]["twitterX"]=($eventos[$key]["twitterX"]==="") ? $eventos[$key]["twitterX"] : "No Especificado";
-            $eventos[$key]["descripcion"]=($eventos[$key]["descripcion"]==="") ? $eventos[$key]["descripcion"] : "No Especificado";
-            $eventos[$key]["tipo_festival"]=($eventos[$key]["tipo_festival"]==="") ? $eventos[$key]["tipo_festival"] : "No Especificado";
-            $eventos[$key]["categoria"]=($eventos[$key]["categoria"]==="") ? $eventos[$key]["categoria"] : "No Especificado";
+            $eventos[$key]["tasa"]=($eventos[$key]["tasa"]!=="") ? $eventos[$key]["tasa"] : "No Especificado";
+            $eventos[$key]["telefono"]=($eventos[$key]["telefono"]!=="") ? $eventos[$key]["telefono"] : "No Especificado";
+            $eventos[$key]["fuente"]=($eventos[$key]["fuente"]!=="") ? $eventos[$key]["fuente"] : "No Especificado";
+            $eventos[$key]["facebook"]=($eventos[$key]["facebook"]!=="") ? $eventos[$key]["facebook"] : "No Especificado";
+            $eventos[$key]["correoElectronico"]=($eventos[$key]["correoElectronico"]!=="") ? $eventos[$key]["correoElectronico"] : "No Especificado";
+            $eventos[$key]["nombre"]=($eventos[$key]["nombre"]!=="") ? $eventos[$key]["nombre"] : "No Especificado";
+            $eventos[$key]["web"]=($eventos[$key]["web"]!=="") ? $eventos[$key]["web"] : "No Especificado";
+            $eventos[$key]["url"]=($eventos[$key]["url"]!=="") ? $eventos[$key]["url"] : "No Especificado";
+            $eventos[$key]["instagram"]=($eventos[$key]["instagram"]!=="") ? $eventos[$key]["instagram"] : "No Especificado";
+            $eventos[$key]["ubicacion"]=($eventos[$key]["ubicacion"]!=="") ? $eventos[$key]["ubicacion"] : "No Especificado";
+            $eventos[$key]["youtube"]=($eventos[$key]["youtube"]!=="") ? $eventos[$key]["youtube"] : "No Especificado";
+            $eventos[$key]["industrias"]=($eventos[$key]["industrias"]!=="") ? $eventos[$key]["industrias"] : "No Especificado";
+            $eventos[$key]["fechaInicio"]=($eventos[$key]["fechaInicio"]!=="") ? $eventos[$key]["fechaInicio"] : "No Especificado";
+            $eventos[$key]["fechaLimite"]=($eventos[$key]["fechaLimite"]!=="") ? $eventos[$key]["fechaLimite"] : "No Especificado";
+            $eventos[$key]["imagen"]=($eventos[$key]["imagen"]!=="") ? $eventos[$key]["imagen"] : "No Especificado";
+            $eventos[$key]["banner"]=($eventos[$key]["banner"]!=="") ? $eventos[$key]["banner"] : "No Especificado";
+            $eventos[$key]["tipo_metraje"]=($eventos[$key]["tipo_metraje"]!=="") ? $eventos[$key]["tipo_metraje"] : "No Especificado";
+            $eventos[$key]["twitterX"]=($eventos[$key]["twitterX"]!=="") ? $eventos[$key]["twitterX"] : "No Especificado";
+            $eventos[$key]["descripcion"]=($eventos[$key]["descripcion"]!=="") ? $eventos[$key]["descripcion"] : "No Especificado";
+            $eventos[$key]["tipo_festival"]=($eventos[$key]["tipo_festival"]!=="") ? $eventos[$key]["tipo_festival"] : "No Especificado";
+            $eventos[$key]["categoria"]=($eventos[$key]["categoria"]!=="") ? $eventos[$key]["categoria"] : "No Especificado";
 
         }
         return $eventos;

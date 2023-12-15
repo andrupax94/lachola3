@@ -2,6 +2,7 @@ import { eventoP } from './../tiposDatos/eventosP';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { FactoryService } from 'src/factory/factory.module';
 
 @Component({
     selector: 'app-ruta1',
@@ -11,13 +12,17 @@ import { environment } from 'src/environments/environment';
 export class Ruta1Component {
     private apiUrl = 'assets/eventosP.json';
     public eventoP:eventoP[]=[];
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient,private factory:FactoryService) { }
+    public abreUrl(urls:string[]){
+
+    }
     ngOnInit() {
         const params = new HttpParams({fromString: 'name=term'});
         this.http.post<any>(environment.back + 'getEventos',params,{}).subscribe((data)=>{
            data.forEach((evt:any) =>{
                 let aux:any=[];
                 aux.id=evt["id"];
+                aux.banner=evt["banner"];
                 aux.imagen=evt["imagen"];
                 aux.nombre=evt["nombre"];
                 aux.descripcion=evt["descripcion"];
@@ -27,11 +32,10 @@ export class Ruta1Component {
                 aux.tipo_festival=evt["tipo_festival"];
                 aux.fechaInicio=evt["fechaInicio"];
                 aux.fechaLimite=evt["fechaLimite"];
-                aux.banner=evt["banner"];
+                aux.fuente=evt["fuente"];
+                aux.url=this.factory.stringToArray(evt["url"]);
                 aux.telefono=evt["telefono"];
                 aux.correoElectronico=evt["correoElectronico"];
-                aux.fuente=evt["fuente"];
-                aux.url=evt["url"];
                 aux.web=evt["web"];
                 aux.facebook=evt["facebook"];
                 aux.ubicacion=evt["ubicacion"];

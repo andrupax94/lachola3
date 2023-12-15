@@ -1,33 +1,36 @@
-<!-- <table class="table table-primary table-bordered">
+<table class="table table-primary table-bordered">
     <tr>
-        <td>Festival</td>
+        <td>Imagen</td>
         <td>Descripcion</td>
-        <td>Categoria</td>
-        <td>Tipo Metraje</td>
-        <td>Fecha Inicio</td>
-        <td>Fecha Final</td>
+        <td>Tipo_Metraje</td>
         <td>Tasa</td>
-        <td>Tipo</td>
+        <td>Categoria</td>
+        <td>Tipo_Festival</td>
+        <td>Fechainicio</td>
+        <td>Fechalimite</td>
+        <td>Fuente</td>
+        <td>Url</td>
     </tr>
-    <tr *ngFor="let evento of eventoP">
+    <tr *ngFor="let evento of eventoP" (click)="abreUrl(evento.url)">
         <td>
             <div class="festivalNombre">
-                <div class="img" style="background-image: url('assets/img/{{evento.Imagen}}');"></div>
-                <span>{{evento.Nombre}}</span>
+                <div class="img" style="background-image: url('{{evento.imagen}}');"></div>
+                <span>{{evento.nombre}}</span>
             </div>
         </td>
-        <td>{{evento.Descripcion}}</td>
+        <td>{{evento.descripcion}}</td>
+        <td>{{evento.tipo_festival}}</td>
         <td class="categoria">
-            <div *ngFor="let categoria of evento.Categoria" class="badge badge-secondary">{{categoria}}</div>
+            <div *ngFor="let categoria of evento.categoria" class="badge badge-secondary">{{categoria}}</div>
         </td>
         <td>
-            <div *ngFor="let metraje of evento.Tipo_de_metraje" class="badge badge-secondary">{{metraje}}</div>
+            <div *ngFor="let metraje of evento.tipo_metraje" class="badge badge-secondary">{{metraje}}</div>
         </td>
-        <td>{{evento.Fecha_Inicio}}</td>
-        <td>{{evento.Fecha_final}}</td>
-        <td>{{evento.Tasa}}</td>
+        <td>{{evento.fechaInicio}}</td>
+        <td>{{evento.fechaLimite}}</td>
+        <td>{{evento.tasa}}</td>
         <td>
-            <div class="badge badge-secondary">{{evento.Tipo}}</div>
+            <div class="badge badge-secondary">{{evento.fuente}}</div>
         </td>
     </tr>
-</table> -->
+</table>
