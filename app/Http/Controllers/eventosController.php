@@ -10,33 +10,24 @@ class eventosController extends Controller
     public function getEventos(Request $request)
     {
         $apiUrl = 'https://eduardoandres.000webhostapp.com/wp-json/wp/v2/eventos';
-        $body = '?_fields=
-        id,
-        acm_fields.tasa,
-        acm_fields.telefono,
-        acm_fields.fuente,
-        acm_fields.facebook,
-        acm_fields.correoElectronico,
-        acm_fields.nombre,
-        acm_fields.web,
-        acm_fields.instagram,
-        acm_fields.ubicacion,
-        acm_fields.youtube,
-        acm_fields.industrias,
-        acm_fields.fechaInicio,
-        acm_fields.fechaLimite,
-        acm_fields.url,
-        acm_fields.imagen.media_details.sizes.full.source_url,
-        acm_fields.banner.media_details.full.source_url,
-        acm_fields.tipo_metraje,
-        acm_fields.twitterX,
-        acm_fields.descripcion,
-        acm_fields.tipo_festival,
-        acm_fields.categoria';
-        $urlCompleta = $apiUrl . $body;
+        $page=$request->input('page');
+        $orderby='acm_fields.'.$request->input('orderby');
+        $per_page=$request->input('per_page');
+        $order=$request->input('order');
+
+        $params = [
+            '_fields' =>  'id,acm_fields.tasa,acm_fields.telefono,acm_fields.fuente,acm_fields.facebook,acm_fields.correoElectronico,acm_fields.nombre,acm_fields.web,acm_fields.instagram,acm_fields.ubicacion,acm_fields.youtube,acm_fields.industrias,acm_fields.fechaInicio,acm_fields.fechaLimite,acm_fields.imagen.media_details.sizes.full.source_url,acm_fields.banner.media_details.full.source_url,acm_fields.tipo_metraje,acm_fields.twitterX,acm_fields.descripcion,acm_fields.tipo_festival,acm_fields.categoria,acm_fields.url',
+            'page' => $page,
+            'per_page' => $per_page,
+            'orderby' => $orderby,
+            'order' => $order
+        ];
+
+        // Construir la URL con los parámetros
+        $url = $apiUrl . '?' . http_build_query($params);
         // Hacer una solicitud GET
         $response = Http::withOptions(['verify' => false])
-            ->get($urlCompleta);
+            ->get($url);
 
         // Obtener el contenido de la respuesta en formato JSON
         $data = $response->json();
@@ -88,9 +79,15 @@ class eventosController extends Controller
             $eventos[$key]["descripcion"]=($eventos[$key]["descripcion"]!=="") ? $eventos[$key]["descripcion"] : "No Especificado";
             $eventos[$key]["tipo_festival"]=($eventos[$key]["tipo_festival"]!=="") ? $eventos[$key]["tipo_festival"] : "No Especificado";
             $eventos[$key]["categoria"]=($eventos[$key]["categoria"]!=="") ? $eventos[$key]["categoria"] : "No Especificado";
+            $headers = get_headers($url, 1);
+            if (isset($headers['X-WP-TotalPages'])) {
+                $totalPages = (int)$headers['X-WP-TotalPages'];
 
+            } else {
+                $totalPages= 'El encabezado X-WP-TotalPages no está presente en la respuesta.';
+            }
         }
-        return $eventos;
+        return ['eventos'=>$eventos,'totalPages'=>$totalPages];
         // Puedes manipular los datos según tus necesidades
 
     }

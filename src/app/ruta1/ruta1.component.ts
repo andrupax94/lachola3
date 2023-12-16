@@ -12,14 +12,27 @@ import { FactoryService } from 'src/factory/factory.module';
 export class Ruta1Component {
     private apiUrl = 'assets/eventosP.json';
     public eventoP:eventoP[]=[];
+    public page:number=1;
+    public orderby:string='fechaInicio';
+    public per_page:number=5;
+    public order:string='asc';
+    public totalPages:number=1;
     constructor(private http: HttpClient,private factory:FactoryService) { }
     public abreUrl(urls:string[]){
 
     }
     ngOnInit() {
-        const params = new HttpParams({fromString: 'name=term'});
+       this.buscaEventos();
+    }
+    buscaEventos(){
+        let params = new HttpParams({ fromString: 'name=term' });
+        params = params.set('page', this.page);
+        params = params.set('orderby', this.orderby);
+        params = params.set('per_page', this.per_page); // Corregí this.orderby por this.per_page
+        params = params.set('order', this.order);
         this.http.post<any>(environment.back + 'getEventos',params,{}).subscribe((data)=>{
-           data.forEach((evt:any) =>{
+            this.totalPages=data.totalPages
+           data.eventos.forEach((evt:any) =>{
                 let aux:any=[];
                 aux.id=evt["id"];
                 aux.banner=evt["banner"];
@@ -47,5 +60,4 @@ export class Ruta1Component {
            });
         });
     }
-
 }

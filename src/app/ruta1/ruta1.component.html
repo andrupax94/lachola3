@@ -9,7 +9,6 @@
         <td>Fechainicio</td>
         <td>Fechalimite</td>
         <td>Fuente</td>
-        <td>Url</td>
     </tr>
     <tr *ngFor="let evento of eventoP" (click)="abreUrl(evento.url)">
         <td>
@@ -19,16 +18,16 @@
             </div>
         </td>
         <td>{{evento.descripcion}}</td>
-        <td>{{evento.tipo_festival}}</td>
-        <td class="categoria">
-            <div *ngFor="let categoria of evento.categoria" class="badge badge-secondary">{{categoria}}</div>
-        </td>
         <td>
             <div *ngFor="let metraje of evento.tipo_metraje" class="badge badge-secondary">{{metraje}}</div>
         </td>
+        <td>{{evento.tasa}}</td>
+        <td class="categoria">
+            <div *ngFor="let categoria of evento.categoria" class="badge badge-secondary">{{categoria}}</div>
+        </td>
+        <td>{{evento.tipo_festival}}</td>
         <td>{{evento.fechaInicio}}</td>
         <td>{{evento.fechaLimite}}</td>
-        <td>{{evento.tasa}}</td>
         <td>
             <div class="badge badge-secondary">{{evento.fuente}}</div>
         </td>
