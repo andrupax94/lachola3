@@ -1,0 +1,8263 @@
+<div id="card_contents" class="festhome-bg-white-color">
+
+
+
+
+		<div class="col-11 text-center">
+
+
+
+
+
+	<div id="festival_card-4829" class="card-pre-container col-3">
+
+
+
+
+
+
+
+
+	    <!-- !HTML for cards -->
+
+
+	    <div id="festival_card-container-4829" class="card-container flippable" ontouchstart="this.classList.toggle('hover');">
+
+			<div class="flipper">
+
+			    			    <div class="festival-card card-front" id="festival_card_promcard-4829" style="background-position: center; background-size: cover; background-repeat: no-repeat; -ms-interpolation-mode: nearest-neighbor; image-rendering: -webkit-optimize-contrast; background-image:url(https://festhomedocs.com/festivals/4829/promcard-4829.jpg?t=473d8546);">
+				    <!--https://festhomedocs.com/festivals/4829/ad_banner-4829.jpg-->
+			    </div>
+											    <div class="open-festival-view festival-card card-back" onclick="OpenViewer(4829,1,568);">
+
+				   <div class="festival-card-banner" style="background-image:url(https://festhomedocs.com/festivals/4829/banner_big-4829.jpg?t=473d8546);"></div>
+
+				   				   		<img class="festival-card-logo_new" alt="Logo of 2024 ARFF Barcelona // International Awards" src="https://festhomedocs.com/festivals/4829/logo-uncut-4829.jpg?t=473d8546">
+				   				   		<!--<div class="festival-card-logo" style="background-image:url(https://festhomedocs.com/festivals/4829/logo-4829.jpg);"></div>-->
+
+				   <div class="col-12">
+					   <div class="festival-card-title">2024 ARFF Barcelona // International Awards</div>
+					   <div class="festival-card-country">España</div>
+
+					   <div class="festival-card-type-holder">
+						    							    <div class="festival-card-type" title="﻿Duración permitida (﻿Cortometrajes) <br/> &nbsp;﻿Menos de 40 min.">
+									﻿Cortometrajes&nbsp;40'&lt;								</div>
+					   								    						    	<br>
+							    <div class="festival-card-type" title="﻿Duración permitida (﻿Largometrajes) <br/> &nbsp;﻿Menos de 120 min.">
+								   ﻿Largometrajes&nbsp;120'&lt;								</div>
+					   							   </div>
+					   <!--
+					   <br style="clear:both;"/>
+					   <br style="clear:both;"/>
+					   -->
+					   <div class="festival-card-icons">
+
+						   						    <span class="info_icon fa-stack fa-lg" title="Festival Internacional<br/>Spain">
+								<i class="fa fa-circle fa-stack-2x"></i>
+								<i class="fa fa-globe fa-stack-1x fa-inverse"></i>
+							</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="﻿Requiere idioma o subtítulos en:<br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							        									        	Inglés&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							    							    ">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-comment fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="﻿Cortometrajes: 27.6€<br/>﻿Largometrajes: 30.4€">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i style="color: #d9534f; line-height: 37px;" class="fa fa-euro-sign fa-stack-1x"></i>
+								</span>
+
+						   							    <span class="info_icon_off fa-stack fa-lg">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-trophy fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   <br style="clear:both;">
+					   </div>
+
+					   <div class="festival-labels">
+						   &nbsp;
+						   						   						   						   		<span class="pro-button text-smaller">PRO&nbsp;<i class="fad fa-triangle fa-rotate-90"></i>&nbsp;-33%</span>
+						   						   						   						   						   						   						   						   						   						   						   		<!--<span class="festival-label promoted"><b>Promocionados</b></span>-->
+						   						   &nbsp;
+					   </div>
+
+											    <div class="col-12 festival-card-outer">
+
+							<div class="fifth">
+						    	<a id="card_label_type-2" onclick="TagFestival(event,4829,2);" title="Favorito" class="festival-card-outer-icon"><i class="fa fa-heart opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+						    	<a id="card_label_type-4" onclick="TagFestival(event,4829,4);" title="﻿Vista" class="festival-card-outer-icon"><i class="fa fa-eye opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+													    	<a id="card_label_type-1" onclick="TagFestival(event,4829,1);" title="﻿Ocultar" class="festival-card-outer-icon"><i class="fa fa-eye-slash opacity20"></i></a>
+														</div>
+
+						    						    <div class="fifth" title="0 Inscripciones"><i class="fa fa-calendar-times opacity20"></i></div>
+
+							<div class="fifth">
+						    							    	<a onclick="OpenNewTab(event,4829);" id="4829_newtab_link" data-full_url="arff-international-berlin-amsterdam-barcelona-paris" title="Abrir en nueva ventana" class="festival-card-outer-icon"><i class="fa fa-external-link"></i></a>
+							</div>
+
+					    </div>
+
+
+
+							<div class="festival-card-status days">
+								<span class="festival-card-datebox">
+									<span>13</span><br>
+									<span class="time-txt">días</span>
+								</span>
+								<span class="text-size-1_05">
+
+																																							<span>Fechas Límite</span><br>
+										<span class="date">
+																					31 diciembre 2023																				</span><br>
+										<span>Tasa Extendida</span> <span>13 días</span>
+
+																</span>
+							</div>
+
+										    </div>
+
+			    </div>
+			</div>
+			<a href="/festival/4829" class="festival-card-outer-icon" target="_blank">Abierto</a>	    </div>
+
+	</div>
+
+
+	<div id="festival_card-2507" class="card-pre-container col-3">
+
+
+
+
+	    <!-- !HTML for cards -->
+
+
+	    <div id="festival_card-container-2507" class="card-container /*card-hidden*/" ontouchstart="this.classList.toggle('hover');">
+
+			<div class="flipper">
+
+			    							    <div class="open-festival-view festival-card card-front" onclick="OpenViewer(2507);">
+
+				   <div class="festival-card-banner" style="background-image:url(https://festhomedocs.com/festivals/2507/banner_big-2507.jpg?t=4deb097b);"></div>
+
+				   				   		<img class="festival-card-logo_new" alt="Logo of Children animation film exhivition" src="https://festhomedocs.com/festivals/2507/logo-uncut-2507.jpg?t=4deb097b">
+				   				   		<!--<div class="festival-card-logo" style="background-image:url(https://festhomedocs.com/festivals/2507/logo-2507.jpg);"></div>-->
+
+				   <div class="col-12">
+					   <div class="festival-card-title">Children animation film exhivition</div>
+					   <div class="festival-card-country">España</div>
+
+					   <div class="festival-card-type-holder">
+						    							    <div class="festival-card-type" title="﻿Duración permitida (﻿Cortometrajes) <br/> ﻿Más de 4 min.&nbsp;﻿Menos de 14 min.">
+									﻿Cortometrajes&nbsp;&gt;4'&nbsp;14'&lt;								</div>
+					   								    					   							   </div>
+					   <!--
+					   <br style="clear:both;"/>
+					   <br style="clear:both;"/>
+					   -->
+					   <div class="festival-card-icons">
+
+						   						    <span class="info_icon fa-stack fa-lg" title="Festival Internacional<br/>Girona, Catalunya">
+								<i class="fa fa-circle fa-stack-2x"></i>
+								<i class="fa fa-globe fa-stack-1x fa-inverse"></i>
+							</span>
+
+						   							    <span class="info_icon_off fa-stack fa-lg" title="﻿Cualquier idioma">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-comment fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   						   		<!--<div class="dumb_circle" style="opacity: 0.1;" title="﻿NO tiene tasa de inscripción">$</div>-->
+							    <span class="info_icon fa-stack fa-lg" title="﻿NO tiene tasa de inscripción">
+									<i class="fa fa-dollar-sign fa-stack-1x festhome-lightgrey-color"></i>
+									<i class="fal fa-circle fa-stack-2x"></i>
+									<!--<i class="fa fa-ban fa-stack-2x"></i>-->
+								</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="Premios en Metálico<br/>300.00€">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-trophy fa-stack-1x fa-inverse" style="color: white;"></i>
+								</span>
+
+						   <br style="clear:both;">
+					   </div>
+
+					   <div class="festival-labels">
+						   &nbsp;
+						   						   						   						   						   						   						   						   						   						   						   						   &nbsp;
+					   </div>
+
+											    <div class="col-12 festival-card-outer">
+
+							<div class="fifth">
+						    	<a id="card_label_type-2" onclick="TagFestival(event,2507,2);" title="Favorito" class="festival-card-outer-icon"><i class="fa fa-heart opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+						    	<a id="card_label_type-4" onclick="TagFestival(event,2507,4);" title="﻿Vista" class="festival-card-outer-icon"><i class="fa fa-eye opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+													    	<a id="card_label_type-1" onclick="TagFestival(event,2507,1);" title="﻿Ocultar" class="festival-card-outer-icon"><i class="fa fa-eye-slash opacity20"></i></a>
+														</div>
+
+						    						    <div class="fifth" title="0 Inscripciones"><i class="fa fa-calendar-times opacity20"></i></div>
+
+							<div class="fifth">
+						    							    	<a onclick="OpenNewTab(event,2507);" id="2507_newtab_link" data-full_url="mostra-de-cinema-d-animacio-infantil-de-girona" title="Abrir en nueva ventana" class="festival-card-outer-icon"><i class="fa fa-external-link"></i></a>
+							</div>
+
+					    </div>
+
+
+
+							<div class="festival-card-status hours">
+								<span class="festival-card-datebox">
+									<span>12</span><br>
+									<span class="time-txt">hrs</span>
+								</span>
+								<span class="text-size-1_05">
+
+																			<span>﻿Fecha Límite</span><br>
+										<span class="date">
+																					18 diciembre 2023																				</span>
+
+																</span>
+							</div>
+
+										    </div>
+
+			    </div>
+			</div>
+			<a href="/festival/2507" class="festival-card-outer-icon" target="_blank">Abierto</a>	    </div>
+
+	</div>
+
+
+	<div id="festival_card-6949" class="card-pre-container col-3">
+
+
+
+
+
+
+
+
+	    <!-- !HTML for cards -->
+
+
+	    <div id="festival_card-container-6949" class="card-container /*card-hidden*/" ontouchstart="this.classList.toggle('hover');">
+
+			<div class="flipper">
+
+			    							    <div class="open-festival-view festival-card card-front" onclick="OpenViewer(6949);">
+
+				   <div class="festival-card-banner" style="background-image:url(https://festhomedocs.com/festivals/6949/banner_big-6949.jpg?t=8fb950e4);"></div>
+
+				   				   		<img class="festival-card-logo_new" alt="Logo of Ojo Indómito" src="https://festhomedocs.com/festivals/6949/logo-uncut-6949.jpg?t=8fb950e4">
+				   				   		<!--<div class="festival-card-logo" style="background-image:url(https://festhomedocs.com/festivals/6949/logo-6949.jpg);"></div>-->
+
+				   <div class="col-12">
+					   <div class="festival-card-title">Ojo Indómito</div>
+					   <div class="festival-card-country">Chile</div>
+
+					   <div class="festival-card-type-holder">
+						    							    <div class="festival-card-type" title="﻿Duración permitida (﻿Cortometrajes) <br/> ﻿Más de 1 min.&nbsp;﻿Menos de 29 min.">
+									﻿Cortometrajes&nbsp;&gt;1'&nbsp;29'&lt;								</div>
+					   								    						    	<br>
+							    <div class="festival-card-type" title="﻿Duración permitida (﻿Largometrajes) <br/> ﻿Más de 30 min.&nbsp;﻿Menos de 90 min.">
+								   ﻿Largometrajes&nbsp;&gt;30'&nbsp;90'&lt;								</div>
+					   							   </div>
+					   <!--
+					   <br style="clear:both;"/>
+					   <br style="clear:both;"/>
+					   -->
+					   <div class="festival-card-icons">
+
+						   						    <span class="info_icon fa-stack fa-lg" title="Festival Internacional<br/>Region de Los Ríos">
+								<i class="fa fa-circle fa-stack-2x"></i>
+								<i class="fa fa-globe fa-stack-1x fa-inverse"></i>
+							</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="﻿Requiere idioma o subtítulos en:<br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							        									        	Español&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							    							    ">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-comment fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="﻿Cortometrajes: 12.7€<br/>﻿Largometrajes: 12.7€">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i style="color: #ea9000; line-height: 37px;" class="fa fa-euro-sign fa-stack-1x"></i>
+								</span>
+
+						   							    <span class="info_icon_off fa-stack fa-lg">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-trophy fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   <br style="clear:both;">
+					   </div>
+
+					   <div class="festival-labels">
+						   &nbsp;
+						   						   						   						   						   						   						   						   						   						   						   						   &nbsp;
+					   </div>
+
+											    <div class="col-12 festival-card-outer">
+
+							<div class="fifth">
+						    	<a id="card_label_type-2" onclick="TagFestival(event,6949,2);" title="Favorito" class="festival-card-outer-icon"><i class="fa fa-heart opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+						    	<a id="card_label_type-4" onclick="TagFestival(event,6949,4);" title="﻿Vista" class="festival-card-outer-icon"><i class="fa fa-eye opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+													    	<a id="card_label_type-1" onclick="TagFestival(event,6949,1);" title="﻿Ocultar" class="festival-card-outer-icon"><i class="fa fa-eye-slash opacity20"></i></a>
+														</div>
+
+						    						    <div class="fifth" title="0 Inscripciones"><i class="fa fa-calendar-times opacity20"></i></div>
+
+							<div class="fifth">
+						    							    	<a onclick="OpenNewTab(event,6949);" id="6949_newtab_link" data-full_url="ojo-indomito" title="Abrir en nueva ventana" class="festival-card-outer-icon"><i class="fa fa-external-link"></i></a>
+							</div>
+
+					    </div>
+
+
+
+							<div class="festival-card-status days">
+								<span class="festival-card-datebox">
+									<span>2</span><br>
+									<span class="time-txt">días</span>
+								</span>
+								<span class="text-size-1_05">
+
+																			<span>﻿Fecha Límite</span><br>
+										<span class="date">
+																					20 diciembre 2023																				</span>
+
+																</span>
+							</div>
+
+										    </div>
+
+			    </div>
+			</div>
+			<a href="/festival/6949" class="festival-card-outer-icon" target="_blank">Abierto</a>	    </div>
+
+	</div>
+
+
+	<div id="festival_card-2888" class="card-pre-container col-3">
+
+
+
+
+
+
+
+
+	    <!-- !HTML for cards -->
+
+
+	    <div id="festival_card-container-2888" class="card-container /*card-hidden*/" ontouchstart="this.classList.toggle('hover');">
+
+			<div class="flipper">
+
+			    							    <div class="open-festival-view festival-card card-front" onclick="OpenViewer(2888);">
+
+				   <div class="festival-card-banner" style="background-image:url(https://festhomedocs.com/festivals/2888/banner_big-2888.jpg?t=a69ae9b6);"></div>
+
+				   				   		<img class="festival-card-logo_new" alt="Logo of Gosh! Film Festival - 14th Edition" src="https://festhomedocs.com/festivals/2888/logo-uncut-2888.jpg?t=a69ae9b6">
+				   				   		<!--<div class="festival-card-logo" style="background-image:url(https://festhomedocs.com/festivals/2888/logo-2888.jpg);"></div>-->
+
+				   <div class="col-12">
+					   <div class="festival-card-title">Gosh! Film Festival - 14th Edition</div>
+					   <div class="festival-card-country">Francia</div>
+
+					   <div class="festival-card-type-holder">
+						    							    <div class="festival-card-type" title="﻿Duración permitida (﻿Cortometrajes) <br/> &nbsp;﻿Menos de 35 min.">
+									﻿Cortometrajes&nbsp;35'&lt;								</div>
+					   								    					   							   </div>
+					   <!--
+					   <br style="clear:both;"/>
+					   <br style="clear:both;"/>
+					   -->
+					   <div class="festival-card-icons">
+
+						   						    <span class="info_icon fa-stack fa-lg" title="Festival Internacional<br/>Paris">
+								<i class="fa fa-circle fa-stack-2x"></i>
+								<i class="fa fa-globe fa-stack-1x fa-inverse"></i>
+							</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="﻿Requiere idioma o subtítulos en:<br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							        									        	Francés&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							        									        	Inglés&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							    							    ">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-comment fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="﻿Cortometrajes: 17.9€">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i style="color: #ea9000; line-height: 37px;" class="fa fa-euro-sign fa-stack-1x"></i>
+								</span>
+
+						   							    <span class="info_icon_off fa-stack fa-lg">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-trophy fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   <br style="clear:both;">
+					   </div>
+
+					   <div class="festival-labels">
+						   &nbsp;
+						   						   						   						   		<span class="pro-button text-smaller">PRO&nbsp;<i class="fad fa-triangle fa-rotate-90"></i>&nbsp;-18%</span>
+						   						   						   						   						   						   						   						   						   						   						   &nbsp;
+					   </div>
+
+											    <div class="col-12 festival-card-outer">
+
+							<div class="fifth">
+						    	<a id="card_label_type-2" onclick="TagFestival(event,2888,2);" title="Favorito" class="festival-card-outer-icon"><i class="fa fa-heart opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+						    	<a id="card_label_type-4" onclick="TagFestival(event,2888,4);" title="﻿Vista" class="festival-card-outer-icon"><i class="fa fa-eye opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+													    	<a id="card_label_type-1" onclick="TagFestival(event,2888,1);" title="﻿Ocultar" class="festival-card-outer-icon"><i class="fa fa-eye-slash opacity20"></i></a>
+														</div>
+
+						    						    <div class="fifth" title="0 Inscripciones"><i class="fa fa-calendar-times opacity20"></i></div>
+
+							<div class="fifth">
+						    							    	<a onclick="OpenNewTab(event,2888);" id="2888_newtab_link" data-full_url="gosh-film-festival-th-edition" title="Abrir en nueva ventana" class="festival-card-outer-icon"><i class="fa fa-external-link"></i></a>
+							</div>
+
+					    </div>
+
+
+
+							<div class="festival-card-status days">
+								<span class="festival-card-datebox">
+									<span>2</span><br>
+									<span class="time-txt">días</span>
+								</span>
+								<span class="text-size-1_05">
+
+																																							<span>Fechas Límite</span><br>
+										<span class="date">
+																					20 diciembre 2023																				</span><br>
+										<span>Tasa Extendida</span> <span>2 días</span>
+
+																</span>
+							</div>
+
+										    </div>
+
+			    </div>
+			</div>
+			<a href="/festival/2888" class="festival-card-outer-icon" target="_blank">Abierto</a>	    </div>
+
+	</div>
+
+
+	<div id="festival_card-7149" class="card-pre-container col-3">
+
+
+
+
+	    <!-- !HTML for cards -->
+
+
+	    <div id="festival_card-container-7149" class="card-container /*card-hidden*/" ontouchstart="this.classList.toggle('hover');">
+
+			<div class="flipper">
+
+			    							    <div class="open-festival-view festival-card card-front" onclick="OpenViewer(7149);">
+
+				   <div class="festival-card-banner" style="background-image:url(https://festhomedocs.com/festivals/7149/banner_big-7149.jpg?t=e2c34cc7);"></div>
+
+				   				   		<img class="festival-card-logo_new" alt="Logo of Muestra Internacional de Cine Amateur" src="https://festhomedocs.com/festivals/7149/logo-uncut-7149.jpg?t=e2c34cc7">
+				   				   		<!--<div class="festival-card-logo" style="background-image:url(https://festhomedocs.com/festivals/7149/logo-7149.jpg);"></div>-->
+
+				   <div class="col-12">
+					   <div class="festival-card-title">Muestra Internacional de Cine Amateur</div>
+					   <div class="festival-card-country">Mexico</div>
+
+					   <div class="festival-card-type-holder">
+						    							    <div class="festival-card-type" title="﻿Duración permitida (﻿Cortometrajes) <br/> ﻿Más de 3 min.&nbsp;﻿Menos de 20 min.">
+									﻿Cortometrajes&nbsp;&gt;3'&nbsp;20'&lt;								</div>
+					   								    					   							   </div>
+					   <!--
+					   <br style="clear:both;"/>
+					   <br style="clear:both;"/>
+					   -->
+					   <div class="festival-card-icons">
+
+						   						    <span class="info_icon fa-stack fa-lg" title="Festival Internacional<br/>Mérida, Yucatán ">
+								<i class="fa fa-circle fa-stack-2x"></i>
+								<i class="fa fa-globe fa-stack-1x fa-inverse"></i>
+							</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="﻿Requiere idioma o subtítulos en:<br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							        									        	Español&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							        									        	Inglés&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							    							    ">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-comment fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   						   		<!--<div class="dumb_circle" style="opacity: 0.1;" title="﻿NO tiene tasa de inscripción">$</div>-->
+							    <span class="info_icon fa-stack fa-lg" title="﻿NO tiene tasa de inscripción">
+									<i class="fa fa-dollar-sign fa-stack-1x festhome-lightgrey-color"></i>
+									<i class="fal fa-circle fa-stack-2x"></i>
+									<!--<i class="fa fa-ban fa-stack-2x"></i>-->
+								</span>
+
+						   							    <span class="info_icon_off fa-stack fa-lg">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-trophy fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   <br style="clear:both;">
+					   </div>
+
+					   <div class="festival-labels">
+						   &nbsp;
+						   						   						   						   						   						   						   						   						   						   						   						   &nbsp;
+					   </div>
+
+											    <div class="col-12 festival-card-outer">
+
+							<div class="fifth">
+						    	<a id="card_label_type-2" onclick="TagFestival(event,7149,2);" title="Favorito" class="festival-card-outer-icon"><i class="fa fa-heart opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+						    	<a id="card_label_type-4" onclick="TagFestival(event,7149,4);" title="﻿Vista" class="festival-card-outer-icon"><i class="fa fa-eye opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+													    	<a id="card_label_type-1" onclick="TagFestival(event,7149,1);" title="﻿Ocultar" class="festival-card-outer-icon"><i class="fa fa-eye-slash opacity20"></i></a>
+														</div>
+
+						    						    <div class="fifth" title="0 Inscripciones"><i class="fa fa-calendar-times opacity20"></i></div>
+
+							<div class="fifth">
+						    							    	<a onclick="OpenNewTab(event,7149);" id="7149_newtab_link" data-full_url="meshfest" title="Abrir en nueva ventana" class="festival-card-outer-icon"><i class="fa fa-external-link"></i></a>
+							</div>
+
+					    </div>
+
+
+
+							<div class="festival-card-status days">
+								<span class="festival-card-datebox">
+									<span>2</span><br>
+									<span class="time-txt">días</span>
+								</span>
+								<span class="text-size-1_05">
+
+																			<span>﻿Fecha Límite</span><br>
+										<span class="date">
+																					20 diciembre 2023																				</span>
+
+																</span>
+							</div>
+
+										    </div>
+
+			    </div>
+			</div>
+			<a href="/festival/7149" class="festival-card-outer-icon" target="_blank">Abierto</a>	    </div>
+
+	</div>
+
+
+	<div id="festival_card-762" class="card-pre-container col-3">
+
+
+
+
+	    <!-- !HTML for cards -->
+
+
+	    <div id="festival_card-container-762" class="card-container /*card-hidden*/" ontouchstart="this.classList.toggle('hover');">
+
+			<div class="flipper">
+
+			    							    <div class="open-festival-view festival-card card-front" onclick="OpenViewer(762);">
+
+				   <div class="festival-card-banner" style="background-image:url(https://festhomedocs.com/festivals/762/banner_big-762.jpg?t=9e49591f);"></div>
+
+				   				   		<img class="festival-card-logo_new" alt="Logo of ’SURrealidades El Cine Azul’ International Film Festival" src="https://festhomedocs.com/festivals/762/logo-uncut-762.jpg?t=9e49591f">
+				   				   		<!--<div class="festival-card-logo" style="background-image:url(https://festhomedocs.com/festivals/762/logo-762.jpg);"></div>-->
+
+				   <div class="col-12">
+					   <div class="festival-card-title">’SURrealidades El Cine Azul’ International Film Festival</div>
+					   <div class="festival-card-country">Colombia</div>
+
+					   <div class="festival-card-type-holder">
+						    							    <div class="festival-card-type" title="﻿Duración permitida (﻿Cortometrajes) <br/> ﻿Más de 7 min.&nbsp;﻿Menos de 40 min.">
+									﻿Cortometrajes&nbsp;&gt;7'&nbsp;40'&lt;								</div>
+					   								    						    	<br>
+							    <div class="festival-card-type" title="﻿Duración permitida (﻿Largometrajes) <br/> ﻿Más de 45 min.&nbsp;">
+								   ﻿Largometrajes&nbsp;&gt;45'								</div>
+					   							   </div>
+					   <!--
+					   <br style="clear:both;"/>
+					   <br style="clear:both;"/>
+					   -->
+					   <div class="festival-card-icons">
+
+						   						    <span class="info_icon fa-stack fa-lg" title="Festival Internacional<br/>Latinoamerica ">
+								<i class="fa fa-circle fa-stack-2x"></i>
+								<i class="fa fa-globe fa-stack-1x fa-inverse"></i>
+							</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="﻿Requiere idioma o subtítulos en:<br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							        									        	Español&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							    							    ">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-comment fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   						   		<!--<div class="dumb_circle" style="opacity: 0.1;" title="﻿NO tiene tasa de inscripción">$</div>-->
+							    <span class="info_icon fa-stack fa-lg" title="﻿NO tiene tasa de inscripción">
+									<i class="fa fa-dollar-sign fa-stack-1x festhome-lightgrey-color"></i>
+									<i class="fal fa-circle fa-stack-2x"></i>
+									<!--<i class="fa fa-ban fa-stack-2x"></i>-->
+								</span>
+
+						   							    <span class="info_icon_off fa-stack fa-lg">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-trophy fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   <br style="clear:both;">
+					   </div>
+
+					   <div class="festival-labels">
+						   &nbsp;
+						   						   						   						   						   						   						   						   						   						   						   						   &nbsp;
+					   </div>
+
+											    <div class="col-12 festival-card-outer">
+
+							<div class="fifth">
+						    	<a id="card_label_type-2" onclick="TagFestival(event,762,2);" title="Favorito" class="festival-card-outer-icon"><i class="fa fa-heart opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+						    	<a id="card_label_type-4" onclick="TagFestival(event,762,4);" title="﻿Vista" class="festival-card-outer-icon"><i class="fa fa-eye opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+													    	<a id="card_label_type-1" onclick="TagFestival(event,762,1);" title="﻿Ocultar" class="festival-card-outer-icon"><i class="fa fa-eye-slash opacity20"></i></a>
+														</div>
+
+						    						    <div class="fifth" title="0 Inscripciones"><i class="fa fa-calendar-times opacity20"></i></div>
+
+							<div class="fifth">
+						    							    	<a onclick="OpenNewTab(event,762);" id="762_newtab_link" data-full_url="festival-iberoamericano-de-cine-azul-surrealidades" title="Abrir en nueva ventana" class="festival-card-outer-icon"><i class="fa fa-external-link"></i></a>
+							</div>
+
+					    </div>
+
+
+
+							<div class="festival-card-status days">
+								<span class="festival-card-datebox">
+									<span>3</span><br>
+									<span class="time-txt">días</span>
+								</span>
+								<span class="text-size-1_05">
+
+																			<span>﻿Fecha Límite</span><br>
+										<span class="date">
+																					21 diciembre 2023																				</span>
+
+																</span>
+							</div>
+
+										    </div>
+
+			    </div>
+			</div>
+			<a href="/festival/762" class="festival-card-outer-icon" target="_blank">Abierto</a>	    </div>
+
+	</div>
+
+
+	<div id="festival_card-1794" class="card-pre-container col-3">
+
+
+
+
+
+
+
+
+	    <!-- !HTML for cards -->
+
+
+	    <div id="festival_card-container-1794" class="card-container /*card-hidden*/" ontouchstart="this.classList.toggle('hover');">
+
+			<div class="flipper">
+
+			    							    <div class="open-festival-view festival-card card-front" onclick="OpenViewer(1794);">
+
+				   <div class="festival-card-banner" style="background-image:url(https://festhomedocs.com/festivals/1794/banner_big-1794.jpg?t=211d19ad);"></div>
+
+				   				   		<img class="festival-card-logo_new" alt="Logo of Short Movie Club Film Festival Nefiltravanae Kino" src="https://festhomedocs.com/festivals/1794/logo-uncut-1794.jpg?t=211d19ad">
+				   				   		<!--<div class="festival-card-logo" style="background-image:url(https://festhomedocs.com/festivals/1794/logo-1794.jpg);"></div>-->
+
+				   <div class="col-12">
+					   <div class="festival-card-title">Short Movie Club Film Festival Nefiltravanae Kino</div>
+					   <div class="festival-card-country">Bielorrusia</div>
+
+					   <div class="festival-card-type-holder">
+						    							    <div class="festival-card-type" title="﻿Duración permitida (﻿Cortometrajes) <br/> &nbsp;﻿Menos de 45 min.">
+									﻿Cortometrajes&nbsp;45'&lt;								</div>
+					   								    					   							   </div>
+					   <!--
+					   <br style="clear:both;"/>
+					   <br style="clear:both;"/>
+					   -->
+					   <div class="festival-card-icons">
+
+						   						    <span class="info_icon fa-stack fa-lg" title="Festival Internacional<br/>">
+								<i class="fa fa-circle fa-stack-2x"></i>
+								<i class="fa fa-globe fa-stack-1x fa-inverse"></i>
+							</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="﻿Requiere idioma o subtítulos en:<br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							        									        	Inglés&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							    							    ">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-comment fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="﻿Cortometrajes: 12.0$<br/>Tiene secciones gratuitas">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i style="color: #ea9000; line-height: 37px;" class="fa fa-dollar-sign fa-stack-1x"></i>
+								</span>
+
+						   							    <span class="info_icon_off fa-stack fa-lg">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-trophy fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   <br style="clear:both;">
+					   </div>
+
+					   <div class="festival-labels">
+						   &nbsp;
+						   						   						   						   		<span class="pro-button text-smaller">PRO&nbsp;<i class="fad fa-triangle fa-rotate-90"></i>&nbsp;-33%</span>
+						   						   						   						   						   						   						   						   						   						   						   &nbsp;
+					   </div>
+
+											    <div class="col-12 festival-card-outer">
+
+							<div class="fifth">
+						    	<a id="card_label_type-2" onclick="TagFestival(event,1794,2);" title="Favorito" class="festival-card-outer-icon"><i class="fa fa-heart opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+						    	<a id="card_label_type-4" onclick="TagFestival(event,1794,4);" title="﻿Vista" class="festival-card-outer-icon"><i class="fa fa-eye opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+													    	<a id="card_label_type-1" onclick="TagFestival(event,1794,1);" title="﻿Ocultar" class="festival-card-outer-icon"><i class="fa fa-eye-slash opacity20"></i></a>
+														</div>
+
+						    						    <div class="fifth" title="0 Inscripciones"><i class="fa fa-calendar-times opacity20"></i></div>
+
+							<div class="fifth">
+						    							    	<a onclick="OpenNewTab(event,1794);" id="1794_newtab_link" data-full_url="unfiltered-cinema-short-movie-club" title="Abrir en nueva ventana" class="festival-card-outer-icon"><i class="fa fa-external-link"></i></a>
+							</div>
+
+					    </div>
+
+
+
+							<div class="festival-card-status days">
+								<span class="festival-card-datebox">
+									<span>4</span><br>
+									<span class="time-txt">días</span>
+								</span>
+								<span class="text-size-1_05">
+
+																			<span>﻿Fecha Límite</span><br>
+										<span class="date">
+																					22 diciembre 2023																				</span>
+
+																</span>
+							</div>
+
+										    </div>
+
+			    </div>
+			</div>
+			<a href="/festival/1794" class="festival-card-outer-icon" target="_blank">Abierto</a>	    </div>
+
+	</div>
+
+
+	<div id="festival_card-2857" class="card-pre-container col-3">
+
+
+
+
+	    <!-- !HTML for cards -->
+
+
+	    <div id="festival_card-container-2857" class="card-container /*card-hidden*/" ontouchstart="this.classList.toggle('hover');">
+
+			<div class="flipper">
+
+			    							    <div class="open-festival-view festival-card card-front" onclick="OpenViewer(2857);">
+
+				   <div class="festival-card-banner" style="background-image:url(https://festhomedocs.com/festivals/2857/banner_big-2857.jpg?t=51b5a1f1);"></div>
+
+				   				   		<img class="festival-card-logo_new" alt="Logo of CinEuphoria" src="https://festhomedocs.com/festivals/2857/logo-uncut-2857.jpg?t=51b5a1f1">
+				   				   		<!--<div class="festival-card-logo" style="background-image:url(https://festhomedocs.com/festivals/2857/logo-2857.jpg);"></div>-->
+
+				   <div class="col-12">
+					   <div class="festival-card-title">CinEuphoria</div>
+					   <div class="festival-card-country">Portugal</div>
+
+					   <div class="festival-card-type-holder">
+						    							    <div class="festival-card-type" title="﻿Duración permitida (﻿Cortometrajes) <br/> &nbsp;﻿Cualquiera">
+									﻿Cortometrajes								</div>
+					   								    						    	<br>
+							    <div class="festival-card-type" title="﻿Duración permitida (﻿Largometrajes) <br/> &nbsp;﻿Cualquiera">
+								   ﻿Largometrajes								</div>
+					   							   </div>
+					   <!--
+					   <br style="clear:both;"/>
+					   <br style="clear:both;"/>
+					   -->
+					   <div class="festival-card-icons">
+
+						   						    <span class="info_icon fa-stack fa-lg" title="Festival Internacional<br/>Portugal">
+								<i class="fa fa-circle fa-stack-2x"></i>
+								<i class="fa fa-globe fa-stack-1x fa-inverse"></i>
+							</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="﻿Requiere idioma o subtítulos en:<br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							        									        	Inglés&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							        									        	Francés&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							        									        	Italiano&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							        									        	Portugués&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							        									        	Español&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							    							    ">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-comment fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   						   		<!--<div class="dumb_circle" style="opacity: 0.1;" title="﻿NO tiene tasa de inscripción">$</div>-->
+							    <span class="info_icon fa-stack fa-lg" title="﻿NO tiene tasa de inscripción">
+									<i class="fa fa-dollar-sign fa-stack-1x festhome-lightgrey-color"></i>
+									<i class="fal fa-circle fa-stack-2x"></i>
+									<!--<i class="fa fa-ban fa-stack-2x"></i>-->
+								</span>
+
+						   							    <span class="info_icon_off fa-stack fa-lg">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-trophy fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   <br style="clear:both;">
+					   </div>
+
+					   <div class="festival-labels">
+						   &nbsp;
+						   						   						   						   						   						   						   						   						   						   						   						   &nbsp;
+					   </div>
+
+											    <div class="col-12 festival-card-outer">
+
+							<div class="fifth">
+						    	<a id="card_label_type-2" onclick="TagFestival(event,2857,2);" title="Favorito" class="festival-card-outer-icon"><i class="fa fa-heart opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+						    	<a id="card_label_type-4" onclick="TagFestival(event,2857,4);" title="﻿Vista" class="festival-card-outer-icon"><i class="fa fa-eye opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+													    	<a id="card_label_type-1" onclick="TagFestival(event,2857,1);" title="﻿Ocultar" class="festival-card-outer-icon"><i class="fa fa-eye-slash opacity20"></i></a>
+														</div>
+
+						    						    <div class="fifth" title="0 Inscripciones"><i class="fa fa-calendar-times opacity20"></i></div>
+
+							<div class="fifth">
+						    							    	<a onclick="OpenNewTab(event,2857);" id="2857_newtab_link" data-full_url="cineuphoria" title="Abrir en nueva ventana" class="festival-card-outer-icon"><i class="fa fa-external-link"></i></a>
+							</div>
+
+					    </div>
+
+
+
+							<div class="festival-card-status days">
+								<span class="festival-card-datebox">
+									<span>5</span><br>
+									<span class="time-txt">días</span>
+								</span>
+								<span class="text-size-1_05">
+
+																			<span>﻿Fecha Límite</span><br>
+										<span class="date">
+																					23 diciembre 2023																				</span>
+
+																</span>
+							</div>
+
+										    </div>
+
+			    </div>
+			</div>
+			<a href="/festival/2857" class="festival-card-outer-icon" target="_blank">Abierto</a>	    </div>
+
+	</div>
+
+
+	<div id="festival_card-6014" class="card-pre-container col-3">
+
+
+
+
+	    <!-- !HTML for cards -->
+
+
+	    <div id="festival_card-container-6014" class="card-container /*card-hidden*/" ontouchstart="this.classList.toggle('hover');">
+
+			<div class="flipper">
+
+			    							    <div class="open-festival-view festival-card card-front" onclick="OpenViewer(6014);">
+
+				   <div class="festival-card-banner" style="background-image:url(https://festhomedocs.com/festivals/6014/banner_big-6014.jpg?t=874f4ced);"></div>
+
+				   				   		<img class="festival-card-logo_new" alt="Logo of THE FILMY MONKS FILM FESTIVAL" src="https://festhomedocs.com/festivals/6014/logo-uncut-6014.jpg?t=874f4ced">
+				   				   		<!--<div class="festival-card-logo" style="background-image:url(https://festhomedocs.com/festivals/6014/logo-6014.jpg);"></div>-->
+
+				   <div class="col-12">
+					   <div class="festival-card-title">THE FILMY MONKS FILM FESTIVAL</div>
+					   <div class="festival-card-country">India</div>
+
+					   <div class="festival-card-type-holder">
+						    							    <div class="festival-card-type" title="﻿Duración permitida (﻿Cortometrajes) <br/> &nbsp;﻿Cualquiera">
+									﻿Cortometrajes								</div>
+					   								    						    	<br>
+							    <div class="festival-card-type" title="﻿Duración permitida (﻿Largometrajes) <br/> &nbsp;﻿Cualquiera">
+								   ﻿Largometrajes								</div>
+					   							   </div>
+					   <!--
+					   <br style="clear:both;"/>
+					   <br style="clear:both;"/>
+					   -->
+					   <div class="festival-card-icons">
+
+						   						    <span class="info_icon fa-stack fa-lg" title="Festival Internacional<br/>ASIA">
+								<i class="fa fa-circle fa-stack-2x"></i>
+								<i class="fa fa-globe fa-stack-1x fa-inverse"></i>
+							</span>
+
+						   							    <span class="info_icon_off fa-stack fa-lg" title="﻿Cualquier idioma">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-comment fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   						   		<!--<div class="dumb_circle" style="opacity: 0.1;" title="﻿NO tiene tasa de inscripción">$</div>-->
+							    <span class="info_icon fa-stack fa-lg" title="﻿NO tiene tasa de inscripción">
+									<i class="fa fa-dollar-sign fa-stack-1x festhome-lightgrey-color"></i>
+									<i class="fal fa-circle fa-stack-2x"></i>
+									<!--<i class="fa fa-ban fa-stack-2x"></i>-->
+								</span>
+
+						   							    <span class="info_icon_off fa-stack fa-lg">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-trophy fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   <br style="clear:both;">
+					   </div>
+
+					   <div class="festival-labels">
+						   &nbsp;
+						   						   						   						   						   						   						   						   						   						   						   						   &nbsp;
+					   </div>
+
+											    <div class="col-12 festival-card-outer">
+
+							<div class="fifth">
+						    	<a id="card_label_type-2" onclick="TagFestival(event,6014,2);" title="Favorito" class="festival-card-outer-icon"><i class="fa fa-heart opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+						    	<a id="card_label_type-4" onclick="TagFestival(event,6014,4);" title="﻿Vista" class="festival-card-outer-icon"><i class="fa fa-eye opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+													    	<a id="card_label_type-1" onclick="TagFestival(event,6014,1);" title="﻿Ocultar" class="festival-card-outer-icon"><i class="fa fa-eye-slash opacity20"></i></a>
+														</div>
+
+						    						    <div class="fifth" title="0 Inscripciones"><i class="fa fa-calendar-times opacity20"></i></div>
+
+							<div class="fifth">
+						    							    	<a onclick="OpenNewTab(event,6014);" id="6014_newtab_link" data-full_url="the-filmy-monks-film-festival" title="Abrir en nueva ventana" class="festival-card-outer-icon"><i class="fa fa-external-link"></i></a>
+							</div>
+
+					    </div>
+
+
+
+							<div class="festival-card-status days">
+								<span class="festival-card-datebox">
+									<span>7</span><br>
+									<span class="time-txt">días</span>
+								</span>
+								<span class="text-size-1_05">
+
+																			<span>﻿Fecha Límite</span><br>
+										<span class="date">
+																					25 diciembre 2023																				</span>
+
+																</span>
+							</div>
+
+										    </div>
+
+			    </div>
+			</div>
+			<a href="/festival/6014" class="festival-card-outer-icon" target="_blank">Abierto</a>	    </div>
+
+	</div>
+
+
+	<div id="festival_card-3211" class="card-pre-container col-3">
+
+
+
+
+	    <!-- !HTML for cards -->
+
+
+	    <div id="festival_card-container-3211" class="card-container /*card-hidden*/" ontouchstart="this.classList.toggle('hover');">
+
+			<div class="flipper">
+
+			    							    <div class="open-festival-view festival-card card-front" onclick="OpenViewer(3211);">
+
+				   <div class="festival-card-banner" style="background-image:url(https://festhomedocs.com/festivals/3211/banner_big-3211.jpg?t=a6aa0a13);"></div>
+
+				   				   		<img class="festival-card-logo_new" alt="Logo of CON-TEMPORARY Art Observatorium" src="https://festhomedocs.com/festivals/3211/logo-uncut-3211.jpg?t=a6aa0a13">
+				   				   		<!--<div class="festival-card-logo" style="background-image:url(https://festhomedocs.com/festivals/3211/logo-3211.jpg);"></div>-->
+
+				   <div class="col-12">
+					   <div class="festival-card-title">CON-TEMPORARY Art Observatorium</div>
+					   <div class="festival-card-country">Italia</div>
+
+					   <div class="festival-card-type-holder">
+						    							    <div class="festival-card-type" title="﻿Duración permitida (﻿Cortometrajes) <br/> &nbsp;﻿Cualquiera">
+									﻿Cortometrajes								</div>
+					   								    						    	<br>
+							    <div class="festival-card-type" title="﻿Duración permitida (﻿Largometrajes) <br/> &nbsp;﻿Cualquiera">
+								   ﻿Largometrajes								</div>
+					   							   </div>
+					   <!--
+					   <br style="clear:both;"/>
+					   <br style="clear:both;"/>
+					   -->
+					   <div class="festival-card-icons">
+
+						   						    <span class="info_icon fa-stack fa-lg" title="Festival Internacional<br/>Italian Riviera">
+								<i class="fa fa-circle fa-stack-2x"></i>
+								<i class="fa fa-globe fa-stack-1x fa-inverse"></i>
+							</span>
+
+						   							    <span class="info_icon_off fa-stack fa-lg" title="﻿Cualquier idioma">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-comment fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   						   		<!--<div class="dumb_circle" style="opacity: 0.1;" title="﻿NO tiene tasa de inscripción">$</div>-->
+							    <span class="info_icon fa-stack fa-lg" title="﻿NO tiene tasa de inscripción">
+									<i class="fa fa-dollar-sign fa-stack-1x festhome-lightgrey-color"></i>
+									<i class="fal fa-circle fa-stack-2x"></i>
+									<!--<i class="fa fa-ban fa-stack-2x"></i>-->
+								</span>
+
+						   							    <span class="info_icon_off fa-stack fa-lg">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-trophy fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   <br style="clear:both;">
+					   </div>
+
+					   <div class="festival-labels">
+						   &nbsp;
+						   						   						   						   						   						   						   						   						   						   						   						   &nbsp;
+					   </div>
+
+											    <div class="col-12 festival-card-outer">
+
+							<div class="fifth">
+						    	<a id="card_label_type-2" onclick="TagFestival(event,3211,2);" title="Favorito" class="festival-card-outer-icon"><i class="fa fa-heart opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+						    	<a id="card_label_type-4" onclick="TagFestival(event,3211,4);" title="﻿Vista" class="festival-card-outer-icon"><i class="fa fa-eye opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+													    	<a id="card_label_type-1" onclick="TagFestival(event,3211,1);" title="﻿Ocultar" class="festival-card-outer-icon"><i class="fa fa-eye-slash opacity20"></i></a>
+														</div>
+
+						    						    <div class="fifth" title="0 Inscripciones"><i class="fa fa-calendar-times opacity20"></i></div>
+
+							<div class="fifth">
+						    							    	<a onclick="OpenNewTab(event,3211);" id="3211_newtab_link" data-full_url="con-temporary-art-observatorium" title="Abrir en nueva ventana" class="festival-card-outer-icon"><i class="fa fa-external-link"></i></a>
+							</div>
+
+					    </div>
+
+
+
+							<div class="festival-card-status days">
+								<span class="festival-card-datebox">
+									<span>10</span><br>
+									<span class="time-txt">días</span>
+								</span>
+								<span class="text-size-1_05">
+
+																			<span>﻿Fecha Límite</span><br>
+										<span class="date">
+																					28 diciembre 2023																				</span>
+
+																</span>
+							</div>
+
+										    </div>
+
+			    </div>
+			</div>
+			<a href="/festival/3211" class="festival-card-outer-icon" target="_blank">Abierto</a>	    </div>
+
+	</div>
+
+
+	<div id="festival_card-6096" class="card-pre-container col-3">
+
+
+
+
+
+
+
+
+	    <!-- !HTML for cards -->
+
+
+	    <div id="festival_card-container-6096" class="card-container /*card-hidden*/" ontouchstart="this.classList.toggle('hover');">
+
+			<div class="flipper">
+
+			    							    <div class="open-festival-view festival-card card-front" onclick="OpenViewer(6096);">
+
+				   <div class="festival-card-banner" style="background-image:url(https://festhomedocs.com/festivals/6096/banner_big-6096.jpg?t=1fcff997);"></div>
+
+				   				   		<img class="festival-card-logo_new" alt="Logo of Valèiff • València Indie Film Festival" src="https://festhomedocs.com/festivals/6096/logo-uncut-6096.jpg?t=1fcff997">
+				   				   		<!--<div class="festival-card-logo" style="background-image:url(https://festhomedocs.com/festivals/6096/logo-6096.jpg);"></div>-->
+
+				   <div class="col-12">
+					   <div class="festival-card-title">Valèiff • València Indie Film Festival</div>
+					   <div class="festival-card-country">España</div>
+
+					   <div class="festival-card-type-holder">
+						    							    <div class="festival-card-type" title="﻿Duración permitida (﻿Cortometrajes) <br/> &nbsp;﻿Menos de 30 min.">
+									﻿Cortometrajes&nbsp;30'&lt;								</div>
+					   								    						    	<br>
+							    <div class="festival-card-type" title="﻿Duración permitida (﻿Largometrajes) <br/> ﻿Más de 60 min.&nbsp;﻿Menos de 120 min.">
+								   ﻿Largometrajes&nbsp;&gt;60'&nbsp;120'&lt;								</div>
+					   							   </div>
+					   <!--
+					   <br style="clear:both;"/>
+					   <br style="clear:both;"/>
+					   -->
+					   <div class="festival-card-icons">
+
+						   						    <span class="info_icon fa-stack fa-lg" title="Festival Internacional<br/>">
+								<i class="fa fa-circle fa-stack-2x"></i>
+								<i class="fa fa-globe fa-stack-1x fa-inverse"></i>
+							</span>
+
+						   							    <span class="info_icon_off fa-stack fa-lg" title="﻿Cualquier idioma">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-comment fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="﻿Cortometrajes: 9.1€<br/>﻿Largometrajes: 11.1€">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i style="color: #00a300; line-height: 37px;" class="fa fa-euro-sign fa-stack-1x"></i>
+								</span>
+
+						   							    <span class="info_icon_off fa-stack fa-lg">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-trophy fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   <br style="clear:both;">
+					   </div>
+
+					   <div class="festival-labels">
+						   &nbsp;
+						   						   						   						   		<span class="pro-button text-smaller">PRO&nbsp;<i class="fad fa-triangle fa-rotate-90"></i>&nbsp;-18%</span>
+						   						   						   						   						   						   						   						   						   						   						   &nbsp;
+					   </div>
+
+											    <div class="col-12 festival-card-outer">
+
+							<div class="fifth">
+						    	<a id="card_label_type-2" onclick="TagFestival(event,6096,2);" title="Favorito" class="festival-card-outer-icon"><i class="fa fa-heart opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+						    	<a id="card_label_type-4" onclick="TagFestival(event,6096,4);" title="﻿Vista" class="festival-card-outer-icon"><i class="fa fa-eye opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+													    	<a id="card_label_type-1" onclick="TagFestival(event,6096,1);" title="﻿Ocultar" class="festival-card-outer-icon"><i class="fa fa-eye-slash opacity20"></i></a>
+														</div>
+
+						    						    <div class="fifth" title="0 Inscripciones"><i class="fa fa-calendar-times opacity20"></i></div>
+
+							<div class="fifth">
+						    							    	<a onclick="OpenNewTab(event,6096);" id="6096_newtab_link" data-full_url="valeiff-valencia-indie-film-festival" title="Abrir en nueva ventana" class="festival-card-outer-icon"><i class="fa fa-external-link"></i></a>
+							</div>
+
+					    </div>
+
+
+
+							<div class="festival-card-status days">
+								<span class="festival-card-datebox">
+									<span>10</span><br>
+									<span class="time-txt">días</span>
+								</span>
+								<span class="text-size-1_05">
+
+																																							<span>Fechas Límite</span><br>
+										<span class="date">
+																					28 diciembre 2023																				</span><br>
+										<span>Tasa Extendida</span> <span>10 días</span>
+
+																</span>
+							</div>
+
+										    </div>
+
+			    </div>
+			</div>
+			<a href="/festival/6096" class="festival-card-outer-icon" target="_blank">Abierto</a>	    </div>
+
+	</div>
+
+
+	<div id="festival_card-1560" class="card-pre-container col-3">
+
+
+
+
+	    <!-- !HTML for cards -->
+
+
+	    <div id="festival_card-container-1560" class="card-container flippable" ontouchstart="this.classList.toggle('hover');">
+
+			<div class="flipper">
+
+			    			    <div class="festival-card card-front" id="festival_card_promcard-1560" style="background-position: center; background-size: cover; background-repeat: no-repeat; -ms-interpolation-mode: nearest-neighbor; image-rendering: -webkit-optimize-contrast; background-image:url(https://festhomedocs.com/festivals/1560/promcard-1560.jpg?t=97d7c354);">
+				    <!--https://festhomedocs.com/festivals/1560/ad_banner-1560.jpg-->
+			    </div>
+											    <div class="open-festival-view festival-card card-back" onclick="OpenViewer(1560,1,559);">
+
+				   <div class="festival-card-banner" style="background-image:url(https://festhomedocs.com/festivals/1560/banner_big-1560.jpg?t=97d7c354);"></div>
+
+				   				   		<img class="festival-card-logo_new" alt="Logo of MEDINA FILM FESTIVAL" src="https://festhomedocs.com/festivals/1560/logo-uncut-1560.jpg?t=97d7c354">
+				   				   		<!--<div class="festival-card-logo" style="background-image:url(https://festhomedocs.com/festivals/1560/logo-1560.jpg);"></div>-->
+
+				   <div class="col-12">
+					   <div class="festival-card-title">MEDINA FILM FESTIVAL</div>
+					   <div class="festival-card-country">España</div>
+
+					   <div class="festival-card-type-holder">
+						    							    <div class="festival-card-type" title="﻿Duración permitida (﻿Cortometrajes) <br/> &nbsp;﻿Menos de 30 min.">
+									﻿Cortometrajes&nbsp;30'&lt;								</div>
+					   								    					   							   </div>
+					   <!--
+					   <br style="clear:both;"/>
+					   <br style="clear:both;"/>
+					   -->
+					   <div class="festival-card-icons">
+
+						   						    <span class="info_icon fa-stack fa-lg" title="Festival Internacional<br/>España">
+								<i class="fa fa-circle fa-stack-2x"></i>
+								<i class="fa fa-globe fa-stack-1x fa-inverse"></i>
+							</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="﻿Requiere idioma o subtítulos en:<br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							        									        	Español&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							    							    ">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-comment fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   						   		<!--<div class="dumb_circle" style="opacity: 0.1;" title="﻿NO tiene tasa de inscripción">$</div>-->
+							    <span class="info_icon fa-stack fa-lg" title="﻿NO tiene tasa de inscripción">
+									<i class="fa fa-dollar-sign fa-stack-1x festhome-lightgrey-color"></i>
+									<i class="fal fa-circle fa-stack-2x"></i>
+									<!--<i class="fa fa-ban fa-stack-2x"></i>-->
+								</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="Premios en Metálico<br/>15,000.00€">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-trophy fa-stack-1x fa-inverse" style="color:  #e1b400;"></i>
+								</span>
+
+						   <br style="clear:both;">
+					   </div>
+
+					   <div class="festival-labels">
+						   &nbsp;
+						   						   						   						   						   						   		<span class="festival-label goya" title="GOYA festival calificador">GOYA</span>
+						   						   						   						   						   						   						   						   		<!--<span class="festival-label promoted"><b>Promocionados</b></span>-->
+						   						   &nbsp;
+					   </div>
+
+											    <div class="col-12 festival-card-outer">
+
+							<div class="fifth">
+						    	<a id="card_label_type-2" onclick="TagFestival(event,1560,2);" title="Favorito" class="festival-card-outer-icon"><i class="fa fa-heart opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+						    	<a id="card_label_type-4" onclick="TagFestival(event,1560,4);" title="﻿Vista" class="festival-card-outer-icon"><i class="fa fa-eye opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+													    	<a id="card_label_type-1" onclick="TagFestival(event,1560,1);" title="﻿Ocultar" class="festival-card-outer-icon"><i class="fa fa-eye-slash opacity20"></i></a>
+														</div>
+
+						    						    <div class="fifth" title="0 Inscripciones"><i class="fa fa-calendar-times opacity20"></i></div>
+
+							<div class="fifth">
+						    							    	<a onclick="OpenNewTab(event,1560);" id="1560_newtab_link" data-full_url="semana-de-cine-de-medina-del-campo" title="Abrir en nueva ventana" class="festival-card-outer-icon"><i class="fa fa-external-link"></i></a>
+							</div>
+
+					    </div>
+
+
+
+							<div class="festival-card-status days">
+								<span class="festival-card-datebox">
+									<span>12</span><br>
+									<span class="time-txt">días</span>
+								</span>
+								<span class="text-size-1_05">
+
+																			<span>﻿Fecha Límite</span><br>
+										<span class="date">
+																					30 diciembre 2023																				</span>
+
+																</span>
+							</div>
+
+										    </div>
+
+			    </div>
+			</div>
+			<a href="/festival/1560" class="festival-card-outer-icon" target="_blank">Abierto</a>	    </div>
+
+	</div>
+			</div>
+
+		<div class="col-1 text-center mobile_hide">
+		<br style="clear: both">
+
+				<div class="col-12" style="/*background: url('https://festhomedocs.com/img/backgrounds/indiehome_filmmakers_opt.jpg');*/">
+			<div class="col-12 padding">
+																<div class="col-12 sponsor-festival">
+					<img style="filter: grayscale(0); opacity:0.85;" onclick="OpenViewer(8364,9,9);" class="sponsor-festival-logo pointer" src="https://festhomedocs.com/festivals/8364/logo-uncut-8364.jpg?t=2a02cd56">
+					<div class="pro-button-transparent fullwidth text-smallest">PRO&nbsp;<i class="fad fa-triangle fa-rotate-90"></i>&nbsp;-18%</div>
+				</div>
+				<br style="clear: both">
+				<br style="clear: both">
+																<div class="col-12 sponsor-festival">
+					<img style="filter: grayscale(0); opacity:0.85;" onclick="OpenViewer(6915,9,9);" class="sponsor-festival-logo pointer" src="https://festhomedocs.com/festivals/6915/logo-uncut-6915.jpg?t=2a02cd56">
+					<div class="pro-button-transparent fullwidth text-smallest">PRO&nbsp;<i class="fad fa-triangle fa-rotate-90"></i>&nbsp;-18%</div>
+				</div>
+				<br style="clear: both">
+				<br style="clear: both">
+																<div class="col-12 sponsor-festival">
+					<img style="filter: grayscale(0); opacity:0.85;" onclick="OpenViewer(8359,9,9);" class="sponsor-festival-logo pointer" src="https://festhomedocs.com/festivals/8359/logo-uncut-8359.jpg?t=2a02cd56">
+					<div class="pro-button-transparent fullwidth text-smallest">PRO&nbsp;<i class="fad fa-triangle fa-rotate-90"></i>&nbsp;-18%</div>
+				</div>
+				<br style="clear: both">
+				<br style="clear: both">
+																<div class="col-12 sponsor-festival">
+					<img style="filter: grayscale(0); opacity:0.85;" onclick="OpenViewer(3204,9,9);" class="sponsor-festival-logo pointer" src="https://festhomedocs.com/festivals/3204/logo-uncut-3204.jpg?t=2a02cd56">
+					<div class="pro-button-transparent fullwidth text-smallest">PRO&nbsp;<i class="fad fa-triangle fa-rotate-90"></i>&nbsp;-33%</div>
+				</div>
+				<br style="clear: both">
+				<br style="clear: both">
+																<div class="col-12 sponsor-festival">
+					<img style="filter: grayscale(0); opacity:0.85;" onclick="OpenViewer(8358,9,9);" class="sponsor-festival-logo pointer" src="https://festhomedocs.com/festivals/8358/logo-uncut-8358.jpg?t=2a02cd56">
+					<div class="pro-button-transparent fullwidth text-smallest">PRO&nbsp;<i class="fad fa-triangle fa-rotate-90"></i>&nbsp;-23%</div>
+				</div>
+				<br style="clear: both">
+				<br style="clear: both">
+																<div class="col-12 sponsor-festival">
+					<img style="filter: grayscale(0); opacity:0.85;" onclick="OpenViewer(1310,9,9);" class="sponsor-festival-logo pointer" src="https://festhomedocs.com/festivals/1310/logo-uncut-1310.jpg?t=2a02cd56">
+					<div class="pro-button-transparent fullwidth text-smallest">PRO&nbsp;<i class="fad fa-triangle fa-rotate-90"></i>&nbsp;-18%</div>
+				</div>
+				<br style="clear: both">
+				<br style="clear: both">
+																<div class="col-12 sponsor-festival">
+					<img style="filter: grayscale(0); opacity:0.85;" onclick="OpenViewer(7487,9,9);" class="sponsor-festival-logo pointer" src="https://festhomedocs.com/festivals/7487/logo-uncut-7487.jpg?t=2a02cd56">
+					<div class="pro-button-transparent fullwidth text-smallest">PRO&nbsp;<i class="fad fa-triangle fa-rotate-90"></i>&nbsp;-18%</div>
+				</div>
+				<br style="clear: both">
+				<br style="clear: both">
+																<div class="col-12 sponsor-festival">
+					<img style="filter: grayscale(0); opacity:0.85;" onclick="OpenViewer(3382,9,9);" class="sponsor-festival-logo pointer" src="https://festhomedocs.com/festivals/3382/logo-uncut-3382.jpg?t=2a02cd56">
+					<div class="pro-button-transparent fullwidth text-smallest">PRO&nbsp;<i class="fad fa-triangle fa-rotate-90"></i>&nbsp;-23%</div>
+				</div>
+				<br style="clear: both">
+				<br style="clear: both">
+							</div>
+			<br style="clear: both">
+		</div>
+			</div>
+
+
+
+								<br style="clear: both;">
+			<div class="text-center padding-sides films-top-container mobile_hide">
+				<div class="col-4 festival-subcontent-separator-line">&nbsp;</div>
+				<div id="listado_page_2" class="col-4"><span>Página 2 de 507</span></div>
+				<div class="col-4 festival-subcontent-separator-line">&nbsp;</div>
+			</div>
+			<br style="clear: both">
+			<br style="clear: both">
+
+
+
+
+
+
+
+		<div class="col-11 text-center">
+
+
+
+
+
+	<div id="festival_card-3397" class="card-pre-container col-3">
+
+
+
+
+
+
+
+
+	    <!-- !HTML for cards -->
+
+
+	    <div id="festival_card-container-3397" class="card-container flippable" ontouchstart="this.classList.toggle('hover');">
+
+			<div class="flipper">
+
+			    			    <div class="festival-card card-front" id="festival_card_promcard-3397" style="background-position: center; background-size: cover; background-repeat: no-repeat; -ms-interpolation-mode: nearest-neighbor; image-rendering: -webkit-optimize-contrast; background-image:url(https://festhomedocs.com/festivals/3397/promcard-3397.jpg?t=6928d2d6);">
+				    <!--https://festhomedocs.com/festivals/3397/ad_banner-3397.jpg-->
+			    </div>
+											    <div class="open-festival-view festival-card card-back" onclick="OpenViewer(3397,1,560);">
+
+				   <div class="festival-card-banner" style="background-image:url(https://festhomedocs.com/festivals/3397/banner_big-3397.jpg?t=6928d2d6);"></div>
+
+				   				   		<img class="festival-card-logo_new" alt="Logo of FESTIVAL INTERNACIONAL DE CINE DE LANZAROTE" src="https://festhomedocs.com/festivals/3397/logo-uncut-3397.jpg?t=6928d2d6">
+				   				   		<!--<div class="festival-card-logo" style="background-image:url(https://festhomedocs.com/festivals/3397/logo-3397.jpg);"></div>-->
+
+				   <div class="col-12">
+					   <div class="festival-card-title">FESTIVAL INTERNACIONAL DE CINE DE LANZAROTE</div>
+					   <div class="festival-card-country">España</div>
+
+					   <div class="festival-card-type-holder">
+						    							    <div class="festival-card-type" title="﻿Duración permitida (﻿Cortometrajes) <br></div> &nbsp;﻿Menos de 30 min.">
+									﻿Cortometrajes&nbsp;30'&lt;								</div>
+					   								    					   							   </div>
+					   <!--
+					   <br style="clear:both;"/>
+					   <br style="clear:both;"/>
+					   -->
+					   <div class="festival-card-icons">
+
+						   						    <span class="info_icon fa-stack fa-lg" title="Festival Internacional<br></span>">
+								<i class="fa fa-circle fa-stack-2x"></i>
+								<i class="fa fa-globe fa-stack-1x fa-inverse"></i>
+							</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="﻿Requiere idioma o subtítulos en:<br></span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							        									        	Español&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							        									        	Inglés&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							    							    ">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-comment fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="﻿Cortometrajes: 2.8€<br></span>Tiene secciones gratuitas">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i style="color: #00a300; line-height: 37px;" class="fa fa-euro-sign fa-stack-1x"></i>
+								</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="Premios en Metálico<br></span>7,500.00€">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-trophy fa-stack-1x fa-inverse" style="color: #ba7b2b;"></i>
+								</span>
+
+						   <br style="clear:both;">
+					   </div>
+
+					   <div class="festival-labels">
+						   &nbsp;
+						   						   						   						   						   						   		<span class="festival-label goya" title="GOYA festival calificador">GOYA</span>
+						   						   						   						   						   						   						   						   		<!--<span class="festival-label promoted"><b>Promocionados</b></span>-->
+						   						   &nbsp;
+					   </div>
+
+											    <div class="col-12 festival-card-outer">
+
+							<div class="fifth">
+						    	<a id="card_label_type-2" onclick="TagFestival(event,3397,2);" title="Favorito" class="festival-card-outer-icon"><i class="fa fa-heart opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+						    	<a id="card_label_type-4" onclick="TagFestival(event,3397,4);" title="﻿Vista" class="festival-card-outer-icon"><i class="fa fa-eye opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+													    	<a id="card_label_type-1" onclick="TagFestival(event,3397,1);" title="﻿Ocultar" class="festival-card-outer-icon"><i class="fa fa-eye-slash opacity20"></i></a>
+														</div>
+
+						    						    <div class="fifth" title="0 Inscripciones"><i class="fa fa-calendar-times opacity20"></i></div>
+
+							<div class="fifth">
+						    							    	<a onclick="OpenNewTab(event,3397);" id="3397_newtab_link" data-full_url="festival-internacional-de-cine-de-lanzarote" title="Abrir en nueva ventana" class="festival-card-outer-icon"><i class="fa fa-external-link"></i></a>
+							</div>
+
+					    </div>
+
+
+
+							<div class="festival-card-status days">
+								<span class="festival-card-datebox">
+									<span>14</span><br>
+									<span class="time-txt">días</span>
+								</span>
+								<span class="text-size-1_05">
+
+																			<span>﻿Fecha Límite</span><br>
+										<span class="date">
+																					01 enero 2024																				</span>
+
+																</span>
+							</div>
+
+										    </div>
+
+			    </div>
+			</div>
+			<a href="/festival/3397" class="festival-card-outer-icon" target="_blank">Abierto</a>	    </div>
+
+	</div>
+
+
+	<div id="festival_card-7998" class="card-pre-container col-3">
+
+
+
+
+
+
+
+
+	    <!-- !HTML for cards -->
+
+
+	    <div id="festival_card-container-7998" class="card-container /*card-hidden*/" ontouchstart="this.classList.toggle('hover');">
+
+			<div class="flipper">
+
+			    							    <div class="open-festival-view festival-card card-front" onclick="OpenViewer(7998);">
+
+				   <div class="festival-card-banner" style="background-image:url(https://festhomedocs.com/festivals/7998/banner_big-7998.jpg?t=c53ded55);"></div>
+
+				   				   		<img class="festival-card-logo_new" alt="Logo of Mosaic International Film Festival" src="https://festhomedocs.com/festivals/7998/logo-uncut-7998.jpg?t=c53ded55">
+				   				   		<!--<div class="festival-card-logo" style="background-image:url(https://festhomedocs.com/festivals/7998/logo-7998.jpg);"></div>-->
+
+				   <div class="col-12">
+					   <div class="festival-card-title">Mosaic International Film Festival</div>
+					   <div class="festival-card-country">Canada</div>
+
+					   <div class="festival-card-type-holder">
+						    							    <div class="festival-card-type" title="﻿Duración permitida (﻿Cortometrajes) <br></div> &nbsp;﻿Cualquiera">
+									﻿Cortometrajes								</div>
+					   								    						    	<br>
+							    <div class="festival-card-type" title="﻿Duración permitida (﻿Largometrajes) <br></div> &nbsp;﻿Cualquiera">
+								   ﻿Largometrajes								</div>
+					   							   </div>
+					   <!--
+					   <br style="clear:both;"/>
+					   <br style="clear:both;"/>
+					   -->
+					   <div class="festival-card-icons">
+
+						   						    <span class="info_icon fa-stack fa-lg" title="Festival Internacional<br></span>">
+								<i class="fa fa-circle fa-stack-2x"></i>
+								<i class="fa fa-globe fa-stack-1x fa-inverse"></i>
+							</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="﻿Requiere idioma o subtítulos en:<br></span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							        									        	Inglés&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							    							    ">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-comment fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="﻿Cortometrajes: 26.8$<br></span>﻿Largometrajes: 27.6$">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i style="color: #ea9000; line-height: 37px;" class="fa fa-dollar-sign fa-stack-1x"></i>
+								</span>
+
+						   							    <span class="info_icon_off fa-stack fa-lg">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-trophy fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   <br style="clear:both;">
+					   </div>
+
+					   <div class="festival-labels">
+						   &nbsp;
+						   						   						   						   		<span class="pro-button text-smaller">PRO&nbsp;<i class="fad fa-triangle fa-rotate-90"></i>&nbsp;-18%</span>
+						   						   						   						   						   						   						   						   						   						   						   &nbsp;
+					   </div>
+
+											    <div class="col-12 festival-card-outer">
+
+							<div class="fifth">
+						    	<a id="card_label_type-2" onclick="TagFestival(event,7998,2);" title="Favorito" class="festival-card-outer-icon"><i class="fa fa-heart opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+						    	<a id="card_label_type-4" onclick="TagFestival(event,7998,4);" title="﻿Vista" class="festival-card-outer-icon"><i class="fa fa-eye opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+													    	<a id="card_label_type-1" onclick="TagFestival(event,7998,1);" title="﻿Ocultar" class="festival-card-outer-icon"><i class="fa fa-eye-slash opacity20"></i></a>
+														</div>
+
+						    						    <div class="fifth" title="0 Inscripciones"><i class="fa fa-calendar-times opacity20"></i></div>
+
+							<div class="fifth">
+						    							    	<a onclick="OpenNewTab(event,7998);" id="7998_newtab_link" data-full_url="mosaic-international-film-festival" title="Abrir en nueva ventana" class="festival-card-outer-icon"><i class="fa fa-external-link"></i></a>
+							</div>
+
+					    </div>
+
+
+
+							<div class="festival-card-status days">
+								<span class="festival-card-datebox">
+									<span>11</span><br>
+									<span class="time-txt">días</span>
+								</span>
+								<span class="text-size-1_05">
+
+																																							<span>Fechas Límite</span><br>
+										<span class="date">
+																					29 diciembre 2023																				</span><br>
+										<span>Tasa Tardía</span> <span>11 días</span>
+
+																</span>
+							</div>
+
+										    </div>
+
+			    </div>
+			</div>
+			<a href="/festival/7998" class="festival-card-outer-icon" target="_blank">Abierto</a>	    </div>
+
+	</div>
+
+
+	<div id="festival_card-3326" class="card-pre-container col-3">
+
+
+
+
+
+
+
+
+	    <!-- !HTML for cards -->
+
+
+	    <div id="festival_card-container-3326" class="card-container /*card-hidden*/" ontouchstart="this.classList.toggle('hover');">
+
+			<div class="flipper">
+
+			    							    <div class="open-festival-view festival-card card-front" onclick="OpenViewer(3326);">
+
+				   <div class="festival-card-banner" style="background-image:url(https://festhomedocs.com/festivals/3326/banner_big-3326.jpg?t=26eab6f1);"></div>
+
+				   				   		<img class="festival-card-logo_new" alt="Logo of La Picasa Film Fest" src="https://festhomedocs.com/festivals/3326/logo-uncut-3326.jpg?t=26eab6f1">
+				   				   		<!--<div class="festival-card-logo" style="background-image:url(https://festhomedocs.com/festivals/3326/logo-3326.jpg);"></div>-->
+
+				   <div class="col-12">
+					   <div class="festival-card-title">La Picasa Film Fest</div>
+					   <div class="festival-card-country">Argentina</div>
+
+					   <div class="festival-card-type-holder">
+						    							    <div class="festival-card-type" title="﻿Duración permitida (﻿Cortometrajes) <br></div> ﻿Más de 1 min.&nbsp;﻿Menos de 20 min.">
+									﻿Cortometrajes&nbsp;&gt;1'&nbsp;20'&lt;								</div>
+					   								    					   							   </div>
+					   <!--
+					   <br style="clear:both;"/>
+					   <br style="clear:both;"/>
+					   -->
+					   <div class="festival-card-icons">
+
+						   						    <span class="info_icon fa-stack fa-lg" title="Festival Internacional<br></span>Argentina">
+								<i class="fa fa-circle fa-stack-2x"></i>
+								<i class="fa fa-globe fa-stack-1x fa-inverse"></i>
+							</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="﻿Requiere idioma o subtítulos en:<br></span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							        									        	Español&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							    							    ">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-comment fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="﻿Cortometrajes: 1.1$<br></span>Tiene secciones gratuitas">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i style="color: #00a300; line-height: 37px;" class="fa fa-dollar-sign fa-stack-1x"></i>
+								</span>
+
+						   							    <span class="info_icon_off fa-stack fa-lg">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-trophy fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   <br style="clear:both;">
+					   </div>
+
+					   <div class="festival-labels">
+						   &nbsp;
+						   						   						   						   		<span class="pro-button text-smaller">PRO&nbsp;<i class="fad fa-triangle fa-rotate-90"></i>&nbsp;-18%</span>
+						   						   						   						   						   						   						   						   						   						   						   &nbsp;
+					   </div>
+
+											    <div class="col-12 festival-card-outer">
+
+							<div class="fifth">
+						    	<a id="card_label_type-2" onclick="TagFestival(event,3326,2);" title="Favorito" class="festival-card-outer-icon"><i class="fa fa-heart opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+						    	<a id="card_label_type-4" onclick="TagFestival(event,3326,4);" title="﻿Vista" class="festival-card-outer-icon"><i class="fa fa-eye opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+													    	<a id="card_label_type-1" onclick="TagFestival(event,3326,1);" title="﻿Ocultar" class="festival-card-outer-icon"><i class="fa fa-eye-slash opacity20"></i></a>
+														</div>
+
+						    						    <div class="fifth" title="0 Inscripciones"><i class="fa fa-calendar-times opacity20"></i></div>
+
+							<div class="fifth">
+						    							    	<a onclick="OpenNewTab(event,3326);" id="3326_newtab_link" data-full_url="festival-internacional-de-cine-la-picasa" title="Abrir en nueva ventana" class="festival-card-outer-icon"><i class="fa fa-external-link"></i></a>
+							</div>
+
+					    </div>
+
+
+
+							<div class="festival-card-status days">
+								<span class="festival-card-datebox">
+									<span>11</span><br>
+									<span class="time-txt">días</span>
+								</span>
+								<span class="text-size-1_05">
+
+																																							<span>Fechas Límite</span><br>
+										<span class="date">
+																					29 diciembre 2023																				</span><br>
+										<span>Tasa Tardía</span> <span>4 días</span>
+
+																</span>
+							</div>
+
+										    </div>
+
+			    </div>
+			</div>
+			<a href="/festival/3326" class="festival-card-outer-icon" target="_blank">Abierto</a>	    </div>
+
+	</div>
+
+
+	<div id="festival_card-4674" class="card-pre-container col-3">
+
+
+
+
+	    <!-- !HTML for cards -->
+
+
+	    <div id="festival_card-container-4674" class="card-container /*card-hidden*/" ontouchstart="this.classList.toggle('hover');">
+
+			<div class="flipper">
+
+			    							    <div class="open-festival-view festival-card card-front" onclick="OpenViewer(4674);">
+
+				   <div class="festival-card-banner" style="background-image:url(https://festhomedocs.com/festivals/4674/banner_big-4674.jpg?t=818a4944);"></div>
+
+				   				   		<img class="festival-card-logo_new" alt="Logo of courts dans la vallée" src="https://festhomedocs.com/festivals/4674/logo-uncut-4674.jpg?t=818a4944">
+				   				   		<!--<div class="festival-card-logo" style="background-image:url(https://festhomedocs.com/festivals/4674/logo-4674.jpg);"></div>-->
+
+				   <div class="col-12">
+					   <div class="festival-card-title">courts dans la vallée</div>
+					   <div class="festival-card-country">Francia</div>
+
+					   <div class="festival-card-type-holder">
+						    							    <div class="festival-card-type" title="﻿Duración permitida (﻿Cortometrajes) <br></div> &nbsp;﻿Menos de 13 min.">
+									﻿Cortometrajes&nbsp;13'&lt;								</div>
+					   								    					   							   </div>
+					   <!--
+					   <br style="clear:both;"/>
+					   <br style="clear:both;"/>
+					   -->
+					   <div class="festival-card-icons">
+
+						   						    <span class="info_icon fa-stack fa-lg" title="Festival Internacional<br></span>Hérault">
+								<i class="fa fa-circle fa-stack-2x"></i>
+								<i class="fa fa-globe fa-stack-1x fa-inverse"></i>
+							</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="﻿Requiere idioma o subtítulos en:<br></span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							        									        	Francés&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							    							    ">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-comment fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   						   		<!--<div class="dumb_circle" style="opacity: 0.1;" title="﻿NO tiene tasa de inscripción">$</div>-->
+							    <span class="info_icon fa-stack fa-lg" title="﻿NO tiene tasa de inscripción">
+									<i class="fa fa-dollar-sign fa-stack-1x festhome-lightgrey-color"></i>
+									<i class="fal fa-circle fa-stack-2x"></i>
+									<!--<i class="fa fa-ban fa-stack-2x"></i>-->
+								</span>
+
+						   							    <span class="info_icon_off fa-stack fa-lg">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-trophy fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   <br style="clear:both;">
+					   </div>
+
+					   <div class="festival-labels">
+						   &nbsp;
+						   						   						   						   						   						   						   						   						   						   						   						   &nbsp;
+					   </div>
+
+											    <div class="col-12 festival-card-outer">
+
+							<div class="fifth">
+						    	<a id="card_label_type-2" onclick="TagFestival(event,4674,2);" title="Favorito" class="festival-card-outer-icon"><i class="fa fa-heart opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+						    	<a id="card_label_type-4" onclick="TagFestival(event,4674,4);" title="﻿Vista" class="festival-card-outer-icon"><i class="fa fa-eye opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+													    	<a id="card_label_type-1" onclick="TagFestival(event,4674,1);" title="﻿Ocultar" class="festival-card-outer-icon"><i class="fa fa-eye-slash opacity20"></i></a>
+														</div>
+
+						    						    <div class="fifth" title="0 Inscripciones"><i class="fa fa-calendar-times opacity20"></i></div>
+
+							<div class="fifth">
+						    							    	<a onclick="OpenNewTab(event,4674);" id="4674_newtab_link" data-full_url="courtsdanslavallee" title="Abrir en nueva ventana" class="festival-card-outer-icon"><i class="fa fa-external-link"></i></a>
+							</div>
+
+					    </div>
+
+
+
+							<div class="festival-card-status days">
+								<span class="festival-card-datebox">
+									<span>12</span><br>
+									<span class="time-txt">días</span>
+								</span>
+								<span class="text-size-1_05">
+
+																			<span>﻿Fecha Límite</span><br>
+										<span class="date">
+																					30 diciembre 2023																				</span>
+
+																</span>
+							</div>
+
+										    </div>
+
+			    </div>
+			</div>
+			<a href="/festival/4674" class="festival-card-outer-icon" target="_blank">Abierto</a>	    </div>
+
+	</div>
+
+
+	<div id="festival_card-7540" class="card-pre-container col-3">
+
+
+
+
+
+
+
+
+	    <!-- !HTML for cards -->
+
+
+	    <div id="festival_card-container-7540" class="card-container /*card-hidden*/" ontouchstart="this.classList.toggle('hover');">
+
+			<div class="flipper">
+
+			    							    <div class="open-festival-view festival-card card-front" onclick="OpenViewer(7540);">
+
+				   <div class="festival-card-banner" style="background-image:url(https://festhomedocs.com/festivals/7540/banner_big-7540.jpg?t=87c9cd85);"></div>
+
+				   				   		<img class="festival-card-logo_new" alt="Logo of Indep En Tarn (Indie in Tarn) indie French and Internnational no budget film festival" src="https://festhomedocs.com/festivals/7540/logo-uncut-7540.jpg?t=87c9cd85">
+				   				   		<!--<div class="festival-card-logo" style="background-image:url(https://festhomedocs.com/festivals/7540/logo-7540.jpg);"></div>-->
+
+				   <div class="col-12">
+					   <div class="festival-card-title">Indep En Tarn (Indie in Tarn) indie French and Internnational no budget film festival</div>
+					   <div class="festival-card-country">Francia</div>
+
+					   <div class="festival-card-type-holder">
+						    							    <div class="festival-card-type" title="﻿Duración permitida (﻿Cortometrajes) <br></div> &nbsp;﻿Menos de 30 min.">
+									﻿Cortometrajes&nbsp;30'&lt;								</div>
+					   								    						    	<br>
+							    <div class="festival-card-type" title="﻿Duración permitida (﻿Largometrajes) <br></div> ﻿Más de 60 min.&nbsp;">
+								   ﻿Largometrajes&nbsp;&gt;60'								</div>
+					   							   </div>
+					   <!--
+					   <br style="clear:both;"/>
+					   <br style="clear:both;"/>
+					   -->
+					   <div class="festival-card-icons">
+
+						   						    <span class="info_icon fa-stack fa-lg" title="Festival Internacional<br></span>tarn">
+								<i class="fa fa-circle fa-stack-2x"></i>
+								<i class="fa fa-globe fa-stack-1x fa-inverse"></i>
+							</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="﻿Requiere idioma o subtítulos en:<br></span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							        									        	Francés&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							    							    ">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-comment fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="﻿Cortometrajes: 18.4€<br></span>﻿Largometrajes: 18.4€">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i style="color: #ea9000; line-height: 37px;" class="fa fa-euro-sign fa-stack-1x"></i>
+								</span>
+
+						   							    <span class="info_icon_off fa-stack fa-lg">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-trophy fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   <br style="clear:both;">
+					   </div>
+
+					   <div class="festival-labels">
+						   &nbsp;
+						   						   						   						   		<span class="pro-button text-smaller">PRO&nbsp;<i class="fad fa-triangle fa-rotate-90"></i>&nbsp;-33%</span>
+						   						   						   						   						   						   						   						   						   						   						   &nbsp;
+					   </div>
+
+											    <div class="col-12 festival-card-outer">
+
+							<div class="fifth">
+						    	<a id="card_label_type-2" onclick="TagFestival(event,7540,2);" title="Favorito" class="festival-card-outer-icon"><i class="fa fa-heart opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+						    	<a id="card_label_type-4" onclick="TagFestival(event,7540,4);" title="﻿Vista" class="festival-card-outer-icon"><i class="fa fa-eye opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+													    	<a id="card_label_type-1" onclick="TagFestival(event,7540,1);" title="﻿Ocultar" class="festival-card-outer-icon"><i class="fa fa-eye-slash opacity20"></i></a>
+														</div>
+
+						    						    <div class="fifth" title="0 Inscripciones"><i class="fa fa-calendar-times opacity20"></i></div>
+
+							<div class="fifth">
+						    							    	<a onclick="OpenNewTab(event,7540);" id="7540_newtab_link" data-full_url="indep-en-tarn-indie-in-tarn-indie-french-and-internnational-no-budget-film-festival" title="Abrir en nueva ventana" class="festival-card-outer-icon"><i class="fa fa-external-link"></i></a>
+							</div>
+
+					    </div>
+
+
+
+							<div class="festival-card-status days">
+								<span class="festival-card-datebox">
+									<span>12</span><br>
+									<span class="time-txt">días</span>
+								</span>
+								<span class="text-size-1_05">
+
+																			<span>﻿Fecha Límite</span><br>
+										<span class="date">
+																					30 diciembre 2023																				</span>
+
+																</span>
+							</div>
+
+										    </div>
+
+			    </div>
+			</div>
+			<a href="/festival/7540" class="festival-card-outer-icon" target="_blank">Abierto</a>	    </div>
+
+	</div>
+
+
+	<div id="festival_card-8319" class="card-pre-container col-3">
+
+
+
+
+	    <!-- !HTML for cards -->
+
+
+	    <div id="festival_card-container-8319" class="card-container /*card-hidden*/" ontouchstart="this.classList.toggle('hover');">
+
+			<div class="flipper">
+
+			    							    <div class="open-festival-view festival-card card-front" onclick="OpenViewer(8319);">
+
+				   <div class="festival-card-banner" style="background-image:url(https://festhomedocs.com/festivals/8319/banner_big-8319.jpg?t=2d74e9fa);"></div>
+
+				   				   		<img class="festival-card-logo_new" alt="Logo of Международный фестиваль фильмов для детей и юношества `Герой´" src="https://festhomedocs.com/festivals/8319/logo-uncut-8319.jpg?t=2d74e9fa">
+				   				   		<!--<div class="festival-card-logo" style="background-image:url(https://festhomedocs.com/festivals/8319/logo-8319.jpg);"></div>-->
+
+				   <div class="col-12">
+					   <div class="festival-card-title">Международный фестиваль фильмов для детей и юношества `Герой´</div>
+					   <div class="festival-card-country">Rusia</div>
+
+					   <div class="festival-card-type-holder">
+						    							    <div class="festival-card-type" title="﻿Duración permitida (﻿Cortometrajes) <br></div> ﻿Más de 1 min.&nbsp;﻿Menos de 35 min.">
+									﻿Cortometrajes&nbsp;&gt;1'&nbsp;35'&lt;								</div>
+					   								    						    	<br>
+							    <div class="festival-card-type" title="﻿Duración permitida (﻿Largometrajes) <br></div> ﻿Más de 50 min.&nbsp;">
+								   ﻿Largometrajes&nbsp;&gt;50'								</div>
+					   							   </div>
+					   <!--
+					   <br style="clear:both;"/>
+					   <br style="clear:both;"/>
+					   -->
+					   <div class="festival-card-icons">
+
+						   						    <span class="info_icon fa-stack fa-lg" title="Festival Internacional<br></span>Krasnoyarsk Region, Russia">
+								<i class="fa fa-circle fa-stack-2x"></i>
+								<i class="fa fa-globe fa-stack-1x fa-inverse"></i>
+							</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="﻿Requiere idioma o subtítulos en:<br></span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							        									        	Inglés&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							    							    ">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-comment fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   						   		<!--<div class="dumb_circle" style="opacity: 0.1;" title="﻿NO tiene tasa de inscripción">$</div>-->
+							    <span class="info_icon fa-stack fa-lg" title="﻿NO tiene tasa de inscripción">
+									<i class="fa fa-dollar-sign fa-stack-1x festhome-lightgrey-color"></i>
+									<i class="fal fa-circle fa-stack-2x"></i>
+									<!--<i class="fa fa-ban fa-stack-2x"></i>-->
+								</span>
+
+						   							    <span class="info_icon_off fa-stack fa-lg">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-trophy fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   <br style="clear:both;">
+					   </div>
+
+					   <div class="festival-labels">
+						   &nbsp;
+						   						   						   						   						   						   						   						   						   						   						   						   &nbsp;
+					   </div>
+
+											    <div class="col-12 festival-card-outer">
+
+							<div class="fifth">
+						    	<a id="card_label_type-2" onclick="TagFestival(event,8319,2);" title="Favorito" class="festival-card-outer-icon"><i class="fa fa-heart opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+						    	<a id="card_label_type-4" onclick="TagFestival(event,8319,4);" title="﻿Vista" class="festival-card-outer-icon"><i class="fa fa-eye opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+													    	<a id="card_label_type-1" onclick="TagFestival(event,8319,1);" title="﻿Ocultar" class="festival-card-outer-icon"><i class="fa fa-eye-slash opacity20"></i></a>
+														</div>
+
+						    						    <div class="fifth" title="0 Inscripciones"><i class="fa fa-calendar-times opacity20"></i></div>
+
+							<div class="fifth">
+						    							    	<a onclick="OpenNewTab(event,8319);" id="8319_newtab_link" data-full_url="film-festival-hero" title="Abrir en nueva ventana" class="festival-card-outer-icon"><i class="fa fa-external-link"></i></a>
+							</div>
+
+					    </div>
+
+
+
+							<div class="festival-card-status days">
+								<span class="festival-card-datebox">
+									<span>12</span><br>
+									<span class="time-txt">días</span>
+								</span>
+								<span class="text-size-1_05">
+
+																			<span>﻿Fecha Límite</span><br>
+										<span class="date">
+																					30 diciembre 2023																				</span>
+
+																</span>
+							</div>
+
+										    </div>
+
+			    </div>
+			</div>
+			<a href="/festival/8319" class="festival-card-outer-icon" target="_blank">Abierto</a>	    </div>
+
+	</div>
+
+
+	<div id="festival_card-6035" class="card-pre-container col-3">
+
+
+
+
+
+
+
+
+	    <!-- !HTML for cards -->
+
+
+	    <div id="festival_card-container-6035" class="card-container /*card-hidden*/" ontouchstart="this.classList.toggle('hover');">
+
+			<div class="flipper">
+
+			    							    <div class="open-festival-view festival-card card-front" onclick="OpenViewer(6035,8,278);">
+
+				   <div class="festival-card-banner" style="background-image:url(https://festhomedocs.com/festivals/6035/banner_big-6035.jpg?t=be292355);"></div>
+
+				   				   		<img class="festival-card-logo_new" alt="Logo of Golden Smile International FIlm Festival" src="https://festhomedocs.com/festivals/6035/logo-uncut-6035.jpg?t=be292355">
+				   				   		<!--<div class="festival-card-logo" style="background-image:url(https://festhomedocs.com/festivals/6035/logo-6035.jpg);"></div>-->
+
+				   <div class="col-12">
+					   <div class="festival-card-title">Golden Smile International FIlm Festival</div>
+					   <div class="festival-card-country">Paises Bajos</div>
+
+					   <div class="festival-card-type-holder">
+						    							    <div class="festival-card-type" title="﻿Duración permitida (﻿Cortometrajes) <br></div> &nbsp;﻿Cualquiera">
+									﻿Cortometrajes								</div>
+					   								    						    	<br>
+							    <div class="festival-card-type" title="﻿Duración permitida (﻿Largometrajes) <br></div> &nbsp;﻿Cualquiera">
+								   ﻿Largometrajes								</div>
+					   							   </div>
+					   <!--
+					   <br style="clear:both;"/>
+					   <br style="clear:both;"/>
+					   -->
+					   <div class="festival-card-icons">
+
+						   						    <span class="info_icon fa-stack fa-lg" title="Festival Internacional<br></span>">
+								<i class="fa fa-circle fa-stack-2x"></i>
+								<i class="fa fa-globe fa-stack-1x fa-inverse"></i>
+							</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="﻿Requiere idioma o subtítulos en:<br></span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							        									        	Inglés&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							    							    ">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-comment fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="﻿Cortometrajes: 22.8$<br></span>﻿Largometrajes: 13.6$">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i style="color: #ea9000; line-height: 37px;" class="fa fa-dollar-sign fa-stack-1x"></i>
+								</span>
+
+						   							    <span class="info_icon_off fa-stack fa-lg">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-trophy fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   <br style="clear:both;">
+					   </div>
+
+					   <div class="festival-labels">
+						   &nbsp;
+						   						   						   						   		<span class="pro-button text-smaller">PRO&nbsp;<i class="fad fa-triangle fa-rotate-90"></i>&nbsp;-23%</span>
+						   						   						   						   						   						   						   						   						   						   						   &nbsp;
+					   </div>
+
+											    <div class="col-12 festival-card-outer">
+
+							<div class="fifth">
+						    	<a id="card_label_type-2" onclick="TagFestival(event,6035,2);" title="Favorito" class="festival-card-outer-icon"><i class="fa fa-heart opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+						    	<a id="card_label_type-4" onclick="TagFestival(event,6035,4);" title="﻿Vista" class="festival-card-outer-icon"><i class="fa fa-eye opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+													    	<a id="card_label_type-1" onclick="TagFestival(event,6035,1);" title="﻿Ocultar" class="festival-card-outer-icon"><i class="fa fa-eye-slash opacity20"></i></a>
+														</div>
+
+						    						    <div class="fifth" title="0 Inscripciones"><i class="fa fa-calendar-times opacity20"></i></div>
+
+							<div class="fifth">
+						    							    	<a onclick="OpenNewTab(event,6035);" id="6035_newtab_link" data-full_url="golden-smile-international-film-festival" title="Abrir en nueva ventana" class="festival-card-outer-icon"><i class="fa fa-external-link"></i></a>
+							</div>
+
+					    </div>
+
+
+
+							<div class="festival-card-status days">
+								<span class="festival-card-datebox">
+									<span>12</span><br>
+									<span class="time-txt">días</span>
+								</span>
+								<span class="text-size-1_05">
+
+																																							<span>Fechas Límite</span><br>
+										<span class="date">
+																					30 diciembre 2023																				</span><br>
+										<span>Tasa Tardía</span> <span>11 días</span>
+
+																</span>
+							</div>
+
+										    </div>
+
+			    </div>
+			</div>
+			<a href="/festival/6035" class="festival-card-outer-icon" target="_blank">Abierto</a>	    </div>
+
+	</div>
+
+
+	<div id="festival_card-1580" class="card-pre-container col-3">
+
+
+
+
+	    <!-- !HTML for cards -->
+
+
+	    <div id="festival_card-container-1580" class="card-container /*card-hidden*/" ontouchstart="this.classList.toggle('hover');">
+
+			<div class="flipper">
+
+			    							    <div class="open-festival-view festival-card card-front" onclick="OpenViewer(1580);">
+
+				   <div class="festival-card-banner" style="background-image:url(https://festhomedocs.com/festivals/1580/banner_big-1580.jpg?t=a1136747);"></div>
+
+				   				   		<img class="festival-card-logo_new" alt="Logo of Cortisonici International Short Film Festival" src="https://festhomedocs.com/festivals/1580/logo-uncut-1580.jpg?t=a1136747">
+				   				   		<!--<div class="festival-card-logo" style="background-image:url(https://festhomedocs.com/festivals/1580/logo-1580.jpg);"></div>-->
+
+				   <div class="col-12">
+					   <div class="festival-card-title">Cortisonici International Short Film Festival</div>
+					   <div class="festival-card-country">Italia</div>
+
+					   <div class="festival-card-type-holder">
+						    							    <div class="festival-card-type" title="﻿Duración permitida (﻿Cortometrajes) <br></div> &nbsp;﻿Menos de 15 min.">
+									﻿Cortometrajes&nbsp;15'&lt;								</div>
+					   								    					   							   </div>
+					   <!--
+					   <br style="clear:both;"/>
+					   <br style="clear:both;"/>
+					   -->
+					   <div class="festival-card-icons">
+
+						   						    <span class="info_icon fa-stack fa-lg" title="Festival Internacional<br></span>Varese, Italy">
+								<i class="fa fa-circle fa-stack-2x"></i>
+								<i class="fa fa-globe fa-stack-1x fa-inverse"></i>
+							</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="﻿Requiere idioma o subtítulos en:<br></span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							        									        	Italiano&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							        									        	Inglés&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							    							    ">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-comment fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   						   		<!--<div class="dumb_circle" style="opacity: 0.1;" title="﻿NO tiene tasa de inscripción">$</div>-->
+							    <span class="info_icon fa-stack fa-lg" title="﻿NO tiene tasa de inscripción">
+									<i class="fa fa-dollar-sign fa-stack-1x festhome-lightgrey-color"></i>
+									<i class="fal fa-circle fa-stack-2x"></i>
+									<!--<i class="fa fa-ban fa-stack-2x"></i>-->
+								</span>
+
+						   							    <span class="info_icon_off fa-stack fa-lg">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-trophy fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   <br style="clear:both;">
+					   </div>
+
+					   <div class="festival-labels">
+						   &nbsp;
+						   						   						   						   						   						   						   						   						   						   						   						   &nbsp;
+					   </div>
+
+											    <div class="col-12 festival-card-outer">
+
+							<div class="fifth">
+						    	<a id="card_label_type-2" onclick="TagFestival(event,1580,2);" title="Favorito" class="festival-card-outer-icon"><i class="fa fa-heart opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+						    	<a id="card_label_type-4" onclick="TagFestival(event,1580,4);" title="﻿Vista" class="festival-card-outer-icon"><i class="fa fa-eye opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+													    	<a id="card_label_type-1" onclick="TagFestival(event,1580,1);" title="﻿Ocultar" class="festival-card-outer-icon"><i class="fa fa-eye-slash opacity20"></i></a>
+														</div>
+
+						    						    <div class="fifth" title="0 Inscripciones"><i class="fa fa-calendar-times opacity20"></i></div>
+
+							<div class="fifth">
+						    							    	<a onclick="OpenNewTab(event,1580);" id="1580_newtab_link" data-full_url="cortisonici-international-short-film-festival" title="Abrir en nueva ventana" class="festival-card-outer-icon"><i class="fa fa-external-link"></i></a>
+							</div>
+
+					    </div>
+
+
+
+							<div class="festival-card-status days">
+								<span class="festival-card-datebox">
+									<span>13</span><br>
+									<span class="time-txt">días</span>
+								</span>
+								<span class="text-size-1_05">
+
+																			<span>﻿Fecha Límite</span><br>
+										<span class="date">
+																					31 diciembre 2023																				</span>
+
+																</span>
+							</div>
+
+										    </div>
+
+			    </div>
+			</div>
+			<a href="/festival/1580" class="festival-card-outer-icon" target="_blank">Abierto</a>	    </div>
+
+	</div>
+
+
+	<div id="festival_card-7228" class="card-pre-container col-3">
+
+
+
+
+	    <!-- !HTML for cards -->
+
+
+	    <div id="festival_card-container-7228" class="card-container /*card-hidden*/" ontouchstart="this.classList.toggle('hover');">
+
+			<div class="flipper">
+
+			    							    <div class="open-festival-view festival-card card-front" onclick="OpenViewer(7228);">
+
+				   <div class="festival-card-banner" style="background-image:url(https://festhomedocs.com/festivals/7228/banner_big-7228.jpg?t=7c1f7e4e);"></div>
+
+				   				   		<img class="festival-card-logo_new" alt="Logo of PAZIFIC - Festival Internacional de Cine por la Paz" src="https://festhomedocs.com/festivals/7228/logo-uncut-7228.jpg?t=7c1f7e4e">
+				   				   		<!--<div class="festival-card-logo" style="background-image:url(https://festhomedocs.com/festivals/7228/logo-7228.jpg);"></div>-->
+
+				   <div class="col-12">
+					   <div class="festival-card-title">PAZIFIC - Festival Internacional de Cine por la Paz</div>
+					   <div class="festival-card-country">España</div>
+
+					   <div class="festival-card-type-holder">
+						    							    <div class="festival-card-type" title="﻿Duración permitida (﻿Cortometrajes) <br></div> &nbsp;﻿Menos de 30 min.">
+									﻿Cortometrajes&nbsp;30'&lt;								</div>
+					   								    					   							   </div>
+					   <!--
+					   <br style="clear:both;"/>
+					   <br style="clear:both;"/>
+					   -->
+					   <div class="festival-card-icons">
+
+						   						    <span class="info_icon fa-stack fa-lg" title="Festival Internacional<br></span>Internacional">
+								<i class="fa fa-circle fa-stack-2x"></i>
+								<i class="fa fa-globe fa-stack-1x fa-inverse"></i>
+							</span>
+
+						   							    <span class="info_icon_off fa-stack fa-lg" title="﻿Cualquier idioma">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-comment fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   						   		<!--<div class="dumb_circle" style="opacity: 0.1;" title="﻿NO tiene tasa de inscripción">$</div>-->
+							    <span class="info_icon fa-stack fa-lg" title="﻿NO tiene tasa de inscripción">
+									<i class="fa fa-dollar-sign fa-stack-1x festhome-lightgrey-color"></i>
+									<i class="fal fa-circle fa-stack-2x"></i>
+									<!--<i class="fa fa-ban fa-stack-2x"></i>-->
+								</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="Premios en Metálico<br></span>300.00€">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-trophy fa-stack-1x fa-inverse" style="color: white;"></i>
+								</span>
+
+						   <br style="clear:both;">
+					   </div>
+
+					   <div class="festival-labels">
+						   &nbsp;
+						   						   						   						   						   						   						   						   						   						   						   						   &nbsp;
+					   </div>
+
+											    <div class="col-12 festival-card-outer">
+
+							<div class="fifth">
+						    	<a id="card_label_type-2" onclick="TagFestival(event,7228,2);" title="Favorito" class="festival-card-outer-icon"><i class="fa fa-heart opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+						    	<a id="card_label_type-4" onclick="TagFestival(event,7228,4);" title="﻿Vista" class="festival-card-outer-icon"><i class="fa fa-eye opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+													    	<a id="card_label_type-1" onclick="TagFestival(event,7228,1);" title="﻿Ocultar" class="festival-card-outer-icon"><i class="fa fa-eye-slash opacity20"></i></a>
+														</div>
+
+						    						    <div class="fifth" title="0 Inscripciones"><i class="fa fa-calendar-times opacity20"></i></div>
+
+							<div class="fifth">
+						    							    	<a onclick="OpenNewTab(event,7228);" id="7228_newtab_link" data-full_url="pazific-festival-internacional-de-cine-por-la-paz" title="Abrir en nueva ventana" class="festival-card-outer-icon"><i class="fa fa-external-link"></i></a>
+							</div>
+
+					    </div>
+
+
+
+							<div class="festival-card-status days">
+								<span class="festival-card-datebox">
+									<span>13</span><br>
+									<span class="time-txt">días</span>
+								</span>
+								<span class="text-size-1_05">
+
+																			<span>﻿Fecha Límite</span><br>
+										<span class="date">
+																					31 diciembre 2023																				</span>
+
+																</span>
+							</div>
+
+										    </div>
+
+			    </div>
+			</div>
+			<a href="/festival/7228" class="festival-card-outer-icon" target="_blank">Abierto</a>	    </div>
+
+	</div>
+
+
+	<div id="festival_card-838" class="card-pre-container col-3">
+
+
+
+
+	    <!-- !HTML for cards -->
+
+
+	    <div id="festival_card-container-838" class="card-container /*card-hidden*/" ontouchstart="this.classList.toggle('hover');">
+
+			<div class="flipper">
+
+			    							    <div class="open-festival-view festival-card card-front" onclick="OpenViewer(838);">
+
+				   <div class="festival-card-banner" style="background-image:url(https://festhomedocs.com/festivals/838/banner_big-838.jpg?t=82c165c8);"></div>
+
+				   				   		<img class="festival-card-logo_new" alt="Logo of The Just A Minute Festival" src="https://festhomedocs.com/festivals/838/logo-uncut-838.jpg?t=82c165c8">
+				   				   		<!--<div class="festival-card-logo" style="background-image:url(https://festhomedocs.com/festivals/838/logo-838.jpg);"></div>-->
+
+				   <div class="col-12">
+					   <div class="festival-card-title">The Just A Minute Festival</div>
+					   <div class="festival-card-country">Estados Unidos</div>
+
+					   <div class="festival-card-type-holder">
+						    							    <div class="festival-card-type" title="﻿Duración permitida (﻿Cortometrajes) <br></div> &nbsp;﻿Menos de 1 min.">
+									﻿Cortometrajes&nbsp;1'&lt;								</div>
+					   								    					   							   </div>
+					   <!--
+					   <br style="clear:both;"/>
+					   <br style="clear:both;"/>
+					   -->
+					   <div class="festival-card-icons">
+
+						   						    <span class="info_icon fa-stack fa-lg" title="Festival Internacional<br></span>Worldwide">
+								<i class="fa fa-circle fa-stack-2x"></i>
+								<i class="fa fa-globe fa-stack-1x fa-inverse"></i>
+							</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="﻿Requiere idioma o subtítulos en:<br></span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							        									        	Inglés&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							    							    ">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-comment fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   						   		<!--<div class="dumb_circle" style="opacity: 0.1;" title="﻿NO tiene tasa de inscripción">$</div>-->
+							    <span class="info_icon fa-stack fa-lg" title="﻿NO tiene tasa de inscripción">
+									<i class="fa fa-dollar-sign fa-stack-1x festhome-lightgrey-color"></i>
+									<i class="fal fa-circle fa-stack-2x"></i>
+									<!--<i class="fa fa-ban fa-stack-2x"></i>-->
+								</span>
+
+						   							    <span class="info_icon_off fa-stack fa-lg">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-trophy fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   <br style="clear:both;">
+					   </div>
+
+					   <div class="festival-labels">
+						   &nbsp;
+						   						   						   						   						   						   						   						   						   						   						   						   &nbsp;
+					   </div>
+
+											    <div class="col-12 festival-card-outer">
+
+							<div class="fifth">
+						    	<a id="card_label_type-2" onclick="TagFestival(event,838,2);" title="Favorito" class="festival-card-outer-icon"><i class="fa fa-heart opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+						    	<a id="card_label_type-4" onclick="TagFestival(event,838,4);" title="﻿Vista" class="festival-card-outer-icon"><i class="fa fa-eye opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+													    	<a id="card_label_type-1" onclick="TagFestival(event,838,1);" title="﻿Ocultar" class="festival-card-outer-icon"><i class="fa fa-eye-slash opacity20"></i></a>
+														</div>
+
+						    						    <div class="fifth" title="0 Inscripciones"><i class="fa fa-calendar-times opacity20"></i></div>
+
+							<div class="fifth">
+						    							    	<a onclick="OpenNewTab(event,838);" id="838_newtab_link" data-full_url="the-just-a-minute-festival" title="Abrir en nueva ventana" class="festival-card-outer-icon"><i class="fa fa-external-link"></i></a>
+							</div>
+
+					    </div>
+
+
+
+							<div class="festival-card-status days">
+								<span class="festival-card-datebox">
+									<span>13</span><br>
+									<span class="time-txt">días</span>
+								</span>
+								<span class="text-size-1_05">
+
+																			<span>﻿Fecha Límite</span><br>
+										<span class="date">
+																					31 diciembre 2023																				</span>
+
+																</span>
+							</div>
+
+										    </div>
+
+			    </div>
+			</div>
+			<a href="/festival/838" class="festival-card-outer-icon" target="_blank">Abierto</a>	    </div>
+
+	</div>
+
+
+	<div id="festival_card-1884" class="card-pre-container col-3">
+
+
+
+
+
+
+
+
+	    <!-- !HTML for cards -->
+
+
+	    <div id="festival_card-container-1884" class="card-container /*card-hidden*/" ontouchstart="this.classList.toggle('hover');">
+
+			<div class="flipper">
+
+			    							    <div class="open-festival-view festival-card card-front" onclick="OpenViewer(1884);">
+
+				   <div class="festival-card-banner" style="background-image:url(https://festhomedocs.com/festivals/1884/banner_big-1884.jpg?t=2de74aa2);"></div>
+
+				   				   		<img class="festival-card-logo_new" alt="Logo of 11th Delhi International Film Festival 2023 DIFF" src="https://festhomedocs.com/festivals/1884/logo-uncut-1884.jpg?t=2de74aa2">
+				   				   		<!--<div class="festival-card-logo" style="background-image:url(https://festhomedocs.com/festivals/1884/logo-1884.jpg);"></div>-->
+
+				   <div class="col-12">
+					   <div class="festival-card-title">11th Delhi International Film Festival 2023 DIFF</div>
+					   <div class="festival-card-country">India</div>
+
+					   <div class="festival-card-type-holder">
+						    							    <div class="festival-card-type" title="﻿Duración permitida (﻿Cortometrajes) <br></div> &nbsp;﻿Cualquiera">
+									﻿Cortometrajes								</div>
+					   								    						    	<br>
+							    <div class="festival-card-type" title="﻿Duración permitida (﻿Largometrajes) <br></div> &nbsp;﻿Cualquiera">
+								   ﻿Largometrajes								</div>
+					   							   </div>
+					   <!--
+					   <br style="clear:both;"/>
+					   <br style="clear:both;"/>
+					   -->
+					   <div class="festival-card-icons">
+
+						   						    <span class="info_icon fa-stack fa-lg" title="Festival Internacional<br></span>New Delhi">
+								<i class="fa fa-circle fa-stack-2x"></i>
+								<i class="fa fa-globe fa-stack-1x fa-inverse"></i>
+							</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="﻿Requiere idioma o subtítulos en:<br></span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							        									        	Inglés&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							    							    ">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-comment fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="﻿Cortometrajes: 25.8$<br></span>﻿Largometrajes: 38.2$">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i style="color: #ea9000; line-height: 37px;" class="fa fa-dollar-sign fa-stack-1x"></i>
+								</span>
+
+						   							    <span class="info_icon_off fa-stack fa-lg">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-trophy fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   <br style="clear:both;">
+					   </div>
+
+					   <div class="festival-labels">
+						   &nbsp;
+						   						   						   						   		<span class="pro-button text-smaller">PRO&nbsp;<i class="fad fa-triangle fa-rotate-90"></i>&nbsp;-23%</span>
+						   						   						   						   						   						   						   						   						   						   						   &nbsp;
+					   </div>
+
+											    <div class="col-12 festival-card-outer">
+
+							<div class="fifth">
+						    	<a id="card_label_type-2" onclick="TagFestival(event,1884,2);" title="Favorito" class="festival-card-outer-icon"><i class="fa fa-heart opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+						    	<a id="card_label_type-4" onclick="TagFestival(event,1884,4);" title="﻿Vista" class="festival-card-outer-icon"><i class="fa fa-eye opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+													    	<a id="card_label_type-1" onclick="TagFestival(event,1884,1);" title="﻿Ocultar" class="festival-card-outer-icon"><i class="fa fa-eye-slash opacity20"></i></a>
+														</div>
+
+						    						    <div class="fifth" title="0 Inscripciones"><i class="fa fa-calendar-times opacity20"></i></div>
+
+							<div class="fifth">
+						    							    	<a onclick="OpenNewTab(event,1884);" id="1884_newtab_link" data-full_url="th-delhi-international-film-festival" title="Abrir en nueva ventana" class="festival-card-outer-icon"><i class="fa fa-external-link"></i></a>
+							</div>
+
+					    </div>
+
+
+
+							<div class="festival-card-status days">
+								<span class="festival-card-datebox">
+									<span>13</span><br>
+									<span class="time-txt">días</span>
+								</span>
+								<span class="text-size-1_05">
+
+																																							<span>Fechas Límite</span><br>
+										<span class="date">
+																					31 diciembre 2023																				</span><br>
+										<span>Tasa Extendida</span> <span>13 días</span>
+
+																</span>
+							</div>
+
+										    </div>
+
+			    </div>
+			</div>
+			<a href="/festival/1884" class="festival-card-outer-icon" target="_blank">Abierto</a>	    </div>
+
+	</div>
+
+
+	<div id="festival_card-3397" class="card-pre-container col-3">
+
+
+
+
+
+
+
+
+	    <!-- !HTML for cards -->
+
+
+	    <div id="festival_card-container-3397" class="card-container flippable" ontouchstart="this.classList.toggle('hover');">
+
+			<div class="flipper">
+
+			    			    <div class="festival-card card-front" id="festival_card_promcard-3397" style="background-position: center; background-size: cover; background-repeat: no-repeat; -ms-interpolation-mode: nearest-neighbor; image-rendering: -webkit-optimize-contrast; background-image:url(https://festhomedocs.com/festivals/3397/promcard-3397.jpg?t=61be74e9);">
+				    <!--https://festhomedocs.com/festivals/3397/ad_banner-3397.jpg-->
+			    </div>
+											    <div class="open-festival-view festival-card card-back" onclick="OpenViewer(3397,1,560);">
+
+				   <div class="festival-card-banner" style="background-image:url(https://festhomedocs.com/festivals/3397/banner_big-3397.jpg?t=61be74e9);"></div>
+
+				   				   		<img class="festival-card-logo_new" alt="Logo of FESTIVAL INTERNACIONAL DE CINE DE LANZAROTE" src="https://festhomedocs.com/festivals/3397/logo-uncut-3397.jpg?t=61be74e9">
+				   				   		<!--<div class="festival-card-logo" style="background-image:url(https://festhomedocs.com/festivals/3397/logo-3397.jpg);"></div>-->
+
+				   <div class="col-12">
+					   <div class="festival-card-title">FESTIVAL INTERNACIONAL DE CINE DE LANZAROTE</div>
+					   <div class="festival-card-country">España</div>
+
+					   <div class="festival-card-type-holder">
+						    							    <div class="festival-card-type" title="﻿Duración permitida (﻿Cortometrajes) <br></div> &nbsp;﻿Menos de 30 min.">
+									﻿Cortometrajes&nbsp;30'&lt;								</div>
+					   								    					   							   </div>
+					   <!--
+					   <br style="clear:both;"/>
+					   <br style="clear:both;"/>
+					   -->
+					   <div class="festival-card-icons">
+
+						   						    <span class="info_icon fa-stack fa-lg" title="Festival Internacional<br></span>">
+								<i class="fa fa-circle fa-stack-2x"></i>
+								<i class="fa fa-globe fa-stack-1x fa-inverse"></i>
+							</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="﻿Requiere idioma o subtítulos en:<br></span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							        									        	Español&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							        									        	Inglés&nbsp;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+							    							    ">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-comment fa-stack-1x fa-inverse"></i>
+								</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="﻿Cortometrajes: 2.8€<br></span>Tiene secciones gratuitas">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i style="color: #00a300; line-height: 37px;" class="fa fa-euro-sign fa-stack-1x"></i>
+								</span>
+
+						   							    <span class="info_icon fa-stack fa-lg" title="Premios en Metálico<br></span>7,500.00€">
+									<i class="fa fa-circle fa-stack-2x"></i>
+									<i class="fa fa-trophy fa-stack-1x fa-inverse" style="color: #ba7b2b;"></i>
+								</span>
+
+						   <br style="clear:both;">
+					   </div>
+
+					   <div class="festival-labels">
+						   &nbsp;
+						   						   						   						   						   						   		<span class="festival-label goya" title="GOYA festival calificador">GOYA</span>
+						   						   						   						   						   						   						   						   		<!--<span class="festival-label promoted"><b>Promocionados</b></span>-->
+						   						   &nbsp;
+					   </div>
+
+											    <div class="col-12 festival-card-outer">
+
+							<div class="fifth">
+						    	<a id="card_label_type-2" onclick="TagFestival(event,3397,2);" title="Favorito" class="festival-card-outer-icon"><i class="fa fa-heart opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+						    	<a id="card_label_type-4" onclick="TagFestival(event,3397,4);" title="﻿Vista" class="festival-card-outer-icon"><i class="fa fa-eye opacity20"></i></a>
+							</div>
+
+							<div class="fifth">
+													    	<a id="card_label_type-1" onclick="TagFestival(event,3397,1);" title="﻿Ocultar" class="festival-card-outer-icon"><i class="fa fa-eye-slash opacity20"></i></a>
+														</div>
+
+						    						    <div class="fifth" title="0 Inscripciones"><i class="fa fa-calendar-times opacity20"></i></div>
+
+							<div class="fifth">
+						    							    	<a onclick="OpenNewTab(event,3397);" id="3397_newtab_link" data-full_url="festival-internacional-de-cine-de-lanzarote" title="Abrir en nueva ventana" class="festival-card-outer-icon"><i class="fa fa-external-link"></i></a>
+							</div>
+
+					    </div>
+
+
+
+							<div class="festival-card-status days">
+								<span class="festival-card-datebox">
+									<span>14</span><br>
+									<span class="time-txt">días</span>
+								</span>
+								<span class="text-size-1_05">
+
+																			<span>﻿Fecha Límite</span><br>
+										<span class="date">
+																					01 enero 2024																				</span>
+
+																</span>
+							</div>
+
+										    </div>
+
+			    </div>
+			</div>
+			<a href="/festival/3397" class="festival-card-outer-icon" target="_blank">Abierto</a>	    </div>
+
+	</div>
+			</div>
+
+		<div class="col-1 text-center mobile_hide">
+		<br style="clear: both">
+
+				<div class="col-12" style="/*background: url('https://festhomedocs.com/img/backgrounds/indiehome_filmmakers_opt.jpg');*/">
+			<div class="col-12 padding">
+																<div class="col-12 sponsor-festival">
+					<img style="filter: grayscale(0); opacity:0.85;" onclick="OpenViewer(4592,9,9);" class="sponsor-festival-logo pointer" src="https://festhomedocs.com/festivals/4592/logo-uncut-4592.jpg?t=b7c29811">
+					<div class="pro-button-transparent fullwidth text-smallest">PRO&nbsp;<i class="fad fa-triangle fa-rotate-90"></i>&nbsp;-33%</div>
+				</div>
+				<br style="clear: both">
+				<br style="clear: both">
+																<div class="col-12 sponsor-festival">
+					<img style="filter: grayscale(0); opacity:0.85;" onclick="OpenViewer(7966,9,9);" class="sponsor-festival-logo pointer" src="https://festhomedocs.com/festivals/7966/logo-uncut-7966.jpg?t=b7c29811">
+					<div class="pro-button-transparent fullwidth text-smallest">PRO&nbsp;<i class="fad fa-triangle fa-rotate-90"></i>&nbsp;-18%</div>
+				</div>
+				<br style="clear: both">
+				<br style="clear: both">
+																<div class="col-12 sponsor-festival">
+					<img style="filter: grayscale(0); opacity:0.85;" onclick="OpenViewer(6091,9,9);" class="sponsor-festival-logo pointer" src="https://festhomedocs.com/festivals/6091/logo-uncut-6091.jpg?t=b7c29811">
+					<div class="pro-button-transparent fullwidth text-smallest">PRO&nbsp;<i class="fad fa-triangle fa-rotate-90"></i>&nbsp;-58%</div>
+				</div>
+				<br style="clear: both">
+				<br style="clear: both">
+																<div class="col-12 sponsor-festival">
+					<img style="filter: grayscale(0); opacity:0.85;" onclick="OpenViewer(8272,9,9);" class="sponsor-festival-logo pointer" src="https://festhomedocs.com/festivals/8272/logo-uncut-8272.jpg?t=b7c29811">
+					<div class="pro-button-transparent fullwidth text-smallest">PRO&nbsp;<i class="fad fa-triangle fa-rotate-90"></i>&nbsp;-18%</div>
+				</div>
+				<br style="clear: both">
+				<br style="clear: both">
+																<div class="col-12 sponsor-festival">
+					<img style="filter: grayscale(0); opacity:0.85;" onclick="OpenViewer(7280,9,9);" class="sponsor-festival-logo pointer" src="https://festhomedocs.com/festivals/7280/logo-uncut-7280.jpg?t=b7c29811">
+					<div class="pro-button-transparent fullwidth text-smallest">PRO&nbsp;<i class="fad fa-triangle fa-rotate-90"></i>&nbsp;-23%</div>
+				</div>
+				<br style="clear: both">
+				<br style="clear: both">
+																<div class="col-12 sponsor-festival">
+					<img style="filter: grayscale(0); opacity:0.85;" onclick="OpenViewer(3425,9,9);" class="sponsor-festival-logo pointer" src="https://festhomedocs.com/festivals/3425/logo-uncut-3425.jpg?t=b7c29811">
+					<div class="pro-button-transparent fullwidth text-smallest">PRO&nbsp;<i class="fad fa-triangle fa-rotate-90"></i>&nbsp;-23%</div>
+				</div>
+				<br style="clear: both">
+				<br style="clear: both">
+																<div class="col-12 sponsor-festival">
+					<img style="filter: grayscale(0); opacity:0.85;" onclick="OpenViewer(6100,9,9);" class="sponsor-festival-logo pointer" src="https://festhomedocs.com/festivals/6100/logo-uncut-6100.jpg?t=b7c29811">
+					<div class="pro-button-transparent fullwidth text-smallest">PRO&nbsp;<i class="fad fa-triangle fa-rotate-90"></i>&nbsp;-18%</div>
+				</div>
+				<br style="clear: both">
+				<br style="clear: both">
+																<div class="col-12 sponsor-festival">
+					<img style="filter: grayscale(0); opacity:0.85;" onclick="OpenViewer(8243,9,9);" class="sponsor-festival-logo pointer" src="https://festhomedocs.com/festivals/8243/logo-uncut-8243.jpg?t=b7c29811">
+					<div class="pro-button-transparent fullwidth text-smallest">PRO&nbsp;<i class="fad fa-triangle fa-rotate-90"></i>&nbsp;-18%</div>
+				</div>
+				<br style="clear: both">
+				<br style="clear: both">
+							</div>
+			<br style="clear: both">
+		</div>
+			</div>
+
+</div>

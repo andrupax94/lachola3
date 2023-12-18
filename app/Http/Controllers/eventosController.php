@@ -4,23 +4,130 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Symfony\Component\DomCrawler\Crawler;
+use Symfony\Component\HttpClient\HttpClient;
 
 class eventosController extends Controller
 {
+
+    private function extractImageUrl($style)
+    {
+        $matches = [];
+        preg_match('/\bhttps?:\/\/\S+\b/', $style, $matches);
+        return $matches ? $matches[0] : 'No Especificado';
+    }
+    public function extractFestivalData(Request $request)
+    {
+        $client = HttpClient::create([
+            'verify_peer' => true,
+            'cafile' => 'C:/laragon/etc/ssl/cacert.pem', // Ajusta la ruta según tu configuración
+        ]);
+        $pages = null !== $request->input('pages') ? (int) $request->input('pages') : 1;
+        $festivalPage = null !== $request->input('festivalPage') ? $request->input('festivalPage') : "No Especificado";
+
+        $dataTotal=[];
+        $data = [];
+        switch ($festivalPage) {
+            case 'festhome':
+                    $response = $client->request('GET', 'https://festhome.com/festival-list/page:'.$pages);
+            // Obtener el contenido de la respuesta
+            $htmlContent = $response->getContent();
+            // Crear un objeto Crawler para analizar el contenido HTML
+            $crawler = new Crawler($htmlContent);
+                $festivals = $crawler->filter('#card_contents .card-container');
+                // Obtener el nuevo estado de la página después del clic
+
+                foreach ($festivals as $festival) {
+
+                    $festivalCrawler = new Crawler($festival);
+
+                    // Extrae los datos que necesitas para cada festival
+                    $title = $festivalCrawler->filter('.festival-card-title')->count() ? $festivalCrawler->filter('.festival-card-title')->text() : 'No Especificado';
+                    $country = $festivalCrawler->filter('.festival-card-country')->count() ? $festivalCrawler->filter('.festival-card-country')->text() : 'No Especificado';
+
+                    // Extrae las duraciones
+                    $durations = [];
+                    $festivalCrawler->filter('.festival-card-type-holder .festival-card-type')->each(function ($durationNode) use (&$durations) {
+                        $durations[] = $durationNode->text();
+                    });
+
+                    // Extrae las URLs de las imágenes
+
+                    // Extrae la URL de la imagen
+                    $imageFront = ($festivalCrawler->filter('.festival-card.card-front')->count()) ?
+                    $this->extractImageUrl($festivalCrawler->filter('.festival-card.card-front')->attr('style')) : "No Especificado";
+
+                    if ($imageFront === 'No Especificado') {
+                        $imageFront = $festivalCrawler->filter('.festival-card-logo_new')->count() ?
+                        $festivalCrawler->filter('.festival-card-logo_new')->attr('src') : 'No Especificado';
+                    }
+
+                    $imageBanner = $festivalCrawler->filter('.festival-card-banner')->count() ?
+                    $this->extractImageUrl($festivalCrawler->filter('.festival-card-banner')->attr('style')) : 'No Especificado';
+
+                    // Agrega la URL de redirección y la tasa
+                    $redirectUrl = $festivalCrawler->filter('.festival-card-outer div:last-child a')->count()
+                    ? 'https://filmmakers.festhome.com/festival/' . $festivalCrawler->filter('.festival-card-outer div:last-child a')->attr('data-full_url')
+                    : 'No Especificado';
+
+                    $fees = [];
+                    $festivalCrawler->filter('.info_icon.fa-stack.fa-lg:nth-child(3)')->each(function ($feeNode) use (&$fees) {
+                        $matches = [];
+                        preg_match_all('/([\w\s]+): ([\d.]+)€/', $feeNode->attr('title'), $matches, PREG_SET_ORDER);
+
+                        if (!empty($matches)) {
+                            $fees[$matches[0][1]] = $matches[0][2];
+                        }
+                    });
+
+                    // Si no hay tasas, establece '0'
+                    $fees = empty($fees) ? '0' : $fees;
+
+                    // Agrega la fecha límite
+                    $deadline = $festivalCrawler->filter('.festival-card-status.days .date')->count() ? $festivalCrawler->filter('.festival-card-status.days .date')->text() : 'No Especificado';
+
+                    // Añade más campos según sea necesario
+                    $data[] = [
+                        'title' => $title,
+                        'country' => $country,
+                        'duration' => $durations,
+                        'image_front' => $imageFront,
+                        'image_banner' => $imageBanner,
+                        'redirect_url' => $redirectUrl,
+                        'fees' => $fees,
+                        'deadline' => $deadline,
+                        // Añade más campos según sea necesario
+                    ];
+
+                }
+                $dataTotal=$dataTotal+$data;
+                break;
+            default:
+                return response()->json([
+                    'codigo' => 0,
+                    'mensaje' => 'Pagina No Soportada',
+                ], 500);;
+                break;
+        }
+        // Itera sobre cada festival y extrae los datos
+
+        // Puedes devolver los datos como respuesta o hacer lo que necesites con ellos
+        return response()->json($dataTotal);
+    }
     public function getEventos(Request $request)
     {
         $apiUrl = 'https://eduardoandres.000webhostapp.com/wp-json/wp/v2/eventos';
-        $page=$request->input('page');
-        $orderby='acm_fields.'.$request->input('orderby');
-        $per_page=$request->input('per_page');
-        $order=$request->input('order');
+        $page = $request->input('page');
+        $orderby = 'acm_fields.' . $request->input('orderby');
+        $per_page = $request->input('per_page');
+        $order = $request->input('order');
 
         $params = [
-            '_fields' =>  'id,acm_fields.tasa,acm_fields.telefono,acm_fields.fuente,acm_fields.facebook,acm_fields.correoElectronico,acm_fields.nombre,acm_fields.web,acm_fields.instagram,acm_fields.ubicacion,acm_fields.youtube,acm_fields.industrias,acm_fields.fechaInicio,acm_fields.fechaLimite,acm_fields.imagen.media_details.sizes.full.source_url,acm_fields.banner.media_details.full.source_url,acm_fields.tipo_metraje,acm_fields.twitterX,acm_fields.descripcion,acm_fields.tipo_festival,acm_fields.categoria,acm_fields.url',
+            '_fields' => 'id,acm_fields.tasa,acm_fields.telefono,acm_fields.fuente,acm_fields.facebook,acm_fields.correoElectronico,acm_fields.nombre,acm_fields.web,acm_fields.instagram,acm_fields.ubicacion,acm_fields.youtube,acm_fields.industrias,acm_fields.fechaInicio,acm_fields.fechaLimite,acm_fields.imagen.media_details.sizes.full.source_url,acm_fields.banner.media_details.full.source_url,acm_fields.tipo_metraje,acm_fields.twitterX,acm_fields.descripcion,acm_fields.tipo_festival,acm_fields.categoria,acm_fields.url',
             'page' => $page,
             'per_page' => $per_page,
             'orderby' => $orderby,
-            'order' => $order
+            'order' => $order,
         ];
 
         // Construir la URL con los parámetros
@@ -34,7 +141,7 @@ class eventosController extends Controller
         $eventos = [];
         foreach ($data as $key => $evento) {
             $eventos[$key] = [];
-            $eventos[$key]["id"] =$evento["id"];
+            $eventos[$key]["id"] = $evento["id"];
             $eventos[$key]["tasa"] = isset($evento["acm_fields"]["tasa"]) ? $evento["acm_fields"]["tasa"] : "No especificado";
             $eventos[$key]["telefono"] = isset($evento["acm_fields"]["telefono"]) ? $evento["acm_fields"]["telefono"] : "No especificado";
             $eventos[$key]["fuente"] = isset($evento["acm_fields"]["fuente"]) ? $evento["acm_fields"]["fuente"] : "No especificado";
@@ -57,37 +164,36 @@ class eventosController extends Controller
             $eventos[$key]["tipo_festival"] = isset($evento["acm_fields"]["tipo_festival"]) ? $evento["acm_fields"]["tipo_festival"] : "No especificado";
             $eventos[$key]["categoria"] = isset($evento["acm_fields"]["categoria"]) ? $evento["acm_fields"]["categoria"] : "No especificado";
 
-
-            $eventos[$key]["tasa"]=($eventos[$key]["tasa"]!=="") ? $eventos[$key]["tasa"] : "No Especificado";
-            $eventos[$key]["telefono"]=($eventos[$key]["telefono"]!=="") ? $eventos[$key]["telefono"] : "No Especificado";
-            $eventos[$key]["fuente"]=($eventos[$key]["fuente"]!=="") ? $eventos[$key]["fuente"] : "No Especificado";
-            $eventos[$key]["facebook"]=($eventos[$key]["facebook"]!=="") ? $eventos[$key]["facebook"] : "No Especificado";
-            $eventos[$key]["correoElectronico"]=($eventos[$key]["correoElectronico"]!=="") ? $eventos[$key]["correoElectronico"] : "No Especificado";
-            $eventos[$key]["nombre"]=($eventos[$key]["nombre"]!=="") ? $eventos[$key]["nombre"] : "No Especificado";
-            $eventos[$key]["web"]=($eventos[$key]["web"]!=="") ? $eventos[$key]["web"] : "No Especificado";
-            $eventos[$key]["url"]=($eventos[$key]["url"]!=="") ? $eventos[$key]["url"] : "No Especificado";
-            $eventos[$key]["instagram"]=($eventos[$key]["instagram"]!=="") ? $eventos[$key]["instagram"] : "No Especificado";
-            $eventos[$key]["ubicacion"]=($eventos[$key]["ubicacion"]!=="") ? $eventos[$key]["ubicacion"] : "No Especificado";
-            $eventos[$key]["youtube"]=($eventos[$key]["youtube"]!=="") ? $eventos[$key]["youtube"] : "No Especificado";
-            $eventos[$key]["industrias"]=($eventos[$key]["industrias"]!=="") ? $eventos[$key]["industrias"] : "No Especificado";
-            $eventos[$key]["fechaInicio"]=($eventos[$key]["fechaInicio"]!=="") ? $eventos[$key]["fechaInicio"] : "No Especificado";
-            $eventos[$key]["fechaLimite"]=($eventos[$key]["fechaLimite"]!=="") ? $eventos[$key]["fechaLimite"] : "No Especificado";
-            $eventos[$key]["imagen"]=($eventos[$key]["imagen"]!=="") ? $eventos[$key]["imagen"] : "No Especificado";
-            $eventos[$key]["banner"]=($eventos[$key]["banner"]!=="") ? $eventos[$key]["banner"] : "No Especificado";
-            $eventos[$key]["tipo_metraje"]=($eventos[$key]["tipo_metraje"]!=="") ? $eventos[$key]["tipo_metraje"] : "No Especificado";
-            $eventos[$key]["twitterX"]=($eventos[$key]["twitterX"]!=="") ? $eventos[$key]["twitterX"] : "No Especificado";
-            $eventos[$key]["descripcion"]=($eventos[$key]["descripcion"]!=="") ? $eventos[$key]["descripcion"] : "No Especificado";
-            $eventos[$key]["tipo_festival"]=($eventos[$key]["tipo_festival"]!=="") ? $eventos[$key]["tipo_festival"] : "No Especificado";
-            $eventos[$key]["categoria"]=($eventos[$key]["categoria"]!=="") ? $eventos[$key]["categoria"] : "No Especificado";
+            $eventos[$key]["tasa"] = ($eventos[$key]["tasa"] !== "") ? $eventos[$key]["tasa"] : "No Especificado";
+            $eventos[$key]["telefono"] = ($eventos[$key]["telefono"] !== "") ? $eventos[$key]["telefono"] : "No Especificado";
+            $eventos[$key]["fuente"] = ($eventos[$key]["fuente"] !== "") ? $eventos[$key]["fuente"] : "No Especificado";
+            $eventos[$key]["facebook"] = ($eventos[$key]["facebook"] !== "") ? $eventos[$key]["facebook"] : "No Especificado";
+            $eventos[$key]["correoElectronico"] = ($eventos[$key]["correoElectronico"] !== "") ? $eventos[$key]["correoElectronico"] : "No Especificado";
+            $eventos[$key]["nombre"] = ($eventos[$key]["nombre"] !== "") ? $eventos[$key]["nombre"] : "No Especificado";
+            $eventos[$key]["web"] = ($eventos[$key]["web"] !== "") ? $eventos[$key]["web"] : "No Especificado";
+            $eventos[$key]["url"] = ($eventos[$key]["url"] !== "") ? $eventos[$key]["url"] : "No Especificado";
+            $eventos[$key]["instagram"] = ($eventos[$key]["instagram"] !== "") ? $eventos[$key]["instagram"] : "No Especificado";
+            $eventos[$key]["ubicacion"] = ($eventos[$key]["ubicacion"] !== "") ? $eventos[$key]["ubicacion"] : "No Especificado";
+            $eventos[$key]["youtube"] = ($eventos[$key]["youtube"] !== "") ? $eventos[$key]["youtube"] : "No Especificado";
+            $eventos[$key]["industrias"] = ($eventos[$key]["industrias"] !== "") ? $eventos[$key]["industrias"] : "No Especificado";
+            $eventos[$key]["fechaInicio"] = ($eventos[$key]["fechaInicio"] !== "") ? $eventos[$key]["fechaInicio"] : "No Especificado";
+            $eventos[$key]["fechaLimite"] = ($eventos[$key]["fechaLimite"] !== "") ? $eventos[$key]["fechaLimite"] : "No Especificado";
+            $eventos[$key]["imagen"] = ($eventos[$key]["imagen"] !== "") ? $eventos[$key]["imagen"] : "No Especificado";
+            $eventos[$key]["banner"] = ($eventos[$key]["banner"] !== "") ? $eventos[$key]["banner"] : "No Especificado";
+            $eventos[$key]["tipo_metraje"] = ($eventos[$key]["tipo_metraje"] !== "") ? $eventos[$key]["tipo_metraje"] : "No Especificado";
+            $eventos[$key]["twitterX"] = ($eventos[$key]["twitterX"] !== "") ? $eventos[$key]["twitterX"] : "No Especificado";
+            $eventos[$key]["descripcion"] = ($eventos[$key]["descripcion"] !== "") ? $eventos[$key]["descripcion"] : "No Especificado";
+            $eventos[$key]["tipo_festival"] = ($eventos[$key]["tipo_festival"] !== "") ? $eventos[$key]["tipo_festival"] : "No Especificado";
+            $eventos[$key]["categoria"] = ($eventos[$key]["categoria"] !== "") ? $eventos[$key]["categoria"] : "No Especificado";
             $headers = get_headers($url, 1);
             if (isset($headers['X-WP-TotalPages'])) {
-                $totalPages = (int)$headers['X-WP-TotalPages'];
+                $totalPages = (int) $headers['X-WP-TotalPages'];
 
             } else {
-                $totalPages= 'El encabezado X-WP-TotalPages no está presente en la respuesta.';
+                $totalPages = 'El encabezado X-WP-TotalPages no está presente en la respuesta.';
             }
         }
-        return ['eventos'=>$eventos,'totalPages'=>$totalPages];
+        return ['eventos' => $eventos, 'totalPages' => $totalPages];
         // Puedes manipular los datos según tus necesidades
 
     }
