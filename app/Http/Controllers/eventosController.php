@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\HttpClient\HttpClient;
-use App\Events\upEstado;
 
 class eventosController extends Controller
 {
@@ -19,103 +19,119 @@ class eventosController extends Controller
     }
     public function extractFestivalData(Request $request)
     {
-         event(new upEstado('gf'));
-         sleep(2);
-        $client = HttpClient::create([
-            'verify_peer' => true,
-            'cafile' => 'C:/laragon/etc/ssl/cacert.pem', // Ajusta la ruta según tu configuración
-        ]);
-        $pages = null !== $request->input('pages') ? (int) $request->input('pages') : 1;
-        $festivalPage = null !== $request->input('festivalPage') ? $request->input('festivalPage') : "No Especificado";
-
-        $dataTotal = [];
-        $data = [];
-        switch ($festivalPage) {
-            case 'festhome':
-                $response = $client->request('GET', 'https://festhome.com/festival-list/page:' . $pages);
-                // Obtener el contenido de la respuesta
-                $htmlContent = $response->getContent();
-                // Crear un objeto Crawler para analizar el contenido HTML
-                $crawler = new Crawler($htmlContent);
-                $festivals = $crawler->filter('#card_contents .card-container');
-                // Obtener el nuevo estado de la página después del clic
-
-                foreach ($festivals as $festival) {
-
-                    $festivalCrawler = new Crawler($festival);
-
-                    // Extrae los datos que necesitas para cada festival
-                    $title = $festivalCrawler->filter('.festival-card-title')->count() ? $festivalCrawler->filter('.festival-card-title')->text() : 'No Especificado';
-                    $country = $festivalCrawler->filter('.festival-card-country')->count() ? $festivalCrawler->filter('.festival-card-country')->text() : 'No Especificado';
-
-                    // Extrae las duraciones
-                    $durations = [];
-                    $festivalCrawler->filter('.festival-card-type-holder .festival-card-type')->each(function ($durationNode) use (&$durations) {
-                        $durations[] = $durationNode->text();
-                    });
-
-                    // Extrae las URLs de las imágenes
-
-                    // Extrae la URL de la imagen
-                    $imageFront = ($festivalCrawler->filter('.festival-card.card-front')->count()) ?
-                    $this->extractImageUrl($festivalCrawler->filter('.festival-card.card-front')->attr('style')) : "No Especificado";
-
-                    if ($imageFront === 'No Especificado') {
-                        $imageFront = $festivalCrawler->filter('.festival-card-logo_new')->count() ?
-                        $festivalCrawler->filter('.festival-card-logo_new')->attr('src') : 'No Especificado';
-                    }
-
-                    $imageBanner = $festivalCrawler->filter('.festival-card-banner')->count() ?
-                    $this->extractImageUrl($festivalCrawler->filter('.festival-card-banner')->attr('style')) : 'No Especificado';
-
-                    // Agrega la URL de redirección y la tasa
-                    $redirectUrl = $festivalCrawler->filter('.festival-card-outer div:last-child a')->count()
-                    ? 'https://filmmakers.festhome.com/festival/' . $festivalCrawler->filter('.festival-card-outer div:last-child a')->attr('data-full_url')
-                    : 'No Especificado';
-
-                    $fees = [];
-                    $festivalCrawler->filter('.info_icon.fa-stack.fa-lg:nth-child(3)')->each(function ($feeNode) use (&$fees) {
-                        $matches = [];
-                        preg_match_all('/([\w\s]+): ([\d.]+)€/', $feeNode->attr('title'), $matches, PREG_SET_ORDER);
-
-                        if (!empty($matches)) {
-                            $fees[$matches[0][1]] = $matches[0][2];
-                        }
-                    });
-
-                    // Si no hay tasas, establece '0'
-                    $fees = empty($fees) ? '0' : $fees;
-
-                    // Agrega la fecha límite
-                    $deadline = $festivalCrawler->filter('.festival-card-status.days .date')->count() ? $festivalCrawler->filter('.festival-card-status.days .date')->text() : 'No Especificado';
-
-                    // Añade más campos según sea necesario
-                    $data[] = [
-                        'title' => $title,
-                        'country' => $country,
-                        'duration' => $durations,
-                        'image_front' => $imageFront,
-                        'image_banner' => $imageBanner,
-                        'redirect_url' => $redirectUrl,
-                        'fees' => $fees,
-                        'deadline' => $deadline,
-                        // Añade más campos según sea necesario
-                    ];
-
-                }
-                $dataTotal = $dataTotal + $data;
-                break;
-            default:
+        if (Cache::has('procesing')) {
+            if (Cache::get('procesing') === true) {
+                Cache::forget('procesing');
                 return response()->json([
-                    'codigo' => 0,
-                    'mensaje' => 'Pagina No Soportada',
-                ], 500);
-                break;
-        }
-        // Itera sobre cada festival y extrae los datos
+                    'status' => 'finished',
+                ]);
+            } else {
+                return response()->json([
+                    'status' => Cache::get('procesing'),
+                ]);
+            }
+        } else {
+            Cache::put('procesing', 'iniciando', 60);
+            // Establecer el indicador de bloqueo
+            sleep(2);
+            Cache::put('procesing', 'iniciando2', 60);
+            $client = HttpClient::create([
+                'verify_peer' => true,
+                'cafile' => 'C:/laragon/etc/ssl/cacert.pem', // Ajusta la ruta según tu configuración
+            ]);
+            $pages = null !== $request->input('pages') ? (int) $request->input('pages') : 1;
+            $festivalPage = null !== $request->input('festivalPage') ? $request->input('festivalPage') : "No Especificado";
 
-        // Puedes devolver los datos como respuesta o hacer lo que necesites con ellos
-        return response()->json($dataTotal);
+            $dataTotal = [];
+            $data = [];
+            switch ($festivalPage) {
+                case 'festhome':
+                    $response = $client->request('GET', 'https://festhome.com/festival-list/page:' . $pages);
+                    // Obtener el contenido de la respuesta
+                    $htmlContent = $response->getContent();
+                    // Crear un objeto Crawler para analizar el contenido HTML
+                    $crawler = new Crawler($htmlContent);
+                    $festivals = $crawler->filter('#card_contents .card-container');
+                    // Obtener el nuevo estado de la página después del clic
+
+                    foreach ($festivals as $festival) {
+
+                        $festivalCrawler = new Crawler($festival);
+
+                        // Extrae los datos que necesitas para cada festival
+                        $title = $festivalCrawler->filter('.festival-card-title')->count() ? $festivalCrawler->filter('.festival-card-title')->text() : 'No Especificado';
+                        $country = $festivalCrawler->filter('.festival-card-country')->count() ? $festivalCrawler->filter('.festival-card-country')->text() : 'No Especificado';
+
+                        // Extrae las duraciones
+                        $durations = [];
+                        $festivalCrawler->filter('.festival-card-type-holder .festival-card-type')->each(function ($durationNode) use (&$durations) {
+                            $durations[] = $durationNode->text();
+                        });
+
+                        // Extrae las URLs de las imágenes
+
+                        // Extrae la URL de la imagen
+                        $imageFront = ($festivalCrawler->filter('.festival-card.card-front')->count()) ?
+                        $this->extractImageUrl($festivalCrawler->filter('.festival-card.card-front')->attr('style')) : "No Especificado";
+
+                        if ($imageFront === 'No Especificado') {
+                            $imageFront = $festivalCrawler->filter('.festival-card-logo_new')->count() ?
+                            $festivalCrawler->filter('.festival-card-logo_new')->attr('src') : 'No Especificado';
+                        }
+
+                        $imageBanner = $festivalCrawler->filter('.festival-card-banner')->count() ?
+                        $this->extractImageUrl($festivalCrawler->filter('.festival-card-banner')->attr('style')) : 'No Especificado';
+
+                        // Agrega la URL de redirección y la tasa
+                        $redirectUrl = $festivalCrawler->filter('.festival-card-outer div:last-child a')->count()
+                        ? 'https://filmmakers.festhome.com/festival/' . $festivalCrawler->filter('.festival-card-outer div:last-child a')->attr('data-full_url')
+                        : 'No Especificado';
+
+                        $fees = [];
+                        $festivalCrawler->filter('.info_icon.fa-stack.fa-lg:nth-child(3)')->each(function ($feeNode) use (&$fees) {
+                            $matches = [];
+                            preg_match_all('/([\w\s]+): ([\d.]+)€/', $feeNode->attr('title'), $matches, PREG_SET_ORDER);
+
+                            if (!empty($matches)) {
+                                $fees[$matches[0][1]] = $matches[0][2];
+                            }
+                        });
+
+                        // Si no hay tasas, establece '0'
+                        $fees = empty($fees) ? '0' : $fees;
+
+                        // Agrega la fecha límite
+                        $deadline = $festivalCrawler->filter('.festival-card-status.days .date')->count() ? $festivalCrawler->filter('.festival-card-status.days .date')->text() : 'No Especificado';
+
+                        // Añade más campos según sea necesario
+                        $data[] = [
+                            'title' => $title,
+                            'country' => $country,
+                            'duration' => $durations,
+                            'image_front' => $imageFront,
+                            'image_banner' => $imageBanner,
+                            'redirect_url' => $redirectUrl,
+                            'fees' => $fees,
+                            'deadline' => $deadline,
+                            // Añade más campos según sea necesario
+                        ];
+
+                    }
+                    $dataTotal = $dataTotal + $data;
+                    break;
+                default:
+                    return response()->json([
+                        'codigo' => 0,
+                        'mensaje' => 'Pagina No Soportada',
+                    ], 500);
+                    break;
+            }
+            // Itera sobre cada festival y extrae los datos
+
+            // Puedes devolver los datos como respuesta o hacer lo que necesites con ellos
+            Cache::put('procesing', true);
+            return response()->json(['status' => true, 'data' => $dataTotal]);
+        }
     }
     public function getEventos(Request $request)
     {

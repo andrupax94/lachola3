@@ -21,6 +21,9 @@ export class Ruta1Component {
     public order: string = 'asc';
     public totalPages: number = 1;
 
+    public it=false;
+    public contador=1;
+
     constructor(private http: HttpClient, private factory: FactoryService) {
 
 
@@ -30,12 +33,23 @@ export class Ruta1Component {
 
     }
     ngOnInit() {
-        this.buscaEventos();
+        this.buscaEventosIt();
     }
 
 
+    async buscaEventosIt(){
+        this.it=true;
+        while(this.it){
 
-    buscaEventos() {
+            this.buscaEventos();
+           this.contador++;
+            await this.esperar(500);
+        }
+    }
+    esperar(ms: number): Promise<void> {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+    async buscaEventos() {
         // let params = new HttpParams({ fromString: 'name=term' });
         // params = params.set('page', this.page);
         // params = params.set('orderby', this.orderby);
@@ -75,14 +89,20 @@ export class Ruta1Component {
         params = params.set('festivalPage', 'festhome');
 
         this.http.post<any>(environment.back + 'extractFestivalData', params, {}).subscribe((data) => {
-            this.totalPages = data.totalPages
-            data.forEach((evt: any) => {
+            if(data.status!==true){
+                console.log(data.status);
+            }
+            else{
+            this.it=false;
+            this.totalPages = data.data.totalPages;
+            data.data.forEach((evt: any) => {
                 let aux: any = [];
                 aux.id = evt["id"];
-
             });
 
+        }
         }, (error) => {
+            this.it=false;
             console.log(error);
         });
 
