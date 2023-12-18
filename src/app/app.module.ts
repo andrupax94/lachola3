@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
@@ -15,6 +16,9 @@ import { PopUpsModule } from 'src/pop-ups/pop-ups.module';
 import {FormsModule,ReactiveFormsModule } from '@angular/forms';
 import * as $from from 'jquery';
 import gsap from 'gsap';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,10 +26,11 @@ import gsap from 'gsap';
     Ruta2Component,
     Ruta3Component,
     Ruta4Component,
-    LogInComponent
+    LogInComponent,
   ],
   imports: [
     BrowserModule,
+
     PopUpsModule,
     FormsModule,
     ReactiveFormsModule,
@@ -33,7 +38,6 @@ import gsap from 'gsap';
     HttpClientModule
   ],
   exports:[
-
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy },

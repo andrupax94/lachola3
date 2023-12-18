@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\HttpClient\HttpClient;
+use App\Events\upEstado;
 
 class eventosController extends Controller
 {
@@ -18,6 +19,8 @@ class eventosController extends Controller
     }
     public function extractFestivalData(Request $request)
     {
+         event(new upEstado('gf'));
+         sleep(2);
         $client = HttpClient::create([
             'verify_peer' => true,
             'cafile' => 'C:/laragon/etc/ssl/cacert.pem', // Ajusta la ruta según tu configuración
@@ -25,15 +28,15 @@ class eventosController extends Controller
         $pages = null !== $request->input('pages') ? (int) $request->input('pages') : 1;
         $festivalPage = null !== $request->input('festivalPage') ? $request->input('festivalPage') : "No Especificado";
 
-        $dataTotal=[];
+        $dataTotal = [];
         $data = [];
         switch ($festivalPage) {
             case 'festhome':
-                    $response = $client->request('GET', 'https://festhome.com/festival-list/page:'.$pages);
-            // Obtener el contenido de la respuesta
-            $htmlContent = $response->getContent();
-            // Crear un objeto Crawler para analizar el contenido HTML
-            $crawler = new Crawler($htmlContent);
+                $response = $client->request('GET', 'https://festhome.com/festival-list/page:' . $pages);
+                // Obtener el contenido de la respuesta
+                $htmlContent = $response->getContent();
+                // Crear un objeto Crawler para analizar el contenido HTML
+                $crawler = new Crawler($htmlContent);
                 $festivals = $crawler->filter('#card_contents .card-container');
                 // Obtener el nuevo estado de la página después del clic
 
@@ -100,13 +103,13 @@ class eventosController extends Controller
                     ];
 
                 }
-                $dataTotal=$dataTotal+$data;
+                $dataTotal = $dataTotal + $data;
                 break;
             default:
                 return response()->json([
                     'codigo' => 0,
                     'mensaje' => 'Pagina No Soportada',
-                ], 500);;
+                ], 500);
                 break;
         }
         // Itera sobre cada festival y extrae los datos

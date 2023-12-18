@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MensajesService } from './mensajes.service';
-import { gsap } from 'gsap';
+
 @Injectable({
   providedIn: 'root'
 })
