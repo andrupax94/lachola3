@@ -12,6 +12,7 @@ export class authGuard implements CanActivate{
     }
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
         localStorage.setItem('user','fgdgf')
+        // localStorage.removeItem('user');
         // Aquí, verifica la existencia de tu variable de sesión o cualquier otra lógica de autenticación.
         const isLoggedIn = localStorage.getItem('user');
 
@@ -22,7 +23,7 @@ export class authGuard implements CanActivate{
                     // localStorage.removeItem('user');
                 }
                 else if(data.mensaje==='OK'){
-                    localStorage.setItem('user',data.user);
+                    // localStorage.setItem('user',data.user);
                 }
             });
 
@@ -31,11 +32,19 @@ export class authGuard implements CanActivate{
                 window.location.hash='#';
                 this.router.navigate(['/']);
             }
-          return true;
+            return true;
         } else {
-          // Redirige a la página de inicio de sesión u otra página según tus necesidades.
-          this.router.navigate(['/logIn']);
-          return false;
+            const currentUrl = window.location.hash;
+            if (currentUrl.indexOf('/logIn')!==-1) {
+
+                return true;
+            }
+            else{
+                window.location.hash='#/logIn';
+                this.router.navigate(['/logIn']);
+                return false;
+            }
+
         }
     }
 

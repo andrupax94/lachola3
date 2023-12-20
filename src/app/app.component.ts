@@ -13,4 +13,10 @@ export class AppComponent {
 
     this.user=localStorage.getItem('user');
   }
+  ngOnInit(){
+    setTimeout(()=>{
+
+        this.user=localStorage.getItem('user');
+    },500)
+  }
 }
