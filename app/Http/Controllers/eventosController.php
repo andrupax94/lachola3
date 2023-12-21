@@ -19,7 +19,8 @@ class eventosController extends Controller
     }
     public function extractFestivalData(Request $request)
     {
-        if (Cache::has('procesing')) {
+        // if (Cache::has('procesing')) {
+        if (false) {
             if (Cache::get('procesing') === true) {
                 Cache::forget('procesing');
                 return response()->json([
@@ -35,10 +36,8 @@ class eventosController extends Controller
             // Establecer el indicador de bloqueo
             sleep(2);
             Cache::put('procesing', 'iniciando2', 60);
-            $client = HttpClient::create([
-                'verify_peer' => true,
-                'cafile' => 'C:/laragon/etc/ssl/cacert.pem', // Ajusta la ruta según tu configuración
-            ]);
+
+
             $pages = null !== $request->input('pages') ? (int) $request->input('pages') : 1;
             $festivalPage = null !== $request->input('festivalPage') ? $request->input('festivalPage') : "No Especificado";
 
@@ -46,6 +45,10 @@ class eventosController extends Controller
             $data = [];
             switch ($festivalPage) {
                 case 'festhome':
+                    $client = HttpClient::create([
+                        'verify_peer' => true,
+                        'cafile' => 'C:/laragon/etc/ssl/cacert.pem', // Ajusta la ruta según tu configuración
+                    ]);
                     $response = $client->request('GET', 'https://festhome.com/festival-list/page:' . $pages);
                     // Obtener el contenido de la respuesta
                     $htmlContent = $response->getContent();
@@ -119,7 +122,113 @@ class eventosController extends Controller
                     }
                     $dataTotal = $dataTotal + $data;
                     break;
-                default:
+                case 'movibeta':
+                    $client = HttpClient::create([
+                        'verify_peer' => false,
+                        // 'verify_peer_name' => false,
+                    ]);
+                    $response = $client->request('GET', 'https://festival.movibeta.com/festivals?page='.$pages);
+                        $content = $response->getContent();
+
+                        $crawler = new Crawler($content);
+                        sleep(10);
+                        $festivals = [];
+                        $crawler->filter('#app')->html();
+                        $crawler->filter('table tbody tr')->each(function (Crawler $row) use (&$festivals) {
+                            $festival = [
+                                'imagen' => $row->filter('td:nth-child(1) img')->attr('src'),
+                                'nombre' => $row->filter('td:nth-child(1) h6')->text(),
+                                'tasa' => (int) $row->filter('td:nth-child(4)')->text(),
+                                'fechaLimite' => \DateTime::createFromFormat('d/m/Y', $row->filter('td:nth-child(6)')->text()),
+                                'url' => $row->filter('td:nth-child(7) a')->attr('href'),
+                                'fuente' => 'movibeta',
+                                'ubicacion' => $row->filter('td:nth-child(4)')->text(),
+                            ];
+
+                            $festivals[] = $festival;
+                        });
+
+                        $dataTotal = $dataTotal + $festivals;
+
+                    break;
+                case 'animation-festivals':
+
+                    $client = HttpClient::create([
+                        'verify_peer' => false,
+                        'cafile' => 'C:/laragon/etc/ssl/cacert.pem', // Ajusta la ruta según tu configuración
+                    ]);
+                    $response = $client->request('GET', 'https://www.animation-festivals.com/festivals-list/page/'.$pages);
+                    // Obtener el contenido de la respuesta
+                    $htmlContent = $response->getContent();
+                    // Crear un objeto Crawler para analizar el contenido HTML
+                    $crawler = new Crawler($htmlContent);
+                    $festivals = $crawler->filter('#festival-list li');
+
+                    foreach ($festivals as $festival) {
+
+                        $festivalCrawler = new Crawler($festival);
+
+                        // Extrae los datos que necesitas para cada festival
+                        $title = $festivalCrawler->filter('h2 a')->count() ? $festivalCrawler->filter('h2 a')->text() : 'No Especificado';
+                        $country = $festivalCrawler->filter('.country')->count() ? $festivalCrawler->filter('.country')->text() : 'No Especificado';
+
+                        // Extrae las duraciones
+                        $durations = ['No Especificado'];
+                        // $festivalCrawler->filter('.festival-card-type-holder .festival-card-type')->each(function ($durationNode) use (&$durations) {
+                        //     $durations[] = $durationNode->text();
+                        // });
+
+                        // Extrae las URLs de las imágenes
+
+                        // Extrae la URL de la imagen
+                        $imageFront = ($festivalCrawler->filter('.boxShadowForMobile a img')->count()) ?
+                        $this->extractImageUrl($festivalCrawler->filter('.boxShadowForMobile a img')->attr('src')) : "No Especificado";
+
+                        if ($imageFront === 'No Especificado') {
+                            $imageFront = $festivalCrawler->filter('.festival-card-logo_new')->count() ?
+                            $festivalCrawler->filter('.festival-card-logo_new')->attr('src') : 'No Especificado';
+                        }
+
+                        $imageBanner = 'No Especificado';
+
+                        // Agrega la URL de redirección y la tasa
+                        $redirectUrl = $festivalCrawler->filter('.links-info>a')->count()
+                        ?  $festivalCrawler->filter('.links-info>a')->attr('href')
+                        : 'No Especificado';
+
+                        $feesAux=$festivalCrawler->filter('.cost')->count()
+                        ?  $festivalCrawler->filter('.cost')->text('')
+                        : 'No Especificado';
+
+                        $fees = [$feesAux];
+
+
+                        // Si no hay tasas, establece '0'
+                        $fees = empty($fees) ? '0' : $fees;
+
+                        // Agrega la fecha límite
+                        $deadline = $festivalCrawler->filter('.submit-info .dates span')->count() ? $festivalCrawler->filter('.submit-info .dates span')->text() : 'No Especificado';
+
+                        // Añade más campos según sea necesario
+                        $data[] = [
+                            'title' => $title,
+                            'country' => $country,
+                            'duration' => $durations,
+                            'image_front' => $imageFront,
+                            'image_banner' => $imageBanner,
+                            'redirect_url' => $redirectUrl,
+                            'fees' => $fees,
+                            'deadline' => $deadline,
+                            // Añade más campos según sea necesario
+                        ];
+
+                    }
+                    $dataTotal = $dataTotal + $data;
+                    break;
+
+                    default:
+                Cache::forget('procesing');
+
                     return response()->json([
                         'codigo' => 0,
                         'mensaje' => 'Pagina No Soportada',

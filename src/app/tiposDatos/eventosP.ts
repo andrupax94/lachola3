@@ -9,21 +9,21 @@ export type eventoP = {
     id:number
     imagen:string
     nombre:string
-    descripcion:string
     tasa:number
+    fechaLimite:Date
+    url:string[],
+    fuente:fuente,
+    ubicacion:string
     categoria:Set<categoria> // Propiedad opcional
     tipo_metraje:Set<tipo_metraje>
     tipo_festival:tipo_festival
-    fechaInicio:Date
-    fechaLimite:Date
     banner:string
+    fechaInicio:Date
     telefono:string
+    descripcion:string
     correoElectronico:string
-    fuente:fuente,
-    url:string[],
     web:string
     facebook:string
-    ubicacion:string
     instagram:string
     youtube:string
     industrias:string
