@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\HttpClient\HttpClient;
+require_once('../resources/views/fv/funciones.php');
+use misFunciones;
 
 class eventosController extends Controller
 {
@@ -104,7 +106,7 @@ class eventosController extends Controller
                         $fees = empty($fees) ? '0' : $fees;
 
                         // Agrega la fecha límite
-                        $deadline = $festivalCrawler->filter('.festival-card-status.days .date')->count() ? $festivalCrawler->filter('.festival-card-status.days .date')->text() : 'No Especificado';
+                        $deadline = $festivalCrawler->filter('.festival-card-status.days .date')->count() ? misFunciones::convertirFecha($festivalCrawler->filter('.festival-card-status.days .date')->text(),4) : 'No Especificado';
 
                         // Añade más campos según sea necesario
                         $data[] = [
@@ -199,7 +201,6 @@ class eventosController extends Controller
                         $feesAux=$festivalCrawler->filter('.cost')->count()
                         ?  $festivalCrawler->filter('.cost')->text('')
                         : 'No Especificado';
-
                         $fees = [$feesAux];
 
 
@@ -207,7 +208,7 @@ class eventosController extends Controller
                         $fees = empty($fees) ? '0' : $fees;
 
                         // Agrega la fecha límite
-                        $deadline = $festivalCrawler->filter('.submit-info .dates span')->count() ? $festivalCrawler->filter('.submit-info .dates span')->text() : 'No Especificado';
+                        $deadline = $festivalCrawler->filter('.submit-info .dates span')->count() ? misFunciones::convertirFecha($festivalCrawler->filter('.submit-info .dates span')->text(),4) : 'No Especificado';
 
                         // Añade más campos según sea necesario
                         $data[] = [

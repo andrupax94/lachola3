@@ -42,48 +42,14 @@ export class Ruta1Component {
         while(this.it){
 
             this.buscaEventos();
-           this.contador++;
+            this.contador++;
             await this.esperar(500);
         }
     }
     esperar(ms: number): Promise<void> {
         return new Promise(resolve => setTimeout(resolve, ms));
       }
-    async buscaEventos() {
-        // let params = new HttpParams({ fromString: 'name=term' });
-        // params = params.set('page', this.page);
-        // params = params.set('orderby', this.orderby);
-        // params = params.set('per_page', this.per_page); // Corregí this.orderby por this.per_page
-        // params = params.set('order', this.order);
-        // this.http.post<any>(environment.back + 'getEventos',params,{}).subscribe((data)=>{
-        //     this.totalPages=data.totalPages
-        //    data.eventos.forEach((evt:any) =>{
-        //         let aux:any=[];
-        //         aux.id=evt["id"];
-        //         aux.banner=evt["banner"];
-        //         aux.imagen=evt["imagen"];
-        //         aux.nombre=evt["nombre"];
-        //         aux.descripcion=evt["descripcion"];
-        //         aux.tasa=evt["tasa"];
-        //         aux.categoria=evt["categoria"];
-        //         aux.tipo_metraje=evt["tipo_metraje"];
-        //         aux.tipo_festival=evt["tipo_festival"];
-        //         aux.fechaInicio=evt["fechaInicio"];
-        //         aux.fechaLimite=evt["fechaLimite"];
-        //         aux.fuente=evt["fuente"];
-        //         aux.url=this.factory.stringToArray(evt["url"]);
-        //         aux.telefono=evt["telefono"];
-        //         aux.correoElectronico=evt["correoElectronico"];
-        //         aux.web=evt["web"];
-        //         aux.facebook=evt["facebook"];
-        //         aux.ubicacion=evt["ubicacion"];
-        //         aux.instagram=evt["instagram"];
-        //         aux.youtube=evt["youtube"];
-        //         aux.industrias=evt["industrias"];
-        //         aux.twitterX=evt["twitterX"];
-        //         this.eventoP.push(aux);
-        //    });
-        // });
+    extraeEventos(){
         let params = new HttpParams({ fromString: 'name=term' });
         params = params.set('pages', 1);
         params = params.set('festivalPage', 'festhome');
@@ -105,6 +71,43 @@ export class Ruta1Component {
             this.it=false;
             console.log(error);
         });
+    }
+    async buscaEventos() {
+        let params = new HttpParams({ fromString: 'name=term' });
+        params = params.set('page', this.page);
+        params = params.set('orderby', this.orderby);
+        params = params.set('per_page', this.per_page); // Corregí this.orderby por this.per_page
+        params = params.set('order', this.order);
+        this.http.post<any>(environment.back + 'getEventos',params,{}).subscribe((data)=>{
+            this.totalPages=data.totalPages
+           data.eventos.forEach((evt:any) =>{
+                let aux:any=[];
+                aux.id=evt["id"];
+                aux.banner=evt["banner"];
+                aux.imagen=evt["imagen"];
+                aux.nombre=evt["nombre"];
+                aux.descripcion=evt["descripcion"];
+                aux.tasa=evt["tasa"];
+                aux.ubicacion=evt["ubicacion"];
+                aux.url=this.factory.stringToArray(evt["url"]);
+                aux.fuente=evt["fuente"];
+                aux.fechaLimite=evt["fechaLimite"];
+                // aux.fechaInicio=evt["fechaInicio"];
+                // aux.categoria=evt["categoria"];
+                // aux.tipo_metraje=evt["tipo_metraje"];
+                // aux.tipo_festival=evt["tipo_festival"];
+                // aux.telefono=evt["telefono"];
+                // aux.correoElectronico=evt["correoElectronico"];
+                // aux.web=evt["web"];
+                // aux.facebook=evt["facebook"];
+                // aux.instagram=evt["instagram"];
+                // aux.youtube=evt["youtube"];
+                // aux.industrias=evt["industrias"];
+                // aux.twitterX=evt["twitterX"];
+                this.eventoP.push(aux);
+           });
+        });
+
 
     }
 }
