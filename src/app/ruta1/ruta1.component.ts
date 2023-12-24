@@ -82,42 +82,50 @@ export class Ruta1Component {
         params = params.set('orderby', this.orderby);
         params = params.set('per_page', this.per_page); // Corregí this.orderby por this.per_page
         params = params.set('order', this.order);
-        this.http.post<any>(environment.back + 'getEventos', params, {}).subscribe({
+        this.http.post<any>(environment.back + 'getEventosJ', params, {}).subscribe({
             next: (data) => {
                 if (data.status !== true) {
                     console.log(data.status);
                 }
                 else {
                     this.it = false;
-                this.totalPages = data.totalPages
-                data.eventos.forEach((evt: any) => {
-                    let aux: any = [];
-                    aux.id = evt["id"];
-                    aux.banner = evt["banner"];
-                    aux.imagen = evt["imagen"];
-                    aux.nombre = evt["nombre"];
-                    aux.descripcion = evt["descripcion"];
-                    aux.tasa = evt["tasa"];
-                    aux.ubicacion = evt["ubicacion"];
-                    aux.url = this.factory.stringToArray(evt["url"]);
-                    aux.fuente = evt["fuente"];
-                    aux.fechaLimite = evt["fechaLimite"];
-                    // aux.fechaInicio=evt["fechaInicio"];
-                    // aux.categoria=evt["categoria"];
-                    // aux.tipo_metraje=evt["tipo_metraje"];
-                    // aux.tipo_festival=evt["tipo_festival"];
-                    // aux.telefono=evt["telefono"];
-                    // aux.correoElectronico=evt["correoElectronico"];
-                    // aux.web=evt["web"];
-                    // aux.facebook=evt["facebook"];
-                    // aux.instagram=evt["instagram"];
-                    // aux.youtube=evt["youtube"];
-                    // aux.industrias=evt["industrias"];
-                    // aux.twitterX=evt["twitterX"];
-                    this.eventoP.push(aux);
+                    this.totalPages = data.totalPages
+                    data.eventos.forEach((evt: any) => {
+                        let aux: any = [];
+                        aux.id = evt["id"];
+                        aux.banner = evt["banner"];
+                        aux.imagen = evt["imagen"];
+                        aux.nombre = evt["nombre"];
+                        aux.tasa=[];
+                        if (evt["tasa"].indexOf('FREE') !== -1 && evt["tasa"].indexOf('free') !== -1 && evt["tasa"].indexOf('0') !== -1) {
+                            aux.tasa.bool = false;
+                        }
+                        else {
+                            aux.tasa.bool = true;
+                        }
+                        aux.tasa.text = evt["tasa"];
 
-                });
-            }
+                        aux.ubicacion = evt["ubicacion"];
+                        aux.url = this.factory.stringToArray(evt["url"]);
+                        aux.fuente = evt["fuente"];
+                        aux.fechaLimite = evt["fechaLimite"];
+                        aux.descripcion = evt["descripcion"];
+                        aux.tipoMetraje = evt["tipoMetraje"];
+                        aux.tipoFestival = evt["tipoFestival"];
+                        // aux.fechaInicio=evt["fechaInicio"];
+                        // aux.categoria=evt["categoria"];
+                        // aux.telefono=evt["telefono"];
+                        // aux.correoElectronico=evt["correoElectronico"];
+                        // aux.web=evt["web"];
+                        // aux.facebook=evt["facebook"];
+                        // aux.instagram=evt["instagram"];
+                        // aux.youtube=evt["youtube"];
+                        // aux.industrias=evt["industrias"];
+                        // aux.twitterX=evt["twitterX"];
+                        this.eventoP.push(aux);
+
+                    });
+                }
             }, error: (error) => {
                 this.it = false;
                 console.log(error);

@@ -5,18 +5,22 @@ type categoria='ficcion'|'cienciaFiccion'|'fantasia'|'terror'|'basadaEnHechosRea
 type tipo_metraje='cortometraje'|'mediometraje'|'largometraje';
 type tipo_festival='a'|'b'|'c';
 type fuente='festHome'|'movibeta'|'filmfreeway'|'shortfilmdepot'|'animationfestivals';
+type tasa = {
+    bool: boolean;
+    text: string;
+  };
 export type eventoP = {
     id:number
     imagen:string
     nombre:string
-    tasa:number
+    tasa:tasa
     fechaLimite:Date
     url:string[],
     fuente:fuente,
     ubicacion:string
     categoria:Set<categoria> // Propiedad opcional
-    tipo_metraje:Set<tipo_metraje>
-    tipo_festival:tipo_festival
+    tipoMetraje:Set<tipo_metraje>
+    tipoFestival:tipo_festival
     banner:string
     fechaInicio:Date
     telefono:string
