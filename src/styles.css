@@ -88,6 +88,10 @@ div#modalPregunta h3 {
     cursor: pointer;
     transition: linear 0.1s;
     transition-property: color, background-color;
+    -webkit-transition: linear 0.1s;
+    -moz-transition: linear 0.1s;
+    -ms-transition: linear 0.1s;
+    -o-transition: linear 0.1s;
 }
 
 #modalPregunta>div:last-child>button:hover {
@@ -311,6 +315,18 @@ div#mensajes {
     height: 50px;
     animation: loading 1.5s infinite linear;
 }
+
+table {}
+
+table tr {}
+
+table td {}
+
+table tr:nth-child(1) td {}
+
+table tr:nth-child(2n) td {}
+
+table tr:nth-child(2n+1) td {}
 
 
 /* You can add global styles to this file, and also import other style files */

@@ -20,9 +20,13 @@ Route::post('/wpDirect', function (Request $request) {
     return view('index');
 });
 Route::post('/getToken', [UserController::class, 'getToken']);
-Route::post('/getEventos', [eventosController::class, 'getEventos']);
 Route::post('/dameSesion', [UserController::class, 'dameSesion']);
-Route::post('/extractFestivalData', [eventosController::class, 'extractFestivalData']);
+
+Route::post('/getEventos', [eventosController::class, 'getEventos'])->middleware('procesing');
+Route::post('/getEventosJ', [eventosController::class, 'getEventosJ'])->middleware('procesing');
+Route::post('/extractFestivalData', [eventosController::class, 'extractFestivalData'])->middleware('procesing');
+
+
 Route::post('/extraeP', [python::class, 'extrae']);
 Route::post('/extraeP2', [python::class, 'extrae2']);
 

@@ -21,19 +21,7 @@ class eventosController extends Controller
     }
     public function extractFestivalData(Request $request)
     {
-        // if (Cache::has('procesing')) {
-        if (false) {
-            if (Cache::get('procesing') === true) {
-                Cache::forget('procesing');
-                return response()->json([
-                    'status' => 'finished',
-                ]);
-            } else {
-                return response()->json([
-                    'status' => Cache::get('procesing'),
-                ]);
-            }
-        } else {
+
             Cache::put('procesing', 'iniciando', 60);
             // Establecer el indicador de bloqueo
             sleep(2);
@@ -239,12 +227,16 @@ class eventosController extends Controller
             // Itera sobre cada festival y extrae los datos
 
             // Puedes devolver los datos como respuesta o hacer lo que necesites con ellos
-            Cache::put('procesing', true);
+            Cache::forget('procesing');
             return response()->json(['status' => true, 'data' => $dataTotal]);
         }
-    }
+
     public function getEventos(Request $request)
     {
+        Cache::put('procesing', 'iniciando', 60);
+            // Establecer el indicador de bloqueo
+            sleep(2);
+        Cache::put('procesing', 'iniciando2', 60);
         $apiUrl = 'https://eduardoandres.000webhostapp.com/wp-json/wp/v2/eventos';
         $page = $request->input('page');
         $orderby = 'acm_fields.' . $request->input('orderby');
@@ -322,6 +314,66 @@ class eventosController extends Controller
                 $totalPages = 'El encabezado X-WP-TotalPages no está presente en la respuesta.';
             }
         }
+        Cache::forget('procesing');
+        return ['eventos' => $eventos, 'totalPages' => $totalPages];
+        // Puedes manipular los datos según tus necesidades
+
+    }
+    public function getEventosJ(Request $request)
+    {
+        Cache::put('procesing', 'iniciando', 60);
+            // Establecer el indicador de bloqueo
+            // sleep(2);
+        Cache::put('procesing', 'iniciando2', 60);
+        $jsonFilePath = public_path('../src/assets/eventosP.json');
+
+// Verificar si el archivo existe antes de intentar leerlo
+if (file_exists($jsonFilePath)) {
+    // Leer el contenido del archivo JSON
+    $jsonContent = file_get_contents($jsonFilePath);
+
+    // Decodificar el JSON a un array o un objeto según tus necesidades
+    $data = json_decode($jsonContent, true); // true para obtener un array asociativo
+
+    // Ahora `$data` contiene la información del archivo JSON
+    // Puedes trabajar con la variable `$data` según tus necesidades
+}
+
+        // Obtener el contenido de la respuesta en formato JSON
+
+        $eventos = [];
+        foreach ($data as $key => $evento) {
+            $eventos[$key] = [];
+            $eventos[$key]["id"] = $evento["Id_evento"];
+            $eventos[$key]["imagen"] = $evento["Imagen"];
+            $eventos[$key]["nombre"] = $evento["Nombre"];
+            $eventos[$key]["tasa"] = $evento["Tasa"];
+            $eventos[$key]["fuente"] = $evento["Fuente"];
+            $eventos[$key]["facebook"] = $evento["Facebook"];
+            $eventos[$key]["fechaLimite"] = $evento["Fechalimite"];
+            $eventos[$key]["url"] = $evento["Url"];
+            $eventos[$key]["ubicacion"] = $evento["Ubicacion"];
+
+
+            $eventos[$key]["id"] = ($eventos[$key]["id"] !== "") ? $eventos[$key]["id"] : "No Especificado";
+            $eventos[$key]["imagen"] = ($eventos[$key]["imagen"] !== "") ? $eventos[$key]["imagen"] : "No Especificado";
+            $eventos[$key]["nombre"] = ($eventos[$key]["nombre"] !== "") ? $eventos[$key]["nombre"] : "No Especificado";
+            $eventos[$key]["tasa"] = ($eventos[$key]["tasa"] !== "") ? $eventos[$key]["tasa"] : "No Especificado";
+            $eventos[$key]["fuente"] = ($eventos[$key]["fuente"] !== "") ? $eventos[$key]["fuente"] : "No Especificado";
+            $eventos[$key]["facebook"] = ($eventos[$key]["facebook"] !== "") ? $eventos[$key]["facebook"] : "No Especificado";
+            $eventos[$key]["fechaLimite"] = ($eventos[$key]["fechaLimite"] !== "") ? $eventos[$key]["fechaLimite"] : "No Especificado";
+            $eventos[$key]["url"] = ($eventos[$key]["url"] !== "") ? $eventos[$key]["url"] : "No Especificado";
+            $eventos[$key]["ubicacion"] = ($eventos[$key]["ubicacion"] !== "") ? $eventos[$key]["ubicacion"] : "No Especificado";
+
+            $headers = get_headers($url, 1);
+            if (isset($headers['X-WP-TotalPages'])) {
+                $totalPages = (int) $headers['X-WP-TotalPages'];
+
+            } else {
+                $totalPages = 'El encabezado X-WP-TotalPages no está presente en la respuesta.';
+            }
+        }
+        Cache::forget('procesing');
         return ['eventos' => $eventos, 'totalPages' => $totalPages];
         // Puedes manipular los datos según tus necesidades
 
