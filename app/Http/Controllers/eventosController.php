@@ -228,7 +228,7 @@ class eventosController extends Controller
         // Itera sobre cada festival y extrae los datos
 
         // Puedes devolver los datos como respuesta o hacer lo que necesites con ellos
-        Cache::forget('procesing');
+        Cache::put('procesing',true);
         return response()->json(['status' => true, 'eventos' => $dataTotal]);
     }
 
@@ -315,63 +315,42 @@ class eventosController extends Controller
                 $totalPages = 'El encabezado X-WP-TotalPages no está presente en la respuesta.';
             }
         }
-        Cache::forget('procesing');
+        Cache::put('procesing',true);
         return ['eventos' => $eventos, 'totalPages' => $totalPages];
         // Puedes manipular los datos según tus necesidades
 
     }
     public function getEventosJ(Request $request)
-    {
-        Cache::put('procesing', 'iniciando', 20);
-        // Establecer el indicador de bloqueo
-        // sleep(2);
-        Cache::put('procesing', 'iniciando2', 20);
-        $jsonFilePath = public_path('../src/assets/eventosP.json');
+{
+    Cache::put('procesing', 'iniciando', 20);
+    Cache::put('procesing', 'iniciando2', 20);
 
-// Verificar si el archivo existe antes de intentar leerlo
-        if (file_exists($jsonFilePath)) {
-            // Leer el contenido del archivo JSON
-            $jsonContent = file_get_contents($jsonFilePath);
+    $page = $request->input('page', 1);
+    $per_page = $request->input('per_page', 5);
 
-            // Decodificar el JSON a un array o un objeto según tus necesidades
-            $data = json_decode($jsonContent, true); // true para obtener un array asociativo
+    $jsonFilePath = public_path('../src/assets/eventosP.json');
 
-            // Ahora `$data` contiene la información del archivo JSON
-            // Puedes trabajar con la variable `$data` según tus necesidades
-        }
+    // Verificar si el archivo existe antes de intentar leerlo
+    if (file_exists($jsonFilePath)) {
+        $jsonContent = file_get_contents($jsonFilePath);
+        $data = json_decode($jsonContent, true); // true para obtener un array asociativo
 
-        // Obtener el contenido de la respuesta en formato JSON
+        // Filtrar los eventos según la paginación
+        $startIndex = ($page - 1) * $per_page;
+        $eventos = array_slice($data['data'], $startIndex, $per_page);
 
-        $eventos = [];
-        foreach ($data['data'] as $key => $evento) {
-            $eventos[$key] = [];
+        // Calcular el total de páginas
+        $totalPages = ceil(count($data['data']) / $per_page);
 
-            $eventos[$key]["nombre"] = $evento["nombre"];
-            $eventos[$key]["ubicacion"] = $evento["ubicacion"];
-            $eventos[$key]["tipoMetraje"] = $evento["tipoMetraje"];
-            $eventos[$key]["tipoFestival"] = $evento["tipoFestival"];
-            $eventos[$key]["imagen"] = $evento["imagen"];
-            $eventos[$key]["banner"] = $evento["banner"];
-            $eventos[$key]["url"] = $evento["url"];
-            $eventos[$key]["tasa"] = $evento["tasa"];
-            $eventos[$key]["fechaLimite"] = $evento["fechaLimite"];
-
-            $eventos[$key]["nombre"] = ($eventos[$key]["nombre"] !== "") ? $eventos[$key]["nombre"] : "No Especificado";
-            $eventos[$key]["ubicacion"] = ($eventos[$key]["ubicacion"] !== "") ? $eventos[$key]["ubicacion"] : "No Especificado";
-            $eventos[$key]["tipoMetraje"] = ($eventos[$key]["tipoMetraje"] !== "") ? $eventos[$key]["tipoMetraje"] : "No Especificado";
-            $eventos[$key]["tipoFestival"] = ($eventos[$key]["tipoFestival"] !== "") ? $eventos[$key]["tipoFestival"] : "No Especificado";
-            $eventos[$key]["imagen"] = ($eventos[$key]["imagen"] !== "") ? $eventos[$key]["imagen"] : "No Especificado";
-            $eventos[$key]["banner"] = ($eventos[$key]["banner"] !== "") ? $eventos[$key]["banner"] : "No Especificado";
-            $eventos[$key]["url"] = ($eventos[$key]["url"] !== "") ? $eventos[$key]["url"] : "No Especificado";
-            $eventos[$key]["tasa"] = ($eventos[$key]["tasa"] !== "") ? $eventos[$key]["tasa"] : "No Especificado";
-            $eventos[$key]["fechaLimite"] = ($eventos[$key]["fechaLimite"] !== "") ? $eventos[$key]["fechaLimite"] : "No Especificado";
-            $eventos[$key]["fuente"]='JSON LOCAL';
-            $totalPages = 1;
-
-        }
-        Cache::forget('procesing');
-        return ['status'=>true,'eventos' => $eventos, 'totalPages' => $totalPages];
         // Puedes manipular los datos según tus necesidades
+        foreach ($eventos as $key => &$evento) {
+            // ... (tu lógica actual)
+            $evento["fuente"] = 'JSON LOCAL';
+        }
 
+        Cache::put('procesing',true);
+        return ['status' => true, 'eventos' => $eventos, 'totalPages' => $totalPages];
     }
+}
+
 }
