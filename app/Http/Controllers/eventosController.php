@@ -22,10 +22,10 @@ class eventosController extends Controller
     public function extractFestivalData(Request $request)
     {
 
-            Cache::put('procesing', 'iniciando', 60);
+            Cache::put('procesing', 'iniciando', 20);
             // Establecer el indicador de bloqueo
             sleep(2);
-            Cache::put('procesing', 'iniciando2', 60);
+            Cache::put('procesing', 'iniciando2', 20);
 
 
             $pages = null !== $request->input('pages') ? (int) $request->input('pages') : 1;
@@ -200,14 +200,14 @@ class eventosController extends Controller
 
                         // Añade más campos según sea necesario
                         $data[] = [
-                            'title' => $title,
-                            'country' => $country,
-                            'duration' => $durations,
-                            'image_front' => $imageFront,
-                            'image_banner' => $imageBanner,
-                            'redirect_url' => $redirectUrl,
-                            'fees' => $fees,
-                            'deadline' => $deadline,
+                            'nombre' => $title,
+                            'ubicacion' => $country,
+                            'duracion' => $durations,
+                            'imagen' => $imageFront,
+                            'banner' => $imageBanner,
+                            'url' => $redirectUrl,
+                            'tasa' => $fees,
+                            'fechaLimite' => $deadline,
                             // Añade más campos según sea necesario
                         ];
 
@@ -228,15 +228,15 @@ class eventosController extends Controller
 
             // Puedes devolver los datos como respuesta o hacer lo que necesites con ellos
             Cache::forget('procesing');
-            return response()->json(['status' => true, 'data' => $dataTotal]);
+            return response()->json(['status' => true, 'eventos' => $dataTotal]);
         }
 
     public function getEventos(Request $request)
     {
-        Cache::put('procesing', 'iniciando', 60);
+        Cache::put('procesing', 'iniciando', 20);
             // Establecer el indicador de bloqueo
             sleep(2);
-        Cache::put('procesing', 'iniciando2', 60);
+        Cache::put('procesing', 'iniciando2', 20);
         $apiUrl = 'https://eduardoandres.000webhostapp.com/wp-json/wp/v2/eventos';
         $page = $request->input('page');
         $orderby = 'acm_fields.' . $request->input('orderby');
@@ -321,10 +321,10 @@ class eventosController extends Controller
     }
     public function getEventosJ(Request $request)
     {
-        Cache::put('procesing', 'iniciando', 60);
+        Cache::put('procesing', 'iniciando', 20);
             // Establecer el indicador de bloqueo
             // sleep(2);
-        Cache::put('procesing', 'iniciando2', 60);
+        Cache::put('procesing', 'iniciando2', 20);
         $jsonFilePath = public_path('../src/assets/eventosP.json');
 
 // Verificar si el archivo existe antes de intentar leerlo
@@ -342,36 +342,32 @@ if (file_exists($jsonFilePath)) {
         // Obtener el contenido de la respuesta en formato JSON
 
         $eventos = [];
-        foreach ($data as $key => $evento) {
+        foreach ($data['data'] as $key => $evento) {
             $eventos[$key] = [];
-            $eventos[$key]["id"] = $evento["Id_evento"];
-            $eventos[$key]["imagen"] = $evento["Imagen"];
-            $eventos[$key]["nombre"] = $evento["Nombre"];
-            $eventos[$key]["tasa"] = $evento["Tasa"];
-            $eventos[$key]["fuente"] = $evento["Fuente"];
-            $eventos[$key]["facebook"] = $evento["Facebook"];
-            $eventos[$key]["fechaLimite"] = $evento["Fechalimite"];
-            $eventos[$key]["url"] = $evento["Url"];
-            $eventos[$key]["ubicacion"] = $evento["Ubicacion"];
+
+            $eventos[$key]["nombre"] = $evento["nombre"];
+            $eventos[$key]["ubicacion"] = $evento["ubicacion"];
+            $eventos[$key]["duracion"] = $evento["duracion"];
+            $eventos[$key]["imagen"] = $evento["imagen"];
+            $eventos[$key]["banner"] = $evento["banner"];
+            $eventos[$key]["url"] = $evento["url"];
+            $eventos[$key]["tasa"] = $evento["tasa"];
+            $eventos[$key]["fechaLimite"] = $evento["fechaLimite"];
 
 
-            $eventos[$key]["id"] = ($eventos[$key]["id"] !== "") ? $eventos[$key]["id"] : "No Especificado";
-            $eventos[$key]["imagen"] = ($eventos[$key]["imagen"] !== "") ? $eventos[$key]["imagen"] : "No Especificado";
+
             $eventos[$key]["nombre"] = ($eventos[$key]["nombre"] !== "") ? $eventos[$key]["nombre"] : "No Especificado";
-            $eventos[$key]["tasa"] = ($eventos[$key]["tasa"] !== "") ? $eventos[$key]["tasa"] : "No Especificado";
-            $eventos[$key]["fuente"] = ($eventos[$key]["fuente"] !== "") ? $eventos[$key]["fuente"] : "No Especificado";
-            $eventos[$key]["facebook"] = ($eventos[$key]["facebook"] !== "") ? $eventos[$key]["facebook"] : "No Especificado";
-            $eventos[$key]["fechaLimite"] = ($eventos[$key]["fechaLimite"] !== "") ? $eventos[$key]["fechaLimite"] : "No Especificado";
-            $eventos[$key]["url"] = ($eventos[$key]["url"] !== "") ? $eventos[$key]["url"] : "No Especificado";
             $eventos[$key]["ubicacion"] = ($eventos[$key]["ubicacion"] !== "") ? $eventos[$key]["ubicacion"] : "No Especificado";
+            $eventos[$key]["duracion"] = ($eventos[$key]["duracion"] !== "") ? $eventos[$key]["duracion"] : "No Especificado";
+            $eventos[$key]["imagen"] = ($eventos[$key]["imagen"] !== "") ? $eventos[$key]["imagen"] : "No Especificado";
+            $eventos[$key]["banner"] = ($eventos[$key]["banner"] !== "") ? $eventos[$key]["banner"] : "No Especificado";
+            $eventos[$key]["url"] = ($eventos[$key]["url"] !== "") ? $eventos[$key]["url"] : "No Especificado";
+            $eventos[$key]["tasa"] = ($eventos[$key]["tasa"] !== "") ? $eventos[$key]["tasa"] : "No Especificado";
+            $eventos[$key]["fechaLimite"] = ($eventos[$key]["fechaLimite"] !== "") ? $eventos[$key]["fechaLimite"] : "No Especificado";
 
-            $headers = get_headers($url, 1);
-            if (isset($headers['X-WP-TotalPages'])) {
-                $totalPages = (int) $headers['X-WP-TotalPages'];
 
-            } else {
-                $totalPages = 'El encabezado X-WP-TotalPages no está presente en la respuesta.';
-            }
+                $totalPages = 1;
+
         }
         Cache::forget('procesing');
         return ['eventos' => $eventos, 'totalPages' => $totalPages];
