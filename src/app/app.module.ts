@@ -16,6 +16,7 @@ import { PopUpsModule } from 'src/pop-ups/pop-ups.module';
 import {FormsModule,ReactiveFormsModule } from '@angular/forms';
 import * as $from from 'jquery';
 import gsap from 'gsap';
+import { EmptyArrayPipe } from './pipes/empty-array.pipe';
 
 
 
@@ -27,6 +28,7 @@ import gsap from 'gsap';
     Ruta3Component,
     Ruta4Component,
     LogInComponent,
+    EmptyArrayPipe,
   ],
   imports: [
     BrowserModule,

@@ -34,7 +34,7 @@
         {
             "nombre": "accordi @ DISACCORDI International Short Film Festival",
             "ubicacion": "Italy",
-            "tipoFestival": "A",
+            "tipoFestival": "B",
             "tipoMetraje": [
                 "No Especificado"
             ],
@@ -49,7 +49,7 @@
         {
             "nombre": "Acid’Anime Contest",
             "ubicacion": "France",
-            "tipoFestival": "A",
+            "tipoFestival": "C",
             "tipoMetraje": [
                 "No Especificado"
             ],
@@ -95,7 +95,7 @@
         {
             "nombre": "American Documentary And Animation Film Festival",
             "ubicacion": "USA",
-            "tipoFestival": "A",
+            "tipoFestival": "C",
             "tipoMetraje": [
                 "No Especificado"
             ],
