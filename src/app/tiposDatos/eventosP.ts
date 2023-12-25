@@ -6,7 +6,7 @@ type tipo_metraje='cortometraje'|'mediometraje'|'largometraje';
 type tipo_festival='a'|'b'|'c';
 type fuente='festHome'|'movibeta'|'filmfreeway'|'shortfilmdepot'|'animationfestivals';
 type tasa = {
-    bool: boolean;
+    bool: number;
     text: string;
   };
 export type eventoP = {

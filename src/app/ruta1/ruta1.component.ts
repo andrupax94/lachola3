@@ -23,7 +23,7 @@ export class Ruta1Component {
     public totalPages: number = 1;
 
     public it = false;
-    public contador = 1;
+    public contador = 0;
 
     constructor(private http: HttpClient, private factory: FactoryService) {
 
@@ -40,10 +40,8 @@ export class Ruta1Component {
 
     async buscaEventosIt() {
         this.it = true;
-        while (this.it) {
-
+        while (this.it&&this.contador<2) {
             this.buscaEventos();
-            this.contador++;
             await this.esperar(500);
         }
     }
@@ -77,6 +75,7 @@ export class Ruta1Component {
         });
     }
     async buscaEventos() {
+        this.contador++;
         let params = new HttpParams({ fromString: 'name=term' });
         params = params.set('page', this.page);
         params = params.set('orderby', this.orderby);
@@ -84,10 +83,13 @@ export class Ruta1Component {
         params = params.set('order', this.order);
         this.http.post<any>(environment.back + 'getEventosJ', params, {}).subscribe({
             next: (data) => {
+
                 if (data.status !== true) {
                     console.log(data.status);
+                    this.contador--;
                 }
                 else {
+                    this.contador=0;
                     this.it = false;
                     this.totalPages = data.totalPages
                     data.eventos.forEach((evt: any) => {
@@ -96,22 +98,26 @@ export class Ruta1Component {
                         aux.banner = evt["banner"];
                         aux.imagen = evt["imagen"];
                         aux.nombre = evt["nombre"];
-                        aux.tasa=[];
-                        if (evt["tasa"].indexOf('FREE') !== -1 && evt["tasa"].indexOf('free') !== -1 && evt["tasa"].indexOf('0') !== -1) {
-                            aux.tasa.bool = false;
+                        aux.tasa=[[]];
+                        aux.tasa.text=this.factory.arrayToString(evt["tasa"]);
+                        if(evt["tasa"].length>1)
+                            aux.tasa.bool=2;
+                        else{
+                            if (aux.tasa.text.indexOf('FREE') === -1 && aux.tasa.text.indexOf('free') === -1 && aux.tasa.text.indexOf('0') === -1) {
+                                aux.tasa.bool = 0;
+                            }
+                            else {
+                                aux.tasa.bool = 1;
+                            }
                         }
-                        else {
-                            aux.tasa.bool = true;
-                        }
-                        aux.tasa.text = evt["tasa"];
 
                         aux.ubicacion = evt["ubicacion"];
                         aux.url = this.factory.stringToArray(evt["url"]);
                         aux.fuente = evt["fuente"];
                         aux.fechaLimite = evt["fechaLimite"];
                         aux.descripcion = evt["descripcion"];
+                        aux.tipoFestival = (String)(evt["tipoFestival"]).toLowerCase();
                         aux.tipoMetraje = evt["tipoMetraje"];
-                        aux.tipoFestival = evt["tipoFestival"];
                         // aux.fechaInicio=evt["fechaInicio"];
                         // aux.categoria=evt["categoria"];
                         // aux.telefono=evt["telefono"];
@@ -128,6 +134,7 @@ export class Ruta1Component {
                 }
             }, error: (error) => {
                 this.it = false;
+                this.contador=0;
                 console.log(error);
             }
         });

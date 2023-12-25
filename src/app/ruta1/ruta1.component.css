@@ -15,9 +15,12 @@ td {
 }
 
 tr:first-child>td {
-    font-size: 14px;
+    font-size: 12px;
+    padding: 15px !important;
+    text-align: center;
+    background-color: var(--color-terciary);
     font-weight: bold;
-    background-color: transparent;
+    color: white;
 }
 
 .festivalNombre div {
@@ -36,4 +39,42 @@ table {
     margin: 0 auto;
     overflow: hidden;
     overflow-y: auto;
+    border-spacing: 3px;
+    border-collapse: separate;
+}
+
+.tasa {}
+
+.tasa i {
+    font-size: 20px;
+}
+
+.tasa_n i {
+    color: grey;
+}
+
+.tasa_s i {
+    color: green;
+}
+
+.tasa_t i {
+    color: orange;
+}
+
+.tipo_festival {
+    width: 20px;
+    height: 20px;
+    color: white;
+}
+
+a {
+    background-color: green;
+}
+
+b {
+    background-color: black;
+}
+
+c {
+    background-color: orange;
 }
