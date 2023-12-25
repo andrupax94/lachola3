@@ -21,12 +21,12 @@ export class Ruta1Component {
     public per_page: number = 5;
     public order: string = 'asc';
     public totalPages: number = 1;
-
+    public compararFechas!:Function;
     public it = false;
     public contador = 0;
 
     constructor(private http: HttpClient, private factory: FactoryService) {
-
+        this.compararFechas=factory.differenceInDays;
 
     }
 
@@ -76,6 +76,7 @@ export class Ruta1Component {
     }
     async buscaEventos() {
         this.contador++;
+
         let params = new HttpParams({ fromString: 'name=term' });
         params = params.set('page', this.page);
         params = params.set('orderby', this.orderby);
@@ -89,6 +90,7 @@ export class Ruta1Component {
                     this.contador--;
                 }
                 else {
+                    this.eventoP=[];
                     this.contador=0;
                     this.it = false;
                     this.totalPages = data.totalPages

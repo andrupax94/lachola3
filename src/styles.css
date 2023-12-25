@@ -323,8 +323,6 @@ table tr {}
 
 table td {}
 
-table tr:nth-child(1) td {}
-
 table tr:nth-child(2n) td {}
 
 table tr:nth-child(2n+1) td {}

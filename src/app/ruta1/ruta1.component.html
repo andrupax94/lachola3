@@ -15,7 +15,7 @@
             </div>
         </td>
         <td>
-            <div *ngFor="let metraje of evento.tipoMetraje" class="badge badge-secondary">{{metraje}}</div>
+            <div *ngFor="let metraje of evento.tipoMetraje" class="badge bg-secondary">{{metraje}}</div>
         </td>
         <td>
             <span class="tasa tasa_n" title="{{evento.tasa.text}}" *ngIf="evento.tasa.bool===0"><i
@@ -36,12 +36,19 @@
                 {{evento.tipoFestival.toUpperCase()}}
             </span>
         </td>
-        <td>{{evento.fechaLimite}}</td>
         <td>
-            <div class="badge badge-secondary">{{evento.fuente}}</div>
+            <div class="badge"
+                [class.bg-primary]="compararFechas(evento.fechaLimite)>=3&&compararFechas(evento.fechaLimite)<10"
+                [class.bg-danger]="compararFechas(evento.fechaLimite)<3"
+                [class.bg-success]="compararFechas(evento.fechaLimite)>=10">
+                {{evento.fechaLimite}}</div>
+        </td>
+        <td>
+            <div class="badge bg-secondary" *ngIf="evento.fuente==='JSON LOCAL'">{{evento.fuente}}</div>
         </td>
     </tr>
 </table>
 <div class="numerations">
-    <div *ngFor="let _ of totalPages | emptyArray; let i = index"></div>
+    <div (click)="page=i+1;buscaEventosIt()" [class.active]="i===page-1"
+        *ngFor="let _ of totalPages | emptyArray; let i = index">{{i+1}}</div>
 </div>

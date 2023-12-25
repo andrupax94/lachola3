@@ -1,6 +1,6 @@
 .festivalNombre {
     display: flex;
-    width: 300px;
+    width: 250px !important;
 }
 
 td {
@@ -11,7 +11,30 @@ td {
 td span,
 td {
     font-size: 12px;
-    background-color: transparent;
+}
+
+td>div {
+    background-color: transparent !important;
+}
+
+tr:nth-child(2n+1) {
+    background-color: #eaeaea;
+}
+
+tr:nth-child(2n) {
+    background-color: lightgray;
+}
+
+tr:not(tr:nth-child(1)) {
+    cursor: pointer;
+}
+
+tr:not(tr:nth-child(1)):hover {
+    background-color: rgb(166, 166, 166);
+}
+
+tr:not(tr:nth-child(1)):hover span {
+    color: white !important;
 }
 
 tr:first-child>td {
@@ -21,6 +44,15 @@ tr:first-child>td {
     background-color: var(--color-terciary);
     font-weight: bold;
     color: white;
+}
+
+.badge {
+    color: white !important;
+    border-radius: 1px !important;
+    -webkit-border-radius: 1px !important;
+    -moz-border-radius: 1px !important;
+    -ms-border-radius: 1px !important;
+    -o-border-radius: 1px !important;
 }
 
 .festivalNombre {
@@ -34,18 +66,20 @@ tr:first-child>td {
     width: 50px;
     height: 50px;
     background-color: transparent;
+    border-radius: 4px;
+    box-shadow: 3px 3px 3px -3px black;
 }
 
 .festivalNombre span {
     width: 150px;
-    /* Muestra hasta 3 lÃÂ­neas */
+    /* Muestra hasta 3 lÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ­neas */
     text-overflow: ellipsis;
     margin: auto;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
-    /* Muestra hasta 3 lÃÂ­neas */
+    /* Muestra hasta 3 lÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ­neas */
     display: -moz-box;
     -moz-box-orient: vertical;
     text-transform: capitalize;
@@ -60,7 +94,18 @@ table {
     border-collapse: separate;
 }
 
-.tasa {}
+.tasa {
+    margin: 0 auto;
+    border-radius: 20px;
+    text-align: center;
+    padding: 0px !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: 30px;
+    width: 30px;
+    box-shadow: 1px 1px 3px -2px black !important;
+}
 
 .tasa i {
     font-size: 20px;
@@ -79,10 +124,15 @@ table {
 }
 
 .tipo_festival {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     color: white !important;
     margin: 0 auto;
+    font-size: 11px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1px;
 }
 
 .a {
@@ -95,4 +145,36 @@ table {
 
 .c {
     background-color: orange !important;
+}
+
+.numerations {
+    position: relative;
+    width: auto;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.numerations div {
+    width: 30px;
+    height: 30px;
+    background-color: var(--color-terciary);
+    padding: 5px;
+    color: white;
+    margin: 0px 2px;
+    cursor: pointer;
+    opacity: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+}
+
+.numerations div:hover {
+    opacity: 1;
+}
+
+.numerations .active {
+    background-color: var(--color-primary);
 }

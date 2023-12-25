@@ -25,6 +25,37 @@ export class FactoryService {
             reader.readAsDataURL(file);
         });
     }
+    public static isValidDateFormat3(dateString: string) {
+        // Expresión regular para el formato "DD-MM-YYYY"
+        const regex = /^\d{2}-\d{2}-\d{4}$/;
+
+        // Comprobar si la cadena coincide con la expresión regular
+        return regex.test(dateString);
+    }
+    public differenceInDays(valor: string, date2: Date = new Date()): number {
+        // Convertir las fechas a milisegundos desde el 1 de enero de 1970 (época)
+        let date1;
+        if (FactoryService.isValidDateFormat3(valor)) {
+            let partes = valor.split("-");
+            // Crear un nuevo string con el formato reconocido por Date ("YYYY-MM-DD")
+            let nuevoFormato = partes[2] + "-" + partes[1] + "-" + partes[0];
+            // Crear la fecha utilizando el nuevo formato
+            date1 = new Date(nuevoFormato);
+        }
+        else {
+            date1 = new Date(valor);
+        }
+        const time1 = date1.getTime();
+        const time2 = date2.getTime();
+
+        // Calcular la diferencia en milisegundos
+        const timeDiff = Math.abs(time1 - time2);
+
+        // Calcular la diferencia en días
+        const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+
+        return daysDiff;
+    }
     public getsvg(element: HTMLElement, version: string = '', renderer?: Renderer2) {
 
         let svg: any = element.getAttribute('getsvg' + version);
