@@ -1,22 +1,32 @@
 <?php
 
-use App\Models\producto;
 use App\Models\color;
 use App\Models\diseno;
-use App\Models\modelo;
-use App\Models\material;
 use App\Models\franela;
+use App\Models\material;
+use App\Models\modelo;
+use App\Models\producto;
 use App\Models\tipo;
 use Barryvdh\Debugbar\Facades\Debugbar;
-use Mockery\Undefined;
-
-use function PHPUnit\Framework\objectHasAttribute;
 
 class misFunciones
 {
-    public static function convertirFecha($fecha, $tipoConversion) {
-        // Convertir la fecha a un objeto DateTime
-        $fechaObj = new DateTime($fecha);
+    public static function convertirFecha($fecha, $tipoConversion)
+    {
+        // Verificar si la entrada contiene "Today" o "Hoy"
+        if (stripos($fecha, 'Today') !== false || stripos($fecha, 'Hoy') !== false) {
+            // Obtener la fecha actual
+            $fechaObj = new DateTime();
+        } elseif (preg_match('/(?:Next|Final) Deadline: ([A-Za-z]+) (\d{1,2}), (\d{4})/', $fecha, $matches)) {
+            // Manejar el formato "Next Deadline: December 27, 2023" o "Final Deadline: December 27, 2023"
+            $month = $matches[1];
+            $day = $matches[2];
+            $year = $matches[3];
+            $fechaObj = new DateTime("$month $day, $year");
+        } else {
+            // Convertir la fecha a un objeto DateTime
+            $fechaObj = new DateTime($fecha);
+        }
 
         // Definir los formatos de salida según el tipo de conversión
         $formatos = [
@@ -38,7 +48,9 @@ class misFunciones
             return "Tipo de conversión no válido";
         }
     }
-    private static function obtenerMesEnPalabras2($numeroMes) {
+
+    private static function obtenerMesEnPalabras2($numeroMes)
+    {
         // Definir un array asociativo con los nombres de los meses
         $mesesEnPalabras = [
             'ene' => '01',
@@ -70,7 +82,8 @@ class misFunciones
         // Obtener el número del mes a partir de su representación en palabras
         return $mesesEnPalabras[$numeroMes];
     }
-    private static function obtenerMesEnPalabras($numeroMes) {
+    private static function obtenerMesEnPalabras($numeroMes)
+    {
         // Definir un array asociativo con los nombres de los meses
         $mesesEnPalabras = [
             '01' => 'ene',
@@ -99,12 +112,11 @@ class misFunciones
         return $image->getClientOriginalExtension();
     }
 
-
     public static function getBase64($image)
     {
 
         $flujo = fopen($image->getRealPath(), 'r');
-        $enbase64 =  base64_encode(fread($flujo, filesize($image->getRealPath())));
+        $enbase64 = base64_encode(fread($flujo, filesize($image->getRealPath())));
         fclose($flujo);
         return $enbase64;
     }
@@ -139,7 +151,6 @@ class misFunciones
         }
     }
 
-
     public static function imagen_extencion($valor, $extenciones)
     {
         if (is_string($valor)) {
@@ -169,7 +180,7 @@ class misFunciones
             misFunciones::$aprobado = false;
             $returname = false;
         }
-        return     $returname;
+        return $returname;
     }
     //desconocimiento parcial de uso
     public static function qualityBase64img($base64img, $mimeimg, $quality)
@@ -194,7 +205,6 @@ class misFunciones
                 imagegif($im, null, $quality);
         }
 
-
         $stream = ob_get_clean();
         $newB64 = base64_encode($stream);
         imagedestroy($im);
@@ -216,7 +226,6 @@ class misFunciones
 
         // Resize
         imagecopyresized($temp_thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-
 
         switch ($mimeimg) {
             case 'png':
@@ -255,10 +264,9 @@ class misFunciones
         // Get new sizes
         list($width, $height) = getimagesizefromstring(base64_decode($base64img));
 
-
         // Calcular nuevo ancho con la misma perdida o ganancia proporcial del alto (Escalar)
         $porNewHeight = ($newheight * 100) / $height;
-        $newwidth =  (int)($width * ($porNewHeight / 100));
+        $newwidth = (int) ($width * ($porNewHeight / 100));
 
         ob_start();
         $temp_thumb = imagecreatetruecolor($newwidth, $newheight);
@@ -269,7 +277,6 @@ class misFunciones
 
         // Resize
         imagecopyresized($temp_thumb, $source, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-
 
         switch ($mimeimg) {
             case 'png':
@@ -304,17 +311,15 @@ class misFunciones
         return $newB64;
     }
 
-
     public static function resizeBase64andScaleHeight($base64img, $mimeimg, $newwidth)
     {
 
         // Get new sizes
         list($width, $height) = getimagesizefromstring(base64_decode($base64img));
 
-
         // Calcular nuevo alto con la misma perdida o ganancia proporcial del ancho (Escalar)
         $porNewWidth = ($newwidth * 100) / $width;
-        $newHeight =  (int)($height * ($porNewWidth / 100));
+        $newHeight = (int) ($height * ($porNewWidth / 100));
 
         ob_start();
         $temp_thumb = imagecreatetruecolor($newwidth, $newHeight);
@@ -325,7 +330,6 @@ class misFunciones
 
         // Resize
         imagecopyresized($temp_thumb, $source, 0, 0, 0, 0, $newwidth, $newHeight, $width, $height);
-
 
         switch ($mimeimg) {
             case 'png':
@@ -364,20 +368,19 @@ class misFunciones
     /*public static function uploadInFolder($idResource, $file, $path_absolute_folder)
     {
 
-        try {
-            $date =  getdate();
-            $mime = "." . $this->getMime($file);
-            $filename = $idResource . "_" . $date["year"] . "_" . $date["mon"] . "_" . $date["mday"] . "-" .
-                $date["hours"] . "-" . $date["minutes"] . "-" . $date["seconds"] . $mime;
+    try {
+    $date =  getdate();
+    $mime = "." . $this->getMime($file);
+    $filename = $idResource . "_" . $date["year"] . "_" . $date["mon"] . "_" . $date["mday"] . "-" .
+    $date["hours"] . "-" . $date["minutes"] . "-" . $date["seconds"] . $mime;
 
-
-            move_uploaded_file($file, $path_absolute_folder . $filename);
-            return $filename;
-        } catch (Exception $e) {
-            return false;
-        }
+    move_uploaded_file($file, $path_absolute_folder . $filename);
+    return $filename;
+    } catch (Exception $e) {
+    return false;
     }
-*/
+    }
+     */
 
     public static function primary_id_producto(): int
     {
@@ -477,7 +480,7 @@ class misFunciones
                 $result = 'Fallo al crear las carpetas...';
             }
         }
-        $fecha = explode(" ", (string)$log->created_at);
+        $fecha = explode(" ", (string) $log->created_at);
         $micarpeta = '../log/' . $fecha[0];
         if (!file_exists($micarpeta)) {
             if (!mkdir($micarpeta, 0777, true)) {
@@ -488,21 +491,25 @@ class misFunciones
         fwrite($archivo, "\n-.-:v" . $log->id . "-.-:v----------------------INI(" . $fecha[1] . ")------------------------------------------------------------\n\n");
         fwrite($archivo, $mensaje . '');
         fwrite($archivo, "\n\n-.-:v" . $log->id . "-.-:v----------------------FIN(" . $fecha[1] . ")-----------------------------------------------------------\n\n");
-        if ($archivo == false)
+        if ($archivo == false) {
             $result = "Error al crear el archivo";
-        else
+        } else {
             $result = "El archivo ha sido creado";
+        }
+
         fclose($archivo);
         return $result;
     }
 
     public static function getRealIP()
     {
-        if (!empty($_SERVER['HTTP_CLIENT_IP']))
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
             return $_SERVER['HTTP_CLIENT_IP'];
+        }
 
-        if (!empty($_SERVER['HTTP_X_FORWARDED_FOR']))
+        if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
             return $_SERVER['HTTP_X_FORWARDED_FOR'];
+        }
 
         return $_SERVER['REMOTE_ADDR'];
     }
@@ -809,7 +816,6 @@ class misFunciones
                 $cedulaconpuntos = $valor[0] . $valor[1] . $valor[2] . $cedulaconpuntos;
             }
 
-
             if ($x > 3) {
 
                 $cedulaconpuntos = '.' . $valor[$x - 3] . $valor[$x - 2] . $valor[$x - 1] . $cedulaconpuntos;
@@ -840,7 +846,6 @@ class misFunciones
                 $cedulaconpuntos = $valor[0] . $valor[1] . $valor[2] . $cedulaconpuntos;
             }
 
-
             if ($x > 3) {
 
                 $cedulaconpuntos = '.' . $valor[$x - 3] . $valor[$x - 2] . $valor[$x - 1] . $cedulaconpuntos;
@@ -857,10 +862,8 @@ class misFunciones
         return ($fecha);
     }
 
-
     public static function booleano($valor)
     {
-
 
         if ($valor !== 0 && $valor !== 1 && $valor !== "0" && $valor !== "1" && $valor !== true && $valor !== false) {
             misFunciones::$aprobado = false;
@@ -868,7 +871,6 @@ class misFunciones
     }
     public static function comprobarhex($valor)
     {
-
 
         if ($valor[0] === '#' && strlen($valor) === 7) {
             $valor2 = explode('#', $valor);
@@ -891,7 +893,7 @@ class misFunciones
     {
         $pos = strpos($valor, "Ã“");
 
-        if ($pos !== FALSE) {
+        if ($pos !== false) {
             $valor = str_replace("Ã“", "Ó", $valor);
         }
         return ($valor);
@@ -909,7 +911,6 @@ class misFunciones
 
     public static function validarfecha($valor)
     {
-
 
         if (strlen($valor) === 8) {
             $ano = $valor[0] . $valor[1] . $valor[2] . $valor[3];
@@ -967,7 +968,6 @@ class misFunciones
     public static function validarcorreo($valor)
     {
 
-
         $valor = explode('@', $valor);
         if (count($valor) === 2) {
             misFunciones::min_length($valor[0], 3);
@@ -987,7 +987,7 @@ class misFunciones
             }
         }
     }
-     //hay que actualizar
+    //hay que actualizar
     public static function email($direccion)
     {
 
@@ -1027,9 +1027,9 @@ class misFunciones
         }
     }
 
-
-    public static function passmd5($valor){
-        $valor=md5($valor.'!#and#!');
+    public static function passmd5($valor)
+    {
+        $valor = md5($valor . '!#and#!');
         return $valor;
     }
     public static function palabras_clave_varios($valor, $palabrasclave)
@@ -1068,7 +1068,6 @@ class misFunciones
     //hay que actualizar
     public static function password($valor)
     {
-
 
         $permitidosnumeros = '1234567890';
         $permitidossimbolos = "!#$%&/()=?¡+-.,¿|°";
@@ -1113,36 +1112,41 @@ class misFunciones
     public static function vbase64($s, $onlyReturn = false)
     {
 
-        $s=explode('base64,',$s);
+        $s = explode('base64,', $s);
 
-        if(isset($s[1])){
-            $s=$s[1];
-        }
-        else{
-            $s=$s[0];
+        if (isset($s[1])) {
+            $s = $s[1];
+        } else {
+            $s = $s[0];
         }
         // Check if there are valid base64 characters
-        if (!preg_match('/^[a-zA-Z0-9\/\r\n+]*={0,2}$/', $s)) return false;
+        if (!preg_match('/^[a-zA-Z0-9\/\r\n+]*={0,2}$/', $s)) {
+            return false;
+        }
 
         // Decode the string in strict mode and check the results
         $decoded = base64_decode($s, true);
         if (false === $decoded) {
             return false;
-            if($onlyReturn)
-            misFunciones::$aprobado = false;
+            if ($onlyReturn) {
+                misFunciones::$aprobado = false;
+            }
+
         }
 
         // Encode the string again
         if (base64_encode($decoded) != $s) {
             return false;
-            if($onlyReturn)
-            misFunciones::$aprobado = false;
+            if ($onlyReturn) {
+                misFunciones::$aprobado = false;
+            }
+
         }
 
         return true;
 
     }
-        //desconocimiento de uso
+    //desconocimiento de uso
     public static function normaliza($cadena)
     {
         $originales = 'ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿŔŕ';
@@ -1155,11 +1159,10 @@ class misFunciones
     public static function arrayToString($valor, $property = false, $separator = ',')
     {
 
-
         $i = 1;
         $string = "";
         if (count($valor) > 0) {
-            foreach ($valor as  $vi) {
+            foreach ($valor as $vi) {
                 if ($property !== false) {
                     try {
                         if (is_object($vi) === true) {
@@ -1201,7 +1204,6 @@ class misFunciones
                             misFunciones::$aprobado = false;
                         }
                     }
-
 
                     break;
                 case 'alfanumerico':
@@ -1271,19 +1273,18 @@ class misFunciones
         $postdata = http_build_query(
             array(
                 'secret' => $secret, //secret KEy provided by google
-                'response' => $valor,                    // g-captcha-response string sent from client
-                'remoteip' => $_SERVER['REMOTE_ADDR']
+                'response' => $valor, // g-captcha-response string sent from client
+                'remoteip' => $_SERVER['REMOTE_ADDR'],
             )
         );
         $opts = array(
-            'http' =>
-            array(
-                'method'  => 'POST',
-                'header'  => 'Content-type: application/x-www-form-urlencoded',
-                'content' => $postdata
-            )
+            'http' => array(
+                'method' => 'POST',
+                'header' => 'Content-type: application/x-www-form-urlencoded',
+                'content' => $postdata,
+            ),
         );
-        $context  = stream_context_create($opts);
+        $context = stream_context_create($opts);
         $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify", false, $context);
         $response = json_decode($response);
         if ($response->success != false) {
