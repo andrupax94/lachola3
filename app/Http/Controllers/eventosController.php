@@ -76,7 +76,9 @@ class eventosController extends Controller
                     // Si no hay tasas, establece '0'
                     $fees = empty($fees) ? '0' : $fees;
                     // Agrega la fecha límite
-                    $deadline = $festivalCrawler->filter('.festival-card-status.days .date')->count() ? misFunciones::convertirFecha($festivalCrawler->filter('.festival-card-status.days .date')->text(), 4) : 'No Especificado';
+                    $deadline = [];
+                    $deadline[0] = false;
+                    $deadline[1] = $festivalCrawler->filter('.festival-card-status.days .date')->count() ? misFunciones::convertirFecha($festivalCrawler->filter('.festival-card-status.days .date')->text(), 4) : 'No Especificado';
                     // Añade más campos según sea necesario
                     $data[] = [
                         'nombre' => $title,
@@ -160,7 +162,9 @@ class eventosController extends Controller
 
                     // Si no hay tasas, establece '0'
                     $fees = empty($fees) ? '0' : $fees;
-                    $deadline = $festivalCrawler->filter('.submit-info .dates span')->count() ? misFunciones::convertirFecha($festivalCrawler->filter('.submit-info .dates span')->text(), 4) : 'No Especificado';
+                    $deadline = [];
+                    $deadline[0] = false;
+                    $deadline[1] = $festivalCrawler->filter('.submit-info .dates span')->count() ? misFunciones::convertirFecha($festivalCrawler->filter('.submit-info .dates span')->text(), 4) : 'No Especificado';
                     $data[] = [
                         'nombre' => $title,
                         'ubicacion' => $country,
@@ -208,7 +212,9 @@ class eventosController extends Controller
                     // Si no hay tasas, establece '0'
                     $fees = empty($fees) ? '0' : $fees;
                     // Agrega la fecha límite
-                    $deadline = $festivalCrawler->filter('.festival-upcoming-deadline')->count() ? misFunciones::convertirFecha($festivalCrawler->filter('.festival-upcoming-deadline')->text(), 4) : 'No Especificado';
+                    $deadline = [];
+                    $deadline[0] = false;
+                    $deadline[1] = $festivalCrawler->filter('.festival-upcoming-deadline')->count() ? misFunciones::convertirFecha($festivalCrawler->filter('.festival-upcoming-deadline')->text(), 4) : 'No Especificado';
                     // Añade más campos según sea necesario
                     $data[] = [
                         'nombre' => $title,
@@ -228,8 +234,56 @@ class eventosController extends Controller
 
                 break;
             case 'shortfilmdepot':
-                Cache::put('procesing', true);
-                return response()->json('shortfilmdepot');
+                $client = HttpClient::create([
+                    'verify_peer' => false,
+                    'cafile' => 'C:/laragon/etc/ssl/cacert.pem', // Ajusta la ruta según tu configuración
+                ]);
+                $url = 'https://www.shortfilmdepot.com';
+                $response = $client->request('GET', $url);
+                $htmlContent = $response->getContent();
+                $crawler = new Crawler($htmlContent);
+                $festivals = $crawler->filter('.onglet_home>a');
+
+                foreach ($festivals as $festival) {
+                    $festivalCrawler = new Crawler($festival);
+                    $title = $festivalCrawler->filter('.h2_tcompet')->count() ? $festivalCrawler->filter('.h2_tcompet')->text() : 'No Especificado';
+                    $country = $festivalCrawler->filter('.h1_text')->count() ? $festivalCrawler->filter('.h1_text')->text() : 'No Especificado';
+
+                    $durations = [];
+                    $durations[0] = 'No Especificado';
+                    $imageFront = $festivalCrawler->filter('.fest2:nth-child(1) table tr td:nth-child(1)>img')->attr('src');
+                    $imageFront = ($festivalCrawler->filter('.fest2:nth-child(1) table tr td:nth-child(1)>img')->count()) ?
+                    $this->extractImageUrl($url . $festivalCrawler->filter('.fest2:nth-child(1) table tr td:nth-child(1)>img')->attr('src')) : "No Especificado";
+
+                    $imageBanner = 'No Especificado';
+                    $redirectUrl = $url . $festivalCrawler->attr('href');
+
+                    $tipo_festival = 'No especificado';
+                    $fees = $festivalCrawler->filter('.fest2:nth-child(1) table tr td:nth-child(2) .h2_text img[src="/img/pict_fee.png"]')->count();
+                    // Si no hay tasas, establece '0'
+                    $fees = $fees === 0 ? '0' : 'Tiene Tasas';
+                    // Agrega la fecha límite
+                    $deadline = [];
+                    $deadline[0] = true;
+
+                    $deadline[1] = $festivalCrawler->filter('.fest2:nth-child(1) table tr>td:nth-child(2)>h2 strong:nth-child(3) span')->count() ? misFunciones::convertirFecha($festivalCrawler->filter('.fest2:nth-child(1) table tr>td:nth-child(2)>h2 strong:nth-child(3) span')->text(), 4) : 'No Especificado';
+                    // Añade más campos según sea necesario
+                    $data[] = [
+                        'nombre' => $title,
+                        'ubicacion' => $country,
+                        'tipoMetraje' => $durations,
+                        'tipoFestival' => $tipo_festival,
+                        'imagen' => $imageFront,
+                        'banner' => $imageBanner,
+                        'url' => $redirectUrl,
+                        'tasa' => $fees,
+                        'fechaLimite' => $deadline,
+                        'fuente' => 'shortfilmdepot',
+                        // Añade más campos según sea necesario
+                    ];
+                }
+                $dataTotal = $dataTotal + $data;
+
                 break;
 
             default:

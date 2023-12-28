@@ -14,7 +14,7 @@
                 "FREE to enter",
                 "12"
             ],
-            "fechaLimite": "1-01-2024"
+            "fechaLimite": [false, "1-01-2024"]
         },
         {
             "nombre": "Abidjan Animation Film Festival (FFAA)",
@@ -29,7 +29,7 @@
             "tasa": [
                 "Entry fee applies"
             ],
-            "fechaLimite": "27-12-2023"
+            "fechaLimite": [false, "27-12-2023"]
         },
         {
             "nombre": "accordi @ DISACCORDI International Short Film Festival",
@@ -44,7 +44,7 @@
             "tasa": [
                 "FREE to enter"
             ],
-            "fechaLimite": "23-09-2022"
+            "fechaLimite": [false, "23-09-2022"]
         },
         {
             "nombre": "Acid’Anime Contest",
@@ -59,7 +59,7 @@
             "tasa": [
                 "FREE to enter"
             ],
-            "fechaLimite": "01-04-2023"
+            "fechaLimite": [false, "01-04-2023"]
         },
         {
             "nombre": "Ajayu International Animation Festival",
@@ -74,7 +74,7 @@
             "tasa": [
                 "12"
             ],
-            "fechaLimite": "27-08-2022"
+            "fechaLimite": [false, "27-08-2022"]
         },
         {
             "nombre": "Amazing Fantasy Fest",
@@ -90,7 +90,7 @@
                 "Free",
                 "Entry fee applies"
             ],
-            "fechaLimite": "17-07-2024"
+            "fechaLimite": [false, "17-07-2024"]
         },
         {
             "nombre": "American Documentary And Animation Film Festival",
@@ -105,7 +105,7 @@
             "tasa": [
                 "Entry fee applies"
             ],
-            "fechaLimite": "13-01-2023"
+            "fechaLimite": [false, "13-01-2023"]
         },
         {
             "nombre": "Anchorage Film Festival",
@@ -120,7 +120,7 @@
             "tasa": [
                 "Entry fee applies"
             ],
-            "fechaLimite": "01-08-2022"
+            "fechaLimite": [false, "01-08-2022"]
         },
         {
             "nombre": "Anibar Animation Festival",
@@ -135,7 +135,7 @@
             "tasa": [
                 "Entry fee applies"
             ],
-            "fechaLimite": "31-03-2024"
+            "fechaLimite": [false, "31-03-2024"]
         },
         {
             "nombre": "Anifilm – International Festival of Animated Films (Liberec)",
@@ -150,7 +150,7 @@
             "tasa": [
                 "FREE to enter"
             ],
-            "fechaLimite": "31-12-2023"
+            "fechaLimite": [false, "31-12-2023"]
         },
         {
             "nombre": "Anilogue International Animation Festival",
@@ -165,7 +165,7 @@
             "tasa": [
                 "FREE to enter"
             ],
-            "fechaLimite": "25-08-2022"
+            "fechaLimite": [false, "25-08-2022"]
         },
         {
             "nombre": "ANIMA – Córdoba International Animation Festival",
@@ -180,7 +180,7 @@
             "tasa": [
                 "FREE to enter"
             ],
-            "fechaLimite": "15-04-2022"
+            "fechaLimite": [false, "15-04-2022"]
         },
         {
             "nombre": "Anima Cinefest",
@@ -195,7 +195,7 @@
             "tasa": [
                 "FREE to enter"
             ],
-            "fechaLimite": "31-07-2023"
+            "fechaLimite": [false, "31-07-2023"]
         },
         {
             "nombre": "ANIMA LATINA, V Latin American Animation Film Festival",
@@ -210,7 +210,7 @@
             "tasa": [
                 "FREE to enter"
             ],
-            "fechaLimite": "30-11-2022"
+            "fechaLimite": [false, "30-11-2022"]
         },
         {
             "nombre": "Anima: Brussels Animation Film Festival",
@@ -225,7 +225,7 @@
             "tasa": [
                 "FREE to enter"
             ],
-            "fechaLimite": "03-10-2022"
+            "fechaLimite": [false, "03-10-2022"]
         },
         {
             "nombre": "Animac: International Animation Film Festival",
@@ -240,7 +240,7 @@
             "tasa": [
                 "FREE to enter"
             ],
-            "fechaLimite": "16-10-2023"
+            "fechaLimite": [false, "16-10-2023"]
         },
         {
             "nombre": "Animadeba",
@@ -255,7 +255,7 @@
             "tasa": [
                 "FREE to enter"
             ],
-            "fechaLimite": "04-05-2022"
+            "fechaLimite": [false, "04-05-2022"]
         },
         {
             "nombre": "Animae Caribe International Animation & Digital Media Festival",
@@ -270,7 +270,7 @@
             "tasa": [
                 "FREE to enter"
             ],
-            "fechaLimite": "31-08-2022"
+            "fechaLimite": [false, "31-08-2022"]
         },
         {
             "nombre": "Animafantasia – International Student Animated Film Festival",
@@ -285,7 +285,7 @@
             "tasa": [
                 "FREE to enter"
             ],
-            "fechaLimite": "30-09-2023"
+            "fechaLimite": [false, "30-09-2023"]
         },
         {
             "nombre": "Animafest ZAGREB",
@@ -300,7 +300,7 @@
             "tasa": [
                 "FREE to enter"
             ],
-            "fechaLimite": "01-02-2024"
+            "fechaLimite": [false, "01-02-2024"]
         },
         {
             "nombre": "ANIMAFILM International Animation Festival",
@@ -315,7 +315,7 @@
             "tasa": [
                 "Entry fee applies"
             ],
-            "fechaLimite": "01-07-2023"
+            "fechaLimite": [false, "01-07-2023"]
         },
         {
             "nombre": "ANIMAGE – International Animation Festival of Pernambuco",
@@ -330,7 +330,7 @@
             "tasa": [
                 "FREE to enter"
             ],
-            "fechaLimite": "20-07-2021"
+            "fechaLimite": [false, "20-07-2021"]
         },
         {
             "nombre": "Animahenasyon: The Philippine Animation Festival",
@@ -345,7 +345,7 @@
             "tasa": [
                 "FREE to enter"
             ],
-            "fechaLimite": "16-09-2021"
+            "fechaLimite": [false, "16-09-2021"]
         },
         {
             "nombre": "AniMaji Festival",
@@ -360,7 +360,7 @@
             "tasa": [
                 "Entry fee applies"
             ],
-            "fechaLimite": "31-07-2023"
+            "fechaLimite": [false, "31-07-2023"]
         },
         {
             "nombre": "Animakom FEST",
@@ -375,7 +375,7 @@
             "tasa": [
                 "FREE to enter"
             ],
-            "fechaLimite": "20-10-2023"
+            "fechaLimite": [false, "20-10-2023"]
         }
     ]
 }

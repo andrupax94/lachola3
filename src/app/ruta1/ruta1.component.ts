@@ -21,12 +21,12 @@ export class Ruta1Component {
     public per_page: number = 5;
     public order: string = 'asc';
     public totalPages: number = 1;
-    public compararFechas!:Function;
+    public compararFechas!: Function;
     public it = false;
     public contador = 0;
 
     constructor(private http: HttpClient, private factory: FactoryService) {
-        this.compararFechas=factory.differenceInDays;
+        this.compararFechas = factory.differenceInDays;
 
     }
 
@@ -40,7 +40,7 @@ export class Ruta1Component {
 
     async buscaEventosIt() {
         this.it = true;
-        while (this.it&&this.contador<2) {
+        while (this.it && this.contador < 2) {
             this.buscaEventos();
             await this.esperar(500);
         }
@@ -90,8 +90,8 @@ export class Ruta1Component {
                     this.contador--;
                 }
                 else {
-                    this.eventoP=[];
-                    this.contador=0;
+                    this.eventoP = [];
+                    this.contador = 0;
                     this.it = false;
                     this.totalPages = data.totalPages
                     data.eventos.forEach((evt: any) => {
@@ -100,11 +100,11 @@ export class Ruta1Component {
                         aux.banner = evt["banner"];
                         aux.imagen = evt["imagen"];
                         aux.nombre = evt["nombre"];
-                        aux.tasa=[[]];
-                        aux.tasa.text=this.factory.arrayToString(evt["tasa"]);
-                        if(evt["tasa"].length>1)
-                            aux.tasa.bool=2;
-                        else{
+                        aux.tasa = [[]];
+                        aux.tasa.text = this.factory.arrayToString(evt["tasa"]);
+                        if (evt["tasa"].length > 1)
+                            aux.tasa.bool = 2;
+                        else {
                             if (aux.tasa.text.indexOf('FREE') === -1 && aux.tasa.text.indexOf('free') === -1 && aux.tasa.text.indexOf('0') === -1) {
                                 aux.tasa.bool = 0;
                             }
@@ -116,7 +116,9 @@ export class Ruta1Component {
                         aux.ubicacion = evt["ubicacion"];
                         aux.url = this.factory.stringToArray(evt["url"]);
                         aux.fuente = evt["fuente"];
-                        aux.fechaLimite = evt["fechaLimite"];
+                        aux.fechaLimite = [];
+                        aux.fechaLimite["varias"] = evt["fechaLimite"][0];
+                        aux.fechaLimite["fecha"] = evt["fechaLimite"][1];
                         aux.descripcion = evt["descripcion"];
                         aux.tipoFestival = (String)(evt["tipoFestival"]).toLowerCase();
                         aux.tipoMetraje = evt["tipoMetraje"];
@@ -136,7 +138,7 @@ export class Ruta1Component {
                 }
             }, error: (error) => {
                 this.it = false;
-                this.contador=0;
+                this.contador = 0;
                 console.log(error);
             }
         });

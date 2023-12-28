@@ -9,12 +9,16 @@ type tasa = {
     bool: number;
     text: string;
 };
+type fechalimite = {
+    varias: boolean;
+    fecha: Date;
+}
 export type eventoP = {
     id: number
     imagen: string
     nombre: string
     tasa: tasa
-    fechaLimite: Date
+    fechaLimite: fechalimite
     url: string[],
     fuente: fuente,
     ubicacion: string
