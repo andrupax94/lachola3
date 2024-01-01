@@ -12,6 +12,10 @@ export class FilterComponent {
 
     }
     public pageFilter = 'none';
+    cambiaPagina(e: MouseEvent) {
+        //TODO
+        let elem = e.currentTarget;
+    }
     ngOnInit() {
         this.filter.sharedData$.subscribe(nuevosDatos => {
             if (nuevosDatos === null)

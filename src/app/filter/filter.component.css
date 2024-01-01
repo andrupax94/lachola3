@@ -5,9 +5,44 @@
 
 #filtros_s_cont>nav {
     width: 100%;
+    padding-left: 50px;
 }
 
-#filtros_s_cont>nav>button {}
+#filtros_s_cont>nav>button {
+    padding: 15px 25px;
+    border: none;
+    color: white;
+    font-family: var(--font1);
+    font-weight: 700;
+    margin-top: auto;
+    margin-left: 0px;
+    opacity: 0.8;
+}
+
+#filtros_s_cont>nav>button:hover {
+    opacity: 1;
+}
+
+#filtros_s_cont>nav>button:nth-child(1) {
+    background-color: #e20303;
+}
+
+#filtros_s_cont>nav>button:nth-child(2) {
+    background-color: #3c61bc;
+}
+
+#filtros_s_cont>nav>button:nth-child(3) {
+    background-color: #cccccc;
+}
+
+#filtros_s_cont>nav>button:nth-child(4) {
+    background-color: gray;
+}
+
+.active {
+    padding: 20px 35px !important;
+    opacity: 1 !important;
+}
 
 #filtros_cont {
     width: 100%;
