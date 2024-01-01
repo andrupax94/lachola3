@@ -1,0 +1,18 @@
+<div id="filtros_s_cont" class="d-flex flex-column container-fluid">
+    <nav class="d-flex flex-row">
+        <button class="filter_top_button">Ver Eventos</button>
+        <button class="filter_top_button">Extraer Eventos</button>
+        <button class="filter_top_button disabled">Ver Subvenciones</button>
+        <button class="filter_top_button disabled">Extraer Subvenciones</button>
+    </nav>
+    <div id="filtros_cont" class="d-flex flex-column">
+        <h2><span>Opciones</span><i class="bi bi-caret-right-fill"></i></h2>
+        <div id="filtros">
+            <div *ngIf="pageFilter==='none'"></div>
+            <div *ngIf="pageFilter==='verEventos'"></div>
+            <div *ngIf="pageFilter==='exEventos'"></div>
+            <div *ngIf="pageFilter==='verSubvenciones'"></div>
+            <div *ngIf="pageFilter==='exSubvenciones'"></div>
+        </div>
+    </div>
+</div>

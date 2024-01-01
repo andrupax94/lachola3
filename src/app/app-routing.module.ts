@@ -1,26 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { Ruta1Component } from './ruta1/ruta1.component';
-import { Ruta2Component } from './ruta2/ruta2.component';
-import { Ruta3Component } from './ruta3/ruta3.component';
-import { Ruta4Component } from './ruta4/ruta4.component';
+import { VerEventosComponent } from './verEventos/verEventos.component';
+import { ExEventosComponent } from './ex-eventos/ex-eventos.component';
+import { VerSubvencionesComponent } from './ver-subvenciones/ver-subvenciones.component';
+import { ExSubvencionesComponent } from './ex-subvenciones/ex-subvenciones.component';
 import { authGuard } from './auth.guard';
 import { LogInComponent } from './log-in/log-in.component';
 
 
 const routes: Routes = [
-    { path: '', component: Ruta1Component, canActivate:  [authGuard] },
-    { path: 'ruta1', component: Ruta1Component, canActivate:  [authGuard] },
-    { path: 'ruta2', component: Ruta2Component, canActivate:  [authGuard] },
-    { path: 'ruta3', component: Ruta3Component, canActivate:  [authGuard] },
-    { path: 'ruta4', component: Ruta4Component, canActivate:  [authGuard] },
-    { path: 'logIn', component: LogInComponent, canActivate:  [authGuard] },
+    { path: '', component: VerEventosComponent, canActivate: [authGuard] },
+    { path: 'verEventos', component: VerEventosComponent, canActivate: [authGuard] },
+    { path: 'exEventos', component: ExEventosComponent, canActivate: [authGuard] },
+    { path: 'verSubvenciones', component: VerSubvencionesComponent, canActivate: [authGuard] },
+    { path: 'exSubvenciones', component: ExSubvencionesComponent, canActivate: [authGuard] },
+    { path: 'logIn', component: LogInComponent, canActivate: [authGuard] },
     // Puedes agregar más rutas según sea necesario
-  ];
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule {
 }
