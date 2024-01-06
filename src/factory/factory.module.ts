@@ -211,6 +211,11 @@ export class FactoryService {
     };
     public arrayToString(valor: Array<any>, separator: string = ',', column: string | boolean = false) {
         var aux = "";
+        if (valor === undefined)
+            return 'Valor Indefinido';
+        else if (typeof (valor) === 'string')
+            return valor;
+
         valor.forEach((element, i) => {
             if (i + 1 === valor.length) {
                 if (column === false)

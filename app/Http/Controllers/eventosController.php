@@ -64,7 +64,7 @@ class eventosController extends Controller
                     ? 'https://filmmakers.festhome.com/festival/' . $festivalCrawler->filter('.festival-card-outer div:last-child a')->attr('data-full_url')
                     : 'No Especificado';
 
-                    $tipo_festival = 'no especificado';
+                    $tipoFestival = 'no especificado';
                     $fees = [];
                     $festivalCrawler->filter('.info_icon.fa-stack.fa-lg:nth-child(3)')->each(function ($feeNode) use (&$fees) {
                         $matches = [];
@@ -84,7 +84,7 @@ class eventosController extends Controller
                         'nombre' => $title,
                         'ubicacion' => $country,
                         'tipoMetraje' => $durations,
-                        'tipoFestival' => $tipo_festival,
+                        'tipoFestival' => $tipoFestival,
                         'imagen' => $imageFront,
                         'banner' => $imageBanner,
                         'url' => $redirectUrl,
@@ -169,7 +169,7 @@ class eventosController extends Controller
                         'nombre' => $title,
                         'ubicacion' => $country,
                         'tipoMetraje' => $durations,
-                        'tipoFestival' => $tipo_festival,
+                        'tipoFestival' => $tipoFestival,
                         'imagen' => $imageFront,
                         'banner' => $imageBanner,
                         'url' => $redirectUrl,
@@ -207,7 +207,7 @@ class eventosController extends Controller
                     ? 'https://filmfreeway.com' . $festivalCrawler->filter('.BrowseFestivalsCard-buttons a:nth-child(1)')->attr('href')
                     : 'No Especificado';
 
-                    $tipo_festival = 'No especificado';
+                    $tipoFestival = 'No especificado';
                     $fees = 'No Especificado';
                     // Si no hay tasas, establece '0'
                     $fees = empty($fees) ? '0' : $fees;
@@ -220,7 +220,7 @@ class eventosController extends Controller
                         'nombre' => $title,
                         'ubicacion' => $country,
                         'tipoMetraje' => $durations,
-                        'tipoFestival' => $tipo_festival,
+                        'tipoFestival' => $tipoFestival,
                         'imagen' => $imageFront,
                         'banner' => $imageBanner,
                         'url' => $redirectUrl,
@@ -258,7 +258,7 @@ class eventosController extends Controller
                     $imageBanner = 'No Especificado';
                     $redirectUrl = $url . $festivalCrawler->attr('href');
 
-                    $tipo_festival = 'No especificado';
+                    $tipoFestival = 'No especificado';
                     $fees = $festivalCrawler->filter('.fest2:nth-child(1) table tr td:nth-child(2) .h2_text img[src="/img/pict_fee.png"]')->count();
                     // Si no hay tasas, establece '0'
                     $fees = $fees === 0 ? '0' : 'Tiene Tasas';
@@ -272,7 +272,7 @@ class eventosController extends Controller
                         'nombre' => $title,
                         'ubicacion' => $country,
                         'tipoMetraje' => $durations,
-                        'tipoFestival' => $tipo_festival,
+                        'tipoFestival' => $tipoFestival,
                         'imagen' => $imageFront,
                         'banner' => $imageBanner,
                         'url' => $redirectUrl,
@@ -305,14 +305,35 @@ class eventosController extends Controller
         // Establecer el indicador de bloqueo
         sleep(2);
         Cache::put('procesing', 'iniciando2', 20);
-        $apiUrl = 'https://eduardoandres.000webhostapp.com/wp-json/wp/v2/eventos';
+        $apiUrl = env('APP_URL_WP').'/wp-json/wp/v2/eventos';
         $page = $request->input('page');
         $orderby = 'acm_fields.' . $request->input('orderby');
         $per_page = $request->input('per_page');
         $order = $request->input('order');
 
         $params = [
-            '_fields' => 'id,acm_fields.tasa,acm_fields.telefono,acm_fields.fuente,acm_fields.facebook,acm_fields.correoElectronico,acm_fields.nombre,acm_fields.web,acm_fields.instagram,acm_fields.ubicacion,acm_fields.youtube,acm_fields.industrias,acm_fields.fechaInicio,acm_fields.fechaLimite,acm_fields.imagen.media_details.sizes.full.source_url,acm_fields.banner.media_details.full.source_url,acm_fields.tipo_metraje,acm_fields.twitterX,acm_fields.descripcion,acm_fields.tipo_festival,acm_fields.categoria,acm_fields.url',
+            '_fields' => 'id,
+            acm_fields.tasa,
+            acm_fields.url,
+            acm_fields.fuente,
+            acm_fields.facebook,
+            acm_fields.correoElectronico,
+            acm_fields.nombre,
+            acm_fields.fechaInicio,
+            acm_fields.fechaLimite,
+            acm_fields.ubicacion,
+            acm_fields.imagen.media_details.sizes.full.source_url,
+            acm_fields.tipoMetraje,
+            acm_fields.tipoFestival,
+            acm_fields.categoria,
+            acm_fields.banner.media_details.full.source_url,
+            acm_fields.web,
+            acm_fields.instagram,
+            acm_fields.youtube,
+            acm_fields.industrias,
+            acm_fields.telefono,
+            acm_fields.twitterX,
+            acm_fields.descripcion',
             'page' => $page,
             'per_page' => $per_page,
             'orderby' => $orderby,
@@ -332,48 +353,48 @@ class eventosController extends Controller
             $eventos[$key] = [];
             $eventos[$key]["id"] = $evento["id"];
             $eventos[$key]["tasa"] = isset($evento["acm_fields"]["tasa"]) ? $evento["acm_fields"]["tasa"] : "No especificado";
-            $eventos[$key]["telefono"] = isset($evento["acm_fields"]["telefono"]) ? $evento["acm_fields"]["telefono"] : "No especificado";
             $eventos[$key]["fuente"] = isset($evento["acm_fields"]["fuente"]) ? $evento["acm_fields"]["fuente"] : "No especificado";
-            $eventos[$key]["facebook"] = isset($evento["acm_fields"]["facebook"]) ? $evento["acm_fields"]["facebook"] : "No especificado";
-            $eventos[$key]["correoElectronico"] = isset($evento["acm_fields"]["correoElectronico"]) ? $evento["acm_fields"]["correoElectronico"] : "No especificado";
             $eventos[$key]["nombre"] = isset($evento["acm_fields"]["nombre"]) ? $evento["acm_fields"]["nombre"] : "No especificado";
-            $eventos[$key]["web"] = isset($evento["acm_fields"]["web"]) ? $evento["acm_fields"]["web"] : "No especificado";
             $eventos[$key]["url"] = isset($evento["acm_fields"]["url"]) ? $evento["acm_fields"]["url"] : "No especificado";
-            $eventos[$key]["instagram"] = isset($evento["acm_fields"]["instagram"]) ? $evento["acm_fields"]["instagram"] : "No especificado";
             $eventos[$key]["ubicacion"] = isset($evento["acm_fields"]["ubicacion"]) ? $evento["acm_fields"]["ubicacion"] : "No especificado";
-            $eventos[$key]["youtube"] = isset($evento["acm_fields"]["youtube"]) ? $evento["acm_fields"]["youtube"] : "No especificado";
-            $eventos[$key]["industrias"] = isset($evento["acm_fields"]["industrias"]) ? $evento["acm_fields"]["industrias"] : "No especificado";
-            $eventos[$key]["fechaInicio"] = isset($evento["acm_fields"]["fechaInicio"]) ? $evento["acm_fields"]["fechaInicio"] : "No especificado";
             $eventos[$key]["fechaLimite"] = isset($evento["acm_fields"]["fechaLimite"]) ? $evento["acm_fields"]["fechaLimite"] : "No especificado";
             $eventos[$key]["imagen"] = isset($evento["acm_fields"]["imagen"]["media_details"]["sizes"]["full"]["source_url"]) ? $evento["acm_fields"]["imagen"]["media_details"]["sizes"]["full"]["source_url"] : "No especificado";
-            $eventos[$key]["banner"] = isset($evento["acm_fields"]["banner"]["media_details"]["full"]["source_url"]) ? $evento["acm_fields"]["banner"]["media_details"]["full"]["source_url"] : "No especificado";
-            $eventos[$key]["tipo_metraje"] = isset($evento["acm_fields"]["tipo_metraje"]) ? $evento["acm_fields"]["tipo_metraje"] : "No especificado";
-            $eventos[$key]["twitterX"] = isset($evento["acm_fields"]["twitterX"]) ? $evento["acm_fields"]["twitterX"] : "No especificado";
-            $eventos[$key]["descripcion"] = isset($evento["acm_fields"]["descripcion"]) ? $evento["acm_fields"]["descripcion"] : "No especificado";
-            $eventos[$key]["tipo_festival"] = isset($evento["acm_fields"]["tipo_festival"]) ? $evento["acm_fields"]["tipo_festival"] : "No especificado";
+            $eventos[$key]["tipoMetraje"] = isset($evento["acm_fields"]["tipoMetraje"]) ? $evento["acm_fields"]["tipoMetraje"] : "No especificado";
+            $eventos[$key]["tipoFestival"] = isset($evento["acm_fields"]["tipoFestival"]) ? $evento["acm_fields"]["tipoFestival"] : "No especificado";
             $eventos[$key]["categoria"] = isset($evento["acm_fields"]["categoria"]) ? $evento["acm_fields"]["categoria"] : "No especificado";
+            $eventos[$key]["telefono"] = isset($evento["acm_fields"]["telefono"]) ? $evento["acm_fields"]["telefono"] : "No especificado";
+            $eventos[$key]["fechaInicio"] = isset($evento["acm_fields"]["fechaInicio"]) ? $evento["acm_fields"]["fechaInicio"] : "No especificado";
+$eventos[$key]["facebook"] = isset($evento["acm_fields"]["facebook"]) ? $evento["acm_fields"]["facebook"] : "No especificado";
+$eventos[$key]["correoElectronico"] = isset($evento["acm_fields"]["correoElectronico"]) ? $evento["acm_fields"]["correoElectronico"] : "No especificado";
+$eventos[$key]["web"] = isset($evento["acm_fields"]["web"]) ? $evento["acm_fields"]["web"] : "No especificado";
+$eventos[$key]["instagram"] = isset($evento["acm_fields"]["instagram"]) ? $evento["acm_fields"]["instagram"] : "No especificado";
+$eventos[$key]["youtube"] = isset($evento["acm_fields"]["youtube"]) ? $evento["acm_fields"]["youtube"] : "No especificado";
+$eventos[$key]["industrias"] = isset($evento["acm_fields"]["industrias"]) ? $evento["acm_fields"]["industrias"] : "No especificado";
+$eventos[$key]["banner"] = isset($evento["acm_fields"]["banner"]["media_details"]["full"]["source_url"]) ? $evento["acm_fields"]["banner"]["media_details"]["full"]["source_url"] : "No especificado";
+$eventos[$key]["twitterX"] = isset($evento["acm_fields"]["twitterX"]) ? $evento["acm_fields"]["twitterX"] : "No especificado";
+$eventos[$key]["descripcion"] = isset($evento["acm_fields"]["descripcion"]) ? $evento["acm_fields"]["descripcion"] : "No especificado";
 
             $eventos[$key]["tasa"] = ($eventos[$key]["tasa"] !== "") ? $eventos[$key]["tasa"] : "No Especificado";
-            $eventos[$key]["telefono"] = ($eventos[$key]["telefono"] !== "") ? $eventos[$key]["telefono"] : "No Especificado";
             $eventos[$key]["fuente"] = ($eventos[$key]["fuente"] !== "") ? $eventos[$key]["fuente"] : "No Especificado";
-            $eventos[$key]["facebook"] = ($eventos[$key]["facebook"] !== "") ? $eventos[$key]["facebook"] : "No Especificado";
-            $eventos[$key]["correoElectronico"] = ($eventos[$key]["correoElectronico"] !== "") ? $eventos[$key]["correoElectronico"] : "No Especificado";
             $eventos[$key]["nombre"] = ($eventos[$key]["nombre"] !== "") ? $eventos[$key]["nombre"] : "No Especificado";
-            $eventos[$key]["web"] = ($eventos[$key]["web"] !== "") ? $eventos[$key]["web"] : "No Especificado";
             $eventos[$key]["url"] = ($eventos[$key]["url"] !== "") ? $eventos[$key]["url"] : "No Especificado";
-            $eventos[$key]["instagram"] = ($eventos[$key]["instagram"] !== "") ? $eventos[$key]["instagram"] : "No Especificado";
             $eventos[$key]["ubicacion"] = ($eventos[$key]["ubicacion"] !== "") ? $eventos[$key]["ubicacion"] : "No Especificado";
-            $eventos[$key]["youtube"] = ($eventos[$key]["youtube"] !== "") ? $eventos[$key]["youtube"] : "No Especificado";
-            $eventos[$key]["industrias"] = ($eventos[$key]["industrias"] !== "") ? $eventos[$key]["industrias"] : "No Especificado";
-            $eventos[$key]["fechaInicio"] = ($eventos[$key]["fechaInicio"] !== "") ? $eventos[$key]["fechaInicio"] : "No Especificado";
             $eventos[$key]["fechaLimite"] = ($eventos[$key]["fechaLimite"] !== "") ? $eventos[$key]["fechaLimite"] : "No Especificado";
             $eventos[$key]["imagen"] = ($eventos[$key]["imagen"] !== "") ? $eventos[$key]["imagen"] : "No Especificado";
-            $eventos[$key]["banner"] = ($eventos[$key]["banner"] !== "") ? $eventos[$key]["banner"] : "No Especificado";
-            $eventos[$key]["tipo_metraje"] = ($eventos[$key]["tipo_metraje"] !== "") ? $eventos[$key]["tipo_metraje"] : "No Especificado";
-            $eventos[$key]["twitterX"] = ($eventos[$key]["twitterX"] !== "") ? $eventos[$key]["twitterX"] : "No Especificado";
-            $eventos[$key]["descripcion"] = ($eventos[$key]["descripcion"] !== "") ? $eventos[$key]["descripcion"] : "No Especificado";
-            $eventos[$key]["tipo_festival"] = ($eventos[$key]["tipo_festival"] !== "") ? $eventos[$key]["tipo_festival"] : "No Especificado";
+            $eventos[$key]["tipoMetraje"] = ($eventos[$key]["tipoMetraje"] !== "") ? $eventos[$key]["tipoMetraje"] : "No Especificado";
+            $eventos[$key]["tipoFestival"] = ($eventos[$key]["tipoFestival"] !== "") ? $eventos[$key]["tipoFestival"] : "No Especificado";
             $eventos[$key]["categoria"] = ($eventos[$key]["categoria"] !== "") ? $eventos[$key]["categoria"] : "No Especificado";
+            $eventos[$key]["telefono"] = ($eventos[$key]["telefono"] !== "") ? $eventos[$key]["telefono"] : "No Especificado";
+            $eventos[$key]["facebook"] = ($eventos[$key]["facebook"] !== "") ? $eventos[$key]["facebook"] : "No Especificado";
+            $eventos[$key]["fechaInicio"] = ($eventos[$key]["fechaInicio"] !== "") ? $eventos[$key]["fechaInicio"] : "No Especificado";
+$eventos[$key]["correoElectronico"] = ($eventos[$key]["correoElectronico"] !== "") ? $eventos[$key]["correoElectronico"] : "No Especificado";
+$eventos[$key]["web"] = ($eventos[$key]["web"] !== "") ? $eventos[$key]["web"] : "No Especificado";
+$eventos[$key]["instagram"] = ($eventos[$key]["instagram"] !== "") ? $eventos[$key]["instagram"] : "No Especificado";
+$eventos[$key]["youtube"] = ($eventos[$key]["youtube"] !== "") ? $eventos[$key]["youtube"] : "No Especificado";
+$eventos[$key]["industrias"] = ($eventos[$key]["industrias"] !== "") ? $eventos[$key]["industrias"] : "No Especificado";
+$eventos[$key]["banner"] = ($eventos[$key]["banner"] !== "") ? $eventos[$key]["banner"] : "No Especificado";
+$eventos[$key]["twitterX"] = ($eventos[$key]["twitterX"] !== "") ? $eventos[$key]["twitterX"] : "No Especificado";
+$eventos[$key]["descripcion"] = ($eventos[$key]["descripcion"] !== "") ? $eventos[$key]["descripcion"] : "No Especificado";
             $headers = get_headers($url, 1);
             if (isset($headers['X-WP-TotalPages'])) {
                 $totalPages = (int) $headers['X-WP-TotalPages'];
@@ -383,7 +404,7 @@ class eventosController extends Controller
             }
         }
         Cache::put('procesing', true);
-        return ['eventos' => $eventos, 'totalPages' => $totalPages];
+        return ['eventos' => $eventos, 'totalPages' => $totalPages,'status'=>true];
         // Puedes manipular los datos según tus necesidades
 
     }

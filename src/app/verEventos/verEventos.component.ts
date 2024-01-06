@@ -100,18 +100,22 @@ export class VerEventosComponent {
         params = params.set('orderby', this.orderBy);
         params = params.set('per_page', this.perPage); // Corregí this.orderBy por this.perPage
         params = params.set('order', this.order);
-        this.http.post<any>(environment.back + 'getEventosJ', params, {}).subscribe({
+        this.http.post<any>(environment.back + 'getEventos', params, {}).subscribe({
             next: (data) => {
 
-                if (data.status !== true) {
+                if (data.status !== true && data.status !== undefined) {
                     console.log(data.status);
                     this.contador--;
+                }
+                else if (data.status === undefined) {
+                    this.contador = 0;
+                    this.it = false;
                 }
                 else {
                     this.eventoP = [];
                     this.contador = 0;
                     this.it = false;
-                    this.totalPages = data.totalPages
+                    this.totalPages = data.totalPages;
                     data.eventos.forEach((evt: any) => {
                         let aux: any = [];
                         aux.id = evt["id"];
