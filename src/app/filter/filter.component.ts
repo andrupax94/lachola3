@@ -12,16 +12,37 @@ export class FilterComponent {
 
     }
     public pageFilter = 'none';
-    cambiaPagina(e: MouseEvent) {
-        //TODO
+    public bgColor = 'grey';
+    cambiaPagina(e: MouseEvent, page: string = 'none') {
         let elem = e.currentTarget;
+        this.filter.compartirDatos(page);
+    }
+    actualizaColor(nuevosDatos: string) {
+        if (nuevosDatos === null) {
+            this.filter.compartirDatos('none');
+            this.bgColor = 'gray';
+        }
+        else {
+            switch (nuevosDatos) {
+                case 'verEventos':
+                    this.bgColor = '#e20303';
+                    break;
+                case 'exEventos':
+                    this.bgColor = '#3c61bc';
+                    break;
+                case 'verSubvenciones':
+                    this.bgColor = '#cccccc';
+                    break;
+                case 'exSubvenciones':
+                    this.bgColor = 'gray';
+                    break;
+            }
+            this.pageFilter = nuevosDatos;
+        }
     }
     ngOnInit() {
         this.filter.sharedData$.subscribe(nuevosDatos => {
-            if (nuevosDatos === null)
-                this.pageFilter = 'none';
-            else
-                this.pageFilter = nuevosDatos;
+            this.actualizaColor(nuevosDatos)
         });
     }
 }

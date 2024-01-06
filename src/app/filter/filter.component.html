@@ -1,18 +1,23 @@
 <div id="filtros_s_cont" class="d-flex flex-column container-fluid">
     <nav class="d-flex flex-row">
-        <button (click)="cambiaPagina($event)" class="filter_top_button active">Ver Eventos</button>
-        <button (click)="cambiaPagina($event)" class="filter_top_button">Extraer Eventos</button>
-        <button (click)="cambiaPagina($event)" class="filter_top_button" disabled>Ver Subvenciones</button>
-        <button (click)="cambiaPagina($event)" class="filter_top_button" disabled>Extraer Subvenciones</button>
+        <button (click)="cambiaPagina($event,'verEventos')" [class.active]="pageFilter==='verEventos'"
+            class="filter_top_button">Ver
+            Eventos</button>
+        <button (click)="cambiaPagina($event,'exEventos')" [class.active]="pageFilter==='exEventos'"
+            class="filter_top_button">Extraer Eventos</button>
+        <button (click)="cambiaPagina($event)" [class.active]="pageFilter==='verSubvenciones'" class="filter_top_button"
+            disabled>Ver Subvenciones</button>
+        <button (click)="cambiaPagina($event)" [class.active]="pageFilter==='exSubvenciones'" class="filter_top_button"
+            disabled>Extraer Subvenciones</button>
     </nav>
     <div id="filtros_cont" class="d-flex flex-column">
-        <h2><span>Opciones</span><i class="bi bi-caret-right-fill"></i></h2>
+        <h2 [style.backgroundColor]="bgColor"><span>Opciones</span><i class="bi bi-caret-right-fill"></i></h2>
         <div id="filtros">
-            <div *ngIf="pageFilter==='none'"></div>
-            <div *ngIf="pageFilter==='verEventos'"></div>
-            <div *ngIf="pageFilter==='exEventos'"></div>
-            <div *ngIf="pageFilter==='verSubvenciones'"></div>
-            <div *ngIf="pageFilter==='exSubvenciones'"></div>
+            <div *ngIf="pageFilter==='none'">None</div>
+            <div *ngIf="pageFilter==='verEventos'">verEventos</div>
+            <div *ngIf="pageFilter==='exEventos'">exEventos</div>
+            <div *ngIf="pageFilter==='verSubvenciones'">verSubvenciones</div>
+            <div *ngIf="pageFilter==='exSubvenciones'">exSubvenciones</div>
         </div>
     </div>
 </div>
