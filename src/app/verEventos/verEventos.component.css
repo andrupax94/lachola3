@@ -13,7 +13,7 @@ td {
     font-size: 12px;
 }
 
-td>div {
+td:nth-child(1)>div {
     background-color: transparent !important;
 }
 

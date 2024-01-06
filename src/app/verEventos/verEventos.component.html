@@ -44,7 +44,7 @@
                 {{evento.fechaLimite.fecha}}</div>
         </td>
         <td>
-            <div class="badge bg-secondary" *ngIf="evento.fuente==='JSON LOCAL'">{{evento.fuente}}</div>
+            <div class="badge bg-secondary" *ngFor="let evt of evento.fuente">{{evt}}</div>
         </td>
     </tr>
 </table>

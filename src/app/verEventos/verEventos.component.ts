@@ -26,9 +26,8 @@ export class VerEventosComponent {
     public compararFechas!: Function;
     public it = false;
     public contador = 0;
-
-    public dateStart = new Date('1-1-1999');
-    public dateEnd = new Date('1-1-2999');
+    public dateStart: any = '1/1/1999';
+    public dateEnd: any = '1/1/2999';
     public fee = '0';
 
 
@@ -44,14 +43,13 @@ export class VerEventosComponent {
         this.buscaEventosIt();
         this.filter.compartirDatos('verEventos');
         this.filter.sharedData2$.subscribe(nuevosDatos => {
-
             this.order = this.filter.order;
             this.dateStart = this.filter.dateStart;
             this.dateEnd = this.filter.dateEnd;
             this.fee = this.filter.fee;
             this.orderBy = this.filter.orderBy;
             this.perPage = this.filter.perPage;
-
+            this.buscaEventosIt();
         });
     }
 
@@ -137,13 +135,19 @@ export class VerEventosComponent {
 
                         aux.ubicacion = evt["ubicacion"];
                         aux.url = this.factory.stringToArray(evt["url"]);
-                        aux.fuente = evt["fuente"];
+                        aux.fuente = this.factory.stringToArray(evt["fuente"]);
                         aux.fechaLimite = [];
-                        aux.fechaLimite["varias"] = evt["fechaLimite"][0];
-                        aux.fechaLimite["fecha"] = evt["fechaLimite"][1];
-                        aux.descripcion = evt["descripcion"];
+                        let aux2 = this.factory.stringToArray(evt["fechaLimite"]);
+                        let aux3 = typeof (aux2);
+                        if (aux3 === 'string')
+                            aux.fechaLimite["varias"] = false;
+                        else if (aux3 === 'object') {
+                            aux.fechaLimite["varias"] = true;
+                        }
+                        aux.fechaLimite["fecha"] = evt["fechaLimite"];
                         aux.tipoFestival = (String)(evt["tipoFestival"]).toLowerCase();
-                        aux.tipoMetraje = evt["tipoMetraje"];
+                        aux.tipoMetraje = this.factory.stringToArray(evt["tipoMetraje"]);
+                        // aux.descripcion = evt["descripcion"];
                         // aux.fechaInicio=evt["fechaInicio"];
                         // aux.categoria=evt["categoria"];
                         // aux.telefono=evt["telefono"];

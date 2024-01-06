@@ -1,7 +1,7 @@
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { LocationStrategy, HashLocationStrategy, DatePipe } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { APP_BASE_HREF } from '@angular/common';
@@ -42,6 +42,7 @@ import gsap from 'gsap';
     exports: [
     ],
     providers: [
+        DatePipe,
         { provide: LocationStrategy, useClass: HashLocationStrategy },
         { provide: APP_BASE_HREF, useValue: environment.apiUrl }
     ],

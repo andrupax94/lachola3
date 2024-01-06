@@ -303,7 +303,7 @@ class eventosController extends Controller
     {
         Cache::put('procesing', 'iniciando', 20);
         // Establecer el indicador de bloqueo
-        sleep(2);
+        //TODO crear paginacion propia, obtener todos los datos y paginarlos, ademas crear una variable en cache que almacene los datos obtenidos y que estecierto tiempo como 30min activa para no solicitar datos a wordpress cada rato
         Cache::put('procesing', 'iniciando2', 20);
         $apiUrl = env('APP_URL_WP').'/wp-json/wp/v2/eventos';
         $page = $request->input('page');

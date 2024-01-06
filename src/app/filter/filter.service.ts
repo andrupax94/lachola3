@@ -1,5 +1,7 @@
+
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { DatePipe } from '@angular/common';
 
 @Injectable({
     providedIn: 'root'
@@ -8,10 +10,10 @@ export class FilterService {
     private sharedDataSubject = new BehaviorSubject<any>(null);
     sharedData$ = this.sharedDataSubject.asObservable();
     private sharedDataSubject2 = new BehaviorSubject<any>(null);
-    sharedData2$ = this.sharedDataSubject.asObservable();
+    sharedData2$ = this.sharedDataSubject2.asObservable();
     order: 'asc' | 'desc' = 'asc';
-    dateStart: Date = new Date('11/02/2023');
-    dateEnd: Date = new Date('11/02/2023');
+    dateStart: string | null = this.datePipe.transform(new Date('11-02-1999'), 'yyyy-MM-dd');
+    dateEnd: string | null = this.datePipe.transform(new Date('11-02-2999'), 'yyyy-MM-dd');
     fee: string = '0';
     orderBy: string = 'nombre';
     perPage: number = 5;
@@ -21,7 +23,7 @@ export class FilterService {
     compartirFiltros(nuevosDatos: any) {
         this.sharedDataSubject2.next(nuevosDatos);
     }
-    constructor() {
+    constructor(private datePipe: DatePipe) {
 
     }
 }

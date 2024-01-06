@@ -11,14 +11,12 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class FilterComponent {
     constructor(private filter: FilterService, private formBuilder: FormBuilder) {
         this.verEventos = this.formBuilder.group({
-            order: [''],
-            dateStart: [''],
-            dateEnd: [''],
-            fee: [''],
-            page: [''],
-            orderBy: [''],
-            perPage: [''],
-            totalPages: ['']
+            order: String,
+            dateStart: Date,
+            dateEnd: Date,
+            fee: String,
+            orderBy: String,
+            perPage: Number,
         });
         this.exEventos = this.formBuilder.group({});
         this.verSubvenciones = this.formBuilder.group({});
@@ -82,6 +80,12 @@ export class FilterComponent {
     ngOnInit() {
         this.filter.sharedData$.subscribe(nuevosDatos => {
             this.actualizaColor(nuevosDatos)
+            this.verEventos.get('order')?.setValue(this.filter.order);
+            this.verEventos.get('dateEnd')?.setValue(this.filter.dateEnd);
+            this.verEventos.get('dateStart')?.setValue(this.filter.dateStart);
+            this.verEventos.get('fee')?.setValue(this.filter.fee);
+            this.verEventos.get('orderBy')?.setValue(this.filter.orderBy);
+            this.verEventos.get('perPage')?.setValue(this.filter.perPage);
         });
     }
 }

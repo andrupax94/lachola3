@@ -17,15 +17,40 @@
             <form [formGroup]="verEventos" (ngSubmit)="verEventosSubmit()" class="row"
                 *ngIf="pageFilter==='verEventos'">
                 <div class="col-12 col-sm-5 col-md-4">
-                    <select type="text" placeholder="Ordenar En:" formControlName="orderBy">
+                    <select (change)="verEventosSubmit()" type="text" placeholder="Ordenar En:" [value]=""
+                        formControlName="order">
+                        <option value="">Ordenar En:</option>
                         <option value="asc">Ascendente</option>
                         <option value="desc">Decendente</option>
                     </select>
                 </div>
                 <div class="col-12 col-sm-5 col-md-4">
-                    <select type="text" placeholder="Ordenar Por:" formControlName="order">
+                    <select (change)="verEventosSubmit()" type="text" placeholder="Ordenar Por:"
+                        formControlName="orderBy">
+                        <option value="">Ordenar Por</option>
                         <option value="asc">Nombre</option>
                         <option value="desc">Tasa</option>
+                        <option value="banner">Banner</option>
+                        <option value="imagen">Imagen</option>
+                        <option value="nombre">Nombre</option>
+                        <option value="descripcion">Descripcion</option>
+                        <option value="tasa">Tasa</option>
+                        <option value="categoria">Categoria</option>
+                        <option value="tipoMetraje">Tipometraje</option>
+                        <option value="tipoFestival">Tipofestival</option>
+                        <option value="fechaInicio">Fechainicio</option>
+                        <option value="fechaLimite">Fechalimite</option>
+                        <option value="fuente">Fuente</option>
+                        <option value="url">Url</option>
+                        <option value="telefono">Telefono</option>
+                        <option value="correoElectronico">Correo Electronico</option>
+                        <option value="web">Web</option>
+                        <option value="facebook">Facebook</option>
+                        <option value="ubicacion">Ubicacion</option>
+                        <option value="instagram">Instagram</option>
+                        <option value="youtube">Youtube</option>
+                        <option value="industrias">Industrias</option>
+                        <option value="twitterX">Twitterx</option>
                     </select>
                 </div>
                 <div class="col-12 col-sm-5 col-md-4">
@@ -33,10 +58,10 @@
 
                 </div>
                 <div class="col-12 col-sm-5 col-md-4">
-                    <input type="text" placeholder="Fecha De:" formControlName="dateStart">
+                    <input type="date" placeholder="Fecha De:" formControlName="dateStart">
                 </div>
                 <div class="col-12 col-sm-5 col-md-4">
-                    <input type="text" placeholder="Fecha Hasta:" formControlName="dateEnd">
+                    <input type="date" placeholder="Fecha Hasta:" formControlName="dateEnd">
                 </div>
                 <div class="col-12 col-sm-5 col-md-4 d-flex flex-column">
                     <h5>Tasas</h5>
