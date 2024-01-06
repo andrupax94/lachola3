@@ -13,11 +13,69 @@
     <div id="filtros_cont" class="d-flex flex-column">
         <h2 [style.backgroundColor]="bgColor"><span>Opciones</span><i class="bi bi-caret-right-fill"></i></h2>
         <div id="filtros">
-            <div *ngIf="pageFilter==='none'">None</div>
-            <div *ngIf="pageFilter==='verEventos'">verEventos</div>
-            <div *ngIf="pageFilter==='exEventos'">exEventos</div>
-            <div *ngIf="pageFilter==='verSubvenciones'">verSubvenciones</div>
-            <div *ngIf="pageFilter==='exSubvenciones'">exSubvenciones</div>
+            <form class="row" *ngIf="pageFilter==='none'">None</form>
+            <form [formGroup]="verEventos" (ngSubmit)="verEventosSubmit()" class="row"
+                *ngIf="pageFilter==='verEventos'">
+                <div class="col-12 col-sm-5 col-md-4">
+                    <input type="text" placeholder="Ordenar Por:" formControlName="orden">
+                </div>
+                <div class="col-12 col-sm-5 col-md-4">
+                    <input type="text" placeholder="Fecha De:" formControlName="fecha_inicio">
+                </div>
+                <div class="col-12 col-sm-5 col-md-4">
+                    <input type="text" placeholder="Fecha Hasta:" formControlName="fecha_fin">
+                </div>
+                <div class="col-12 col-sm-5 col-md-4 d-flex flex-column">
+                    <h5>Tasas</h5>
+                    <hr>
+                    <div class="d-flex flex-column">
+                        <label><input type="checkbox" formControlName="tasa">Con Tasa</label>
+                        <label><input type="checkbox" formControlName="tasa">Sin Tasa</label>
+                        <label><input type="checkbox" formControlName="tasa">Tasa Mixta</label>
+                    </div>
+                </div>
+                <div class="col-12 col-md-7 d-flex flex-column">
+                    <h5>Fuente:</h5>
+                    <hr>
+                    <div class="row row-cols-4">
+                        <div (click)="fuenteCheck['festhome']=!fuenteCheck['festhome']"
+                            [class.fuente_check]="fuenteCheck['festhome']" class="fuente_button">
+                            <div></div>Fest Home
+                        </div>
+                        <div (click)="fuenteCheck['movibeta']=!fuenteCheck['movibeta']"
+                            [class.fuente_check]="fuenteCheck['movibeta']" class="fuente_button">
+                            <div></div>Movi Beta
+                        </div>
+                        <div (click)="fuenteCheck['animationfestivals']=!fuenteCheck['animationfestivals']"
+                            [class.fuente_check]="fuenteCheck['animationfestivals']" class="fuente_button">
+                            <div></div>Animation Festivals
+                        </div>
+                        <div (click)="fuenteCheck['filmfreeaway']=!fuenteCheck['filmfreeaway']"
+                            [class.fuente_check]="fuenteCheck['filmfreeaway']" class="fuente_button">
+                            <div></div>Film Free Away
+                        </div>
+                        <div (click)="fuenteCheck['shortfilmdepot']=!fuenteCheck['shortfilmdepot']"
+                            [class.fuente_check]="fuenteCheck['shortfilmdepot']" class="fuente_button">
+                            <div></div>Short Film Depot
+                        </div>
+                        <div class="fuente_button" disabled>
+                            <div></div>Festival 3
+                        </div>
+                        <div class="fuente_button" disabled>
+                            <div></div>Festival 2
+                        </div>
+                        <div class="fuente_button" disabled>
+                            <div></div>Festival 1
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <form [formGroup]="exEventos" (ngSubmit)="exEventosSubmit()" class="row" *ngIf="pageFilter==='exEventos'">
+                exEventos</form>
+            <form [formGroup]="verSubvenciones" (ngSubmit)="verSubvencionesSubmit()" class="row"
+                *ngIf="pageFilter==='verSubvenciones'">verSubvenciones</form>
+            <form [formGroup]="exSubvenciones" (ngSubmit)="exSubvencionesSubmit()" class="row"
+                *ngIf="pageFilter==='exSubvenciones'">exSubvenciones</form>
         </div>
     </div>
 </div>

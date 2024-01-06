@@ -54,6 +54,52 @@
 
 #filtros_cont>h2 i {}
 
-#filtros {}
+#filtros {
+    background-color: rgb(237, 237, 237);
+}
 
 #filtros div {}
+
+.fuente_button {
+    display: flex;
+    flex-direction: row;
+    background-color: grey;
+    color: white;
+    font-size: 9px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+}
+
+.fuente_button:nth-child(1) {
+    background-color: blue;
+}
+
+.fuente_button:nth-child(2) {
+    background-color: purple;
+}
+
+.fuente_button:nth-child(3) {
+    background-color: green;
+}
+
+.fuente_button:nth-child(4) {
+    background-color: greenyellow;
+}
+
+.fuente_button>div {
+    width: 20px;
+    height: 20px;
+    background-color: #e20303;
+}
+
+.fuente_check {
+    filter: none !important;
+    -webkit-filter: none !important;
+}

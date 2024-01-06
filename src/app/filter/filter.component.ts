@@ -1,6 +1,7 @@
 import { FilterService } from './filter.service';
 import { Component } from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
     selector: 'app-filter',
     templateUrl: './filter.component.html',
@@ -8,11 +9,37 @@ import { ViewEncapsulation } from '@angular/core';
     encapsulation: ViewEncapsulation.None
 })
 export class FilterComponent {
-    constructor(private filter: FilterService) {
-
+    constructor(private filter: FilterService, private formBuilder: FormBuilder) {
+        this.verEventos = this.formBuilder.group({
+            orden: [''],
+            fecha_inicio: [''],
+            fecha_fin: [''],
+            tasa: ['']
+        });
+        this.exEventos = this.formBuilder.group({});
+        this.verSubvenciones = this.formBuilder.group({});
+        this.exSubvenciones = this.formBuilder.group({});
+        this.fuenteCheck['festhome'] = true;
+        this.fuenteCheck['movibeta'] = true;
+        this.fuenteCheck['animationfestivals'] = true;
+        this.fuenteCheck['filmfreeaway'] = true;
+        this.fuenteCheck['shortfilmdepot'] = true;
     }
+    public verEventos: FormGroup;
+    public exEventos: FormGroup;
+    public verSubvenciones: FormGroup;
+    public exSubvenciones: FormGroup;
     public pageFilter = 'none';
     public bgColor = 'grey';
+    public fuenteCheck: { [key: string]: boolean } = {};
+
+
+    public verEventosSubmit() { }
+    public exEventosSubmit() { }
+    public verSubvencionesSubmit() { }
+    public exSubvencionesSubmit() { }
+
+
     cambiaPagina(e: MouseEvent, page: string = 'none') {
         let elem = e.currentTarget;
         this.filter.compartirDatos(page);

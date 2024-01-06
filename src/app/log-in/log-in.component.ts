@@ -4,16 +4,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CargaService } from 'src/factory/carga.service';
 
 @Component({
-  selector: 'app-log-in',
-  templateUrl: './log-in.component.html',
-  styleUrls: ['./log-in.component.css']
+    selector: 'app-log-in',
+    templateUrl: './log-in.component.html',
+    styleUrls: ['./log-in.component.css']
 })
 export class LogInComponent {
-public logInForm: FormGroup;
-constructor(
-    private mensaje:MensajesService,
-    private formBuilder: FormBuilder,
-    private carga:CargaService,
+    public logInForm: FormGroup;
+    constructor(
+        private mensaje: MensajesService,
+        private formBuilder: FormBuilder,
+        private carga: CargaService,
     ) {
         this.logInForm = this.formBuilder.group({
             username: ['', [Validators.required, Validators.maxLength(100)]],
@@ -23,21 +23,26 @@ constructor(
             ]]
         });
 
-}
-public submitLogIn() {
-    this.carga.to('body','',true);
-    this.carga.play();
-    setTimeout(()=>{
-        this.carga.pause();
-    },200);
-}
+    }
+    public submitLogIn() {
+        this.carga.to('body', '', true);
+        this.carga.play();
+        setTimeout(() => {
+            this.carga.pause();
+        }, 200);
+    }
 
-ngOnInit(){
 
-    $('.message a').click(function(){
-        $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-     });
 
-}
+
+
+
+    ngOnInit() {
+
+        $('.message a').click(function () {
+            $('form').animate({ height: "toggle", opacity: "toggle" }, "slow");
+        });
+
+    }
 
 }
