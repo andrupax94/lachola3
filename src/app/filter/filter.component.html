@@ -17,21 +17,34 @@
             <form [formGroup]="verEventos" (ngSubmit)="verEventosSubmit()" class="row"
                 *ngIf="pageFilter==='verEventos'">
                 <div class="col-12 col-sm-5 col-md-4">
-                    <input type="text" placeholder="Ordenar Por:" formControlName="orden">
+                    <select type="text" placeholder="Ordenar En:" formControlName="orderBy">
+                        <option value="asc">Ascendente</option>
+                        <option value="desc">Decendente</option>
+                    </select>
                 </div>
                 <div class="col-12 col-sm-5 col-md-4">
-                    <input type="text" placeholder="Fecha De:" formControlName="fecha_inicio">
+                    <select type="text" placeholder="Ordenar Por:" formControlName="order">
+                        <option value="asc">Nombre</option>
+                        <option value="desc">Tasa</option>
+                    </select>
                 </div>
                 <div class="col-12 col-sm-5 col-md-4">
-                    <input type="text" placeholder="Fecha Hasta:" formControlName="fecha_fin">
+                    <input type="number" placeholder="N. De Elementos:" formControlName="perPage">
+
+                </div>
+                <div class="col-12 col-sm-5 col-md-4">
+                    <input type="text" placeholder="Fecha De:" formControlName="dateStart">
+                </div>
+                <div class="col-12 col-sm-5 col-md-4">
+                    <input type="text" placeholder="Fecha Hasta:" formControlName="dateEnd">
                 </div>
                 <div class="col-12 col-sm-5 col-md-4 d-flex flex-column">
                     <h5>Tasas</h5>
                     <hr>
                     <div class="d-flex flex-column">
-                        <label><input type="checkbox" formControlName="tasa">Con Tasa</label>
-                        <label><input type="checkbox" formControlName="tasa">Sin Tasa</label>
-                        <label><input type="checkbox" formControlName="tasa">Tasa Mixta</label>
+                        <label><input type="checkbox" formControlName="fee">Con Tasa</label>
+                        <label><input type="checkbox" formControlName="fee">Sin Tasa</label>
+                        <label><input type="checkbox" formControlName="fee">Tasa Mixta</label>
                     </div>
                 </div>
                 <div class="col-12 col-md-7 d-flex flex-column">
@@ -69,6 +82,7 @@
                         </div>
                     </div>
                 </div>
+                <input type="submit">
             </form>
             <form [formGroup]="exEventos" (ngSubmit)="exEventosSubmit()" class="row" *ngIf="pageFilter==='exEventos'">
                 exEventos</form>

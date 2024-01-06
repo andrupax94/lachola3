@@ -19,13 +19,18 @@ export class VerEventosComponent {
     private apiUrl = 'assets/eventosP.json';
     public eventoP: eventoP[] = [];
     public page: number = 1;
-    public orderby: string = 'fechaInicio';
-    public per_page: number = 5;
+    public orderBy: string = 'fechaInicio';
     public order: string = 'asc';
+    public perPage: number = 5;
     public totalPages: number = 1;
     public compararFechas!: Function;
     public it = false;
     public contador = 0;
+
+    public dateStart = new Date('1-1-1999');
+    public dateEnd = new Date('1-1-2999');
+    public fee = '0';
+
 
     constructor(private http: HttpClient, private factory: FactoryService, private filter: FilterService) {
         this.compararFechas = factory.differenceInDays;
@@ -38,6 +43,16 @@ export class VerEventosComponent {
     ngOnInit() {
         this.buscaEventosIt();
         this.filter.compartirDatos('verEventos');
+        this.filter.sharedData2$.subscribe(nuevosDatos => {
+
+            this.order = this.filter.order;
+            this.dateStart = this.filter.dateStart;
+            this.dateEnd = this.filter.dateEnd;
+            this.fee = this.filter.fee;
+            this.orderBy = this.filter.orderBy;
+            this.perPage = this.filter.perPage;
+
+        });
     }
 
 
@@ -82,8 +97,8 @@ export class VerEventosComponent {
 
         let params = new HttpParams({ fromString: 'name=term' });
         params = params.set('page', this.page);
-        params = params.set('orderby', this.orderby);
-        params = params.set('per_page', this.per_page); // Corregí this.orderby por this.per_page
+        params = params.set('orderby', this.orderBy);
+        params = params.set('per_page', this.perPage); // Corregí this.orderBy por this.perPage
         params = params.set('order', this.order);
         this.http.post<any>(environment.back + 'getEventosJ', params, {}).subscribe({
             next: (data) => {

@@ -11,10 +11,14 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class FilterComponent {
     constructor(private filter: FilterService, private formBuilder: FormBuilder) {
         this.verEventos = this.formBuilder.group({
-            orden: [''],
-            fecha_inicio: [''],
-            fecha_fin: [''],
-            tasa: ['']
+            order: [''],
+            dateStart: [''],
+            dateEnd: [''],
+            fee: [''],
+            page: [''],
+            orderBy: [''],
+            perPage: [''],
+            totalPages: ['']
         });
         this.exEventos = this.formBuilder.group({});
         this.verSubvenciones = this.formBuilder.group({});
@@ -34,7 +38,15 @@ export class FilterComponent {
     public fuenteCheck: { [key: string]: boolean } = {};
 
 
-    public verEventosSubmit() { }
+    public verEventosSubmit() {
+        this.filter.order = this.verEventos.get('order')?.value;
+        this.filter.dateStart = this.verEventos.get('dateStart')?.value;
+        this.filter.dateEnd = this.verEventos.get('dateEnd')?.value;
+        this.filter.fee = this.verEventos.get('fee')?.value;
+        this.filter.orderBy = this.verEventos.get('orderBy')?.value;
+        this.filter.perPage = this.verEventos.get('perPage')?.value;
+        this.filter.compartirFiltros('verEventos');
+    }
     public exEventosSubmit() { }
     public verSubvencionesSubmit() { }
     public exSubvencionesSubmit() { }
