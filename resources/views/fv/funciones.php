@@ -11,6 +11,25 @@ use Barryvdh\Debugbar\Facades\Debugbar;
 
 class misFunciones
 {
+    public static function stringToArray($valor, $separator = ',')
+    {
+        $aux = null;
+
+        if ($valor !== null && is_string($valor)) {
+            $aux = explode($separator, $valor);
+
+            if ($aux !== null) {
+                if (is_string($aux)) {
+                    $aux = [$aux];
+                }
+            }
+        } else {
+            $aux = $valor;
+        }
+
+        return $aux;
+    }
+
     public static function filtrarEventosConFiltros($eventos, $fechaInicio, $fechaFin, $fee, $fuente)
     {
         // Filtrar por rango de fechas
@@ -21,15 +40,25 @@ class misFunciones
             return $fechaLimite >= $fechaInicio && $fechaLimite <= $fechaFin;
         })->values();
 
-        // // Filtrar por criterios sobre tasas
-        // $eventosFiltrados = collect($eventosFiltrados)->filter(function ($evento) use ($fee) {
-        //     $hasTasas = !empty($evento->tasas);
-        //     $hasNoTasas = !$hasTasas;
+        // Filtrar por criterios sobre tasas
+        $eventosFiltrados = collect($eventosFiltrados)->filter(function ($evento) use ($fee) {
+            $aux = 0;
+            $aux2 = misFunciones::stringToArray($evento["tasa"]);
+            if (count($aux2) > 1) {
+                $aux = 2;
+            } else {
+                if (!in_array('FREE', $aux2) && !in_array('free', $aux2) && !in_array('0', $aux2)) {
+                    $aux = 0;
+                } else {
+                    $aux = 1;
+                }
 
-        //     return ($fee[0] && $hasNoTasas) || ($fee[1] && $hasTasas) || ($fee[2] && $hasTasas && $hasNoTasas);
-        // })->values();
+            }
 
-        // // Puedes agregar más filtros según tus necesidades
+            return ($fee[0] && $aux === 0) || ($fee[1] && $aux === 1) || ($fee[2] && $aux === 2);
+        })->values();
+
+        // Puedes agregar más filtros según tus necesidades
 
         // // Filtrar por fuente (un ejemplo, puedes ajustarlo según tus necesidades)
         // if (!empty($fuente)) {

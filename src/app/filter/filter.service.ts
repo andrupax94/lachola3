@@ -15,8 +15,13 @@ export class FilterService {
     dateStart: string | null = this.datePipe.transform(new Date('11-02-1999'), 'yyyy-MM-dd');
     dateEnd: string | null = this.datePipe.transform(new Date('11-02-2999'), 'yyyy-MM-dd');
     fee: [boolean, boolean, boolean] = [true, true, true];
-    source: string[] = ['festhome', 'movibeta', 'animationfestivals', 'filmfreeaway', 'shortfilmdepot'];
-    orderBy: string = 'fechaLimite';
+    source: { [key: string]: boolean } = {
+        'festhome': true,
+        'movibeta': true,
+        'animationfestivals': true,
+        'filmfreeaway': true,
+        'shortfilmdepot': true
+    }; orderBy: string = 'fechaLimite';
     perPage: number = 5;
     compartirDatos(nuevosDatos: any) {
         this.sharedDataSubject.next(nuevosDatos);

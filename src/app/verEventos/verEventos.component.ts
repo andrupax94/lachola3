@@ -19,7 +19,7 @@ export class VerEventosComponent {
     private apiUrl = 'assets/eventosP.json';
     public eventoP: eventoP[] = [];
     public page: number = 1;
-    public orderBy: string = 'fechaInicio';
+    public orderBy: string = 'fechaLimite';
     public order: string = 'asc';
     public perPage: number = 5;
     public totalPages: number = 1;
@@ -29,7 +29,13 @@ export class VerEventosComponent {
     public dateStart: any = '1/1/1999';
     public dateEnd: any = '1/1/2999';
     public fee = [true, true, true];
-    public source = ['festhome', 'movibeta', 'animationfestivals', 'filmfreeaway', 'shortfilmdepot'];
+    public source: { [key: string]: boolean } = {
+        'festhome': true,
+        'movibeta': true,
+        'animationfestivals': true,
+        'filmfreeaway': true,
+        'shortfilmdepot': true
+    };
 
 
     constructor(private http: HttpClient, private factory: FactoryService, private filter: FilterService) {
@@ -127,15 +133,16 @@ export class VerEventosComponent {
                         aux.imagen = evt["imagen"];
                         aux.nombre = evt["nombre"];
                         aux.tasa = [[]];
+                        let tasaA = this.factory.stringToArray(evt["tasa"]).length;
                         aux.tasa.text = this.factory.arrayToString(evt["tasa"]);
-                        if (evt["tasa"].length > 1)
+                        if (tasaA > 1)
                             aux.tasa.bool = 2;
                         else {
-                            if (aux.tasa.text.indexOf('FREE') === -1 && aux.tasa.text.indexOf('free') === -1 && aux.tasa.text.indexOf('0') === -1) {
-                                aux.tasa.bool = 0;
+                            if (aux.tasa.text.indexOf('FREE') !== -1 || aux.tasa.text.indexOf('free') !== -1 || aux.tasa.text === '0') {
+                                aux.tasa.bool = 1;
                             }
                             else {
-                                aux.tasa.bool = 1;
+                                aux.tasa.bool = 0;
                             }
                         }
 
