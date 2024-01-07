@@ -11,6 +11,33 @@ use Barryvdh\Debugbar\Facades\Debugbar;
 
 class misFunciones
 {
+    public static function paginacion($eventos, $page, $per_page, $order, $orderby)
+    {
+
+
+        // Aplicar ordenamiento
+        $sortedEventos = ($order == 'asc') ?
+            collect($eventos)->sortBy($orderby)->values() :
+            collect($eventos)->sortByDesc($orderby)->values();
+
+        // Calcular el índice de inicio y fin para la paginación
+
+        // Calcular el índice de inicio y fin para la paginación
+        $startIndex = ($page - 1) * $per_page;
+        $slicedEventos = $sortedEventos->slice($startIndex, $per_page);
+        $slicedEventos = $slicedEventos->values();
+
+        // Calcular el número total de páginas
+        $totalPages = ceil(count($sortedEventos) / $per_page);
+
+        // Devolver los eventos filtrados, ordenados y la información de paginación
+        return [
+            'eventos' => $slicedEventos,
+            'totalPages' => $totalPages,
+            'status' => true
+        ];
+    }
+
     public static function convertirFecha($fecha, $tipoConversion)
     {
         // Verificar si la entrada contiene "Today" o "Hoy"
@@ -445,7 +472,7 @@ class misFunciones
             return 0;
         }
     }
-//aparentemente sin uso
+    //aparentemente sin uso
     public static function getAprobado()
     {
         $aux = misFunciones::$aprobado;
@@ -469,7 +496,7 @@ class misFunciones
             $archivoC = $e->archivo;
             $mensaje = $e->errorLong;
         }
-        $log = new App\Models\log;
+        $log = new App\Models\log();
         $log->linea = $linea;
         $log->error = $errorTitle;
         $log->archivo = $archivoC;
@@ -888,7 +915,7 @@ class misFunciones
         $valor = str_replace("Ã±", "ñ", $valor);
         return ($valor);
     }
-//desconocimiento de uso
+    //desconocimiento de uso
     public static function conversoruft($valor)
     {
         $pos = strpos($valor, "Ã“");
