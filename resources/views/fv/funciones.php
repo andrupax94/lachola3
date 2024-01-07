@@ -11,14 +11,43 @@ use Barryvdh\Debugbar\Facades\Debugbar;
 
 class misFunciones
 {
+    public static function filtrarEventosConFiltros($eventos, $fechaInicio, $fechaFin, $fee, $fuente)
+    {
+        // Filtrar por rango de fechas
+        $fechaInicio = misFunciones::convertirFecha($fechaInicio, 5);
+        $fechaFin = misFunciones::convertirFecha($fechaFin, 5);
+        $eventosFiltrados = collect($eventos)->filter(function ($evento) use ($fechaInicio, $fechaFin) {
+            $fechaLimite = misFunciones::convertirFecha($evento["fechaLimite"], 5);
+            return $fechaLimite >= $fechaInicio && $fechaLimite <= $fechaFin;
+        })->values();
+
+        // // Filtrar por criterios sobre tasas
+        // $eventosFiltrados = collect($eventosFiltrados)->filter(function ($evento) use ($fee) {
+        //     $hasTasas = !empty($evento->tasas);
+        //     $hasNoTasas = !$hasTasas;
+
+        //     return ($fee[0] && $hasNoTasas) || ($fee[1] && $hasTasas) || ($fee[2] && $hasTasas && $hasNoTasas);
+        // })->values();
+
+        // // Puedes agregar más filtros según tus necesidades
+
+        // // Filtrar por fuente (un ejemplo, puedes ajustarlo según tus necesidades)
+        // if (!empty($fuente)) {
+        //     $eventosFiltrados = collect($eventosFiltrados)->filter(function ($evento) use ($fuente) {
+        //         return in_array($evento->fuente, $fuente);
+        //     })->values();
+        // }
+
+        return $eventosFiltrados;
+    }
+
     public static function paginacion($eventos, $page, $per_page, $order, $orderby)
     {
 
-
         // Aplicar ordenamiento
         $sortedEventos = ($order == 'asc') ?
-            collect($eventos)->sortBy($orderby)->values() :
-            collect($eventos)->sortByDesc($orderby)->values();
+        collect($eventos)->sortBy($orderby)->values() :
+        collect($eventos)->sortByDesc($orderby)->values();
 
         // Calcular el índice de inicio y fin para la paginación
 
@@ -34,7 +63,7 @@ class misFunciones
         return [
             'eventos' => $slicedEventos,
             'totalPages' => $totalPages,
-            'status' => true
+            'status' => true,
         ];
     }
 
@@ -61,6 +90,7 @@ class misFunciones
             2 => 'd-m-Y',
             3 => 'd-m-Y',
             4 => 'd-m-Y',
+            5 => 'Ymd',
             // Agrega más formatos según tus necesidades
         ];
 

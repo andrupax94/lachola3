@@ -14,7 +14,7 @@ export class FilterComponent {
             order: String,
             dateStart: Date,
             dateEnd: Date,
-            fee: String,
+            fee: this.formBuilder.array([]),
             orderBy: String,
             perPage: Number,
         });

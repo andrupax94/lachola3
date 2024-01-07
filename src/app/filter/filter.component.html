@@ -28,8 +28,8 @@
                     <select (change)="verEventosSubmit()" type="text" placeholder="Ordenar Por:"
                         formControlName="orderBy">
                         <option value="">Ordenar Por</option>
-                        <option value="asc">Nombre</option>
-                        <option value="desc">Tasa</option>
+                        <option value="nombre">Nombre</option>
+                        <option value="tasa">Tasa</option>
                         <option value="banner">Banner</option>
                         <option value="imagen">Imagen</option>
                         <option value="nombre">Nombre</option>
@@ -53,7 +53,7 @@
                         <option value="twitterX">Twitterx</option>
                     </select>
                 </div>
-                <div class="col-12 col-sm-5 col-md-4">
+                <div (change)="verEventosSubmit()" class="col-12 col-sm-5 col-md-4">
                     <input type="number" placeholder="N. De Elementos:" formControlName="perPage">
 
                 </div>

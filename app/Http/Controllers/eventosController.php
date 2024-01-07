@@ -309,7 +309,10 @@ class eventosController extends Controller
         $orderby = $request->input('orderby');
         $per_page = $request->input('per_page');
         $order = $request->input('order');
-
+        $dateStart = $request->input('dateStart');
+        $dateEnd = $request->input('dateEnd');
+        $fee = json_decode($request->input('fee'));
+        $source = json_decode($request->input('source'));
         $params = [
             '_fields' => 'id,
             acm_fields.tasa,
@@ -342,11 +345,11 @@ class eventosController extends Controller
         // Construir la URL con los parámetros
         $url = $apiUrl . '?' . http_build_query($params);
         $eventos = [];
-        if(Cache::has('eventos')) {
+        if (Cache::has('eventos')) {
             Cache::put('procesing', 'Obteniendo Datos Local', 20);
             $eventos = Cache::get('eventos');
 
-            Cache::put('eventos', $eventos, 120);
+            Cache::put('eventos', $eventos, 3);
 
         } else {
             Cache::put('procesing', 'Obteniendo Datos De WordPress', 20);
@@ -355,7 +358,6 @@ class eventosController extends Controller
 
             // Obtener el contenido de la respuesta en formato JSON
             $data = $response->json();
-
 
             foreach ($data as $key => $evento) {
                 $eventos[$key] = [];
@@ -411,9 +413,10 @@ class eventosController extends Controller
                 //     $totalPages = 'El encabezado X-WP-TotalPages no está presente en la respuesta.';
                 // }
             }
-            Cache::put('eventos', $eventos, 120);
+            Cache::put('eventos', $eventos, 3);
         }
         Cache::put('procesing', 'Organizando Datos', 20);
+        $eventos=misFunciones::filtrarEventosConFiltros($eventos,$dateStart,$dateEnd,$fee,$source);
         $eventos = misFunciones::paginacion($eventos, $page, $per_page, $order, $orderby);
         Cache::put('procesing', true, 3);
         return $eventos;

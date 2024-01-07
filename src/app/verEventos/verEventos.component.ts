@@ -28,7 +28,8 @@ export class VerEventosComponent {
     public contador = 0;
     public dateStart: any = '1/1/1999';
     public dateEnd: any = '1/1/2999';
-    public fee = '0';
+    public fee = [true, true, true];
+    public source = ['festhome', 'movibeta', 'animationfestivals', 'filmfreeaway', 'shortfilmdepot'];
 
 
     constructor(private http: HttpClient, private factory: FactoryService, private filter: FilterService) {
@@ -47,6 +48,7 @@ export class VerEventosComponent {
             this.dateStart = this.filter.dateStart;
             this.dateEnd = this.filter.dateEnd;
             this.fee = this.filter.fee;
+            this.source = this.filter.source;
             this.orderBy = this.filter.orderBy;
             this.perPage = this.filter.perPage;
             this.buscaEventosIt();
@@ -97,6 +99,10 @@ export class VerEventosComponent {
         params = params.set('page', this.page);
         params = params.set('orderby', this.orderBy);
         params = params.set('per_page', this.perPage); // Corregí this.orderBy por this.perPage
+        params = params.set('dateStart', this.dateStart); // Corregí this.orderBy por this.perPage
+        params = params.set('dateEnd', this.dateEnd); // Corregí this.orderBy por this.perPage
+        params = params.set('fee', JSON.stringify(this.fee)); // Corregí this.orderBy por this.perPage
+        params = params.set('source', JSON.stringify(this.source)); // Corregí this.orderBy por this.perPage
         params = params.set('order', this.order);
         this.http.post<any>(environment.back + 'getEventos', params, {}).subscribe({
             next: (data) => {
