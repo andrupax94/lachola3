@@ -58,14 +58,12 @@ class misFunciones
             return ($fee[0] && $aux === 0) || ($fee[1] && $aux === 1) || ($fee[2] && $aux === 2);
         })->values();
 
-        // Puedes agregar más filtros según tus necesidades
-
-        // // Filtrar por fuente (un ejemplo, puedes ajustarlo según tus necesidades)
-        // if (!empty($fuente)) {
-        //     $eventosFiltrados = collect($eventosFiltrados)->filter(function ($evento) use ($fuente) {
-        //         return in_array($evento->fuente, $fuente);
-        //     })->values();
-        // }
+        if (!empty($fuente)) {
+            $eventosFiltrados = collect($eventosFiltrados)->filter(function ($evento) use ($fuente) {
+                $fuenteEvento = str_replace(' ', '', strtolower($evento["fuente"]));
+                return in_array($fuenteEvento, $fuente);
+            })->values();
+        }
 
         return $eventosFiltrados;
     }
