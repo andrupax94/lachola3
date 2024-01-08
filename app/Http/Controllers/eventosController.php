@@ -313,31 +313,11 @@ class eventosController extends Controller
         $dateEnd = $request->input('dateEnd');
         $fee = json_decode($request->input('fee'));
         $source = json_decode($request->input('source'));
+        $source = misFunciones::convertirArrayAsociativoALista($source);
         $params = [
-            '_fields' => 'id,
-            acm_fields.tasa,
-            acm_fields.url,
-            acm_fields.fuente,
-            acm_fields.facebook,
-            acm_fields.correoElectronico,
-            acm_fields.nombre,
-            acm_fields.fechaInicio,
-            acm_fields.fechaLimite,
-            acm_fields.ubicacion,
-            acm_fields.imagen.media_details.sizes.full.source_url,
-            acm_fields.tipoMetraje,
-            acm_fields.tipoFestival,
-            acm_fields.categoria,
-            acm_fields.banner.media_details.full.source_url,
-            acm_fields.web,
-            acm_fields.instagram,
-            acm_fields.youtube,
-            acm_fields.industrias,
-            acm_fields.telefono,
-            acm_fields.twitterX,
-            acm_fields.descripcion',
+            '_fields' => 'id,acm_fields.tasa,acm_fields.url,acm_fields.fuente,acm_fields.facebook,acm_fields.correoElectronico,acm_fields.nombre,acm_fields.fechaInicio,acm_fields.fechaLimite,acm_fields.ubicacion,acm_fields.imagen.media_details.sizes.full.source_url,acm_fields.tipoMetraje,acm_fields.tipoFestival,acm_fields.categoria,acm_fields.banner.media_details.full.source_url,acm_fields.web,acm_fields.instagram,acm_fields.youtube,acm_fields.industrias,acm_fields.telefono,acm_fields.twitterX,acm_fields.descripcion',
             // 'page' => $page,
-            // 'per_page' => $per_page,
+            'per_page' => 1000,
             // 'orderby' => $orderby,
             // 'order' => $order,
         ];
@@ -416,7 +396,7 @@ class eventosController extends Controller
             Cache::put('eventos', $eventos, 3);
         }
         Cache::put('procesing', 'Organizando Datos', 20);
-        $eventos=misFunciones::filtrarEventosConFiltros($eventos,$dateStart,$dateEnd,$fee,$source);
+        $eventos = misFunciones::filtrarEventosConFiltros($eventos, $dateStart, $dateEnd, $fee, $source);
         $eventos = misFunciones::paginacion($eventos, $page, $per_page, $order, $orderby);
         Cache::put('procesing', true, 3);
         return $eventos;

@@ -11,6 +11,21 @@ use Barryvdh\Debugbar\Facades\Debugbar;
 
 class misFunciones
 {
+    public static function convertirArrayAsociativoALista($arrayAsociativo)
+    {
+        if (is_array($arrayAsociativo)) {
+            // No es un array asociativo, devolver el valor sin cambios
+            return $arrayAsociativo;
+        }
+
+        $lista = [];
+        foreach ($arrayAsociativo as $clave => $valor) {
+            if ($valor) {
+                $lista[] = $clave;
+            }
+        }
+        return $lista;
+    }
     public static function stringToArray($valor, $separator = ',')
     {
         $aux = null;
@@ -60,8 +75,10 @@ class misFunciones
 
         if (!empty($fuente)) {
             $eventosFiltrados = collect($eventosFiltrados)->filter(function ($evento) use ($fuente) {
-                $fuenteEvento = str_replace(' ', '', strtolower($evento["fuente"]));
-                return in_array($fuenteEvento, $fuente);
+                $fuenteEvento = strtolower(str_replace(' ', '', $evento["fuente"]));
+                return collect($fuente)->contains(function ($filtro) use ($fuenteEvento) {
+                    return strpos($fuenteEvento, strtolower(str_replace(' ', '', $filtro))) !== false;
+                });
             })->values();
         }
 
