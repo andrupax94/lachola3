@@ -19,6 +19,95 @@
     pointer-events: none !important;
 }
 
+.bg-evento>div:nth-child(1) {
+    width: 93%;
+    height: 100%;
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    border-radius: 3px;
+    background-color: grey;
+}
+
+.bg-evento>div:nth-child(2) {
+    position: absolute !important;
+    margin: 0 auto;
+    width: 90%;
+    height: 100%;
+    z-index: 0;
+    right: 10px;
+    border-radius: 3px;
+}
+
+.bg-evento>span {
+    z-index: 1;
+    margin-left: 28px;
+    position: absolute;
+    left: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.bg-evento_check {
+    filter: none !important;
+    -webkit-filter: none !important;
+    opacity: 1 !important;
+}
+
+.bg-festhome:nth-child(1)>div:nth-child(1) {
+    background-image: url(/assets/festivalPages/festhome_white.svg);
+    background-color: #4d4d4d;
+    background-position: center;
+    background-size: contain;
+}
+
+.bg-movibeta:nth-child(2)>div:nth-child(1) {
+    background-image: url(/assets/festivalPages/Movibeta.svg);
+    background-color: white;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: solid 1px black;
+}
+
+.bg-animationfestivals:nth-child(3)>div:nth-child(1) {
+    background-image: url(/assets/festivalPages/animation-festivals-logo-icon.png);
+    background-size: contain;
+    background-position: left;
+    background-repeat: no-repeat;
+    background-color: white;
+    border: solid 1px black;
+}
+
+.bg-animationfestivals:nth-child(3)>div:nth-child(1)::after {
+    content: "Animation Festivals";
+    height: 100%;
+    position: absolute;
+    display: block;
+    color: black;
+    width: 60%;
+    right: 0;
+    font-size: 9px;
+}
+
+.bg-filmfreeaway:nth-child(4)>div:nth-child(1) {
+    background-image: url(/assets/festivalPages/FilmFreeway.jpg);
+    background-color: #fc6064;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.bg-shortfilmdepot:nth-child(5)>div:nth-child(1) {
+    background-image: url(/assets/festivalPages/shortfilmdepot.jpg);
+    background-color: white;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: solid 1px black;
+}
+
 div#modal {
     display: none;
     width: 100%;

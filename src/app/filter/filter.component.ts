@@ -30,6 +30,13 @@ export class FilterComponent {
         this.fuenteCheck['animationfestivals'] = true;
         this.fuenteCheck['filmfreeaway'] = true;
         this.fuenteCheck['shortfilmdepot'] = true;
+
+        this.fuenteImgs[0] = '';
+        this.fuenteImgs[1] = '';
+        this.fuenteImgs[2] = '';
+        this.fuenteImgs[3] = '';
+        this.fuenteImgs[4] = '';
+
     }
     public verEventos: FormGroup;
     public exEventos: FormGroup;
@@ -42,6 +49,8 @@ export class FilterComponent {
 
     public filtroOpen = true;
     public filtroHeight: number | undefined = 0;
+
+    public fuenteImgs: { [key: number]: string } = [];
 
     public verEventosSubmit() {
         this.filter.order = this.verEventos.get('order')?.value;

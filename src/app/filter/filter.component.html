@@ -92,41 +92,62 @@
                     <hr>
                     <div class="row row-cols-6 g-1">
                         <div (click)="fuenteCheck['festhome']=!fuenteCheck['festhome'];verEventosSubmit();"
-                            [class.fuente_check]="fuenteCheck['festhome']" class="col fuente_button">
+                            [class.bg-evento_check]="fuenteCheck['festhome']"
+                            class="col fuente_button bg-evento bg-festhome">
                             <div></div>
-                            <div></div><span>Fest Home</span>
+
                         </div>
                         <div (click)="fuenteCheck['movibeta']=!fuenteCheck['movibeta'];verEventosSubmit();"
-                            [class.fuente_check]="fuenteCheck['movibeta']" class="col fuente_button">
+                            [class.bg-evento_check]="fuenteCheck['movibeta']"
+                            class="col fuente_button bg-evento bg-movibeta">
                             <div></div>
-                            <div></div><span>Movi Beta</span>
+
                         </div>
                         <div (click)="fuenteCheck['animationfestivals']=!fuenteCheck['animationfestivals'];verEventosSubmit();"
-                            [class.fuente_check]="fuenteCheck['animationfestivals']" class="col fuente_button">
+                            [class.bg-evento_check]="fuenteCheck['animationfestivals']"
+                            class="col fuente_button bg-evento bg-animationfestivals">
                             <div></div>
-                            <div></div><span>Animation Festivals</span>
+
                         </div>
                         <div (click)="fuenteCheck['filmfreeaway']=!fuenteCheck['filmfreeaway'];verEventosSubmit();"
-                            [class.fuente_check]="fuenteCheck['filmfreeaway']" class="col fuente_button">
+                            [class.bg-evento_check]="fuenteCheck['filmfreeaway']"
+                            class="col fuente_button bg-evento bg-filmfreeaway">
                             <div></div>
-                            <div></div><span>Film Free Away</span>
+
                         </div>
                         <div (click)="fuenteCheck['shortfilmdepot']=!fuenteCheck['shortfilmdepot'];verEventosSubmit();"
-                            [class.fuente_check]="fuenteCheck['shortfilmdepot']" class="col fuente_button">
+                            [class.bg-evento_check]="fuenteCheck['shortfilmdepot']"
+                            class="col fuente_button bg-evento bg-shortfilmdepot">
                             <div></div>
-                            <div></div><span>Short Film Depot</span>
+
                         </div>
-                        <div class="col fuente_button" disabled>
+                        <div class="col fuente_button bg-evento" disabled>
                             <div></div>
-                            <div></div><span>Festival 3</span>
+                            <span>Festival 3</span>
                         </div>
-                        <div class="col fuente_button" disabled>
+                        <div class="col fuente_button bg-evento" disabled>
                             <div></div>
-                            <div></div><span>Festival 2</span>
+                            <span>Festival 2</span>
                         </div>
-                        <div class="col fuente_button" disabled>
+                        <div class="col fuente_button bg-evento" disabled>
                             <div></div>
-                            <div></div><span>Festival 1</span>
+                            <span>Festival 1</span>
+                        </div>
+                        <div class="col fuente_button bg-evento" disabled>
+                            <div></div>
+                            <span>Festival 3</span>
+                        </div>
+                        <div class="col fuente_button bg-evento" disabled>
+                            <div></div>
+                            <span>Festival 2</span>
+                        </div>
+                        <div class="col fuente_button bg-evento" disabled>
+                            <div></div>
+                            <span>Festival 1</span>
+                        </div>
+                        <div class="col fuente_button bg-evento" disabled>
+                            <div></div>
+                            <span>Festival 1</span>
                         </div>
                     </div>
                 </div>
@@ -138,7 +159,8 @@
             <form [formGroup]="exSubvenciones" (ngSubmit)="exSubvencionesSubmit()" class="row"
                 *ngIf="pageFilter==='exSubvenciones'">exSubvenciones</form>
         </div>
-        <div (click)="abrirCerrarFiltro()" [style.backgroundColor]="bgColor"><span *ngIf="filtroOpen">Cerrar</span><span
-                *ngIf="!filtroOpen">Abrir</span> Filtros</div>
+        <div (click)="abrirCerrarFiltro()" [style.backgroundColor]="(!filtroOpen)?bgColor:'#4a4a4a'">
+            <span *ngIf="filtroOpen">Cerrar</span><span *ngIf="!filtroOpen">Abrir</span> Filtros
+        </div>
     </div>
 </div>
