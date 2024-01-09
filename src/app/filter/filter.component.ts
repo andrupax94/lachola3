@@ -40,6 +40,8 @@ export class FilterComponent {
     public fuenteCheck: { [key: string]: boolean } = {};
     public feeCheck: [boolean, boolean, boolean] = [true, true, true];
 
+    public filtroOpen = true;
+    public filtroHeight: number | undefined = 0;
 
     public verEventosSubmit() {
         this.filter.order = this.verEventos.get('order')?.value;
@@ -82,6 +84,21 @@ export class FilterComponent {
             }
             this.pageFilter = nuevosDatos;
         }
+    }
+    abrirCerrarFiltro() {
+
+        if (this.filtroOpen) {
+            this.filtroHeight = $('#filtros').height();
+            $('#filtros').height(this.filtroHeight + 'px');
+            $('#filtros').height('0px');
+        }
+        else {
+            $('#filtros').height(this.filtroHeight + 'px');
+            setTimeout(() => {
+                $('#filtros').height('auto');
+            }, 200);
+        }
+        this.filtroOpen = !this.filtroOpen;
     }
     ngOnInit() {
         this.filter.sharedData$.subscribe(nuevosDatos => {

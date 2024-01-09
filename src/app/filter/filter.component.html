@@ -11,7 +11,8 @@
             disabled>Extraer Subvenciones</button>
     </nav>
     <div id="filtros_cont" class="d-flex flex-column">
-        <h2 [style.backgroundColor]="bgColor"><span>Opciones</span><i class="bi bi-caret-right-fill"></i></h2>
+        <h2 (click)="abrirCerrarFiltro()" [style.backgroundColor]="bgColor"><span>Opciones</span><i
+                [class.filtro_open]="filtroOpen" class="bi bi-caret-right-fill"></i></h2>
         <div id="filtros">
             <form class="row" *ngIf="pageFilter==='none'">None</form>
             <form [formGroup]="verEventos" (ngSubmit)="verEventosSubmit()" class="row"
@@ -89,28 +90,28 @@
                 <div class="col-12 d-flex flex-column">
                     <h5>Fuente:</h5>
                     <hr>
-                    <div class="row row-cols-4 g-1">
-                        <div (click)="fuenteCheck['festhome']=!fuenteCheck['festhome']"
+                    <div class="row row-cols-6 g-1">
+                        <div (click)="fuenteCheck['festhome']=!fuenteCheck['festhome'];verEventosSubmit();"
                             [class.fuente_check]="fuenteCheck['festhome']" class="col fuente_button">
                             <div></div>
                             <div></div><span>Fest Home</span>
                         </div>
-                        <div (click)="fuenteCheck['movibeta']=!fuenteCheck['movibeta']"
+                        <div (click)="fuenteCheck['movibeta']=!fuenteCheck['movibeta'];verEventosSubmit();"
                             [class.fuente_check]="fuenteCheck['movibeta']" class="col fuente_button">
                             <div></div>
                             <div></div><span>Movi Beta</span>
                         </div>
-                        <div (click)="fuenteCheck['animationfestivals']=!fuenteCheck['animationfestivals']"
+                        <div (click)="fuenteCheck['animationfestivals']=!fuenteCheck['animationfestivals'];verEventosSubmit();"
                             [class.fuente_check]="fuenteCheck['animationfestivals']" class="col fuente_button">
                             <div></div>
                             <div></div><span>Animation Festivals</span>
                         </div>
-                        <div (click)="fuenteCheck['filmfreeaway']=!fuenteCheck['filmfreeaway']"
+                        <div (click)="fuenteCheck['filmfreeaway']=!fuenteCheck['filmfreeaway'];verEventosSubmit();"
                             [class.fuente_check]="fuenteCheck['filmfreeaway']" class="col fuente_button">
                             <div></div>
                             <div></div><span>Film Free Away</span>
                         </div>
-                        <div (click)="fuenteCheck['shortfilmdepot']=!fuenteCheck['shortfilmdepot']"
+                        <div (click)="fuenteCheck['shortfilmdepot']=!fuenteCheck['shortfilmdepot'];verEventosSubmit();"
                             [class.fuente_check]="fuenteCheck['shortfilmdepot']" class="col fuente_button">
                             <div></div>
                             <div></div><span>Short Film Depot</span>
@@ -129,7 +130,6 @@
                         </div>
                     </div>
                 </div>
-                <input type="submit">
             </form>
             <form [formGroup]="exEventos" (ngSubmit)="exEventosSubmit()" class="row" *ngIf="pageFilter==='exEventos'">
                 exEventos</form>
@@ -138,5 +138,7 @@
             <form [formGroup]="exSubvenciones" (ngSubmit)="exSubvencionesSubmit()" class="row"
                 *ngIf="pageFilter==='exSubvenciones'">exSubvenciones</form>
         </div>
+        <div (click)="abrirCerrarFiltro()" [style.backgroundColor]="bgColor"><span *ngIf="filtroOpen">Cerrar</span><span
+                *ngIf="!filtroOpen">Abrir</span> Filtros</div>
     </div>
 </div>

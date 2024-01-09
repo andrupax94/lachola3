@@ -14,7 +14,6 @@
 }
 
 [disabled] {
-    background-color: #cccccc !important;
     opacity: 0.8 !important;
     cursor: not-allowed !important;
     pointer-events: none !important;

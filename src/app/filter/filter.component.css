@@ -1,6 +1,7 @@
 #filtros_s_cont {
     width: 80% !important;
     margin: 0 auto;
+    padding: 0;
 }
 
 #filtros_s_cont>nav {
@@ -47,6 +48,7 @@
 
 #filtros_cont {
     width: 100%;
+    padding: 0px 3px;
 }
 
 #filtros_cont>h2 {
@@ -55,6 +57,7 @@
     align-items: center;
     padding: 7px 20px;
     cursor: pointer;
+    margin: 0;
 }
 
 #filtros_cont>h2 span {
@@ -65,13 +68,19 @@
 #filtros_cont>h2 i {
     color: white;
     font-size: 15px;
+    left: 4px;
+    top: 1px;
+    position: relative;
 }
 
 #filtros {
     background-color: rgb(237, 237, 237);
+    transition: all linear 0.1s;
+    height: auto;
+    overflow: hidden;
 }
 
-#filtros div {
+#filtros>div {
     position: relative;
     min-height: 40px;
     margin-bottom: 17px;
@@ -92,9 +101,11 @@
 }
 
 .fuente_button {
+    height: 24px;
+    position: relative;
     display: flex;
     flex-direction: row;
-    background-color: grey;
+    justify-content: center;
     color: white;
     font-size: 9px;
     border-radius: 5px;
@@ -102,10 +113,39 @@
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
-    margin-bottom: 10px;
+    margin-bottom: 3px;
     cursor: pointer;
     filter: grayscale(100%);
     -webkit-filter: grayscale(100%);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+#filtros_cont>div:last-child {
+    background-color: #4a4a4a;
+    text-align: center;
+    color: white;
+    font-size: 12px;
+    padding: 10px;
+    opacity: 0.8;
+    cursor: pointer;
+    transition: linear all 0.2s;
+}
+
+#filtros_cont>div:last-child:hover {
+    opacity: 1;
+}
+
+.filtro_open {
+    transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+}
+
+[disabled]>div:nth-child(2) {
+    background-color: #cccccc !important;
 }
 
 .fuente_button:nth-child(1)>div:nth-child(2) {
@@ -125,21 +165,32 @@
 }
 
 .fuente_button>div:nth-child(1) {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 100%;
     background-color: #e20303;
     z-index: 1;
+    position: absolute;
+    left: 0;
 }
 
 .fuente_button>div:nth-child(2) {
     position: absolute !important;
-    width: 100%;
+    margin: 0 auto;
+    width: 90%;
     height: 100%;
     z-index: 0;
+    right: 10px;
+    border-radius: 3px;
 }
 
 .fuente_button>span {
     z-index: 1;
+    margin-left: 28px;
+    position: absolute;
+    left: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .fuente_check {
