@@ -11,6 +11,18 @@ use Barryvdh\Debugbar\Facades\Debugbar;
 
 class misFunciones
 {
+
+    public static function esArrayNoAsociativo($array)
+    {
+        if (!is_array($array)) {
+            return false;
+        }
+
+        $keys = array_keys($array);
+
+        // Verifica si todas las claves son enteros y consecutivos comenzando desde 0
+        return array_keys($keys) === $keys;
+    }
     public static function convertirArrayAsociativoALista($arrayAsociativo)
     {
         if (is_array($arrayAsociativo)) {
@@ -51,7 +63,12 @@ class misFunciones
         $fechaInicio = misFunciones::convertirFecha($fechaInicio, 5);
         $fechaFin = misFunciones::convertirFecha($fechaFin, 5);
         $eventosFiltrados = collect($eventos)->filter(function ($evento) use ($fechaInicio, $fechaFin) {
-            $fechaLimite = misFunciones::convertirFecha($evento["fechaLimite"], 5);
+            if ($evento["fechaLimite"] === 'No Especificado') {
+                $fechaLimite = '29991231';
+            } else {
+                $fechaLimite = misFunciones::convertirFecha($evento["fechaLimite"], 5);
+            }
+
             return $fechaLimite >= $fechaInicio && $fechaLimite <= $fechaFin;
         })->values();
 

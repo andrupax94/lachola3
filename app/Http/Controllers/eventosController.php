@@ -19,16 +19,51 @@ class eventosController extends Controller
         preg_match('/\bhttps?:\/\/\S+\b/', $style, $matches);
         return $matches ? $matches[0] : 'No Especificado';
     }
-    public function extractFestivalData(Request $request)
+    public function extractFestivalDataGroup(Request $request)
+    {
+        Cache::put('procesing', 'iniciando', 20);
+        $page = $request->input('page');
+        $orderby = $request->input('orderby');
+        $per_page = $request->input('per_page');
+        $order = $request->input('order');
+        $dateStart = $request->input('dateStart');
+        $dateEnd = $request->input('dateEnd');
+        $onlyFilter = $request->has('onlyFilter') ? $request->input('onlyFilter') : false;
+        $fee = json_decode($request->input('fee'));
+        $source = null !== $request->input('source') ? json_decode($request->input('source')) : "No Especificado";
+        $pages = null !== $request->input('pages') ? json_decode($request->input('pages')) : 1;
+        if ($pages > 3) {
+            $pages = 3;
+        }
+        if ($onlyFilter === 'true' && Cache::has('eventosG')) {
+            $eventos = Cache::get('eventosG');
+        } else {
+            $eventos = [];
+            for ($page = 1; $page <= $pages; $page++) {
+                foreach ($source as $key => $festivalPage) {
+                    $request->merge(['festivalPage' => $festivalPage]);
+                    $request->merge(['pages' => $page]);
+                    $data = $this->extractFestivalData($request, true);
+                    if (misFunciones::esArrayNoAsociativo($data)) {
+                        $eventos = array_merge($eventos, $data);
+                    }
+
+                }
+            }
+        }
+        Cache::put('eventosG', $eventos, 200);
+        $eventos = misFunciones::filtrarEventosConFiltros($eventos, $dateStart, $dateEnd, $fee, $source);
+        $eventos = misFunciones::paginacion($eventos, $page, $per_page, $order, $orderby);
+        Cache::put('procesing', true, 3);
+
+        return response()->json(['status' => true, 'eventos' => $eventos]);
+    }
+    public function extractFestivalData(Request $request, $group = false)
     {
 
         Cache::put('procesing', 'iniciando', 20);
-        // Establecer el indicador de bloqueo
-        sleep(2);
-        Cache::put('procesing', 'iniciando2', 20);
-
-        $pages = null !== $request->input('pages') ? (int) $request->input('pages') : 1;
         $festivalPage = null !== $request->input('festivalPage') ? $request->input('festivalPage') : "No Especificado";
+        $pages = null !== $request->input('pages') ? $request->input('pages') : "No Especificado";
 
         $dataTotal = [];
         $data = [];
@@ -76,9 +111,8 @@ class eventosController extends Controller
                     // Si no hay tasas, establece '0'
                     $fees = empty($fees) ? '0' : $fees;
                     // Agrega la fecha límite
-                    $deadline = [];
-                    $deadline[0] = false;
-                    $deadline[1] = $festivalCrawler->filter('.festival-card-status.days .date')->count() ? misFunciones::convertirFecha($festivalCrawler->filter('.festival-card-status.days .date')->text(), 4) : 'No Especificado';
+
+                    $deadline = $festivalCrawler->filter('.festival-card-status.days .date')->count() ? misFunciones::convertirFecha($festivalCrawler->filter('.festival-card-status.days .date')->text(), 4) : 'No Especificado';
                     // Añade más campos según sea necesario
                     $data[] = [
                         'nombre' => $title,
@@ -110,13 +144,16 @@ class eventosController extends Controller
                 $crawler->filter('#app')->html();
                 $crawler->filter('table tbody tr')->each(function (Crawler $row) use (&$festivals) {
                     $festival = [
-                        'imagen' => $row->filter('td:nth-child(1) img')->attr('src'),
                         'nombre' => $row->filter('td:nth-child(1) h6')->text(),
+                        'ubicacion' => $row->filter('td:nth-child(4)')->text(),
+                        'tipoMetraje' => 'No Especificado',
+                        'tipoFestival' => 'No Especificado',
+                        'imagen' => $row->filter('td:nth-child(1) img')->attr('src'),
+                        'banner' => 'No Especificado',
                         'tasa' => (int) $row->filter('td:nth-child(4)')->text(),
                         'fechaLimite' => \DateTime::createFromFormat('d/m/Y', $row->filter('td:nth-child(6)')->text()),
                         'url' => $row->filter('td:nth-child(7) a')->attr('href'),
                         'fuente' => 'Movibeta',
-                        'ubicacion' => $row->filter('td:nth-child(4)')->text(),
                     ];
 
                     $festivals[] = $festival;
@@ -125,7 +162,7 @@ class eventosController extends Controller
                 $dataTotal = $dataTotal + $festivals;
 
                 break;
-            case 'animation-festivals':
+            case 'animationfestivals':
                 $client = HttpClient::create([
                     'verify_peer' => false,
                     'cafile' => 'C:/laragon/etc/ssl/cacert.pem', // Ajusta la ruta según tu configuración
@@ -162,20 +199,19 @@ class eventosController extends Controller
 
                     // Si no hay tasas, establece '0'
                     $fees = empty($fees) ? '0' : $fees;
-                    $deadline = [];
-                    $deadline[0] = false;
-                    $deadline[1] = $festivalCrawler->filter('.submit-info .dates span')->count() ? misFunciones::convertirFecha($festivalCrawler->filter('.submit-info .dates span')->text(), 4) : 'No Especificado';
+
+                    $deadline = $festivalCrawler->filter('.submit-info .dates span')->count() ? misFunciones::convertirFecha($festivalCrawler->filter('.submit-info .dates span')->text(), 4) : 'No Especificado';
                     $data[] = [
                         'nombre' => $title,
                         'ubicacion' => $country,
                         'tipoMetraje' => $durations,
-                        'tipoFestival' => $tipoFestival,
+                        'tipoFestival' => 'No Especificado',
                         'imagen' => $imageFront,
                         'banner' => $imageBanner,
                         'url' => $redirectUrl,
                         'tasa' => $fees,
                         'fechaLimite' => $deadline,
-                        'fuente' => 'animation-festivals',
+                        'fuente' => 'animationfestivals',
                         // Añade más campos según sea necesario
                     ];
                 }
@@ -212,9 +248,8 @@ class eventosController extends Controller
                     // Si no hay tasas, establece '0'
                     $fees = empty($fees) ? '0' : $fees;
                     // Agrega la fecha límite
-                    $deadline = [];
-                    $deadline[0] = false;
-                    $deadline[1] = $festivalCrawler->filter('.festival-upcoming-deadline')->count() ? misFunciones::convertirFecha($festivalCrawler->filter('.festival-upcoming-deadline')->text(), 4) : 'No Especificado';
+
+                    $deadline = $festivalCrawler->filter('.festival-upcoming-deadline')->count() ? misFunciones::convertirFecha($festivalCrawler->filter('.festival-upcoming-deadline')->text(), 4) : 'No Especificado';
                     // Añade más campos según sea necesario
                     $data[] = [
                         'nombre' => $title,
@@ -263,10 +298,8 @@ class eventosController extends Controller
                     // Si no hay tasas, establece '0'
                     $fees = $fees === 0 ? '0' : 'Tiene Tasas';
                     // Agrega la fecha límite
-                    $deadline = [];
-                    $deadline[0] = true;
 
-                    $deadline[1] = $festivalCrawler->filter('.fest2:nth-child(1) table tr>td:nth-child(2)>h2 strong:nth-child(3) span')->count() ? misFunciones::convertirFecha($festivalCrawler->filter('.fest2:nth-child(1) table tr>td:nth-child(2)>h2 strong:nth-child(3) span')->text(), 4) : 'No Especificado';
+                    $deadline = $festivalCrawler->filter('.fest2:nth-child(1) table tr>td:nth-child(2)>h2 strong:nth-child(3) span')->count() ? misFunciones::convertirFecha($festivalCrawler->filter('.fest2:nth-child(1) table tr>td:nth-child(2)>h2 strong:nth-child(3) span')->text(), 4) : 'No Especificado';
                     // Añade más campos según sea necesario
                     $data[] = [
                         'nombre' => $title,
@@ -296,7 +329,12 @@ class eventosController extends Controller
                 break;
         }
         Cache::put('procesing', true, 0.0333);
-        return response()->json(['status' => true, 'eventos' => $dataTotal]);
+        if ($group) {
+            return $dataTotal;
+        } else {
+            return response()->json(['status' => true, 'eventos' => $dataTotal]);
+        }
+
     }
 
     public function getEventos(Request $request)
@@ -364,16 +402,17 @@ class eventosController extends Controller
                 $eventos[$key]["twitterX"] = isset($evento["acm_fields"]["twitterX"]) ? $evento["acm_fields"]["twitterX"] : "No especificado";
                 $eventos[$key]["descripcion"] = isset($evento["acm_fields"]["descripcion"]) ? $evento["acm_fields"]["descripcion"] : "No especificado";
 
-                $eventos[$key]["tasa"] = ($eventos[$key]["tasa"] !== "") ? $eventos[$key]["tasa"] : "No Especificado";
-                $eventos[$key]["fuente"] = ($eventos[$key]["fuente"] !== "") ? $eventos[$key]["fuente"] : "No Especificado";
                 $eventos[$key]["nombre"] = ($eventos[$key]["nombre"] !== "") ? $eventos[$key]["nombre"] : "No Especificado";
-                $eventos[$key]["url"] = ($eventos[$key]["url"] !== "") ? $eventos[$key]["url"] : "No Especificado";
                 $eventos[$key]["ubicacion"] = ($eventos[$key]["ubicacion"] !== "") ? $eventos[$key]["ubicacion"] : "No Especificado";
-                $eventos[$key]["fechaLimite"] = ($eventos[$key]["fechaLimite"] !== "") ? $eventos[$key]["fechaLimite"] : "No Especificado";
-                $eventos[$key]["imagen"] = ($eventos[$key]["imagen"] !== "") ? $eventos[$key]["imagen"] : "No Especificado";
                 $eventos[$key]["tipoMetraje"] = ($eventos[$key]["tipoMetraje"] !== "") ? $eventos[$key]["tipoMetraje"] : "No Especificado";
-                $eventos[$key]["tipoFestival"] = ($eventos[$key]["tipoFestival"] !== "") ? $eventos[$key]["tipoFestival"] : "No Especificado";
+                $eventos[$key]["imagen"] = ($eventos[$key]["imagen"] !== "") ? $eventos[$key]["imagen"] : "No Especificado";
+                $eventos[$key]["banner"] = ($eventos[$key]["banner"] !== "") ? $eventos[$key]["banner"] : "No Especificado";
                 $eventos[$key]["categoria"] = ($eventos[$key]["categoria"] !== "") ? $eventos[$key]["categoria"] : "No Especificado";
+                $eventos[$key]["url"] = ($eventos[$key]["url"] !== "") ? $eventos[$key]["url"] : "No Especificado";
+                $eventos[$key]["tasa"] = ($eventos[$key]["tasa"] !== "") ? $eventos[$key]["tasa"] : "No Especificado";
+                $eventos[$key]["fechaLimite"] = ($eventos[$key]["fechaLimite"] !== "") ? $eventos[$key]["fechaLimite"] : "No Especificado";
+                $eventos[$key]["fuente"] = ($eventos[$key]["fuente"] !== "") ? $eventos[$key]["fuente"] : "No Especificado";
+                $eventos[$key]["tipoFestival"] = ($eventos[$key]["tipoFestival"] !== "") ? $eventos[$key]["tipoFestival"] : "No Especificado";
                 $eventos[$key]["telefono"] = ($eventos[$key]["telefono"] !== "") ? $eventos[$key]["telefono"] : "No Especificado";
                 $eventos[$key]["facebook"] = ($eventos[$key]["facebook"] !== "") ? $eventos[$key]["facebook"] : "No Especificado";
                 $eventos[$key]["fechaInicio"] = ($eventos[$key]["fechaInicio"] !== "") ? $eventos[$key]["fechaInicio"] : "No Especificado";
@@ -382,7 +421,6 @@ class eventosController extends Controller
                 $eventos[$key]["instagram"] = ($eventos[$key]["instagram"] !== "") ? $eventos[$key]["instagram"] : "No Especificado";
                 $eventos[$key]["youtube"] = ($eventos[$key]["youtube"] !== "") ? $eventos[$key]["youtube"] : "No Especificado";
                 $eventos[$key]["industrias"] = ($eventos[$key]["industrias"] !== "") ? $eventos[$key]["industrias"] : "No Especificado";
-                $eventos[$key]["banner"] = ($eventos[$key]["banner"] !== "") ? $eventos[$key]["banner"] : "No Especificado";
                 $eventos[$key]["twitterX"] = ($eventos[$key]["twitterX"] !== "") ? $eventos[$key]["twitterX"] : "No Especificado";
                 $eventos[$key]["descripcion"] = ($eventos[$key]["descripcion"] !== "") ? $eventos[$key]["descripcion"] : "No Especificado";
                 // $headers = get_headers($url, 1);
