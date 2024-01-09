@@ -17,6 +17,8 @@
             <form [formGroup]="verEventos" (ngSubmit)="verEventosSubmit()" class="row"
                 *ngIf="pageFilter==='verEventos'">
                 <div class="col-12 col-sm-5 col-md-4">
+                    <h5>Ordenar De Forma:</h5>
+                    <hr>
                     <select (change)="verEventosSubmit()" type="text" placeholder="Ordenar En:" [value]=""
                         formControlName="order">
                         <option value="">Ordenar En:</option>
@@ -25,6 +27,8 @@
                     </select>
                 </div>
                 <div class="col-12 col-sm-5 col-md-4">
+                    <h5>Ordenar Por:</h5>
+                    <hr>
                     <select (change)="verEventosSubmit()" type="text" placeholder="Ordenar Por:"
                         formControlName="orderBy">
                         <option value="">Ordenar Por</option>
@@ -52,59 +56,76 @@
                     </select>
                 </div>
                 <div (change)="verEventosSubmit()" class="col-12 col-sm-5 col-md-4">
+                    <h5>Eventos a mostrar:</h5>
+                    <hr>
                     <input type="number" placeholder="N. De Elementos:" formControlName="perPage">
 
                 </div>
                 <div class="col-12 col-sm-5 col-md-4">
+                    <h5>Fecha Desde:</h5>
+                    <hr>
                     <input type="date" placeholder="Fecha De:" formControlName="dateStart">
                 </div>
                 <div class="col-12 col-sm-5 col-md-4">
+                    <h5>Fecha Hasta:</h5>
+                    <hr>
                     <input type="date" placeholder="Fecha Hasta:" formControlName="dateEnd">
                 </div>
                 <div class="col-12 col-sm-5 col-md-4 d-flex flex-column">
-                    <h5>Tasas</h5>
+                    <h5>Tasas:</h5>
                     <hr>
-                    <div class="d-flex flex-column">
-                        <label><input type="checkbox" (change)="feeCheck[0]=!feeCheck[0]" [checked]="feeCheck[0]">Con
-                            Tasa</label>
-                        <label><input type="checkbox" (change)="feeCheck[1]=!feeCheck[1]" [checked]="feeCheck[1]">Sin
-                            Tasa</label>
-                        <label><input type="checkbox" (change)="feeCheck[2]=!feeCheck[2]" [checked]="feeCheck[2]">Tasa
-                            Mixta</label>
+                    <div id="tasa_check" class="d-flex flex-column">
+                        <label>Con
+                            Tasa(<i class="bi bi-currency-exchange"></i>)<input type="checkbox"
+                                (change)="feeCheck[0]=!feeCheck[0]" [checked]="feeCheck[0]"></label>
+                        <label>Sin
+                            Tasa(<i class="bi bi-currency-exchange"></i>)<input type="checkbox"
+                                (change)="feeCheck[1]=!feeCheck[1]" [checked]="feeCheck[1]"></label>
+                        <label>Tasa
+                            Mixta(<i class="bi bi-currency-exchange"></i>)<input type="checkbox"
+                                (change)="feeCheck[2]=!feeCheck[2]" [checked]="feeCheck[2]"></label>
                     </div>
                 </div>
-                <div class="col-12 col-md-7 d-flex flex-column">
+                <div class="col-12 d-flex flex-column">
                     <h5>Fuente:</h5>
                     <hr>
-                    <div class="row row-cols-4">
+                    <div class="row row-cols-4 g-1">
                         <div (click)="fuenteCheck['festhome']=!fuenteCheck['festhome']"
-                            [class.fuente_check]="fuenteCheck['festhome']" class="fuente_button">
-                            <div></div>Fest Home
+                            [class.fuente_check]="fuenteCheck['festhome']" class="col fuente_button">
+                            <div></div>
+                            <div></div><span>Fest Home</span>
                         </div>
                         <div (click)="fuenteCheck['movibeta']=!fuenteCheck['movibeta']"
-                            [class.fuente_check]="fuenteCheck['movibeta']" class="fuente_button">
-                            <div></div>Movi Beta
+                            [class.fuente_check]="fuenteCheck['movibeta']" class="col fuente_button">
+                            <div></div>
+                            <div></div><span>Movi Beta</span>
                         </div>
                         <div (click)="fuenteCheck['animationfestivals']=!fuenteCheck['animationfestivals']"
-                            [class.fuente_check]="fuenteCheck['animationfestivals']" class="fuente_button">
-                            <div></div>Animation Festivals
+                            [class.fuente_check]="fuenteCheck['animationfestivals']" class="col fuente_button">
+                            <div></div>
+                            <div></div><span>Animation Festivals</span>
                         </div>
                         <div (click)="fuenteCheck['filmfreeaway']=!fuenteCheck['filmfreeaway']"
-                            [class.fuente_check]="fuenteCheck['filmfreeaway']" class="fuente_button">
-                            <div></div>Film Free Away
+                            [class.fuente_check]="fuenteCheck['filmfreeaway']" class="col fuente_button">
+                            <div></div>
+                            <div></div><span>Film Free Away</span>
                         </div>
                         <div (click)="fuenteCheck['shortfilmdepot']=!fuenteCheck['shortfilmdepot']"
-                            [class.fuente_check]="fuenteCheck['shortfilmdepot']" class="fuente_button">
-                            <div></div>Short Film Depot
+                            [class.fuente_check]="fuenteCheck['shortfilmdepot']" class="col fuente_button">
+                            <div></div>
+                            <div></div><span>Short Film Depot</span>
                         </div>
-                        <div class="fuente_button" disabled>
-                            <div></div>Festival 3
+                        <div class="col fuente_button" disabled>
+                            <div></div>
+                            <div></div><span>Festival 3</span>
                         </div>
-                        <div class="fuente_button" disabled>
-                            <div></div>Festival 2
+                        <div class="col fuente_button" disabled>
+                            <div></div>
+                            <div></div><span>Festival 2</span>
                         </div>
-                        <div class="fuente_button" disabled>
-                            <div></div>Festival 1
+                        <div class="col fuente_button" disabled>
+                            <div></div>
+                            <div></div><span>Festival 1</span>
                         </div>
                     </div>
                 </div>

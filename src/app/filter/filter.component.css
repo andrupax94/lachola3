@@ -5,11 +5,12 @@
 
 #filtros_s_cont>nav {
     width: 100%;
-    padding-left: 50px;
+    padding: 0px 20px;
 }
 
 #filtros_s_cont>nav>button {
-    padding: 15px 25px;
+    padding: 6px 15px;
+    font-size: 13px;
     border: none;
     color: white;
     font-family: var(--font1);
@@ -40,7 +41,7 @@
 }
 
 .active {
-    padding: 20px 35px !important;
+    padding: 15px 30px !important;
     opacity: 1 !important;
 }
 
@@ -48,17 +49,47 @@
     width: 100%;
 }
 
-#filtros_cont>h2 {}
+#filtros_cont>h2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 7px 20px;
+    cursor: pointer;
+}
 
-#filtros_cont>h2 span {}
+#filtros_cont>h2 span {
+    color: white;
+    font-size: 15px;
+}
 
-#filtros_cont>h2 i {}
+#filtros_cont>h2 i {
+    color: white;
+    font-size: 15px;
+}
 
 #filtros {
     background-color: rgb(237, 237, 237);
 }
 
-#filtros div {}
+#filtros div {
+    position: relative;
+    min-height: 40px;
+    margin-bottom: 17px;
+}
+
+#filtros div select {
+    width: 100%;
+    height: 40px;
+}
+
+#filtros div input {
+    height: 40px;
+    width: 100%;
+}
+
+#filtros form {
+    padding: 20px;
+}
 
 .fuente_button {
     display: flex;
@@ -77,29 +108,84 @@
     -webkit-filter: grayscale(100%);
 }
 
-.fuente_button:nth-child(1) {
+.fuente_button:nth-child(1)>div:nth-child(2) {
     background-color: blue;
 }
 
-.fuente_button:nth-child(2) {
+.fuente_button:nth-child(2)>div:nth-child(2) {
     background-color: purple;
 }
 
-.fuente_button:nth-child(3) {
+.fuente_button:nth-child(3)>div:nth-child(2) {
     background-color: green;
 }
 
-.fuente_button:nth-child(4) {
+.fuente_button:nth-child(4)>div:nth-child(2) {
     background-color: greenyellow;
 }
 
-.fuente_button>div {
+.fuente_button>div:nth-child(1) {
     width: 20px;
     height: 20px;
     background-color: #e20303;
+    z-index: 1;
+}
+
+.fuente_button>div:nth-child(2) {
+    position: absolute !important;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.fuente_button>span {
+    z-index: 1;
 }
 
 .fuente_check {
     filter: none !important;
     -webkit-filter: none !important;
+}
+
+#filtros div h5 {
+    font-size: 14px;
+    margin: 0;
+}
+
+#filtros div hr {
+    margin: 6px;
+}
+
+#tasa_check {
+    padding: 0px 20px;
+}
+
+#tasa_check label {
+    position: relative;
+    width: 110px;
+    font-size: 13px;
+    display: flex;
+    flex-direction: row;
+}
+
+#tasa_check label input {
+    width: 15px;
+    height: 15px;
+    top: 2px;
+    position: absolute;
+    right: 0;
+}
+
+#tasa_check label i {}
+
+#tasa_check label:nth-child(1) i {
+    color: grey;
+}
+
+#tasa_check label:nth-child(2) i {
+    color: green;
+}
+
+#tasa_check label:nth-child(3) i {
+    color: orange;
 }
