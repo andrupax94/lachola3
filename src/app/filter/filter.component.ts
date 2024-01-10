@@ -52,17 +52,20 @@ export class FilterComponent {
 
     public fuenteImgs: { [key: number]: string } = [];
 
-    public verEventosSubmit() {
+    public verEventosSubmit(onlyFilter = 'false') {
         this.filter.order = this.verEventos.get('order')?.value;
         this.filter.dateStart = this.verEventos.get('dateStart')?.value;
         this.filter.dateEnd = this.verEventos.get('dateEnd')?.value;
         this.filter.orderBy = this.verEventos.get('orderBy')?.value;
         this.filter.perPage = this.verEventos.get('perPage')?.value;
+        this.filter.onlyFilter = onlyFilter;
         this.filter.fee = this.feeCheck;
         this.filter.source = this.fuenteCheck;
         this.filter.compartirFiltros('verEventos');
     }
-    public exEventosSubmit() { }
+    public accionarExEventos(accion: string) {
+        this.filter.exEventos(accion);
+    }
     public verSubvencionesSubmit() { }
     public exSubvencionesSubmit() { }
 

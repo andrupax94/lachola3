@@ -15,12 +15,11 @@
                 [class.filtro_open]="filtroOpen" class="bi bi-caret-right-fill"></i></h2>
         <div id="filtros">
             <form class="row" *ngIf="pageFilter==='none'">None</form>
-            <form [formGroup]="verEventos" (ngSubmit)="verEventosSubmit()" class="row"
-                *ngIf="pageFilter==='verEventos'">
+            <form [formGroup]="verEventos" class="row" *ngIf="pageFilter==='verEventos'||pageFilter==='exEventos'">
                 <div class="col-12 col-sm-5 col-md-4">
                     <h5>Ordenar De Forma:</h5>
                     <hr>
-                    <select (change)="verEventosSubmit()" type="text" placeholder="Ordenar En:" [value]=""
+                    <select (change)="verEventosSubmit('true')" type="text" placeholder="Ordenar En:" [value]=""
                         formControlName="order">
                         <option value="">Ordenar En:</option>
                         <option value="asc">Ascendente</option>
@@ -30,7 +29,7 @@
                 <div class="col-12 col-sm-5 col-md-4">
                     <h5>Ordenar Por:</h5>
                     <hr>
-                    <select (change)="verEventosSubmit()" type="text" placeholder="Ordenar Por:"
+                    <select (change)="verEventosSubmit('true')" type="text" placeholder="Ordenar Por:"
                         formControlName="orderBy">
                         <option value="">Ordenar Por</option>
                         <option value="nombre">Nombre</option>
@@ -56,7 +55,7 @@
                         <option value="twitterX">Twitterx</option> -->
                     </select>
                 </div>
-                <div (change)="verEventosSubmit()" class="col-12 col-sm-5 col-md-4">
+                <div (change)="verEventosSubmit('true')" class="col-12 col-sm-5 col-md-4">
                     <h5>Eventos a mostrar:</h5>
                     <hr>
                     <input type="number" placeholder="N. De Elementos:" formControlName="perPage">
@@ -151,9 +150,13 @@
                         </div>
                     </div>
                 </div>
+                <div *ngIf="pageFilter==='exEventos'">
+                    <button (click)="accionarExEventos('Extraer')">Extraer Eventos</button>
+                    <button (click)="accionarExEventos('Forzar')">Forzar Extraer Eventos</button>
+                    <button (click)="accionarExEventos('Guardar')">Guardar Eventos Seleccionados</button>
+                </div>
             </form>
-            <form [formGroup]="exEventos" (ngSubmit)="exEventosSubmit()" class="row" *ngIf="pageFilter==='exEventos'">
-                exEventos</form>
+
             <form [formGroup]="verSubvenciones" (ngSubmit)="verSubvencionesSubmit()" class="row"
                 *ngIf="pageFilter==='verSubvenciones'">verSubvenciones</form>
             <form [formGroup]="exSubvenciones" (ngSubmit)="exSubvencionesSubmit()" class="row"

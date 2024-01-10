@@ -25,6 +25,7 @@ export class VerEventosComponent {
     public totalPages: number = 1;
     public compararFechas!: Function;
     public it = false;
+    public onlyFilter: string = 'true';
     public contador = 0;
     public dateStart: any = '1/1/1999';
     public dateEnd: any = '1/1/2999';
@@ -36,7 +37,7 @@ export class VerEventosComponent {
         'filmfreeaway': true,
         'shortfilmdepot': true
     };
-
+    public pageFilter: string = 'none';
 
     constructor(private http: HttpClient, private factory: FactoryService, private filter: FilterService) {
         this.compararFechas = factory.differenceInDays;
@@ -57,7 +58,29 @@ export class VerEventosComponent {
             this.source = this.filter.source;
             this.orderBy = this.filter.orderBy;
             this.perPage = this.filter.perPage;
-            this.buscaEventosIt();
+            this.onlyFilter = this.filter.onlyFilter;
+            switch (nuevosDatos) {
+                case 'verEventos':
+                    this.buscaEventosIt();
+                    break;
+                case 'exEventos':
+                    this.eventoP = [];
+                    break;
+            }
+        });
+        this.filter.sharedData$.subscribe(nuevosDatos => {
+            this.pageFilter = nuevosDatos;
+
+        });
+        this.filter.sharedData3$.subscribe(accion => {
+            switch (accion) {
+                case 'Extraer':
+                    break;
+                case 'Forzar':
+                    break;
+                case 'Guardar':
+                    break;
+            }
         });
     }
 
@@ -69,36 +92,18 @@ export class VerEventosComponent {
             await this.esperar(500);
         }
     }
+    async exEventosIt() {
+        this.it = true;
+        while (this.it && this.contador < 2) {
+            this.buscaEventos('extractFestivalDataGroup');
+            await this.esperar(500);
+        }
+    }
     esperar(ms: number): Promise<void> {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
-    extraeEventos() {
-        let params = new HttpParams({ fromString: 'name=term' });
-        params = params.set('pages', 1);
-        params = params.set('festivalPage', 'festhome');
 
-        this.http.post<any>(environment.back + 'extractFestivalData', params, {}).subscribe({
-            next: (data) => {
-                if (data.status !== true) {
-                    console.log(data.status);
-                }
-                else {
-                    this.it = false;
-                    this.totalPages = data.data.totalPages;
-                    data.data.forEach((evt: any) => {
-                        let aux: any = [];
-                        aux.id = evt["id"];
-                    });
-
-                }
-            },
-            error: (error) => {
-                this.it = false;
-                console.log(error);
-            }
-        });
-    }
-    async buscaEventos() {
+    async buscaEventos(request: string = 'getEventos') {
         this.contador++;
 
         let params = new HttpParams({ fromString: 'name=term' });
@@ -110,7 +115,9 @@ export class VerEventosComponent {
         params = params.set('fee', JSON.stringify(this.fee)); // Corregí this.orderBy por this.perPage
         params = params.set('source', JSON.stringify(this.source)); // Corregí this.orderBy por this.perPage
         params = params.set('order', this.order);
-        this.http.post<any>(environment.back + 'getEventos', params, {}).subscribe({
+        if (this.onlyFilter === 'true')
+            params = params.set('onlyFilter', 'true');
+        this.http.post<any>(environment.back + request, params, {}).subscribe({
             next: (data) => {
 
                 if (data.status !== true && data.status !== undefined) {

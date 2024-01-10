@@ -6,8 +6,10 @@
         <td>Tipo</td>
         <td title="Fecha Limite">Limite</td>
         <td>Fuente</td>
+        <td *ngIf="pageFilter==='exEventos'"></td>
     </tr>
     <tr *ngFor="let evento of eventoP" (click)="abreUrl(evento.url)">
+
         <td>
             <div class="festivalNombre">
                 <div class="img" style="background-image: url('{{evento.imagen}}');"></div>
@@ -47,6 +49,7 @@
         <td>
             <div class="badge bg-secondary" *ngFor="let evt of evento.fuente">{{evt}}</div>
         </td>
+        <td *ngIf="pageFilter==='exEventos'"><input type="checkbox"></td>
     </tr>
 </table>
 <div class="numerations">

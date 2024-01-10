@@ -336,7 +336,6 @@ class eventosController extends Controller
         }
 
     }
-
     public function getEventos(Request $request)
     {
         Cache::put('procesing', 'iniciando', 20);
