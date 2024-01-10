@@ -39,10 +39,10 @@ class eventosController extends Controller
             $eventos = Cache::get('eventosG');
         } else {
             $eventos = [];
-            for ($page = 1; $page <= $pages; $page++) {
+            for ($pageI = 1; $pageI <= $pages; $pageI++) {
                 foreach ($source as $key => $festivalPage) {
                     $request->merge(['festivalPage' => $festivalPage]);
-                    $request->merge(['pages' => $page]);
+                    $request->merge(['pages' => $pageI]);
                     $data = $this->extractFestivalData($request, true);
                     if (misFunciones::esArrayNoAsociativo($data)) {
                         $eventos = array_merge($eventos, $data);
@@ -366,7 +366,7 @@ class eventosController extends Controller
             Cache::put('procesing', 'Obteniendo Datos Local', 20);
             $eventos = Cache::get('eventos');
 
-            Cache::put('eventos', $eventos, 3);
+            Cache::put('eventos', $eventos, 100000);
 
         } else {
             Cache::put('procesing', 'Obteniendo Datos De WordPress', 20);
@@ -430,7 +430,7 @@ class eventosController extends Controller
                 //     $totalPages = 'El encabezado X-WP-TotalPages no está presente en la respuesta.';
                 // }
             }
-            Cache::put('eventos', $eventos, 3);
+            Cache::put('eventos', $eventos, 100000);
         }
         Cache::put('procesing', 'Organizando Datos', 20);
         $eventos = misFunciones::filtrarEventosConFiltros($eventos, $dateStart, $dateEnd, $fee, $source);
