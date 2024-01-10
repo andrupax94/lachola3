@@ -55,21 +55,24 @@
                         <option value="twitterX">Twitterx</option> -->
                     </select>
                 </div>
-                <div (change)="verEventosSubmit('true')" class="col-12 col-sm-5 col-md-4">
+                <div class="col-12 col-sm-5 col-md-4">
                     <h5>Eventos a mostrar:</h5>
                     <hr>
-                    <input type="number" placeholder="N. De Elementos:" formControlName="perPage">
+                    <input (change)="verEventosSubmit('true')" type="number" placeholder="N. De Elementos:"
+                        formControlName="perPage">
 
                 </div>
                 <div class="col-12 col-sm-5 col-md-4">
                     <h5>Fecha Desde:</h5>
                     <hr>
-                    <input type="date" placeholder="Fecha De:" formControlName="dateStart">
+                    <input (change)="verEventosSubmit('true')" type="date" placeholder="Fecha De:"
+                        formControlName="dateStart">
                 </div>
                 <div class="col-12 col-sm-5 col-md-4">
                     <h5>Fecha Hasta:</h5>
                     <hr>
-                    <input type="date" placeholder="Fecha Hasta:" formControlName="dateEnd">
+                    <input (change)="verEventosSubmit('true')" type="date" placeholder="Fecha Hasta:"
+                        formControlName="dateEnd">
                 </div>
                 <div class="col-12 col-sm-5 col-md-4 d-flex flex-column">
                     <h5>Tasas:</h5>
@@ -77,44 +80,47 @@
                     <div id="tasa_check" class="d-flex flex-column">
                         <label>Con
                             Tasa(<i class="bi bi-currency-exchange"></i>)<input type="checkbox"
-                                (change)="feeCheck[0]=!feeCheck[0]" [checked]="feeCheck[0]"></label>
+                                (change)="feeCheck[0]=!feeCheck[0];verEventosSubmit('true')"
+                                [checked]="feeCheck[0]"></label>
                         <label>Sin
                             Tasa(<i class="bi bi-currency-exchange"></i>)<input type="checkbox"
-                                (change)="feeCheck[1]=!feeCheck[1]" [checked]="feeCheck[1]"></label>
+                                (change)="feeCheck[1]=!feeCheck[1];verEventosSubmit('true')"
+                                [checked]="feeCheck[1]"></label>
                         <label>Tasa
                             Mixta(<i class="bi bi-currency-exchange"></i>)<input type="checkbox"
-                                (change)="feeCheck[2]=!feeCheck[2]" [checked]="feeCheck[2]"></label>
+                                (change)="feeCheck[2]=!feeCheck[2];verEventosSubmit('true')"
+                                [checked]="feeCheck[2]"></label>
                     </div>
                 </div>
                 <div class="col-12 d-flex flex-column">
                     <h5>Fuente:</h5>
                     <hr>
                     <div class="row row-cols-6 g-1">
-                        <div (click)="fuenteCheck['festhome']=!fuenteCheck['festhome'];verEventosSubmit();"
+                        <div (click)="fuenteCheck['festhome']=!fuenteCheck['festhome'];verEventosSubmit('true');"
                             [class.bg-evento_check]="fuenteCheck['festhome']"
                             class="col fuente_button bg-evento bg-festhome">
                             <div></div>
 
                         </div>
-                        <div (click)="fuenteCheck['movibeta']=!fuenteCheck['movibeta'];verEventosSubmit();"
+                        <div (click)="fuenteCheck['movibeta']=!fuenteCheck['movibeta'];verEventosSubmit('true');"
                             [class.bg-evento_check]="fuenteCheck['movibeta']"
                             class="col fuente_button bg-evento bg-movibeta">
                             <div></div>
 
                         </div>
-                        <div (click)="fuenteCheck['animationfestivals']=!fuenteCheck['animationfestivals'];verEventosSubmit();"
+                        <div (click)="fuenteCheck['animationfestivals']=!fuenteCheck['animationfestivals'];verEventosSubmit('true');"
                             [class.bg-evento_check]="fuenteCheck['animationfestivals']"
                             class="col fuente_button bg-evento bg-animationfestivals">
                             <div></div>
 
                         </div>
-                        <div (click)="fuenteCheck['filmfreeaway']=!fuenteCheck['filmfreeaway'];verEventosSubmit();"
+                        <div (click)="fuenteCheck['filmfreeaway']=!fuenteCheck['filmfreeaway'];verEventosSubmit('true');"
                             [class.bg-evento_check]="fuenteCheck['filmfreeaway']"
                             class="col fuente_button bg-evento bg-filmfreeaway">
                             <div></div>
 
                         </div>
-                        <div (click)="fuenteCheck['shortfilmdepot']=!fuenteCheck['shortfilmdepot'];verEventosSubmit();"
+                        <div (click)="fuenteCheck['shortfilmdepot']=!fuenteCheck['shortfilmdepot'];verEventosSubmit('true');"
                             [class.bg-evento_check]="fuenteCheck['shortfilmdepot']"
                             class="col fuente_button bg-evento bg-shortfilmdepot">
                             <div></div>
