@@ -70,7 +70,15 @@ export class VerEventosComponent {
         });
         this.filter.sharedData$.subscribe(nuevosDatos => {
             this.pageFilter = nuevosDatos;
-
+            switch (nuevosDatos) {
+                case 'verEventos':
+                    this.buscaEventosIt();
+                    break;
+                case 'exEventos':
+                    this.eventoP = [];
+                    this.totalPages = 1;
+                    break;
+            }
         });
         this.filter.sharedData3$.subscribe(accion => {
             switch (accion) {
