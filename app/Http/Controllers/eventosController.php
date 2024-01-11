@@ -30,7 +30,9 @@ class eventosController extends Controller
         $dateEnd = $request->input('dateEnd');
         $onlyFilter = $request->has('onlyFilter') ? $request->input('onlyFilter') : false;
         $fee = json_decode($request->input('fee'));
-        $source = null !== $request->input('source') ? json_decode($request->input('source')) : "No Especificado";
+        $source = json_decode($request->input('source'));
+
+        $source = misFunciones::convertirArrayAsociativoALista($source);
         $pages = null !== $request->input('pages') ? json_decode($request->input('pages')) : 1;
         if ($pages > 3) {
             $pages = 3;
@@ -56,7 +58,7 @@ class eventosController extends Controller
         $eventos = misFunciones::paginacion($eventos, $page, $per_page, $order, $orderby);
         Cache::put('procesing', true, 3);
 
-        return response()->json(['status' => true, 'eventos' => $eventos]);
+        return $eventos;
     }
     public function extractFestivalData(Request $request, $group = false)
     {

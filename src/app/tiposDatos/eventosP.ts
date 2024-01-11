@@ -19,7 +19,7 @@ export type eventoP = {
     nombre: string
     tasa: tasa
     fechaLimite: fechalimite
-    url: string[],
+    url: string,
     fuente: fuente,
     ubicacion: string
     categoria: Set<categoria> // Propiedad opcional

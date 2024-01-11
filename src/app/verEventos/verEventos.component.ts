@@ -44,8 +44,8 @@ export class VerEventosComponent {
 
     }
 
-    public abreUrl(urls: string[]) {
-
+    public abreUrl(url: string) {
+        window.open(url, '_blank');
     }
     ngOnInit() {
         this.buscaEventosIt();
@@ -77,22 +77,43 @@ export class VerEventosComponent {
                 case 'exEventos':
                     this.eventoP = [];
                     this.totalPages = 1;
+                    this.page = 1;
+
                     break;
             }
         });
         this.filter.sharedData3$.subscribe(accion => {
-            switch (accion) {
-                case 'Extraer':
-                    break;
-                case 'Forzar':
-                    break;
-                case 'Guardar':
-                    break;
-            }
+            this.acciones(accion);
         });
     }
+    public acciones(accion: string) {
+        switch (accion) {
+            case 'Extraer':
+                this.onlyFilter = 'true';
+                this.exEventosIt();
+                break;
+            case 'Forzar':
+                this.onlyFilter = 'false';
+                this.exEventosIt();
+                break;
+            case 'Guardar':
+                this.saveEventosIt();
+                break;
+        }
+    }
+    public accionesPage(accion: string) {
+        switch (accion) {
+            case 'verEventos':
+                this.onlyFilter = 'true';
+                this.buscaEventosIt();
+                break;
+            case 'exEventos':
+                this.onlyFilter = 'true';
+                this.exEventosIt();
+                break;
 
-
+        }
+    }
     async buscaEventosIt() {
         this.it = true;
         while (this.it && this.contador < 2) {
@@ -101,6 +122,13 @@ export class VerEventosComponent {
         }
     }
     async exEventosIt() {
+        this.it = true;
+        while (this.it && this.contador < 2) {
+            this.buscaEventos('extractFestivalDataGroup');
+            await this.esperar(500);
+        }
+    }
+    async saveEventosIt() {
         this.it = true;
         while (this.it && this.contador < 2) {
             this.buscaEventos('extractFestivalDataGroup');
@@ -162,7 +190,7 @@ export class VerEventosComponent {
                         }
 
                         aux.ubicacion = evt["ubicacion"];
-                        aux.url = this.factory.stringToArray(evt["url"]);
+                        aux.url = evt["url"];
                         aux.fuente = this.factory.stringToArray(evt["fuente"]);
                         aux.fechaLimite = [];
                         let aux2 = this.factory.stringToArray(evt["fechaLimite"]);

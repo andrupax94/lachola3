@@ -61,7 +61,7 @@ export class FilterComponent {
         this.filter.onlyFilter = onlyFilter;
         this.filter.fee = this.feeCheck;
         this.filter.source = this.fuenteCheck;
-        this.filter.compartirFiltros('verEventos');
+        this.filter.compartirFiltros(this.pageFilter);
     }
     public accionarExEventos(accion: string) {
         this.filter.exEventos(accion);

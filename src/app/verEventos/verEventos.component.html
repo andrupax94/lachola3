@@ -3,7 +3,7 @@
         <td>Nombre</td>
         <td title="Tipo De Metraje">T.Metraje</td>
         <td>Tasa</td>
-        <td>Tipo</td>
+        <!-- <td>Tipo</td> -->
         <td title="Fecha Limite">Limite</td>
         <td>Fuente</td>
         <td *ngIf="pageFilter==='exEventos'"></td>
@@ -27,22 +27,19 @@
             <span class="tasa tasa_t" title="{{evento.tasa.text}}" *ngIf="evento.tasa.bool===2"><i
                     class="bi bi-currency-exchange"></i></span>
         </td>
-        <td class="text-center">
-            <span class="tipo_festival a" *ngIf="evento.tipoFestival==='a'">
+        <!-- <td class="text-center">
+            <span class="tipo_festival a" *ngIf="evento.tipoFestival==='a'||evento.tipoFestival.indexOf('Feature')">
                 {{evento.tipoFestival.toUpperCase()}}
             </span>
-            <span class="tipo_festival b" *ngIf="evento.tipoFestival==='b'">
+            <span class="tipo_festival b" *ngIf="evento.tipoFestival==='b'||evento.tipoFestival.indexOf('')">
                 {{evento.tipoFestival.toUpperCase()}}
             </span>
-            <span class="tipo_festival c" *ngIf="evento.tipoFestival==='c'">
+            <span class="tipo_festival c" *ngIf="evento.tipoFestival==='c'||evento.tipoFestival.indexOf('')">
                 {{evento.tipoFestival.toUpperCase()}}
             </span>
-        </td>
+        </td> -->
         <td>
-            <div class="badge"
-                [class.bg-primary]="compararFechas(evento.fechaLimite.fecha)>=3&&compararFechas(evento.fechaLimite.fecha)<10"
-                [class.bg-danger]="compararFechas(evento.fechaLimite.fecha)<3&&compararFechas(evento.fechaLimite.fecha)>0"
-                [class.bg-warning]="compararFechas(evento.fechaLimite.fecha)<=0"
+            <div class="badge" [class.bg-primary]="compararFechas(evento.fechaLimite.fecha)>=3&&compararFechas(evento.fechaLimite.fecha)<10" [class.bg-danger]="compararFechas(evento.fechaLimite.fecha)<3&&compararFechas(evento.fechaLimite.fecha)>0" [class.bg-warning]="compararFechas(evento.fechaLimite.fecha)<=0"
                 [class.bg-success]="compararFechas(evento.fechaLimite.fecha)>=10">
                 {{evento.fechaLimite.fecha}}</div>
         </td>
@@ -53,6 +50,5 @@
     </tr>
 </table>
 <div class="numerations">
-    <div (click)="page=i+1;buscaEventosIt()" [class.active]="i===page-1"
-        *ngFor="let _ of totalPages | emptyArray; let i = index">{{i+1}}</div>
+    <div (click)="page=i+1;accionesPage(pageFilter)" [class.active]="i===page-1" *ngFor="let _ of totalPages | emptyArray; let i = index">{{i+1}}</div>
 </div>

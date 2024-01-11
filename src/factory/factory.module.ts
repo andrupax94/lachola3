@@ -211,26 +211,40 @@ export class FactoryService {
     };
     public arrayToString(valor: Array<any>, separator: string = ',', column: string | boolean = false) {
         var aux = "";
+
         if (valor === undefined)
             return 'Valor Indefinido';
         else if (typeof (valor) === 'string')
             return valor;
+        else if (Array.isArray(valor) && valor.length === 0)
+            return '';
 
-        valor.forEach((element, i) => {
-            if (i + 1 === valor.length) {
-                if (column === false)
-                    aux = aux + element;
-                if (column !== false)
-                    aux = aux + element[column as string];
-            } else {
-                if (column === false)
-                    aux = aux + element + separator;
-                if (column !== false)
-                    aux = aux + element[column as string] + separator;
-            }
-        });
+        if (Array.isArray(valor)) {
+            valor.forEach((element, i) => {
+                if (typeof element === 'object' && element !== null) {
+                    // Si es un objeto, trata cada par clave-valor
+                    Object.keys(element).forEach((key, j) => {
+                        aux += key + ':' + element[key];
+                        if (j < Object.keys(element).length - 1) {
+                            aux += separator;
+                        }
+                    });
+                } else {
+                    // Si no es un objeto, trata el elemento directamente
+                    aux += element;
+                }
+
+                if (i < valor.length - 1) {
+                    aux += separator;
+                }
+            });
+        } else {
+            return 'Tipo no compatible';
+        }
+
         return aux;
-    };
+    }
+
     public comparaArrays(arr1: Array<any>, arr2: Array<any>) {
         if (this.arrayToString(arr1) === this.arrayToString(arr2))
             return true;
