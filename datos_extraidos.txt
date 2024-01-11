@@ -1,38 +1,16 @@
-//FILTRO MILAGROSO
-// This enables the orderby=menu_order for Posts
-add_filter( 'rest_post_collection_params', 'filter_add_rest_orderby_params', 10, 1 );
-// And this for a custom post type called 'portfolio'
-add_filter( 'rest_evento_collection_params', 'filter_add_rest_orderby_params', 10, 1 );
+{
 
-/**
- * Add menu_order to the list of permitted orderby values
- */
-function filter_add_rest_orderby_params( $params ) {
-	 $custom_fields = array(
-       "acm_fields.banner",
-"acm_fields.imagen",
-"acm_fields.nombre",
-"acm_fields.descripcion",
-"acm_fields.tasa",
-"acm_fields.categoria",
-"acm_fields.tipo_metraje",
-"acm_fields.tipo_festival",
-"acm_fields.fechaInicio",
-"acm_fields.fechaLimite",
-"acm_fields.fuente",
-"acm_fields.url",
-"acm_fields.telefono",
-"acm_fields.correoElectronico",
-"acm_fields.web",
-"acm_fields.facebook",
-"acm_fields.ubicacion",
-"acm_fields.instagram",
-"acm_fields.youtube",
-"acm_fields.industrias",
-"acm_fields.twitterX"
-        // Agrega tantos campos personalizados como desees permitir
-    );
-
-    $params['orderby']['enum'] = array_merge( $params['orderby']['enum'], $custom_fields );
-	return $params;
+        "status": "publish",
+        "acm_fields": {
+            "nombre": "Lecce Film Network",
+            "imagen":"https://lachola.andreseduardo.es/wp-content/uploads/2024/01/Lecce-film-network.jpg",
+            "tasa": "0",
+            "fechaLimite": "2023-12-22",
+            "url": "https://www.leccefilmnetwork.it/",
+            "fuente": "Filmfreeaway, Fest Home, Animationfestivals",
+            "ubicacion": "Via Antonio Malaspina 11 Lecce Lecce 73100 Italy",
+            "categoria": "Ficción, Ciencia Ficción, otros",
+            "tipoMetraje": "Mediometraje, largometraje",
+            "tipoFestival": "C"
+        }
 }

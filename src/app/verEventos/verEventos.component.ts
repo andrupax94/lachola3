@@ -45,7 +45,6 @@ export class VerEventosComponent {
     }
 
     public abreUrl(url: string) {
-        window.open(url, '_blank');
     }
     ngOnInit() {
         this.buscaEventosIt();

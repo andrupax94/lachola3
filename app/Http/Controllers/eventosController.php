@@ -19,6 +19,16 @@ class eventosController extends Controller
         preg_match('/\bhttps?:\/\/\S+\b/', $style, $matches);
         return $matches ? $matches[0] : 'No Especificado';
     }
+    public function dropEvents(Request $request)
+    {
+        Cache::put('procesing', 'iniciando', 20);
+        $page = $request->input('eventos');
+    }
+    public function saveEvents(Request $request)
+    {
+        Cache::put('procesing', 'iniciando', 20);
+        $page = $request->input('eventos');
+    }
     public function extractFestivalDataGroup(Request $request)
     {
         Cache::put('procesing', 'iniciando', 20);
@@ -368,7 +378,7 @@ class eventosController extends Controller
             Cache::put('procesing', 'Obteniendo Datos Local', 20);
             $eventos = Cache::get('eventos');
 
-            Cache::put('eventos', $eventos, 100000);
+            Cache::put('eventos', $eventos, 300);
 
         } else {
             Cache::put('procesing', 'Obteniendo Datos De WordPress', 20);
@@ -387,7 +397,7 @@ class eventosController extends Controller
                 $eventos[$key]["url"] = isset($evento["acm_fields"]["url"]) ? $evento["acm_fields"]["url"] : "No especificado";
                 $eventos[$key]["ubicacion"] = isset($evento["acm_fields"]["ubicacion"]) ? $evento["acm_fields"]["ubicacion"] : "No especificado";
                 $eventos[$key]["fechaLimite"] = isset($evento["acm_fields"]["fechaLimite"]) ? $evento["acm_fields"]["fechaLimite"] : "No especificado";
-                $eventos[$key]["imagen"] = isset($evento["acm_fields"]["imagen"]["media_details"]["sizes"]["full"]["source_url"]) ? $evento["acm_fields"]["imagen"]["media_details"]["sizes"]["full"]["source_url"] : "No especificado";
+                $eventos[$key]["imagen"] = isset($evento["acm_fields"]["imagen"]) ? $evento["acm_fields"]["imagen"] : "No especificado";
                 $eventos[$key]["tipoMetraje"] = isset($evento["acm_fields"]["tipoMetraje"]) ? $evento["acm_fields"]["tipoMetraje"] : "No especificado";
                 $eventos[$key]["tipoFestival"] = isset($evento["acm_fields"]["tipoFestival"]) ? $evento["acm_fields"]["tipoFestival"] : "No especificado";
                 $eventos[$key]["categoria"] = isset($evento["acm_fields"]["categoria"]) ? $evento["acm_fields"]["categoria"] : "No especificado";
@@ -432,7 +442,7 @@ class eventosController extends Controller
                 //     $totalPages = 'El encabezado X-WP-TotalPages no está presente en la respuesta.';
                 // }
             }
-            Cache::put('eventos', $eventos, 100000);
+            Cache::put('eventos', $eventos, 300);
         }
         Cache::put('procesing', 'Organizando Datos', 20);
         $eventos = misFunciones::filtrarEventosConFiltros($eventos, $dateStart, $dateEnd, $fee, $source);
