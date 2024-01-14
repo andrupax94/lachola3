@@ -364,7 +364,7 @@ class eventosController extends Controller
         $source = json_decode($request->input('source'));
         $source = misFunciones::convertirArrayAsociativoALista($source);
         $params = [
-            '_fields' => 'id,acm_fields.tasa,acm_fields.url,acm_fields.fuente,acm_fields.facebook,acm_fields.correoElectronico,acm_fields.nombre,acm_fields.fechaInicio,acm_fields.fechaLimite,acm_fields.ubicacion,acm_fields.imagen.media_details.sizes.full.source_url,acm_fields.tipoMetraje,acm_fields.tipoFestival,acm_fields.categoria,acm_fields.banner.media_details.full.source_url,acm_fields.web,acm_fields.instagram,acm_fields.youtube,acm_fields.industrias,acm_fields.telefono,acm_fields.twitterX,acm_fields.descripcion',
+            '_fields' => 'id,acf.tasa,acf.url,acf.fuente,acf.facebook,acf.correoElectronico,acf.nombre,acf.fechaInicio,acf.fechaLimite,acf.ubicacion,acf.imagen,acf.tipoMetraje,acf.tipoFestival,acf.categoria,acf.banner,acf.web,acf.instagram,acf.youtube,acf.industrias,acf.telefono,acf.twitterX,acf.descripcion',
             // 'page' => $page,
             'per_page' => 1000,
             // 'orderby' => $orderby,
@@ -391,27 +391,27 @@ class eventosController extends Controller
             foreach ($data as $key => $evento) {
                 $eventos[$key] = [];
                 $eventos[$key]["id"] = $evento["id"];
-                $eventos[$key]["tasa"] = isset($evento["acm_fields"]["tasa"]) ? $evento["acm_fields"]["tasa"] : "No especificado";
-                $eventos[$key]["fuente"] = isset($evento["acm_fields"]["fuente"]) ? $evento["acm_fields"]["fuente"] : "No especificado";
-                $eventos[$key]["nombre"] = isset($evento["acm_fields"]["nombre"]) ? $evento["acm_fields"]["nombre"] : "No especificado";
-                $eventos[$key]["url"] = isset($evento["acm_fields"]["url"]) ? $evento["acm_fields"]["url"] : "No especificado";
-                $eventos[$key]["ubicacion"] = isset($evento["acm_fields"]["ubicacion"]) ? $evento["acm_fields"]["ubicacion"] : "No especificado";
-                $eventos[$key]["fechaLimite"] = isset($evento["acm_fields"]["fechaLimite"]) ? $evento["acm_fields"]["fechaLimite"] : "No especificado";
-                $eventos[$key]["imagen"] = isset($evento["acm_fields"]["imagen"]) ? $evento["acm_fields"]["imagen"] : "No especificado";
-                $eventos[$key]["tipoMetraje"] = isset($evento["acm_fields"]["tipoMetraje"]) ? $evento["acm_fields"]["tipoMetraje"] : "No especificado";
-                $eventos[$key]["tipoFestival"] = isset($evento["acm_fields"]["tipoFestival"]) ? $evento["acm_fields"]["tipoFestival"] : "No especificado";
-                $eventos[$key]["categoria"] = isset($evento["acm_fields"]["categoria"]) ? $evento["acm_fields"]["categoria"] : "No especificado";
-                $eventos[$key]["telefono"] = isset($evento["acm_fields"]["telefono"]) ? $evento["acm_fields"]["telefono"] : "No especificado";
-                $eventos[$key]["fechaInicio"] = isset($evento["acm_fields"]["fechaInicio"]) ? $evento["acm_fields"]["fechaInicio"] : "No especificado";
-                $eventos[$key]["facebook"] = isset($evento["acm_fields"]["facebook"]) ? $evento["acm_fields"]["facebook"] : "No especificado";
-                $eventos[$key]["correoElectronico"] = isset($evento["acm_fields"]["correoElectronico"]) ? $evento["acm_fields"]["correoElectronico"] : "No especificado";
-                $eventos[$key]["web"] = isset($evento["acm_fields"]["web"]) ? $evento["acm_fields"]["web"] : "No especificado";
-                $eventos[$key]["instagram"] = isset($evento["acm_fields"]["instagram"]) ? $evento["acm_fields"]["instagram"] : "No especificado";
-                $eventos[$key]["youtube"] = isset($evento["acm_fields"]["youtube"]) ? $evento["acm_fields"]["youtube"] : "No especificado";
-                $eventos[$key]["industrias"] = isset($evento["acm_fields"]["industrias"]) ? $evento["acm_fields"]["industrias"] : "No especificado";
-                $eventos[$key]["banner"] = isset($evento["acm_fields"]["banner"]["media_details"]["full"]["source_url"]) ? $evento["acm_fields"]["banner"]["media_details"]["full"]["source_url"] : "No especificado";
-                $eventos[$key]["twitterX"] = isset($evento["acm_fields"]["twitterX"]) ? $evento["acm_fields"]["twitterX"] : "No especificado";
-                $eventos[$key]["descripcion"] = isset($evento["acm_fields"]["descripcion"]) ? $evento["acm_fields"]["descripcion"] : "No especificado";
+                $eventos[$key]["tasa"] = isset($evento["acf"]["tasa"]) ? $evento["acf"]["tasa"] : "No especificado";
+                $eventos[$key]["fuente"] = isset($evento["acf"]["fuente"]) ? $evento["acf"]["fuente"] : "No especificado";
+                $eventos[$key]["nombre"] = isset($evento["acf"]["nombre"]) ? $evento["acf"]["nombre"] : "No especificado";
+                $eventos[$key]["url"] = isset($evento["acf"]["url"]) ? $evento["acf"]["url"] : "No especificado";
+                $eventos[$key]["ubicacion"] = isset($evento["acf"]["ubicacion"]) ? $evento["acf"]["ubicacion"] : "No especificado";
+                $eventos[$key]["fechaLimite"] = isset($evento["acf"]["fechaLimite"]) ? $evento["acf"]["fechaLimite"] : "No especificado";
+                $eventos[$key]["imagen"] = isset($evento["acf"]["imagen"]) ? env('APP_URL_WP') . '/wp-json/custom/v1/image/' . $evento["acf"]["imagen"] : "No especificado";
+                $eventos[$key]["tipoMetraje"] = isset($evento["acf"]["tipoMetraje"]) ? $evento["acf"]["tipoMetraje"] : "No especificado";
+                $eventos[$key]["tipoFestival"] = isset($evento["acf"]["tipoFestival"]) ? $evento["acf"]["tipoFestival"] : "No especificado";
+                $eventos[$key]["categoria"] = isset($evento["acf"]["categoria"]) ? $evento["acf"]["categoria"] : "No especificado";
+                $eventos[$key]["telefono"] = isset($evento["acf"]["telefono"]) ? $evento["acf"]["telefono"] : "No especificado";
+                $eventos[$key]["fechaInicio"] = isset($evento["acf"]["fechaInicio"]) ? $evento["acf"]["fechaInicio"] : "No especificado";
+                $eventos[$key]["facebook"] = isset($evento["acf"]["facebook"]) ? $evento["acf"]["facebook"] : "No especificado";
+                $eventos[$key]["correoElectronico"] = isset($evento["acf"]["correoElectronico"]) ? $evento["acf"]["correoElectronico"] : "No especificado";
+                $eventos[$key]["web"] = isset($evento["acf"]["web"]) ? $evento["acf"]["web"] : "No especificado";
+                $eventos[$key]["instagram"] = isset($evento["acf"]["instagram"]) ? $evento["acf"]["instagram"] : "No especificado";
+                $eventos[$key]["youtube"] = isset($evento["acf"]["youtube"]) ? $evento["acf"]["youtube"] : "No especificado";
+                $eventos[$key]["industrias"] = isset($evento["acf"]["industrias"]) ? $evento["acf"]["industrias"] : "No especificado";
+                $eventos[$key]["banner"] = isset($evento["acf"]["banner"]["media_details"]["full"]["source_url"]) ? $evento["acf"]["banner"]["media_details"]["full"]["source_url"] : "No especificado";
+                $eventos[$key]["twitterX"] = isset($evento["acf"]["twitterX"]) ? $evento["acf"]["twitterX"] : "No especificado";
+                $eventos[$key]["descripcion"] = isset($evento["acf"]["descripcion"]) ? $evento["acf"]["descripcion"] : "No especificado";
 
                 $eventos[$key]["nombre"] = ($eventos[$key]["nombre"] !== "") ? $eventos[$key]["nombre"] : "No Especificado";
                 $eventos[$key]["ubicacion"] = ($eventos[$key]["ubicacion"] !== "") ? $eventos[$key]["ubicacion"] : "No Especificado";

@@ -7,36 +7,25 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function setToken(Request $request)
+    {
+        try {
+            $token = $request->input('token');
+            session(['token' => $token]); // Utiliza session(['clave' => 'valor']) para almacenar datos en sesión
+            return response()->json(session('token'));
+
+        } catch (Exception $e) {
+            return response()->json('Error Al Asignar El Token');
+        }
+    }
+    //TODO PENDIENTE ELIMINAR
     public function getToken(Request $request)
     {
-        $username = $request->input('username');
-        $password = $request->input('password');
-
-        // Realiza la solicitud POST a la URL de obtención del token
-        $client = new Client();
-
-        try {
-            $response = $client->post(env('APP_URL_WP') . '/wp-json/jwt-auth/v1/token', [
-                'form_params' => [
-                    'username' => $username,
-                    'password' => $password,
-                ],
-            ]);
-
-            // Decodifica la respuesta JSON
-            $responseData = json_decode($response->getBody(), true);
-
-            return UserController::getData($request, $responseData);
-        } catch (\Exception $e) {
-            // Maneja errores en la solicitud
-            return response()->json([
-                'error' => 'Error al obtener el token',
-                'mensaje' => $e->getMessage(),
-                'codigo' => 2,
-            ], 500);
-
+        if (session()->has('token')) {
+            return response()->json(session('token')); // No necesitas utilizar session(['token'])
+        } else {
+            return response()->json('Sin Token De Acceso');
         }
-
     }
     public function dameSesion(Request $request)
     {
@@ -68,9 +57,9 @@ class UserController extends Controller
                 ],
             ]);
             $responseData = json_decode($response->getBody(), true);
-            if($responseData["code"]!=='jwt_auth_valid_token')
-                 throw new Exception('');
-            else{
+            if ($responseData["code"] !== 'jwt_auth_valid_token') {
+                throw new Exception('');
+            } else {
                 try {
                     $response = $client->post(env('APP_URL_WP') . '/wp-json/wp/v2/users/me', [
                         'headers' => [

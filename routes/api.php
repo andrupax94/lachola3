@@ -21,6 +21,7 @@ Route::post('/wpDirect', function (Request $request) {
     return view('index');
 });
 Route::post('/getToken', [UserController::class, 'getToken']);
+Route::post('/setToken', [UserController::class, 'setToken']);
 Route::post('/dameSesion', [UserController::class, 'dameSesion']);
 
 Route::post('/getEventos', [eventosController::class, 'getEventos'])->middleware('procesing');
