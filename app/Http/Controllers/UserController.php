@@ -22,7 +22,7 @@ class UserController extends Controller
     public function getToken(Request $request)
     {
         if (session()->has('token')) {
-            return response()->json(session('token')); // No necesitas utilizar session(['token'])
+            return response()->json(true); // No necesitas utilizar session(['token'])
         } else {
             return response()->json('Sin Token De Acceso');
         }
