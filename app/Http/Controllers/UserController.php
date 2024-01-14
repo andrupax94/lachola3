@@ -46,15 +46,16 @@ class UserController extends Controller
         }
     }
 
-    public static function getData(Request $request, $response)
+    public function getUser(Request $request)
     {
         $client = new Client();
-        $token = 'Bearer ' . $response['token'];
+        $token = 'Bearer ' . session('token');
         try {
             $response = $client->post(env('APP_URL_WP') . '/wp-json/jwt-auth/v1/token/validate', [
                 'headers' => [
                     'Authorization' => $token,
                 ],
+                'verify' => false,
             ]);
             $responseData = json_decode($response->getBody(), true);
             if ($responseData["code"] !== 'jwt_auth_valid_token') {
@@ -65,6 +66,7 @@ class UserController extends Controller
                         'headers' => [
                             'Authorization' => $token,
                         ],
+                        'verify' => false,
                     ]);
                     // Decodifica la respuesta JSON
                     $responseData = json_decode($response->getBody(), true);

@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\EventosController;
-use App\Http\Controllers\python;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -22,12 +21,9 @@ Route::post('/wpDirect', function (Request $request) {
 });
 Route::post('/getToken', [UserController::class, 'getToken']);
 Route::post('/setToken', [UserController::class, 'setToken']);
-Route::post('/dameSesion', [UserController::class, 'dameSesion']);
+Route::post('/getUser', [UserController::class, 'getUser']);
 
 Route::post('/getEventos', [eventosController::class, 'getEventos'])->middleware('procesing');
 Route::post('/getEventosJ', [eventosController::class, 'getEventosJ'])->middleware('procesing');
 Route::post('/extractFestivalData', [eventosController::class, 'extractFestivalData'])->middleware('procesing');
 Route::post('/extractFestivalDataGroup', [eventosController::class, 'extractFestivalDataGroup'])->middleware('procesing');
-
-Route::post('/extraeP', [python::class, 'extrae']);
-Route::post('/extraeP2', [python::class, 'extrae2']);
