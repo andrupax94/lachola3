@@ -10,7 +10,7 @@ en cuanto a sobrescribir sensillamente se añaden elementos iguales siempre y cu
 *optimizar y quitar codigo redundante.
 
 FRONEND
-*hacer que la aplicacion angular verifique si existe el token de acceso, solicitando a getToken en userController.
+*++hacer que la aplicacion angular verifique si existe el token de acceso, solicitando a getToken en userController.
 *hacer que extraer Eventos guarde datos seleccionados a saveEvents.
 *implementar la animacion de carga con los mensajes que arroja el backend.
 *revisar si existen dependencias NPM que no uso.
