@@ -12,6 +12,13 @@
             ]
         },
         {
+            "name": "Launch Edge SSL and attach DevTools",
+            "configurations": [
+                "Launch Microsoft Edge SSL",
+                "Open Edge DevTools"
+            ]
+        },
+        {
             "name": "Launch Edge and attach DevTools Headless",
             "configurations": [
                 "Launch Microsoft Edge Headless",
@@ -48,6 +55,19 @@
                 "hidden": true,
             },
             "url": "http://127.0.0.1:4200/",
+        },
+        {
+            "type": "msedge",
+            "name": "Launch Microsoft Edge SSL",
+            "request": "launch",
+            "webRoot": "${workspaceFolder}",
+            "runtimeArgs": [
+                "--remote-debugging-port=9222"
+            ],
+            "presentation": {
+                "hidden": true,
+            },
+            "url": "https://127.0.0.1:4200/",
         },
         {
             "type": "msedge",

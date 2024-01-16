@@ -1,10 +1,10 @@
 BACKEND
-*Hacer que el plugin(lacholaplugin) envie a el backend de laravel(setToken) el token bearer.
-*Hacer que las solicitudes getEventos incluyan el encabezado autorization con el bearer token.
-*crear un midleware que verifique si existe el bearer token y esta validado.
+*-----Hacer que las solicitudes getEventos incluyan el encabezado autorization con el bearer token.
+*-----crear un midleware que verifique si existe el bearer token y esta validado.
+*con la tarea anterior hay que crear saveImg para almacenar las imagenes al wordpress(en postman creo que tengo un ejemplo).
 *crear saveEvents en eventoscontroller para que guarde en el wordpress los eventos seleccionados(en postman creo que tengo un ejemplo por individual),
 en cuanto a sobrescribir sensillamente se añaden elementos iguales siempre y cuando tengan diferentes fuentes, si son iguales las fuentes se sobrescribe.
-*con la tarea anterior hay que crear saveImg para almacenar las imagenes al wordpress(en postman creo que tengo un ejemplo).
+*Hacer que el plugin(lacholaplugin) envie a el backend de laravel(setToken) el token bearer.
 *introducir mensajes de estado para la animacion de carga del front.
 *revisar si existen dependencias COMPOSER que no uso.
 *optimizar y quitar codigo redundante.
@@ -19,5 +19,5 @@ FRONEND
 WORDPRESS
 
 OTROS
-*configurar el plugin de ocultar elementos para mayor organizacion.
+*----configurar el plugin de ocultar elementos para mayor organizacion.
 *revisar si existen archivos inutiles.

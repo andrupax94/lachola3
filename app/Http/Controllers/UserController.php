@@ -11,21 +11,21 @@ class UserController extends Controller
     {
         try {
             $token = $request->input('token');
-            session(['token' => $token]); // Utiliza session(['clave' => 'valor']) para almacenar datos en sesión
+            session(['token' => $token]);
+
             return response()->json(session('token'));
 
         } catch (Exception $e) {
             return response()->json('Error Al Asignar El Token');
         }
     }
-    //TODO PENDIENTE ELIMINAR
+
     public function getToken(Request $request)
     {
-        if (session()->has('token')) {
-            return response()->json(true); // No necesitas utilizar session(['token'])
-        } else {
-            return response()->json('Sin Token De Acceso');
-        }
+        // session()->forget('token');
+
+        return response()->json(true); // No necesitas utilizar session(['token'])
+
     }
     public function dameSesion(Request $request)
     {

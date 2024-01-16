@@ -3,5 +3,5 @@ export const environment = {
     apiUrl: '',
     back: 'http://lachola.test/api/',
     public: '',
-    baseRef:'/'
-  };
+    baseRef: '/'
+};

@@ -23,11 +23,33 @@ class eventosController extends Controller
     {
         Cache::put('procesing', 'iniciando', 20);
         $page = $request->input('eventos');
+        $token = 'Bearer ' . session('token');
+
+        $response = Http::withOptions([
+            'headers' => [
+                'Authorization' => $token,
+            ],
+            'verify' => false])
+            ->post($url);
     }
     public function saveEvents(Request $request)
     {
+        $apiUrl = env('APP_URL_WP') . '/wp-json/wp/v2/eventos';
+        $params = [
+
+        ];
+
         Cache::put('procesing', 'iniciando', 20);
-        $page = $request->input('eventos');
+        $url = $apiUrl . '?' . http_build_query($params);
+        $eventos = $request->input('eventos');
+        $token = 'Bearer ' . session('token');
+
+        $response = Http::withOptions([
+            'headers' => [
+                'Authorization' => $token,
+            ],
+            'verify' => false])
+            ->post($url);
     }
     public function extractFestivalDataGroup(Request $request)
     {
@@ -382,7 +404,13 @@ class eventosController extends Controller
 
         } else {
             Cache::put('procesing', 'Obteniendo Datos De WordPress', 20);
-            $response = Http::withOptions(['verify' => false])
+            $token = 'Bearer ' . session('token');
+
+            $response = Http::withOptions([
+                'headers' => [
+                    'Authorization' => $token,
+                ],
+                'verify' => false])
                 ->get($url);
 
             // Obtener el contenido de la respuesta en formato JSON

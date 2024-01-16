@@ -19,11 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::post('/wpDirect', function (Request $request) {
     return view('index');
 });
-Route::post('/getToken', [UserController::class, 'getToken']);
+Route::post('/getToken', [UserController::class, 'getToken'])->middleware(['token']);
 Route::post('/setToken', [UserController::class, 'setToken']);
 Route::post('/getUser', [UserController::class, 'getUser']);
 
-Route::post('/getEventos', [eventosController::class, 'getEventos'])->middleware('procesing');
-Route::post('/getEventosJ', [eventosController::class, 'getEventosJ'])->middleware('procesing');
-Route::post('/extractFestivalData', [eventosController::class, 'extractFestivalData'])->middleware('procesing');
-Route::post('/extractFestivalDataGroup', [eventosController::class, 'extractFestivalDataGroup'])->middleware('procesing');
+Route::post('/getEventos', [eventosController::class, 'getEventos'])->middleware(['procesing', 'token']);
+Route::post('/getEventosJ', [eventosController::class, 'getEventosJ'])->middleware(['procesing', 'token']);
+Route::post('/extractFestivalData', [eventosController::class, 'extractFestivalData'])->middleware(['procesing', 'token']);
+Route::post('/extractFestivalDataGroup', [eventosController::class, 'extractFestivalDataGroup'])->middleware(['procesing', 'token']);
