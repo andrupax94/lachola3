@@ -20,11 +20,11 @@ export class AppComponent {
         let bearerP = new HttpParams({ fromString: 'name=term' }).set('token', tokenValue);
         const url = 'http://lachola.test/api/getToken';
         const headers = new HttpHeaders({
-
+            'X-CSRF-TOKEN': 'any'
         });
 
         // Realiza la solicitud POST y obtiene la respuesta completa
-        return this.http.post(url, bearerP, { headers, observe: 'response', withCredentials: true });
+        return this.http.post(url, bearerP, { headers: headers, observe: 'response', withCredentials: true });
     }
     ngOnInit() {
         this.realizarSolicitudPost().subscribe(

@@ -5,7 +5,7 @@
         "dev": "vite",
         "buildL": "vite build",
         "ng": "ng",
-        "start": "ng serve --host=127.0.0.1",
+        "start": "ng serve --host=sub.lachola.test",
         "startssl": "ng serve --host=127.0.0.1 --ssl",
         "build": "ng build",
         "watch": "ng build --watch --configuration development",

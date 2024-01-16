@@ -54,7 +54,7 @@
             "presentation": {
                 "hidden": true,
             },
-            "url": "http://127.0.0.1:4200/",
+            "url": "http://sub.lachola.test:4200/",
         },
         {
             "type": "msedge",

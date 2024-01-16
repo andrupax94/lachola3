@@ -20,7 +20,7 @@ class CorsMiddleware
 
         $response->headers->set('Access-Control-Allow-Origin', 'http://127.0.0.1:4200'); // Reemplaza con tu dominio de Angular
         $response->headers->set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-        $response->headers->set('Access-Control-Allow-Headers', 'Content-Type, Authorization,Connection,session-id');
+        $response->headers->set('Access-Control-Allow-Headers', 'Content-Type, Authorization,Connection,X-XSRF-TOKEN');
         $response->headers->set('Access-Control-Allow-Credentials', 'true');
 
         return $response;

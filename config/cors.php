@@ -19,7 +19,10 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://127.0.0.1:4200'],
+    'allowed_origins' => [
+        'http://lachola.test:4200',
+        'http://sub.lachola.test:4200',
+],
 
     'allowed_origins_patterns' => ['*'],
 
