@@ -23,6 +23,9 @@ Route::post('/getToken', [UserController::class, 'getToken'])->middleware(['toke
 Route::post('/setToken', [UserController::class, 'setToken']);
 Route::post('/getUser', [UserController::class, 'getUser']);
 
+//pendiente Eliminar
+Route::post('/logIn', [UserController::class, 'logIn']);
+
 Route::post('/getEventos', [eventosController::class, 'getEventos'])->middleware(['procesing', 'token']);
 Route::post('/getEventosJ', [eventosController::class, 'getEventosJ'])->middleware(['procesing', 'token']);
 Route::post('/extractFestivalData', [eventosController::class, 'extractFestivalData'])->middleware(['procesing', 'token']);

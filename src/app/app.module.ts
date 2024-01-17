@@ -5,7 +5,7 @@ import { LocationStrategy, HashLocationStrategy, DatePipe } from '@angular/commo
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { APP_BASE_HREF } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { LogInComponent } from './log-in/log-in.component';
 import { PopUpsModule } from 'src/pop-ups/pop-ups.module';
@@ -18,6 +18,7 @@ import { VerSubvencionesComponent } from './ver-subvenciones/ver-subvenciones.co
 import { VerEventosComponent } from './verEventos/verEventos.component';
 import * as $from from 'jquery';
 import gsap from 'gsap';
+import { ErrorInterceptor } from 'src/app/httpInterceptor';
 
 
 @NgModule({
@@ -44,7 +45,14 @@ import gsap from 'gsap';
     providers: [
         DatePipe,
         { provide: LocationStrategy, useClass: HashLocationStrategy },
-        { provide: APP_BASE_HREF, useValue: environment.apiUrl }
+        { provide: APP_BASE_HREF, useValue: environment.apiUrl },
+        [
+            {
+                provide: HTTP_INTERCEPTORS,
+                useClass: ErrorInterceptor,
+                multi: true
+            }
+        ]
     ],
     bootstrap: [AppComponent]
 })

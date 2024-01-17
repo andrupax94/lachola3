@@ -22,7 +22,6 @@ class UserController extends Controller
 
     public function getToken(Request $request)
     {
-        // session()->forget('token');
 
         return response()->json(true); // No necesitas utilizar session(['token'])
 
@@ -50,6 +49,41 @@ class UserController extends Controller
     {
         $client = new Client();
         $token = 'Bearer ' . session('token');
+        $validate = UserController::validar($request);
+        if ($validate === true) {
+            try {
+                $response = $client->post(env('APP_URL_WP') . '/wp-json/wp/v2/users/me', [
+                    'headers' => [
+                        'Authorization' => $token,
+                    ],
+                    'verify' => false,
+                ]);
+                // Decodifica la respuesta JSON
+                $responseData = json_decode($response->getBody(), true);
+
+                // Puedes manipular la respuesta o devolverla directamente
+                $usuario = [
+                    'username' => $responseData['username'],
+                    'rol' => implode(', ', $responseData['roles']),
+                    'avatar' => $responseData['avatar_urls']['96'],
+                ];
+                session()->put($usuario);
+                // Puedes manipular la respuesta o devolverla directamente
+                return response()->json(session()->all());
+            } catch (\Exception $e) {
+                // Maneja errores en la solicitud
+                return response()->json('Error al obtener los datos del usuario');
+            }
+        } else {
+            return response()->json($validate);
+
+        }
+
+    }
+    public static function validar(Request $request)
+    {
+        $client = new Client();
+        $token = 'Bearer ' . session('token');
         try {
             $response = $client->post(env('APP_URL_WP') . '/wp-json/jwt-auth/v1/token/validate', [
                 'headers' => [
@@ -59,39 +93,41 @@ class UserController extends Controller
             ]);
             $responseData = json_decode($response->getBody(), true);
             if ($responseData["code"] !== 'jwt_auth_valid_token') {
-                throw new Exception('');
+                return 'Token Invalido';
             } else {
-                try {
-                    $response = $client->post(env('APP_URL_WP') . '/wp-json/wp/v2/users/me', [
-                        'headers' => [
-                            'Authorization' => $token,
-                        ],
-                        'verify' => false,
-                    ]);
-                    // Decodifica la respuesta JSON
-                    $responseData = json_decode($response->getBody(), true);
-
-                    // Puedes manipular la respuesta o devolverla directamente
-                    $usuario = [
-                        'username' => $responseData['username'],
-                        'rol' => implode(', ', $responseData['roles']),
-                        'avatar' => $responseData['avatar_urls']['96'],
-                    ];
-                    session()->put($usuario);
-                    // Puedes manipular la respuesta o devolverla directamente
-                    return response()->json(session()->all());
-                } catch (\Exception $e) {
-                    // Maneja errores en la solicitud
-                    return response()->json(['error' => 'Error al obtener los datos del usuario'], 500);
-                }
+                return true;
             }
         } catch (\Exception $e) {
-            // Maneja errores en la solicitud
-            return response()->json([
-                'error' => 'Error al validar Token',
-                'mensaje' => $e->getMessage(),
-                'codigo' => 2,
-            ], 500);
+            return 'Error Al intentar validar el token';
         }
+
     }
+    public function logIn(Request $request)
+    {
+        $client = new Client();
+
+        $formParams = [
+            "username" => "andros",
+            "password" => ".Ana*123",
+        ];
+
+        $response = $client->post(env('APP_URL_WP') . '/wp-json/jwt-auth/v1/token', [
+            'verify' => false,
+            'form_params' => $formParams,
+        ]);
+
+        $responseData = json_decode($response->getBody(), true);
+        $token=$responseData["token"];
+        if (isset($token)) {
+            $validate = UserController::validar($request);
+            if ($validate === true) {
+                session(['token' => $token]);
+            }
+            return $validate;
+        } else {
+            return response()->json($responseData["code"]);
+        }
+
+    }
+
 }
