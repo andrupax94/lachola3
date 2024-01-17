@@ -11,11 +11,11 @@ export class authGuard implements CanActivate {
 
     }
     getToken(): Observable<any> {
-        const tokenValue = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2xhY2hvbGEuYW5kcmVzZWR1YXJkby5lcyIsImlhdCI6MTcwNTI2MzE2MSwibmJmIjoxNzA1MjYzMTYxLCJleHAiOjE3MDU4Njc5NjEsImRhdGEiOnsidXNlciI6eyJpZCI6IjEifX19.O5O7gJJiEqRf4bKuxqJCDw0h9Ye2k5Iw3m2ObqSyoE4';
-        let bearerP = new HttpParams({ fromString: 'name=term' }).set('token', tokenValue);
+
+        let params = new HttpParams({ fromString: 'name=term' });
         const url = 'http://lachola.test/api/getToken';
         // Realiza la solicitud POST y obtiene la respuesta completa
-        return this.http.post(url, bearerP, { observe: 'response', withCredentials: true });
+        return this.http.post(url, params, { observe: 'response', withCredentials: true });
     }
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean | UrlTree> {
         return new Promise<boolean | UrlTree>((resolve, reject) => {
@@ -32,6 +32,9 @@ export class authGuard implements CanActivate {
                         return false;
                     }
                     else {
+                        //TODO posigue ejecutar getUser del back
+                        localStorage.setItem('user', data);
+                        isLoggedIn = localStorage.getItem('user');
                         return true;
                     }
 
