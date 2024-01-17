@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
@@ -31,6 +32,53 @@ class eventosController extends Controller
             ],
             'verify' => false])
             ->post($url);
+    }
+    public function saveImgs(Request $request)
+    {
+        $apiUrl = env('APP_URL_WP') . '/wp-json/wp/v2/media';
+        $imagenes = $request->input('imgs');
+        $token = 'Bearer ' . session('token');
+
+        // Crear un cliente Guzzle
+        $client = new Client();
+
+        // Array para almacenar los IDs de las imágenes guardadas
+        $imageIds = [];
+
+        foreach ($imagenes as $imagenUrl) {
+            try {
+                // Preparar las opciones de la solicitud para cada imagen
+                $options = [
+                    'headers' => [
+                        'Authorization' => $token,
+                    ],
+                    'verify' => false,
+                    'multipart' => [
+                        [
+                            'name' => 'file',
+                            'contents' => file_get_contents($imagenUrl),
+                            'filename' => pathinfo($imagenUrl, PATHINFO_BASENAME),
+                        ],
+                    ],
+                ];
+
+                // Realizar la solicitud POST con el cuerpo multipart
+                $response = $client->post($apiUrl, $options);
+
+                // Decodificar la respuesta JSON para obtener el ID de la imagen
+                $responseData = json_decode($response->getBody()->getContents(), true);
+
+                // Almacenar el ID de la imagen en el array
+                $imageIds[] = isset($responseData['id']) ? $responseData['id'] : 0;
+
+            } catch (\Exception $e) {
+                // Si hay un error, almacenar 0 en lugar del ID
+                $imageIds[] = 0;
+            }
+        }
+
+        // Devolver el array de IDs de imágenes
+        return $imageIds;
     }
     public function saveEvents(Request $request)
     {

@@ -4,7 +4,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { FactoryService } from 'src/factory/factory.module';
 import { FilterService } from '../filter/filter.service';
-import { filter } from 'rxjs';
+import { Observable, filter } from 'rxjs';
 
 
 
@@ -18,6 +18,7 @@ import { filter } from 'rxjs';
 export class VerEventosComponent {
     private apiUrl = 'assets/eventosP.json';
     public eventoP: eventoP[] = [];
+    public eventoAdd: eventoP[] = [];
     public page: number = 1;
     public orderBy: string = 'fechaLimite';
     public order: string = 'asc';
@@ -44,6 +45,27 @@ export class VerEventosComponent {
     }
 
     public abreUrl(url: string) {
+        window.open(url, '_blank');
+    }
+    private agregarOEliminarElemento<T extends { id: any }>(elemento: T, array: T[], onlyReturn: boolean = false): T[] | boolean {
+        const elementoId = elemento.id;
+
+        if (array.some(item => item.id === elementoId)) {
+            // Si el elemento ya existe, eliminarlo
+            return onlyReturn ? true : array.filter(item => item.id !== elementoId);
+        } else {
+            // Si el elemento no existe, agregarlo
+            return onlyReturn ? false : [...array, elemento];
+        }
+    }
+    public agregarEventoEx(e: Event, index: number) {
+        e.stopPropagation();
+        this.eventoAdd = this.agregarOEliminarElemento(this.eventoP[index], this.eventoAdd) as eventoP[];
+
+        console.log('====================================');
+        console.log(this.eventoAdd);
+        console.log('====================================');
+
     }
     ngOnInit() {
         this.buscaEventosIt();
@@ -66,9 +88,11 @@ export class VerEventosComponent {
                     break;
             }
         });
+
         this.filter.sharedData$.subscribe(nuevosDatos => {
             this.pageFilter = nuevosDatos;
             switch (nuevosDatos) {
+
                 case 'verEventos':
                     this.buscaEventosIt();
                     break;
@@ -151,9 +175,9 @@ export class VerEventosComponent {
         params = params.set('order', this.order);
         if (this.onlyFilter === 'true')
             params = params.set('onlyFilter', 'true');
-        this.http.post<any>(environment.back + request, params, {}).subscribe({
-            next: (data) => {
-
+        this.http.post<any>(environment.back + request, params, { observe: 'response', withCredentials: true }).subscribe({
+            next: (data: any) => {
+                data = data.body;
                 if (data.status !== true && data.status !== undefined) {
                     console.log(data.status);
                     this.contador--;
@@ -167,7 +191,7 @@ export class VerEventosComponent {
                     this.contador = 0;
                     this.it = false;
                     this.totalPages = data.totalPages;
-                    data.eventos.forEach((evt: any) => {
+                    data.eventos.forEach((evt: any, index: number) => {
                         let aux: any = [];
                         aux.id = evt["id"];
                         aux.banner = evt["banner"];
@@ -201,6 +225,8 @@ export class VerEventosComponent {
                         aux.fechaLimite["fecha"] = evt["fechaLimite"];
                         aux.tipoFestival = (String)(evt["tipoFestival"]).toLowerCase();
                         aux.tipoMetraje = this.factory.stringToArray(evt["tipoMetraje"]);
+                        aux.checked = false;
+                        aux.id = ((this.page - 1) * (this.perPage)) + (index + 1);
                         // aux.descripcion = evt["descripcion"];
                         // aux.fechaInicio=evt["fechaInicio"];
                         // aux.categoria=evt["categoria"];
@@ -215,6 +241,8 @@ export class VerEventosComponent {
                         this.eventoP.push(aux);
 
                     });
+                    if (this.pageFilter === 'exEventos')
+                        this.verificaCheckBoxes();
                 }
             }, error: (error) => {
                 this.it = false;
@@ -224,5 +252,12 @@ export class VerEventosComponent {
         });
 
 
+    }
+    private verificaCheckBoxes() {
+        this.eventoP.forEach((element: any) => {
+            if (this.agregarOEliminarElemento(element, this.eventoAdd, true)) {
+                element.check = true;
+            }
+        });
     }
 }

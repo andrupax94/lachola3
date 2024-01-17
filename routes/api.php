@@ -31,3 +31,4 @@ Route::post('/getEventos', [eventosController::class, 'getEventos'])->middleware
 Route::post('/getEventosJ', [eventosController::class, 'getEventosJ'])->middleware(['procesing', 'token']);
 Route::post('/extractFestivalData', [eventosController::class, 'extractFestivalData'])->middleware(['procesing', 'token']);
 Route::post('/extractFestivalDataGroup', [eventosController::class, 'extractFestivalDataGroup'])->middleware(['procesing', 'token']);
+Route::post('/saveImgs', [eventosController::class, 'saveImgs'])->middleware(['procesing', 'token']);

@@ -44,7 +44,6 @@ export class authGuard implements CanActivate {
                                 else {
                                     this.session.SetUserCookie(data.body);
                                     resolve(true);
-
                                 }
 
                             },

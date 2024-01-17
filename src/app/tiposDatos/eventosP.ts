@@ -20,6 +20,7 @@ export type eventoP = {
     tasa: tasa
     fechaLimite: fechalimite
     url: string,
+    check: boolean
     fuente: fuente,
     ubicacion: string
     categoria: Set<categoria> // Propiedad opcional
