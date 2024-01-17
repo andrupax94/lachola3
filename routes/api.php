@@ -25,6 +25,7 @@ Route::post('/getUser', [UserController::class, 'getUser']);
 
 //pendiente Eliminar
 Route::post('/logIn', [UserController::class, 'logIn']);
+Route::post('/dropAll', [UserController::class, 'dropAll']);
 
 Route::post('/getEventos', [eventosController::class, 'getEventos'])->middleware(['procesing', 'token']);
 Route::post('/getEventosJ', [eventosController::class, 'getEventosJ'])->middleware(['procesing', 'token']);

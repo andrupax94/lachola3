@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
@@ -67,9 +68,9 @@ class UserController extends Controller
                     'rol' => implode(', ', $responseData['roles']),
                     'avatar' => $responseData['avatar_urls']['96'],
                 ];
-                session()->put($usuario);
+                session(['user' => $usuario]);
                 // Puedes manipular la respuesta o devolverla directamente
-                return response()->json(session()->all());
+                return response()->json(session('user'));
             } catch (\Exception $e) {
                 // Maneja errores en la solicitud
                 return response()->json('Error al obtener los datos del usuario');
@@ -117,17 +118,31 @@ class UserController extends Controller
         ]);
 
         $responseData = json_decode($response->getBody(), true);
-        $token=$responseData["token"];
+        $token = $responseData["token"];
         if (isset($token)) {
+            session(['token' => $token]);
             $validate = UserController::validar($request);
-            if ($validate === true) {
-                session(['token' => $token]);
+            if ($validate !== true) {
+                session()->forget('token');
             }
-            return $validate;
+            return response()->json($validate);
         } else {
             return response()->json($responseData["code"]);
         }
 
     }
+    public function dropAll(Request $request)
+    {
+        $sessionPath = storage_path('framework/sessions');
 
+// Obtén todos los archivos de sesiones
+        $files = File::files($sessionPath);
+
+// Elimina cada archivo de sesión
+        foreach ($files as $file) {
+            File::delete($file);
+        }
+
+        return response()->json('Variables Eliminadas');
+    }
 }

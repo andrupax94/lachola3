@@ -1,46 +1,66 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Injectable, NgModule } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { SessionService } from 'src/factory/session.service';
+import { Location } from '@angular/common';
 @Injectable({
     providedIn: 'root',
 })
 export class authGuard implements CanActivate {
-    constructor(private router: Router, private http: HttpClient) {
+    constructor(private router: Router, private http: HttpClient, private session: SessionService, private location: Location) {
 
     }
-    getToken(): Observable<any> {
 
-        let params = new HttpParams({ fromString: 'name=term' });
-        const url = 'http://lachola.test/api/getToken';
-        // Realiza la solicitud POST y obtiene la respuesta completa
-        return this.http.post(url, params, { observe: 'response', withCredentials: true });
-    }
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean | UrlTree> {
         return new Promise<boolean | UrlTree>((resolve, reject) => {
             let isLoggedIn: string | boolean | null = localStorage.getItem('user');
             const params = new HttpParams({ fromString: 'name=term' });
 
-            this.getToken().subscribe({
+            return this.session.getToken().subscribe({
                 next: (data) => {
-                    console.log('====================================');
-                    console.log(data);
-                    console.log('====================================');
-
                     if (data.body !== true) {
-                        return false;
+                        this.session.logIn().subscribe({
+                            next: (data) => {
+                                if (data.body === true) {
+                                    const currentPath = this.location.path();
+                                    this.router.navigate([currentPath]);
+                                }
+                            },
+                            error: (e) => {
+                                this.session.SetUserCookie(null);
+                                resolve(false);
+                            }
+                        })
+
                     }
                     else {
-                        //TODO posigue ejecutar getUser del back
-                        localStorage.setItem('user', data);
-                        isLoggedIn = localStorage.getItem('user');
-                        return true;
+                        this.session.getUser().subscribe({
+                            next: (data) => {
+
+                                if (data.body.username === null) {
+                                    this.session.SetUserCookie(null);
+                                    resolve(false);
+                                }
+                                else {
+                                    this.session.SetUserCookie(data.body);
+                                    resolve(true);
+
+                                }
+
+                            },
+                            error: (error) => {
+                                this.session.SetUserCookie(null);
+                                resolve(false);
+                            }
+                        });
+
+
                     }
 
                 },
                 error: (error) => {
-
+                    this.session.SetUserCookie(null);
+                    resolve(false);
                 }
             });
 

@@ -41,7 +41,6 @@ export class VerEventosComponent {
 
     constructor(private http: HttpClient, private factory: FactoryService, private filter: FilterService) {
         this.compararFechas = factory.differenceInDays;
-
     }
 
     public abreUrl(url: string) {
