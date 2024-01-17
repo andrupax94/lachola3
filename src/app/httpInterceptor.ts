@@ -14,7 +14,7 @@ export class ErrorInterceptor implements HttpInterceptor {
                 // Manejar los errores aquí
                 console.error('Error en la solicitud:', error);
 
-                // Puedes lanzar un nuevo error o devolver un mensaje personalizado
+                this.carga.pause();
                 return throwError('Ocurrió un error en la solicitud. Por favor, inténtalo de nuevo.');
             })
         );
