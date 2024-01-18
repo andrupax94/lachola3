@@ -156,9 +156,13 @@ export class VerEventosComponent {
     esperar(ms: number): Promise<void> {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
-    saveEventos() {
+    async saveEventos() {
         this.contador++;
-        this.http.post<any>(environment.back + 'saveEvents', { eventos: this.eventoAdd }, { observe: 'response', withCredentials: true }).subscribe({
+        let params = new HttpParams({ fromString: 'name=term' });
+
+        params = params.set('eventos', JSON.stringify(this.eventoAdd)); // Corregí this.orderBy por this.perPage
+
+        this.http.post<any>(environment.back + 'saveEvents', params, { observe: 'response', withCredentials: true }).subscribe({
             next: (data: any) => {
                 this.it = false;
                 this.contador = 0;
@@ -209,7 +213,8 @@ export class VerEventosComponent {
                         aux.banner = evt["banner"];
                         aux.imagen = evt["imagen"];
                         aux.nombre = evt["nombre"];
-                        aux.tasa = [[]];
+                        aux.categoria = (evt["categoria"] === undefined) ? ['No Especificado'] : this.factory.stringToArray(evt["categoria"]);
+                        aux.tasa = {};
                         let tasaA = this.factory.stringToArray(evt["tasa"]).length;
                         aux.tasa.text = this.factory.arrayToString(evt["tasa"]);
                         if (tasaA > 1)
@@ -226,7 +231,7 @@ export class VerEventosComponent {
                         aux.ubicacion = evt["ubicacion"];
                         aux.url = evt["url"];
                         aux.fuente = this.factory.stringToArray(evt["fuente"]);
-                        aux.fechaLimite = [];
+                        aux.fechaLimite = {};
                         let aux2 = this.factory.stringToArray(evt["fechaLimite"]);
                         let aux3 = typeof (aux2);
                         if (aux3 === 'string')
@@ -243,6 +248,7 @@ export class VerEventosComponent {
                             imagen: aux.imagen,
                             nombre: aux.nombre,
                             tasa: aux.tasa,
+                            categoria: aux.categoria,
                             ubicacion: aux.ubicacion,
                             url: aux.url,
                             fuente: aux.fuente,

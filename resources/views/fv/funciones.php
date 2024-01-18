@@ -1276,6 +1276,9 @@ class misFunciones
     }
     public static function arrayToString($valor, $property = false, $separator = ',')
     {
+        if (is_string($valor)) {
+            return $valor;
+        }
 
         $i = 1;
         $string = "";

@@ -84,21 +84,55 @@ class eventosController extends Controller
     {
         $eventos = $request->input('eventos');
         $apiUrl = env('APP_URL_WP') . '/wp-json/wp/v2/eventos';
-        $params = [
-
-        ];
-
         Cache::put('procesing', 'iniciando', 20);
-        $url = $apiUrl . '?' . http_build_query($params);
-        $eventos = $request->input('eventos');
-        $token = 'Bearer ' . session('token');
+        //TODO Guardar imagenes primero saveImgs
+        foreach ($eventos as $key => $evento) {
+            Cache::put('procesing', 'Guardando Evento:' . $key + 1, 20);
 
-        $response = Http::withOptions([
-            'headers' => [
-                'Authorization' => $token,
-            ],
-            'verify' => false])
-            ->post($url);
+            $nombre = $evento["nombre"];
+            $imagen = $evento["imagen"];
+            $tasa = $evento["tasa"]["text"];
+            $fechaLimite = misFunciones::arrayToString($evento["fechaLimite"]["fecha"]);
+            $url = $evento["url"];
+            $fuente = misFunciones::arrayToString($evento["fuente"]);
+            $ubicacion = $evento["ubicacion"];
+            $categoria = misFunciones::arrayToString($evento["categoria"]);
+            $tipoFestival = $evento["tipoFestival"];
+            $tipoMetraje = misFunciones::arrayToString($evento["tipoMetraje"]);
+
+            $params = [
+                "acf" => [
+                    "nombre" => $nombre,
+                    "imagen" => $imagen,
+                    "tasa" => $tasa,
+                    "fechaLimite" => $fechaLimite,
+                    "url" => $url,
+                    "fuente" => $fuente,
+                    "ubicacion" => $ubicacion,
+                    "categoria" => $categoria,
+                    "tipoMetraje" => $tipoFestival,
+                    "tipoFestival" => $tipoMetraje,
+                ],
+                "status" => "publish",
+            ];
+
+            $url = $apiUrl . '?' . http_build_query($params);
+            $eventos = $request->input('eventos');
+            $token = 'Bearer ' . session('token');
+
+            $response = Http::withOptions([
+
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Authorization' => $token,
+                ],
+                'verify' => false])
+                ->post($url);
+        }
+
+        Cache::put('procesing', true, 3);
+
+        return response()->json('se añadieron los eventos correctamente');
     }
     public function extractFestivalDataGroup(Request $request)
     {

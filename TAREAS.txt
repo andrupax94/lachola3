@@ -2,7 +2,7 @@ BACKEND
 *-----Hacer que las solicitudes getEventos incluyan el encabezado autorization con el bearer token.
 *-----crear un midleware que verifique si existe el bearer token y esta validado.
 *-----con la tarea anterior hay que crear saveImg para almacenar las imagenes al wordpress(en postman creo que tengo un ejemplo).
-*crear saveEvents en eventoscontroller para que guarde en el wordpress los eventos seleccionados(en postman creo que tengo un ejemplo por individual),
+*+++++crear saveEvents en eventoscontroller para que guarde en el wordpress los eventos seleccionados(en postman creo que tengo un ejemplo por individual),
 en cuanto a sobrescribir sensillamente se añaden elementos iguales siempre y cuando tengan diferentes fuentes, si son iguales las fuentes se sobrescribe.
 *Hacer que el plugin(lacholaplugin) envie a el backend de laravel(setToken) el token bearer.
 *introducir mensajes de estado para la animacion de carga del front.
@@ -13,7 +13,7 @@ FRONEND
 *-----hacer que la aplicacion angular verifique si existe el token de acceso, solicitando a getToken en userController.
 *configurar comportamiento al no haber un token que muestre el mensaje de error y tenga un boton para reintentar;
 *implementar la animacion de carga con los mensajes que arroja el backend.
-*++++hacer que extraer Eventos guarde datos seleccionados a saveEvents para ello hace falta que funcionen los checkbox a lado de los eventos.
+*-----hacer que extraer Eventos guarde datos seleccionados a saveEvents para ello hace falta que funcionen los checkbox a lado de los eventos.
 *revisar si existen dependencias NPM que no uso.
 *optimizar y quitar codigo redundante.
 

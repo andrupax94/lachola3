@@ -1,7 +1,7 @@
 
 type categoria = 'ficcion' | 'cienciaFiccion' | 'fantasia' | 'terror' | 'basadaEnHechosReales' | 'realidadVirtual'
-    | 'inteligenciaArtificial' | 'animacion' | 'estudiantil' | 'tresD' | 'biografica' | 'noEspecificado' | 'otros' | 'experimental'
-    | 'documental';
+    | 'inteligenciaArtificial' | 'animacion' | 'estudiantil' | 'tresD' | 'biografica' | 'otros' | 'experimental'
+    | 'documental' | 'No Especificado' | 'No Especificada' | 'noEspecificado';
 type tipo_metraje = 'cortometraje' | 'mediometraje' | 'largometraje';
 type tipo_festival = 'a' | 'b' | 'c';
 type fuente = 'festHome' | 'movibeta' | 'filmfreeway' | 'shortfilmdepot' | 'animationfestivals' | 'JSON LOCAL';
@@ -23,7 +23,7 @@ export type eventoP = {
     check: boolean
     fuente: fuente,
     ubicacion: string
-    categoria?: Set<categoria> // Propiedad opcional
+    categoria: Set<categoria> // Propiedad opcional
     tipoMetraje: Set<tipo_metraje>
     tipoFestival: tipo_festival
 };
