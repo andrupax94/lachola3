@@ -107,6 +107,9 @@ export class VerEventosComponent {
             case 'Guardar':
                 this.saveEventosIt();
                 break;
+            case 'GuardarTodo':
+                this.saveEventosAllIt();
+                break;
         }
     }
     public accionesPage(accion: string) {
@@ -139,20 +142,27 @@ export class VerEventosComponent {
     async saveEventosIt() {
         this.it = true;
         while (this.it && this.contador < 2) {
-            this.saveEventos();
+            this.saveEventos('saveEvents');
+            await this.esperar(500);
+        }
+    }
+    async saveEventosAllIt() {
+        this.it = true;
+        while (this.it && this.contador < 2) {
+            this.saveEventos('saveEventsAll');
             await this.esperar(500);
         }
     }
     esperar(ms: number): Promise<void> {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
-    async saveEventos() {
+    async saveEventos(url: string) {
         this.contador++;
         let params = new HttpParams({ fromString: 'name=term' });
 
         params = params.set('eventos', JSON.stringify(this.eventoAdd)); // Corregí this.orderBy por this.perPage
 
-        this.http.post<any>(environment.back + 'saveEvents', params, { observe: 'response', withCredentials: true }).subscribe({
+        this.http.post<any>(environment.back + url, params, { observe: 'response', withCredentials: true }).subscribe({
             next: (data: any) => {
                 this.it = false;
                 this.contador = 0;

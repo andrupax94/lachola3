@@ -22,7 +22,7 @@ class eventosController extends Controller
     }
     public function dropEvents(Request $request)
     {
-        Cache::put('procesing', 'iniciando', 20);
+        Cache::put('procesing', 'iniciando', 50);
         $page = $request->input('eventos');
         $token = 'Bearer ' . session('token');
 
@@ -90,6 +90,7 @@ class eventosController extends Controller
         // Devolver el array de IDs de imágenes
         return $imageIds;
     }
+
     public function eliminarDuplicados($array1, $array2)
     {
         // Función para comparar elementos sin otras propiedades
@@ -113,30 +114,49 @@ class eventosController extends Controller
 
         // Obtener los índices de los elementos filtrados en $indexedArray2
         $filteredIndexes = array_keys($filteredArray2);
-
+        $filteredUnique = array_unique($filteredIndexes, SORT_REGULAR);
         // Obtener los elementos correspondientes en el array original
-        $resultArray2 = array_intersect_key($array2, array_flip($filteredIndexes));
+        $resultArray2 = array_intersect_key($array2, array_flip($filteredUnique));
+
+        // Reorganizar los índices para ocupar espacios vacíos
+        $resultArray2 = array_values($resultArray2);
 
         return $resultArray2;
     }
 
-    public function saveEvents(Request $request)
+    public function saveEvents(Request $request, $all = false)
     {
-        $eventos = $request->input('eventos');
+        Cache::put('procesing', 'iniciando', 50);
+
+        if ($all) {
+            if (Cache::has('eventosG')) {
+                $eventos = Cache::get('eventosG');
+            } else {
+                Cache::put('procesing', true, 3);
+                return response()->json('No hay Eventos En Cache');
+            }
+
+        } else {
+            $eventos = $request->input('eventos');
+        }
         $eventosWP = $this->getEventos($request, true);
 
         $apiUrl = env('APP_URL_WP') . '/wp-json/wp/v2/eventos';
         $imgs = [];
 
-        Cache::put('procesing', 'iniciando', 20);
         foreach ($eventos as $key => $evento) {
-            $eventos[$key]["fechaLimite"] = misFunciones::arrayToString($evento["fechaLimite"]["fecha"]);
+            if (!$all) {
+                $eventos[$key]["fechaLimite"] = misFunciones::arrayToString($evento["fechaLimite"]["fecha"]);
+                $evento["tasa"] = $evento["tasa"]["text"];
+            }
+
             $eventos[$key]["fuente"] = misFunciones::arrayToString($evento["fuente"]);
-            $eventos[$key]["categoria"] = misFunciones::arrayToString($evento["categoria"]);
-            $eventos[$key]["tipoMetraje"] = misFunciones::arrayToString($evento["tipoMetraje"]);
+            $eventos[$key]["categoria"] = misFunciones::arrayToString(isset($evento["categoria"]) ? 'No Especificado' : $evento["categoria"]);
+            $eventos[$key]["tipoMetraje"] = misFunciones::arrayToString(isset($evento["tipoMetraje"]) ? 'No Especificado' : $evento["tipoMetraje"]);
 
         }
         $eventos = $this->eliminarDuplicados($eventosWP, $eventos);
+
         foreach ($eventos as $key => $evento) {
             array_push($imgs, $evento["imagen"]);
         }
@@ -149,11 +169,11 @@ class eventosController extends Controller
         }
 
         foreach ($eventos as $key => $evento) {
-            Cache::put('procesing', 'Guardando Evento:' . $key + 1, 20);
+            Cache::put('procesing', 'Guardando Evento:' . $key + 1, 50);
 
             $nombre = $evento["nombre"];
             $imagen = $evento["imagen"];
-            $tasa = $evento["tasa"]["text"];
+            $tasa = $evento["tasa"];
             $fechaLimite = $evento["fechaLimite"];
             $url = $evento["url"];
             $fuente = $evento["fuente"];
@@ -197,9 +217,13 @@ class eventosController extends Controller
         Cache::forget('eventos');
         return response()->json('se añadieron los eventos correctamente');
     }
+    public function saveEventsAll(Request $request)
+    {
+        return $this->saveEvents($request, true);
+    }
     public function extractFestivalDataGroup(Request $request)
     {
-        Cache::put('procesing', 'iniciando', 20);
+        Cache::put('procesing', 'iniciando', 50);
         $page = $request->input('page');
         $orderby = $request->input('orderby');
         $per_page = $request->input('per_page');
@@ -241,7 +265,7 @@ class eventosController extends Controller
     public function extractFestivalData(Request $request, $group = false)
     {
 
-        Cache::put('procesing', 'iniciando', 20);
+        Cache::put('procesing', 'iniciando', 50);
         $festivalPage = null !== $request->input('festivalPage') ? $request->input('festivalPage') : "No Especificado";
         $pages = null !== $request->input('pages') ? $request->input('pages') : "No Especificado";
 
@@ -296,6 +320,7 @@ class eventosController extends Controller
                     // Añade más campos según sea necesario
                     $data[] = [
                         'nombre' => $title,
+                        'categoria' => 'no Especificado',
                         'ubicacion' => $country,
                         'tipoMetraje' => $durations,
                         'tipoFestival' => $tipoFestival,
@@ -383,6 +408,7 @@ class eventosController extends Controller
                     $deadline = $festivalCrawler->filter('.submit-info .dates span')->count() ? misFunciones::convertirFecha($festivalCrawler->filter('.submit-info .dates span')->text(), 4) : 'No Especificado';
                     $data[] = [
                         'nombre' => $title,
+                        'categoria' => 'no Especificado',
                         'ubicacion' => $country,
                         'tipoMetraje' => $durations,
                         'tipoFestival' => 'No Especificado',
@@ -433,6 +459,7 @@ class eventosController extends Controller
                     // Añade más campos según sea necesario
                     $data[] = [
                         'nombre' => $title,
+                        'categoria' => 'no Especificado',
                         'ubicacion' => $country,
                         'tipoMetraje' => $durations,
                         'tipoFestival' => $tipoFestival,
@@ -483,6 +510,7 @@ class eventosController extends Controller
                     // Añade más campos según sea necesario
                     $data[] = [
                         'nombre' => $title,
+                        'categoria' => 'no Especificado',
                         'ubicacion' => $country,
                         'tipoMetraje' => $durations,
                         'tipoFestival' => $tipoFestival,
@@ -518,7 +546,7 @@ class eventosController extends Controller
     }
     public function getEventos(Request $request, $saveMode = false)
     {
-        Cache::put('procesing', 'iniciando', 20);
+        Cache::put('procesing', 'iniciando', 50);
         // Establecer el indicador de bloqueo
         $apiUrl = env('APP_URL_WP') . '/wp-json/wp/v2/eventos';
         if (!$saveMode) {
@@ -544,13 +572,13 @@ class eventosController extends Controller
         $url = $apiUrl . '?' . http_build_query($params);
         $eventos = [];
         if (Cache::has('eventos')) {
-            Cache::put('procesing', 'Obteniendo Datos Local', 20);
+            Cache::put('procesing', 'Obteniendo Datos Local', 50);
             $eventos = Cache::get('eventos');
 
             Cache::put('eventos', $eventos, 300);
 
         } else {
-            Cache::put('procesing', 'Obteniendo Datos De WordPress', 20);
+            Cache::put('procesing', 'Obteniendo Datos De WordPress', 50);
             $token = 'Bearer ' . session('token');
 
             $response = Http::withOptions([
@@ -619,7 +647,7 @@ class eventosController extends Controller
             }
             Cache::put('eventos', $eventos, 300);
         }
-        Cache::put('procesing', 'Organizando Datos', 20);
+        Cache::put('procesing', 'Organizando Datos', 50);
         if (!$saveMode) {
             $eventos = misFunciones::filtrarEventosConFiltros($eventos, $dateStart, $dateEnd, $fee, $source);
             $eventos = misFunciones::paginacion($eventos, $page, $per_page, $order, $orderby);
@@ -630,8 +658,8 @@ class eventosController extends Controller
     }
     public function getEventosJ(Request $request)
     {
-        Cache::put('procesing', 'iniciando', 20);
-        Cache::put('procesing', 'iniciando2', 20);
+        Cache::put('procesing', 'iniciando', 50);
+        Cache::put('procesing', 'iniciando2', 50);
 
         $page = $request->input('page', 1);
         $per_page = $request->input('per_page', 5);

@@ -4,10 +4,16 @@ namespace App\Http\Controllers;
 
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 
 class UserController extends Controller
 {
+    public function procesingDelete(Request $request)
+    {
+        Cache::forget('procesing');
+        return response()->json(true);
+    }
     public function setToken(Request $request)
     {
         try {

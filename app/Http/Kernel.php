@@ -16,7 +16,7 @@ class Kernel extends HttpKernel
     protected $middleware = [
         // \App\Http\Middleware\CorsMiddleware::class,
         \Illuminate\Http\Middleware\HandleCors::class,
-        \App\Http\Middleware\VerificarAppUrlWp::class,
+
         \App\Http\Middleware\TrustProxies::class,
         \App\Http\Middleware\PreventRequestsDuringMaintenance::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
@@ -58,6 +58,7 @@ class Kernel extends HttpKernel
      * @var array<string, class-string|string>
      */
     protected $middlewareAliases = [
+        'appUrlEnv' => \App\Http\Middleware\VerificarAppUrlWp::class,
         'procesing' => \App\Http\Middleware\procesing::class,
         'token' => \App\Http\Middleware\tokenMiddleware::class,
         'auth' => \App\Http\Middleware\Authenticate::class,

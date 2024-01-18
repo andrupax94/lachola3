@@ -22,14 +22,18 @@ Route::post('/wpDirect', function (Request $request) {
 Route::post('/getToken', [UserController::class, 'getToken'])->middleware(['token']);
 Route::post('/setToken', [UserController::class, 'setToken']);
 Route::post('/getUser', [UserController::class, 'getUser']);
+Route::post('/procesingDelete', [UserController::class, 'procesingDelete']);
 
 //pendiente Eliminar
 Route::post('/logIn', [UserController::class, 'logIn']);
 Route::post('/dropAll', [UserController::class, 'dropAll']);
 
-Route::post('/getEventos', [eventosController::class, 'getEventos'])->middleware(['procesing', 'token']);
-Route::post('/getEventosJ', [eventosController::class, 'getEventosJ'])->middleware(['procesing', 'token']);
-Route::post('/extractFestivalData', [eventosController::class, 'extractFestivalData'])->middleware(['procesing', 'token']);
-Route::post('/extractFestivalDataGroup', [eventosController::class, 'extractFestivalDataGroup'])->middleware(['procesing', 'token']);
-Route::post('/saveImgs', [eventosController::class, 'saveImgs'])->middleware(['procesing', 'token']);
-Route::post('/saveEvents', [eventosController::class, 'saveEvents'])->middleware(['procesing', 'token']);
+$mEventos = ['procesing', 'appUrlEnv', 'token'];
+
+Route::post('/getEventos', [eventosController::class, 'getEventos'])->middleware($mEventos);
+Route::post('/getEventosJ', [eventosController::class, 'getEventosJ'])->middleware($mEventos);
+Route::post('/extractFestivalData', [eventosController::class, 'extractFestivalData'])->middleware($mEventos);
+Route::post('/extractFestivalDataGroup', [eventosController::class, 'extractFestivalDataGroup'])->middleware($mEventos);
+Route::post('/saveImgs', [eventosController::class, 'saveImgs'])->middleware($mEventos);
+Route::post('/saveEvents', [eventosController::class, 'saveEvents'])->middleware($mEventos);
+Route::post('/saveEventsAll', [eventosController::class, 'saveEventsAll'])->middleware($mEventos);

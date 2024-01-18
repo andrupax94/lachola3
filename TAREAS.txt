@@ -5,6 +5,7 @@ BACKEND
 *-----crear saveEvents en eventoscontroller para que guarde en el wordpress los eventos seleccionados(en postman creo que tengo un ejemplo por individual),
 en cuanto a sobrescribir sensillamente se añaden elementos iguales siempre y cuando tengan diferentes fuentes, si son iguales las fuentes se sobrescribe.
 *Hacer que el plugin(lacholaplugin) envie a el backend de laravel(setToken) el token bearer.
+*crear una ruta que se envarge de renovar las variables en el cache eventos y eventosG
 *introducir mensajes de estado para la animacion de carga del front.
 *revisar si existen dependencias COMPOSER que no uso.
 *optimizar y quitar codigo redundante.
@@ -12,9 +13,10 @@ en cuanto a sobrescribir sensillamente se añaden elementos iguales siempre y cu
 FRONEND
 *-----hacer que la aplicacion angular verifique si existe el token de acceso, solicitando a getToken en userController.
 *-----hacer que extraer Eventos guarde datos seleccionados a saveEvents para ello hace falta que funcionen los checkbox a lado de los eventos.
-*crear funcionalidad para saveEvents All que envia todos los eventos y no solo los checkeados.
+*-----crear funcionalidad para saveEvents All que envia todos los eventos y no solo los checkeados.
 *ver los modales que ya he hecho para ver si existe un mensaje de confirmacion.
 *configurar comportamiento al no haber un token que muestre el mensaje de error y tenga un boton para reintentar;
+*crear un servicio que se envarge de renovar las variables en el cache eventos y eventosG
 *implementar la animacion de carga con los mensajes que arroja el backend.
 *revisar si existen dependencias NPM que no uso.
 *optimizar y quitar codigo redundante.
