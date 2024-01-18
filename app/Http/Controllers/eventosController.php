@@ -98,6 +98,7 @@ class eventosController extends Controller
                 'nombre' => $obj["nombre"],
                 'fuente' => $obj["fuente"],
                 'ubicacion' => $obj["ubicacion"],
+                'fechaLimite' => $obj["fechaLimite"],
             ];
         };
 
@@ -129,7 +130,7 @@ class eventosController extends Controller
 
         Cache::put('procesing', 'iniciando', 20);
         foreach ($eventos as $key => $evento) {
-            $eventos[$key]["fechaLimite"]["fecha"] = misFunciones::arrayToString($evento["fechaLimite"]["fecha"]);
+            $eventos[$key]["fechaLimite"] = misFunciones::arrayToString($evento["fechaLimite"]["fecha"]);
             $eventos[$key]["fuente"] = misFunciones::arrayToString($evento["fuente"]);
             $eventos[$key]["categoria"] = misFunciones::arrayToString($evento["categoria"]);
             $eventos[$key]["tipoMetraje"] = misFunciones::arrayToString($evento["tipoMetraje"]);
@@ -153,7 +154,7 @@ class eventosController extends Controller
             $nombre = $evento["nombre"];
             $imagen = $evento["imagen"];
             $tasa = $evento["tasa"]["text"];
-            $fechaLimite = $evento["fechaLimite"]["fecha"];
+            $fechaLimite = $evento["fechaLimite"];
             $url = $evento["url"];
             $fuente = $evento["fuente"];
             $ubicacion = $evento["ubicacion"];
