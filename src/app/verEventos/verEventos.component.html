@@ -49,8 +49,8 @@
         <td>
             <div class="badge bg-secondary" *ngFor="let evt of evento.fuente">{{evt}}</div>
         </td>
-        <td *ngIf="pageFilter==='exEventos'" (click)="agregarEventoEx($event,i)"><input type="checkbox"
-                [checked]="evento.check"></td>
+        <td *ngIf="pageFilter==='exEventos'" (click)="$event.stopPropagation()"><input type="checkbox"
+                (change)="agregarEventoEx($event,i)" [checked]="evento.check"></td>
     </tr>
 </table>
 <div class="numerations">

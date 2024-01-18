@@ -82,6 +82,7 @@ class eventosController extends Controller
     }
     public function saveEvents(Request $request)
     {
+        $eventos = $request->input('eventos');
         $apiUrl = env('APP_URL_WP') . '/wp-json/wp/v2/eventos';
         $params = [
 

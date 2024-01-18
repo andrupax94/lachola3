@@ -62,10 +62,6 @@ export class VerEventosComponent {
         e.stopPropagation();
         this.eventoAdd = this.agregarOEliminarElemento(this.eventoP[index], this.eventoAdd) as eventoP[];
 
-        console.log('====================================');
-        console.log(this.eventoAdd);
-        console.log('====================================');
-
     }
     ngOnInit() {
         this.buscaEventosIt();
@@ -153,14 +149,30 @@ export class VerEventosComponent {
     async saveEventosIt() {
         this.it = true;
         while (this.it && this.contador < 2) {
-            this.buscaEventos('extractFestivalDataGroup');
+            this.saveEventos();
             await this.esperar(500);
         }
     }
     esperar(ms: number): Promise<void> {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
+    saveEventos() {
+        this.contador++;
+        this.http.post<any>(environment.back + 'saveEvents', { eventos: this.eventoAdd }, { observe: 'response', withCredentials: true }).subscribe({
+            next: (data: any) => {
+                this.it = false;
+                this.contador = 0;
+                console.log(data);
 
+
+            }, error: (error) => {
+                this.it = false;
+                this.contador = 0;
+                console.log(error);
+            }
+        });
+
+    }
     async buscaEventos(request: string = 'getEventos') {
         this.contador++;
 
@@ -193,7 +205,7 @@ export class VerEventosComponent {
                     this.totalPages = data.totalPages;
                     data.eventos.forEach((evt: any, index: number) => {
                         let aux: any = [];
-                        aux.id = evt["id"];
+
                         aux.banner = evt["banner"];
                         aux.imagen = evt["imagen"];
                         aux.nombre = evt["nombre"];
@@ -227,18 +239,20 @@ export class VerEventosComponent {
                         aux.tipoMetraje = this.factory.stringToArray(evt["tipoMetraje"]);
                         aux.checked = false;
                         aux.id = ((this.page - 1) * (this.perPage)) + (index + 1);
-                        // aux.descripcion = evt["descripcion"];
-                        // aux.fechaInicio=evt["fechaInicio"];
-                        // aux.categoria=evt["categoria"];
-                        // aux.telefono=evt["telefono"];
-                        // aux.correoElectronico=evt["correoElectronico"];
-                        // aux.web=evt["web"];
-                        // aux.facebook=evt["facebook"];
-                        // aux.instagram=evt["instagram"];
-                        // aux.youtube=evt["youtube"];
-                        // aux.industrias=evt["industrias"];
-                        // aux.twitterX=evt["twitterX"];
-                        this.eventoP.push(aux);
+                        let aux4: eventoP = {
+                            imagen: aux.imagen,
+                            nombre: aux.nombre,
+                            tasa: aux.tasa,
+                            ubicacion: aux.ubicacion,
+                            url: aux.url,
+                            fuente: aux.fuente,
+                            fechaLimite: aux.fechaLimite,
+                            tipoFestival: aux.tipoFestival,
+                            tipoMetraje: aux.tipoMetraje,
+                            check: aux.checked,
+                            id: aux.id
+                        }
+                        this.eventoP.push(aux4);
 
                     });
                     if (this.pageFilter === 'exEventos')
