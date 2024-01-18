@@ -8,7 +8,17 @@ export class FactoryService {
     constructor() { }
     // segnda verson de getsvg agrega el svg pero con la propiedad mask-image en un elemento img sin ninguna etiqueta
     //  dentro nada dentro de el, el elemento tiene que tener un width y height
+    public agregarOEliminarElemento<T extends { id: any }>(elemento: T, array: T[], onlyReturn: boolean = false): T[] | boolean {
+        const elementoId = elemento.id;
 
+        if (array.some(item => item.id === elementoId)) {
+            // Si el elemento ya existe, eliminarlo
+            return onlyReturn ? true : array.filter(item => item.id !== elementoId);
+        } else {
+            // Si el elemento no existe, agregarlo
+            return onlyReturn ? false : [...array, elemento];
+        }
+    }
     public convertToBase64(file: File) {
         return new Promise((resolve, reject) => {
             const reader = new FileReader();

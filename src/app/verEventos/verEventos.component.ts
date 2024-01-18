@@ -47,17 +47,7 @@ export class VerEventosComponent {
     public abreUrl(url: string) {
         window.open(url, '_blank');
     }
-    private agregarOEliminarElemento<T extends { id: any }>(elemento: T, array: T[], onlyReturn: boolean = false): T[] | boolean {
-        const elementoId = elemento.id;
-
-        if (array.some(item => item.id === elementoId)) {
-            // Si el elemento ya existe, eliminarlo
-            return onlyReturn ? true : array.filter(item => item.id !== elementoId);
-        } else {
-            // Si el elemento no existe, agregarlo
-            return onlyReturn ? false : [...array, elemento];
-        }
-    }
+    private agregarOEliminarElemento = this.factory.agregarOEliminarElemento;
     public agregarEventoEx(e: Event, index: number) {
         e.stopPropagation();
         this.eventoAdd = this.agregarOEliminarElemento(this.eventoP[index], this.eventoAdd) as eventoP[];

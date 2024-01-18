@@ -48,6 +48,15 @@ class eventosController extends Controller
         foreach ($imagenes as $imagenUrl) {
             try {
                 // Preparar las opciones de la solicitud para cada imagen
+                $extension = pathinfo($imagenUrl, PATHINFO_EXTENSION);
+
+                // Eliminar datos adicionales después de la extensión (por ejemplo, .jpgdatosramdom)
+                $extension = preg_replace('/[^a-zA-Z]/', '', $extension);
+
+                // Usar solo las extensiones .jpg o .png
+                $extensionPermitida = in_array($extension, ['jpg', 'png', 'jpeg']) ? $extension : 'jpg';
+                $identificadorUnico = uniqid();
+
                 $options = [
                     'headers' => [
                         'Authorization' => $token,
@@ -57,7 +66,7 @@ class eventosController extends Controller
                         [
                             'name' => 'file',
                             'contents' => file_get_contents($imagenUrl),
-                            'filename' => pathinfo($imagenUrl, PATHINFO_BASENAME),
+                            'filename' => $identificadorUnico . '.' . $extensionPermitida,
                         ],
                     ],
                 ];
@@ -71,8 +80,9 @@ class eventosController extends Controller
                 // Almacenar el ID de la imagen en el array
                 $imageIds[] = isset($responseData['id']) ? $responseData['id'] : 0;
 
-            } catch (\Exception $e) {
-                // Si hay un error, almacenar 0 en lugar del ID
+            } catch (Exception $e) {
+                throw new Exception($e, 1);
+
                 $imageIds[] = 0;
             }
         }
@@ -80,25 +90,76 @@ class eventosController extends Controller
         // Devolver el array de IDs de imágenes
         return $imageIds;
     }
+    public function eliminarDuplicados($array1, $array2)
+    {
+        // Función para comparar elementos sin otras propiedades
+        $compararElementos = function ($obj) {
+            return [
+                'nombre' => $obj["nombre"],
+                'fuente' => $obj["fuente"],
+                'ubicacion' => $obj["ubicacion"],
+            ];
+        };
+
+        // Convertir los arrays a arrays asociativos para facilitar la comparación
+        $indexedArray1 = array_map($compararElementos, $array1);
+        $indexedArray2 = array_map($compararElementos, $array2);
+
+        // Filtrar los elementos de $indexedArray2 que no están en $indexedArray1
+        $filteredArray2 = array_filter($indexedArray2, function ($item2) use ($indexedArray1) {
+            return !in_array($item2, $indexedArray1);
+        });
+
+        // Obtener los índices de los elementos filtrados en $indexedArray2
+        $filteredIndexes = array_keys($filteredArray2);
+
+        // Obtener los elementos correspondientes en el array original
+        $resultArray2 = array_intersect_key($array2, array_flip($filteredIndexes));
+
+        return $resultArray2;
+    }
+
     public function saveEvents(Request $request)
     {
         $eventos = $request->input('eventos');
+        $eventosWP = $this->getEventos($request, true);
+
         $apiUrl = env('APP_URL_WP') . '/wp-json/wp/v2/eventos';
+        $imgs = [];
+
         Cache::put('procesing', 'iniciando', 20);
-        //TODO Guardar imagenes primero saveImgs
+        foreach ($eventos as $key => $evento) {
+            $eventos[$key]["fechaLimite"]["fecha"] = misFunciones::arrayToString($evento["fechaLimite"]["fecha"]);
+            $eventos[$key]["fuente"] = misFunciones::arrayToString($evento["fuente"]);
+            $eventos[$key]["categoria"] = misFunciones::arrayToString($evento["categoria"]);
+            $eventos[$key]["tipoMetraje"] = misFunciones::arrayToString($evento["tipoMetraje"]);
+
+        }
+        $eventos = $this->eliminarDuplicados($eventosWP, $eventos);
+        foreach ($eventos as $key => $evento) {
+            array_push($imgs, $evento["imagen"]);
+        }
+
+        $request->merge(['imgs' => $imgs]);
+
+        $imgs = $this->saveImgs($request);
+        foreach ($eventos as $key => $evento) {
+            $eventos[$key]["imagen"] = $imgs[$key];
+        }
+
         foreach ($eventos as $key => $evento) {
             Cache::put('procesing', 'Guardando Evento:' . $key + 1, 20);
 
             $nombre = $evento["nombre"];
             $imagen = $evento["imagen"];
             $tasa = $evento["tasa"]["text"];
-            $fechaLimite = misFunciones::arrayToString($evento["fechaLimite"]["fecha"]);
+            $fechaLimite = $evento["fechaLimite"]["fecha"];
             $url = $evento["url"];
-            $fuente = misFunciones::arrayToString($evento["fuente"]);
+            $fuente = $evento["fuente"];
             $ubicacion = $evento["ubicacion"];
-            $categoria = misFunciones::arrayToString($evento["categoria"]);
+            $categoria = $evento["categoria"];
             $tipoFestival = $evento["tipoFestival"];
-            $tipoMetraje = misFunciones::arrayToString($evento["tipoMetraje"]);
+            $tipoMetraje = $evento["tipoMetraje"];
 
             $params = [
                 "acf" => [
@@ -132,6 +193,7 @@ class eventosController extends Controller
 
         Cache::put('procesing', true, 3);
 
+        Cache::forget('eventos');
         return response()->json('se añadieron los eventos correctamente');
     }
     public function extractFestivalDataGroup(Request $request)
@@ -453,21 +515,22 @@ class eventosController extends Controller
         }
 
     }
-    public function getEventos(Request $request)
+    public function getEventos(Request $request, $saveMode = false)
     {
         Cache::put('procesing', 'iniciando', 20);
         // Establecer el indicador de bloqueo
-
         $apiUrl = env('APP_URL_WP') . '/wp-json/wp/v2/eventos';
-        $page = $request->input('page');
-        $orderby = $request->input('orderby');
-        $per_page = $request->input('per_page');
-        $order = $request->input('order');
-        $dateStart = $request->input('dateStart');
-        $dateEnd = $request->input('dateEnd');
-        $fee = json_decode($request->input('fee'));
-        $source = json_decode($request->input('source'));
-        $source = misFunciones::convertirArrayAsociativoALista($source);
+        if (!$saveMode) {
+            $page = $request->input('page');
+            $orderby = $request->input('orderby');
+            $per_page = $request->input('per_page');
+            $order = $request->input('order');
+            $dateStart = $request->input('dateStart');
+            $dateEnd = $request->input('dateEnd');
+            $fee = json_decode($request->input('fee'));
+            $source = json_decode($request->input('source'));
+            $source = misFunciones::convertirArrayAsociativoALista($source);
+        }
         $params = [
             '_fields' => 'id,acf.tasa,acf.url,acf.fuente,acf.facebook,acf.correoElectronico,acf.nombre,acf.fechaInicio,acf.fechaLimite,acf.ubicacion,acf.imagen,acf.tipoMetraje,acf.tipoFestival,acf.categoria,acf.banner,acf.web,acf.instagram,acf.youtube,acf.industrias,acf.telefono,acf.twitterX,acf.descripcion',
             // 'page' => $page,
@@ -556,12 +619,13 @@ class eventosController extends Controller
             Cache::put('eventos', $eventos, 300);
         }
         Cache::put('procesing', 'Organizando Datos', 20);
-        $eventos = misFunciones::filtrarEventosConFiltros($eventos, $dateStart, $dateEnd, $fee, $source);
-        $eventos = misFunciones::paginacion($eventos, $page, $per_page, $order, $orderby);
-        Cache::put('procesing', true, 3);
+        if (!$saveMode) {
+            $eventos = misFunciones::filtrarEventosConFiltros($eventos, $dateStart, $dateEnd, $fee, $source);
+            $eventos = misFunciones::paginacion($eventos, $page, $per_page, $order, $orderby);
+            Cache::put('procesing', true, 3);
+        }
         return $eventos;
         // Puedes manipular los datos según tus necesidades
-
     }
     public function getEventosJ(Request $request)
     {
