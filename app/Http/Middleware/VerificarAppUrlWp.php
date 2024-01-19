@@ -27,7 +27,8 @@ class VerificarAppUrlWp
         }
 
         // Verificar si la variable de entorno APP_URL_WP no es nula
-        if ($appUrlWp === null) {
+        if ($appUrlWp === null || $appUrlWp === undefined) {
+            env('APP_URL_WP', 'https://lachola.andreseduardo.es');
             // Puedes personalizar la respuesta de error según tus necesidades
             return response()->json(['error' => 'La variable de entorno APP_URL_WP no está configurada.'], 500);
         }

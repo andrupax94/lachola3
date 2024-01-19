@@ -191,3 +191,40 @@
 #tasa_check label:nth-child(3) i {
     color: orange;
 }
+
+#buttons_container {
+    margin: 0 auto;
+    margin-top: 19px;
+}
+
+#buttons_container>div {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 12px;
+    margin-top: 0px;
+}
+
+#buttons_container>div>button {
+    width: 90%;
+    border: none;
+    border-radius: 2px;
+    background-color: #b6b6b6;
+    font-size: 12px;
+    color: white;
+    height: 44px;
+    padding: 3px;
+    opacity: 0.8;
+    filter: grayscale(1);
+}
+
+#buttons_container>div>button:hover {
+    opacity: 1;
+}
+
+#buttons_container>div:nth-child(4)>button {}
+
+#buttons_container>div:nth-child(3)>button {}
+
+#buttons_container>div:nth-child(2)>button {}
+
+#buttons_container>div:nth-child(1)>button {}

@@ -14,6 +14,7 @@ use Symfony\Component\HttpClient\HttpClient;
 
 class eventosController extends Controller
 {
+
     private function extractImageUrl($style)
     {
         $matches = [];
@@ -35,7 +36,7 @@ class eventosController extends Controller
     }
     public function saveImgs(Request $request)
     {
-        $apiUrl = env('APP_URL_WP') . '/wp-json/wp/v2/media';
+        $apiUrl = config('app.urlWp') . '/wp-json/wp/v2/media';
         $imagenes = $request->input('imgs');
         $token = 'Bearer ' . session('token');
 
@@ -141,7 +142,7 @@ class eventosController extends Controller
         }
         $eventosWP = $this->getEventos($request, true);
 
-        $apiUrl = env('APP_URL_WP') . '/wp-json/wp/v2/eventos';
+        $apiUrl = config('app.urlWp') . '/wp-json/wp/v2/eventos';
         $imgs = [];
 
         foreach ($eventos as $key => $evento) {
@@ -255,7 +256,7 @@ class eventosController extends Controller
                 }
             }
         }
-        Cache::put('eventosG', $eventos, 200);
+        Cache::put('eventosG', $eventos);
         $eventos = misFunciones::filtrarEventosConFiltros($eventos, $dateStart, $dateEnd, $fee, $source);
         $eventos = misFunciones::paginacion($eventos, $page, $per_page, $order, $orderby);
         Cache::put('procesing', true, 3);
@@ -536,7 +537,7 @@ class eventosController extends Controller
                 ], 500);
                 break;
         }
-        Cache::put('procesing', true, 0.0333);
+        Cache::put('procesing', true, 3);
         if ($group) {
             return $dataTotal;
         } else {
@@ -548,7 +549,7 @@ class eventosController extends Controller
     {
         Cache::put('procesing', 'iniciando', 50);
         // Establecer el indicador de bloqueo
-        $apiUrl = env('APP_URL_WP') . '/wp-json/wp/v2/eventos';
+        $apiUrl = config('app.urlWp') . '/wp-json/wp/v2/eventos';
         if (!$saveMode) {
             $page = $request->input('page');
             $orderby = $request->input('orderby');
@@ -575,7 +576,7 @@ class eventosController extends Controller
             Cache::put('procesing', 'Obteniendo Datos Local', 50);
             $eventos = Cache::get('eventos');
 
-            Cache::put('eventos', $eventos, 300);
+            Cache::put('eventos', $eventos);
 
         } else {
             Cache::put('procesing', 'Obteniendo Datos De WordPress', 50);
@@ -600,7 +601,7 @@ class eventosController extends Controller
                 $eventos[$key]["url"] = isset($evento["acf"]["url"]) ? $evento["acf"]["url"] : "No especificado";
                 $eventos[$key]["ubicacion"] = isset($evento["acf"]["ubicacion"]) ? $evento["acf"]["ubicacion"] : "No especificado";
                 $eventos[$key]["fechaLimite"] = isset($evento["acf"]["fechaLimite"]) ? $evento["acf"]["fechaLimite"] : "No especificado";
-                $eventos[$key]["imagen"] = isset($evento["acf"]["imagen"]) ? env('APP_URL_WP') . '/wp-json/custom/v1/image/' . $evento["acf"]["imagen"] : "No especificado";
+                $eventos[$key]["imagen"] = isset($evento["acf"]["imagen"]) ? config('app.urlWp') . '/wp-json/custom/v1/image/' . $evento["acf"]["imagen"] : "No especificado";
                 $eventos[$key]["tipoMetraje"] = isset($evento["acf"]["tipoMetraje"]) ? $evento["acf"]["tipoMetraje"] : "No especificado";
                 $eventos[$key]["tipoFestival"] = isset($evento["acf"]["tipoFestival"]) ? $evento["acf"]["tipoFestival"] : "No especificado";
                 $eventos[$key]["categoria"] = isset($evento["acf"]["categoria"]) ? $evento["acf"]["categoria"] : "No especificado";
@@ -645,7 +646,7 @@ class eventosController extends Controller
                 //     $totalPages = 'El encabezado X-WP-TotalPages no está presente en la respuesta.';
                 // }
             }
-            Cache::put('eventos', $eventos, 300);
+            Cache::put('eventos', $eventos);
         }
         Cache::put('procesing', 'Organizando Datos', 50);
         if (!$saveMode) {
@@ -684,7 +685,7 @@ class eventosController extends Controller
                 $evento["fuente"] = 'JSON LOCAL';
             }
 
-            Cache::put('procesing', true, 0.0333);
+            Cache::put('procesing', true, 3);
             return ['status' => true, 'eventos' => $eventos, 'totalPages' => $totalPages];
         }
     }

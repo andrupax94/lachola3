@@ -12,6 +12,9 @@ class UserController extends Controller
     public function procesingDelete(Request $request)
     {
         Cache::forget('procesing');
+        Cache::forget('eventos');
+        Cache::forget('eventosG');
+
         return response()->json(true);
     }
     public function setToken(Request $request)
@@ -59,7 +62,7 @@ class UserController extends Controller
         $validate = UserController::validar($request);
         if ($validate === true) {
             try {
-                $response = $client->post(env('APP_URL_WP') . '/wp-json/wp/v2/users/me', [
+                $response = $client->post(config('app.urlWp') . '/wp-json/wp/v2/users/me', [
                     'headers' => [
                         'Authorization' => $token,
                     ],
@@ -92,7 +95,7 @@ class UserController extends Controller
         $client = new Client();
         $token = 'Bearer ' . session('token');
         try {
-            $response = $client->post(env('APP_URL_WP') . '/wp-json/jwt-auth/v1/token/validate', [
+            $response = $client->post(config('app.urlWp') . '/wp-json/jwt-auth/v1/token/validate', [
                 'headers' => [
                     'Authorization' => $token,
                 ],
@@ -118,7 +121,7 @@ class UserController extends Controller
             "password" => ".Ana*123",
         ];
 
-        $response = $client->post(env('APP_URL_WP') . '/wp-json/jwt-auth/v1/token', [
+        $response = $client->post(config('app.urlWp') . '/wp-json/jwt-auth/v1/token', [
             'verify' => false,
             'form_params' => $formParams,
         ]);

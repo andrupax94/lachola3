@@ -28,7 +28,7 @@ Route::post('/procesingDelete', [UserController::class, 'procesingDelete']);
 Route::post('/logIn', [UserController::class, 'logIn']);
 Route::post('/dropAll', [UserController::class, 'dropAll']);
 
-$mEventos = ['procesing', 'appUrlEnv', 'token'];
+$mEventos = ['procesing', 'token'];
 
 Route::post('/getEventos', [eventosController::class, 'getEventos'])->middleware($mEventos);
 Route::post('/getEventosJ', [eventosController::class, 'getEventosJ'])->middleware($mEventos);
