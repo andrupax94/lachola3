@@ -1,5 +1,9 @@
 <table class="table table-bordered">
     <tr>
+        <td colspan="5" *ngIf="pageFilter==='verEventos'">Lista De Eventos</td>
+        <td colspan="6" *ngIf="pageFilter==='exEventos'">Lista De Eventos</td>
+    </tr>
+    <tr>
         <td>Nombre</td>
         <td title="Tipo De Metraje">T.Metraje</td>
         <td>Tasa</td>
@@ -39,21 +43,25 @@
             </span>
         </td> -->
         <td>
-            <div class="badge"
-                [class.bg-primary]="compararFechas(evento.fechaLimite.fecha)>=3&&compararFechas(evento.fechaLimite.fecha)<10"
-                [class.bg-danger]="compararFechas(evento.fechaLimite.fecha)<3&&compararFechas(evento.fechaLimite.fecha)>0"
-                [class.bg-warning]="compararFechas(evento.fechaLimite.fecha)<=0"
+            <div class="badge" [class.bg-primary]="compararFechas(evento.fechaLimite.fecha)>=3&&compararFechas(evento.fechaLimite.fecha)<10" [class.bg-danger]="compararFechas(evento.fechaLimite.fecha)<3&&compararFechas(evento.fechaLimite.fecha)>0" [class.bg-warning]="compararFechas(evento.fechaLimite.fecha)<=0"
                 [class.bg-success]="compararFechas(evento.fechaLimite.fecha)>=10">
                 {{evento.fechaLimite.fecha}}</div>
         </td>
         <td>
             <div class="badge bg-secondary" *ngFor="let evt of evento.fuente">{{evt}}</div>
         </td>
-        <td *ngIf="pageFilter==='exEventos'" (click)="$event.stopPropagation()"><input type="checkbox"
-                (change)="agregarEventoEx($event,i)" [checked]="evento.check"></td>
+        <td *ngIf="pageFilter==='exEventos'" (click)="$event.stopPropagation()"><input type="checkbox" (change)="agregarEventoEx($event,i)" [checked]="evento.check"></td>
     </tr>
 </table>
+<div id="noData" *ngIf="eventoP.length===0">
+    <i class="bi bi-search"></i>
+    <h5>Sin Datos Para Mostrar</h5>
+</div>
 <div class="numerations">
-    <div (click)="page=i+1;accionesPage(pageFilter)" [class.active]="i===page-1"
-        *ngFor="let _ of totalPages | emptyArray; let i = index">{{i+1}}</div>
+    <div (click)="page=1; accionesPage(pageFilter)" [class.active]="page === 1">1</div>
+
+    <ng-container *ngFor="let _ of getVisiblePages(); let i = index">
+        <div *ngIf="i > 0" (click)="page=i+startPage; accionesPage(pageFilter)" [class.active]="i+startPage === page">
+            {{i+startPage}}</div>
+    </ng-container>
 </div>

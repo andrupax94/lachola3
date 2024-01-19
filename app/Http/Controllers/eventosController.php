@@ -215,6 +215,7 @@ class eventosController extends Controller
 
         Cache::put('procesing', true, 3);
 
+        Cache::forget('eventosG');
         Cache::forget('eventos');
         return response()->json('se añadieron los eventos correctamente');
     }

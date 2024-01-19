@@ -13,7 +13,7 @@ import { Observable, filter } from 'rxjs';
     selector: 'app-verEventos',
     templateUrl: './verEventos.component.html',
     styleUrls: ['./verEventos.component.css'],
-    // encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None
 })
 export class VerEventosComponent {
     private apiUrl = 'assets/eventosP.json';
@@ -24,6 +24,8 @@ export class VerEventosComponent {
     public order: string = 'asc';
     public perPage: number = 5;
     public totalPages: number = 1;
+    public startPage: number = 1;
+    public endPage: number = 1;
     public compararFechas!: Function;
     public it = false;
     public onlyFilter: string = 'true';
@@ -76,7 +78,7 @@ export class VerEventosComponent {
         });
 
         this.filter.sharedData$.subscribe(nuevosDatos => {
-            this.pageFilter = nuevosDatos;
+
             switch (nuevosDatos) {
 
                 case 'verEventos':
@@ -91,6 +93,15 @@ export class VerEventosComponent {
             }
         });
         this.filter.sharedData3$.subscribe(accion => {
+            this.order = this.filter.order;
+            this.dateStart = this.filter.dateStart;
+            this.dateEnd = this.filter.dateEnd;
+            this.fee = this.filter.fee;
+            this.source = this.filter.source;
+            this.orderBy = this.filter.orderBy;
+            this.perPage = this.filter.perPage;
+            this.onlyFilter = this.filter.onlyFilter;
+            this.pageFilter = accion;
             this.acciones(accion);
         });
     }
@@ -129,33 +140,34 @@ export class VerEventosComponent {
         this.it = true;
         while (this.it && this.contador < 2) {
             this.buscaEventos();
-            await this.esperar(500);
+            await this.esperar(1000);
         }
     }
     async exEventosIt() {
         this.it = true;
         while (this.it && this.contador < 2) {
             this.buscaEventos('extractFestivalDataGroup');
-            await this.esperar(500);
+            await this.esperar(1000);
         }
     }
     async saveEventosIt() {
         this.it = true;
         while (this.it && this.contador < 2) {
             this.saveEventos('saveEvents');
-            await this.esperar(500);
+            await this.esperar(1000);
         }
     }
     async saveEventosAllIt() {
         this.it = true;
         while (this.it && this.contador < 2) {
             this.saveEventos('saveEventsAll');
-            await this.esperar(500);
+            await this.esperar(1000);
         }
     }
     esperar(ms: number): Promise<void> {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
+
     async saveEventos(url: string) {
         this.contador++;
         let params = new HttpParams({ fromString: 'name=term' });
@@ -177,6 +189,17 @@ export class VerEventosComponent {
         });
 
     }
+    private filtrarPorValorVerdadero(objeto: { [key: string]: boolean }): string[] {
+        // Obtiene pares clave-valor del objeto
+        const pares = Object.entries(objeto);
+
+        // Filtra aquellos cuyo valor booleano sea true
+        const resultado = pares
+            .filter(([clave, valor]) => valor === true)
+            .map(([clave]) => clave);
+
+        return resultado;
+    }
     async buscaEventos(request: string = 'getEventos') {
         this.contador++;
 
@@ -187,7 +210,9 @@ export class VerEventosComponent {
         params = params.set('dateStart', this.dateStart); // Corregí this.orderBy por this.perPage
         params = params.set('dateEnd', this.dateEnd); // Corregí this.orderBy por this.perPage
         params = params.set('fee', JSON.stringify(this.fee)); // Corregí this.orderBy por this.perPage
-        params = params.set('source', JSON.stringify(this.source)); // Corregí this.orderBy por this.perPage
+
+        params = params.set('source', JSON.stringify(this.filtrarPorValorVerdadero(this.source)));
+        // Corregí this.orderBy por this.perPage
         params = params.set('order', this.order);
         if (this.onlyFilter === 'true')
             params = params.set('onlyFilter', 'true');
@@ -272,6 +297,19 @@ export class VerEventosComponent {
         });
 
 
+    }
+    public getVisiblePages(): number[] {
+        const totalPages = this.totalPages;
+        const maxVisiblePages = 10;
+
+        let startPage = 2;
+        if (this.page > maxVisiblePages / 2) {
+            startPage = Math.max(2, this.page - Math.floor(maxVisiblePages / 2));
+        }
+
+        const endPage = Math.min(startPage + maxVisiblePages - 1, totalPages - 1);
+
+        return Array.from({ length: endPage - startPage + 1 }, (_, i) => i + startPage);
     }
     private verificaCheckBoxes() {
         this.eventoP.forEach((element: any) => {

@@ -215,16 +215,31 @@
     padding: 3px;
     opacity: 0.8;
     filter: grayscale(1);
+    cursor: not-allowed;
 }
 
 #buttons_container>div>button:hover {
     opacity: 1;
 }
 
-#buttons_container>div:nth-child(4)>button {}
+.buttonEnable>button {
+    filter: none !important;
+    -webkit-filter: none !important;
+    cursor: pointer !important;
+}
 
-#buttons_container>div:nth-child(3)>button {}
+#buttons_container>div:nth-child(4)>button {
+    background-color: green;
+}
 
-#buttons_container>div:nth-child(2)>button {}
+#buttons_container>div:nth-child(3)>button {
+    background-color: orange;
+}
 
-#buttons_container>div:nth-child(1)>button {}
+#buttons_container>div:nth-child(2)>button {
+    background-color: purple;
+}
+
+#buttons_container>div:nth-child(1)>button {
+    background-color: #3c61bc;
+}

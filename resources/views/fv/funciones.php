@@ -90,14 +90,16 @@ class misFunciones
             return ($fee[0] && $aux === 0) || ($fee[1] && $aux === 1) || ($fee[2] && $aux === 2);
         })->values();
 
-        if (!empty($fuente)) {
-            $eventosFiltrados = collect($eventosFiltrados)->filter(function ($evento) use ($fuente) {
-                $fuenteEvento = strtolower(str_replace(' ', '', $evento["fuente"]));
-                return collect($fuente)->contains(function ($filtro) use ($fuenteEvento) {
-                    return strpos($fuenteEvento, strtolower(str_replace(' ', '', $filtro))) !== false;
-                });
-            })->values();
+        if (empty($fuente)) {
+            $fuente[0] = "false";
         }
+
+        $eventosFiltrados = collect($eventosFiltrados)->filter(function ($evento) use ($fuente) {
+            $fuenteEvento = strtolower(str_replace(' ', '', $evento["fuente"]));
+            return collect($fuente)->contains(function ($filtro) use ($fuenteEvento) {
+                return strpos($fuenteEvento, strtolower(str_replace(' ', '', $filtro))) !== false;
+            });
+        })->values();
 
         return $eventosFiltrados;
     }
