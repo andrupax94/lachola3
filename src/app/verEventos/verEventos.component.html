@@ -1,19 +1,24 @@
 <table class="table table-bordered">
+    <!-- INFO ENCABEZADO DE TABLA -->
     <tr>
         <td colspan="5" *ngIf="pageFilter==='verEventos'">Lista De Eventos</td>
         <td colspan="6" *ngIf="pageFilter==='exEventos'">Lista De Eventos</td>
     </tr>
+
     <tr>
         <td>Nombre</td>
-        <td title="Tipo De Metraje">T.Metraje</td>
+        <td title="Ubicacion">Ubicacion</td>
         <td>Tasa</td>
         <!-- <td>Tipo</td> -->
         <td title="Fecha Limite">Limite</td>
         <td>Fuente</td>
         <td *ngIf="pageFilter==='exEventos'"></td>
     </tr>
-    <tr *ngFor="let evento of eventoP; let i = index" (click)="abreUrl(evento.url)">
 
+
+
+    <!-- INFO CUERPO DE TABLA -->
+    <tr *ngFor="let evento of eventoP; let i = index" (click)="abreUrl(evento.url)">
         <td>
             <div class="festivalNombre">
                 <div class="img" style="background-image: url('{{evento.imagen}}');"></div>
@@ -21,7 +26,7 @@
             </div>
         </td>
         <td>
-            <div *ngFor="let metraje of evento.tipoMetraje" class="badge bg-secondary">{{metraje}}</div>
+            <div>{{evento.ubicacion}}</div>
         </td>
         <td>
             <span class="tasa tasa_n" title="{{evento.tasa.text}}" *ngIf="evento.tasa.bool===0"><i
@@ -53,14 +58,18 @@
         <td *ngIf="pageFilter==='exEventos'" (click)="$event.stopPropagation()"><input type="checkbox" (change)="agregarEventoEx($event,i)" [checked]="evento.check"></td>
     </tr>
 </table>
+
+<!-- INFO PAGINA DE "SIN DATOS" -->
 <div id="noData" *ngIf="eventoP.length===0">
     <i class="bi bi-search"></i>
     <h5>Sin Datos Para Mostrar</h5>
 </div>
+
+<!-- INFO NUMERACIONES -->
 <div class="numerations">
     <div (click)="page=1; accionesPage(pageFilter)" [class.active]="page === 1">1</div>
 
-    <ng-container *ngFor="let _ of getVisiblePages(); let i = index">
+    <ng-container *ngFor="let _ of visiblePages; let i = index">
         <div *ngIf="i > 0" (click)="page=i+startPage; accionesPage(pageFilter)" [class.active]="i+startPage === page">
             {{i+startPage}}</div>
     </ng-container>

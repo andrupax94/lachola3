@@ -1,7 +1,7 @@
 import { FilterService } from './filter.service';
 import { Component } from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
-import { CheckboxControlValueAccessor, CheckboxRequiredValidator, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
     selector: 'app-filter',
     templateUrl: './filter.component.html',
@@ -9,8 +9,20 @@ import { CheckboxControlValueAccessor, CheckboxRequiredValidator, FormArray, For
     encapsulation: ViewEncapsulation.None
 })
 export class FilterComponent {
+    public eventosForm: FormGroup;
+    public subvencionesFrom: FormGroup;
+
+    public pageFilter: string;
+    public bgColor = 'grey';
+    public fuenteCheck: { [key: string]: boolean } = {};
+    public feeCheck: [boolean, boolean, boolean] = [true, true, true];
+    public filtroOpen = true;
+    public filtroHeight: number | undefined = 0;
+    public fuenteImgs: { [key: number]: string } = [];
+
+    // INFO CONSTRUCTOR
     constructor(private filter: FilterService, private formBuilder: FormBuilder) {
-        this.verEventos = this.formBuilder.group({
+        this.eventosForm = this.formBuilder.group({
             order: String,
             dateStart: Date,
             dateEnd: Date,
@@ -19,71 +31,49 @@ export class FilterComponent {
             orderBy: String,
             perPage: Number,
         });
-        this.exEventos = this.formBuilder.group({});
-        this.verSubvenciones = this.formBuilder.group({});
-        this.exSubvenciones = this.formBuilder.group({});
-        this.feeCheck[0] = true;
-        this.feeCheck[1] = true;
-        this.feeCheck[2] = true;
+        this.pageFilter = 'verEventos';
+        this.subvencionesFrom = this.formBuilder.group({});
+
+
         this.fuenteCheck['festhome'] = true;
         this.fuenteCheck['movibeta'] = true;
         this.fuenteCheck['animationfestivals'] = true;
         this.fuenteCheck['filmfreeaway'] = true;
         this.fuenteCheck['shortfilmdepot'] = true;
 
-        this.fuenteImgs[0] = '';
-        this.fuenteImgs[1] = '';
-        this.fuenteImgs[2] = '';
-        this.fuenteImgs[3] = '';
-        this.fuenteImgs[4] = '';
-
     }
-    public verEventos: FormGroup;
-    public exEventos: FormGroup;
-    public verSubvenciones: FormGroup;
-    public exSubvenciones: FormGroup;
-    public pageFilter = 'none';
-    public bgColor = 'grey';
-    public fuenteCheck: { [key: string]: boolean } = {};
-    public feeCheck: [boolean, boolean, boolean] = [true, true, true];
 
-    public filtroOpen = true;
-    public filtroHeight: number | undefined = 0;
-
-    public fuenteImgs: { [key: number]: string } = [];
     private aplicarCambiosFiltros(onlyFilter = 'false') {
-        this.filter.order = this.verEventos.get('order')?.value;
-        this.filter.dateStart = this.verEventos.get('dateStart')?.value;
-        this.filter.dateEnd = this.verEventos.get('dateEnd')?.value;
-        this.filter.orderBy = this.verEventos.get('orderBy')?.value;
-        this.filter.perPage = this.verEventos.get('perPage')?.value;
+        this.filter.order = this.eventosForm.get('order')?.value;
+        this.filter.dateStart = this.eventosForm.get('dateStart')?.value;
+        this.filter.dateEnd = this.eventosForm.get('dateEnd')?.value;
+        this.filter.orderBy = this.eventosForm.get('orderBy')?.value;
+        this.filter.perPage = this.eventosForm.get('perPage')?.value;
         this.filter.onlyFilter = onlyFilter;
         this.filter.fee = this.feeCheck;
         this.filter.source = this.fuenteCheck;
     }
-    public verEventosSubmit(onlyFilter = 'false') {
+
+    public eventosSubmit(onlyFilter = 'false', typeOp: string = 'none') {
         this.aplicarCambiosFiltros(onlyFilter);
-        this.filter.compartirFiltros(this.pageFilter);
+        this.filter.compartirFiltros(this.pageFilter, typeOp);
     }
-    public accionarExEventos(accion: string) {
-        this.aplicarCambiosFiltros();
-        this.filter.exEventos(accion);
-    }
+
+
     public verSubvencionesSubmit() { }
     public exSubvencionesSubmit() { }
 
 
     cambiaPagina(e: MouseEvent, page: string = 'none') {
-        let elem = e.currentTarget;
-        this.filter.compartirDatos(page);
+        this.filter.compartirPagina(page);
     }
-    actualizaColor(nuevosDatos: string) {
-        if (nuevosDatos === null) {
-            this.filter.compartirDatos('none');
+    actualizaColor(pagina: string) {
+        if (pagina === null) {
+            this.filter.compartirPagina('none');
             this.bgColor = 'gray';
         }
         else {
-            switch (nuevosDatos) {
+            switch (pagina) {
                 case 'verEventos':
                     this.bgColor = '#e20303';
                     break;
@@ -97,9 +87,10 @@ export class FilterComponent {
                     this.bgColor = 'gray';
                     break;
             }
-            this.pageFilter = nuevosDatos;
+            this.pageFilter = pagina;
         }
     }
+
     abrirCerrarFiltro() {
 
         if (this.filtroOpen) {
@@ -116,15 +107,16 @@ export class FilterComponent {
         this.filtroOpen = !this.filtroOpen;
     }
     ngOnInit() {
-        this.filter.sharedData$.subscribe(nuevosDatos => {
+        this.filter.pageSD$.subscribe(nuevosDatos => {
             this.actualizaColor(nuevosDatos)
-            this.verEventos.get('order')?.setValue(this.filter.order);
-            this.verEventos.get('dateEnd')?.setValue(this.filter.dateEnd);
-            this.verEventos.get('dateStart')?.setValue(this.filter.dateStart);
-            this.verEventos.get('fee')?.setValue(this.filter.fee);
-            this.verEventos.get('source')?.setValue(this.filter.source);
-            this.verEventos.get('orderBy')?.setValue(this.filter.orderBy);
-            this.verEventos.get('perPage')?.setValue(this.filter.perPage);
+            this.eventosForm.get('order')?.setValue(this.filter.order);
+            this.eventosForm.get('dateEnd')?.setValue(this.filter.dateEnd);
+            this.eventosForm.get('dateStart')?.setValue(this.filter.dateStart);
+            this.eventosForm.get('fee')?.setValue(this.filter.fee);
+            this.eventosForm.get('source')?.setValue(this.filter.source);
+            this.eventosForm.get('orderBy')?.setValue(this.filter.orderBy);
+            this.eventosForm.get('perPage')?.setValue(this.filter.perPage);
         });
+
     }
 }

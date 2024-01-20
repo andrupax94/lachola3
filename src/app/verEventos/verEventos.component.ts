@@ -26,6 +26,7 @@ export class VerEventosComponent {
     public totalPages: number = 1;
     public startPage: number = 1;
     public endPage: number = 1;
+    public visiblePages = [1];
     public compararFechas!: Function;
     public it = false;
     public onlyFilter: string = 'true';
@@ -33,6 +34,7 @@ export class VerEventosComponent {
     public dateStart: any = '1/1/1999';
     public dateEnd: any = '1/1/2999';
     public fee = [true, true, true];
+
     public source: { [key: string]: boolean } = {
         'festhome': true,
         'movibeta': true,
@@ -56,30 +58,41 @@ export class VerEventosComponent {
 
     }
     ngOnInit() {
-        this.buscaEventosIt();
-        this.filter.compartirDatos('verEventos');
-        this.filter.sharedData2$.subscribe(nuevosDatos => {
-            this.order = this.filter.order;
-            this.dateStart = this.filter.dateStart;
-            this.dateEnd = this.filter.dateEnd;
-            this.fee = this.filter.fee;
-            this.source = this.filter.source;
-            this.orderBy = this.filter.orderBy;
-            this.perPage = this.filter.perPage;
-            this.onlyFilter = this.filter.onlyFilter;
-            switch (nuevosDatos) {
-                case 'verEventos':
-                    this.buscaEventosIt();
-                    break;
-                case 'exEventos':
-                    this.eventoP = [];
-                    break;
+        this.filter.compartirPagina('verEventos');
+        this.filter.filtrosSD$.subscribe(page => {
+            //PATCH se dispara este evento pero no se porque por eso le pongo la condicion de null
+            if (page !== null) {
+                this.order = this.filter.order;
+                this.dateStart = this.filter.dateStart;
+                this.dateEnd = this.filter.dateEnd;
+                this.fee = this.filter.fee;
+                this.source = this.filter.source;
+                this.orderBy = this.filter.orderBy;
+                this.perPage = this.filter.perPage;
+                this.onlyFilter = this.filter.onlyFilter;
+                switch (page.filter) {
+                    case 'verEventos':
+                        this.buscaEventosIt();
+                        break;
+                    case 'exEventos':
+                        this.order = this.filter.order;
+                        this.dateStart = this.filter.dateStart;
+                        this.dateEnd = this.filter.dateEnd;
+                        this.fee = this.filter.fee;
+                        this.source = this.filter.source;
+                        this.orderBy = this.filter.orderBy;
+                        this.perPage = this.filter.perPage;
+                        this.onlyFilter = this.filter.onlyFilter;
+                        this.pageFilter = page.filter;
+                        this.acciones(page.typeOp);
+                        break;
+                }
             }
         });
 
-        this.filter.sharedData$.subscribe(nuevosDatos => {
+        this.filter.pageSD$.subscribe(page => {
 
-            switch (nuevosDatos) {
+            switch (page) {
 
                 case 'verEventos':
                     this.buscaEventosIt();
@@ -88,22 +101,10 @@ export class VerEventosComponent {
                     this.eventoP = [];
                     this.totalPages = 1;
                     this.page = 1;
-
                     break;
             }
         });
-        this.filter.sharedData3$.subscribe(accion => {
-            this.order = this.filter.order;
-            this.dateStart = this.filter.dateStart;
-            this.dateEnd = this.filter.dateEnd;
-            this.fee = this.filter.fee;
-            this.source = this.filter.source;
-            this.orderBy = this.filter.orderBy;
-            this.perPage = this.filter.perPage;
-            this.onlyFilter = this.filter.onlyFilter;
-            this.pageFilter = accion;
-            this.acciones(accion);
-        });
+
     }
     public acciones(accion: string) {
         switch (accion) {
@@ -129,7 +130,7 @@ export class VerEventosComponent {
                 this.onlyFilter = 'true';
                 this.buscaEventosIt();
                 break;
-            case 'exEventos':
+            case 'Extraer':
                 this.onlyFilter = 'true';
                 this.exEventosIt();
                 break;
@@ -286,6 +287,7 @@ export class VerEventosComponent {
                         this.eventoP.push(aux4);
 
                     });
+                    this.getVisiblePages();
                     if (this.pageFilter === 'exEventos')
                         this.verificaCheckBoxes();
                 }
@@ -298,7 +300,7 @@ export class VerEventosComponent {
 
 
     }
-    public getVisiblePages(): number[] {
+    public getVisiblePages() {
         const totalPages = this.totalPages;
         const maxVisiblePages = 10;
 
@@ -308,8 +310,7 @@ export class VerEventosComponent {
         }
 
         const endPage = Math.min(startPage + maxVisiblePages - 1, totalPages - 1);
-
-        return Array.from({ length: endPage - startPage + 1 }, (_, i) => i + startPage);
+        this.visiblePages = Array.from({ length: endPage - startPage + 1 }, (_, i) => i + startPage);
     }
     private verificaCheckBoxes() {
         this.eventoP.forEach((element: any) => {

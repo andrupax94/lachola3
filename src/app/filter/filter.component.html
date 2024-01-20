@@ -1,4 +1,5 @@
 <div id="filtros_s_cont" class="d-flex flex-column container-fluid">
+    <!-- INFO BOTONES DE SELECTOR DE PAGINA(VEREVENTOS,EXTRAER EVENTOS,SUBVENCIONES.ETC) -->
     <nav class="d-flex flex-row">
         <button (click)="cambiaPagina($event,'verEventos')" [class.active]="pageFilter==='verEventos'" class="filter_top_button">Ver
             Eventos</button>
@@ -6,11 +7,15 @@
         <button (click)="cambiaPagina($event)" [class.active]="pageFilter==='verSubvenciones'" class="filter_top_button" disabled>Ver Subvenciones</button>
         <button (click)="cambiaPagina($event)" [class.active]="pageFilter==='exSubvenciones'" class="filter_top_button" disabled>Extraer Subvenciones</button>
     </nav>
+
+    <!-- INFO CONTAINER DE FILTROS-->
     <div id="filtros_cont" class="d-flex flex-column">
         <h2 (click)="abrirCerrarFiltro()" [style.backgroundColor]="bgColor"><span>Opciones</span><i [class.filtro_open]="filtroOpen" class="bi bi-caret-right-fill"></i></h2>
         <div id="filtros">
+
             <form class="row" *ngIf="pageFilter==='none'">None</form>
-            <form [formGroup]="verEventos" class="row" *ngIf="pageFilter==='verEventos'||pageFilter==='exEventos'">
+            <!-- INFO FILTROS DE VER Y EXTRAER EVENTOS -->
+            <form [formGroup]="eventosForm" class="row" *ngIf="pageFilter==='verEventos'||pageFilter==='exEventos'">
                 <div class="col-12 col-sm-5 col-md-4">
                     <h5>Ordenar De Forma:</h5>
                     <hr>
@@ -33,19 +38,6 @@
                         <option value="tipoFestival">Tipofestival</option>
                         <option value="fechaLimite">Fechalimite</option>
                         <option value="fuente">Fuente</option>
-                        <!-- <option value="url">Url</option>
-                        <option value="imagen">Imagen</option> -->
-                        <!-- <option value="banner">Banner</option>
-                        <option value="descripcion">Descripcion</option>
-                        <option value="fechaInicio">Fechainicio</option>
-                        <option value="telefono">Telefono</option>
-                        <option value="correoElectronico">Correo Electronico</option>
-                        <option value="web">Web</option>
-                        <option value="facebook">Facebook</option>
-                        <option value="instagram">Instagram</option>
-                        <option value="youtube">Youtube</option>
-                        <option value="industrias">Industrias</option>
-                        <option value="twitterX">Twitterx</option> -->
                     </select>
                 </div>
                 <div class="col-12 col-sm-5 col-md-4">
@@ -133,30 +125,34 @@
                         </div>
                     </div>
                 </div>
-                <!--  -->
+
+
+                <!-- INFO BOTONES DE ACCIONES -->
                 <div class="col-12 d-flex flex-column mt-3">
                     <h5>Acciones:</h5>
                     <hr>
                     <div id="buttons_container" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4">
-                        <div [class.buttonEnable]="pageFilter==='verEventos'"><button [disabled]="pageFilter!=='verEventos'" class="" (click)=" verEventosSubmit('true')">Ver
+                        <div [class.buttonEnable]="pageFilter==='verEventos'"><button [disabled]="pageFilter!=='verEventos'" class="" (click)=" eventosSubmit('true')">Ver
                                 Eventos</button></div>
-                        <div [class.buttonEnable]="pageFilter==='verEventos'"><button [disabled]="pageFilter!=='verEventos'" class="" (click)="verEventosSubmit()">Force Ver
+                        <div [class.buttonEnable]="pageFilter==='verEventos'"><button [disabled]="pageFilter!=='verEventos'" class="" (click)="eventosSubmit()">Force Ver
                                 Eventos</button></div>
-                        <div [class.buttonEnable]="pageFilter==='exEventos'"><button [disabled]="pageFilter!=='exEventos'" class="" (click)="accionarExEventos('Extraer')">Extraer
+                        <div [class.buttonEnable]="pageFilter==='exEventos'"><button [disabled]="pageFilter!=='exEventos'" class="" (click)="eventosSubmit('false','Extraer')">Extraer
                                 Eventos</button></div>
-                        <div [class.buttonEnable]="pageFilter==='exEventos'"><button [disabled]="pageFilter!=='exEventos'" class="" (click)="accionarExEventos('Forzar')">Forzar Extraer
+                        <div [class.buttonEnable]="pageFilter==='exEventos'"><button [disabled]="pageFilter!=='exEventos'" class="" (click)="eventosSubmit('false','Forzar')">Forzar Extraer
                                 Eventos</button></div>
-                        <div [class.buttonEnable]="pageFilter==='exEventos'"><button [disabled]="pageFilter!=='exEventos'" class="" (click)="accionarExEventos('Guardar')">Guardar Eventos
+                        <div [class.buttonEnable]="pageFilter==='exEventos'"><button [disabled]="pageFilter!=='exEventos'" class="" (click)="eventosSubmit('false','Guardar')">Guardar Eventos
                                 Seleccionados</button></div>
-                        <div [class.buttonEnable]="pageFilter==='exEventos'"><button [disabled]="pageFilter!=='exEventos'" class="" (click)="accionarExEventos('GuardarTodo')">Guardar
+                        <div [class.buttonEnable]="pageFilter==='exEventos'"><button [disabled]="pageFilter!=='exEventos'" class="" (click)="eventosSubmit('false','GuardarTodo')">Guardar
                                 Todos</button></div>
                     </div>
                 </div>
             </form>
 
-            <form [formGroup]="verSubvenciones" (ngSubmit)="verSubvencionesSubmit()" class="row" *ngIf="pageFilter==='verSubvenciones'">verSubvenciones</form>
-            <form [formGroup]="exSubvenciones" (ngSubmit)="exSubvencionesSubmit()" class="row" *ngIf="pageFilter==='exSubvenciones'">exSubvenciones</form>
+            <!-- INFO FILTROS DE VER Y ESTRAER SUVBENCIONES -->
+            <form [formGroup]="subvencionesFrom" (ngSubmit)="verSubvencionesSubmit()" class="row" *ngIf="pageFilter==='verSubvenciones'">verSubvenciones</form>
         </div>
+
+        <!-- INFO BOTON DE ABRIR Y CERRAR FILTROS -->
         <div (click)="abrirCerrarFiltro()" [style.backgroundColor]="(!filtroOpen)?bgColor:'#4a4a4a'">
             <span *ngIf="filtroOpen">Cerrar</span><span *ngIf="!filtroOpen">Abrir</span> Filtros
         </div>

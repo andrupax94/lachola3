@@ -7,12 +7,12 @@ import { DatePipe } from '@angular/common';
     providedIn: 'root'
 })
 export class FilterService {
-    private sharedDataSubject = new BehaviorSubject<any>(null);
-    sharedData$ = this.sharedDataSubject.asObservable();
-    private sharedDataSubject2 = new BehaviorSubject<any>(null);
-    sharedData2$ = this.sharedDataSubject2.asObservable();
-    private sharedDataSubject3 = new BehaviorSubject<any>(null);
-    sharedData3$ = this.sharedDataSubject3.asObservable();
+    private page = new BehaviorSubject<any>(null);
+    pageSD$ = this.page.asObservable();
+    private filtros = new BehaviorSubject<any>(null);
+    filtrosSD$ = this.filtros.asObservable();
+
+
     order: 'asc' | 'desc' = 'asc';
     dateStart: string | null = this.datePipe.transform(new Date('11-02-1999'), 'yyyy-MM-dd');
     dateEnd: string | null = this.datePipe.transform(new Date('11-02-2999'), 'yyyy-MM-dd');
@@ -27,15 +27,16 @@ export class FilterService {
     }; orderBy: string = 'fechaLimite';
     perPage: number = 5;
 
-    compartirDatos(nuevosDatos: any) {
-        this.sharedDataSubject.next(nuevosDatos);
+    compartirPagina(pagina: any) {
+        this.page.next(pagina);
     }
-    compartirFiltros(nuevosDatos: any) {
-        this.sharedDataSubject2.next(nuevosDatos);
+    compartirFiltros(filtros: any, typeOp: string) {
+        let data = {
+            filtros: filtros, typeOp: typeOp
+        }
+        this.filtros.next(data);
     }
-    exEventos(exEventos: any) {
-        this.sharedDataSubject3.next(exEventos);
-    }
+
     constructor(private datePipe: DatePipe) {
 
     }
