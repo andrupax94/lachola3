@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { FactoryService } from 'src/factory/factory.module';
 import { FilterService } from '../filter/filter.service';
 import { Observable, filter } from 'rxjs';
+import { CargaService } from 'src/factory/carga.service';
 
 
 
@@ -43,7 +44,7 @@ export class VerEventosComponent {
         'shortfilmdepot': true
     };
 
-    constructor(private http: HttpClient, private factory: FactoryService, private filter: FilterService) {
+    constructor(private http: HttpClient, private factory: FactoryService, private filter: FilterService, private carga: CargaService) {
         this.compararFechas = factory.differenceInDays;
     }
 
@@ -57,6 +58,8 @@ export class VerEventosComponent {
 
     }
     ngOnInit() {
+        this.carga.changeInfo(undefined, 'Cargando Eventos');
+
         this.filter.compartirPagina('verEventos');
         this.filter.filtrosSD$.subscribe(page => {
             //PATCH se dispara este evento pero no se porque por eso le pongo la condicion de null
@@ -213,6 +216,7 @@ export class VerEventosComponent {
             next: (data: any) => {
                 data = data.body;
                 if (data.status !== true && data.status !== undefined) {
+                    this.carga.changeInfo(undefined, data.status)
                     console.log(data.status);
                     this.contador--;
                 }
@@ -277,7 +281,7 @@ export class VerEventosComponent {
                             id: aux.id
                         }
                         this.eventoP.push(aux4);
-
+                        this.carga.pause();
                     });
                     this.getVisiblePages();
                     if (this.pageFilter === 'exEventos')
@@ -286,6 +290,7 @@ export class VerEventosComponent {
             }, error: (error) => {
                 this.it = false;
                 this.contador = 0;
+                this.carga.pause();
                 console.log(error);
             }
         });

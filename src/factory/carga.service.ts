@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ElementRef } from '@angular/core';
 import { MensajesService } from './mensajes.service';
 
 @Injectable({
@@ -6,14 +6,16 @@ import { MensajesService } from './mensajes.service';
 })
 export class CargaService {
 
-    constructor(private mensaje: MensajesService) { }
+    constructor(private mensaje: MensajesService) {
+        this.info = 'Cargando';
+    }
 
     private switch = false;
     private elementS: any = [];
     private size: any;
     private actualElement: any;
     private timeout: any;
-
+    private info: string;
 
     public error(error: string = 'Ha Ocurrido Un Error Inesperado') {
         this.mensaje.add('error', error);
@@ -41,12 +43,18 @@ export class CargaService {
         }
         this.elementS.push(element);
         var i = this.elementS.length - 1;
-        element.append('<div class="carga" cargan="' + i + '"><div></div></div>');
+        element.append('<div class="carga" cargan="' + i + '"><div><div></div><h5>' + this.info + '</h5></div</div>');
         element.children('*').css('visibility', 'visible');
 
 
     }
+    public changeInfo(element: any = this.actualElement, info: string) {
+        let cargaElement = element.find('.carga').eq(0);
+        let h5html = cargaElement.find('h5').eq(0);
+        $(h5html).html(info);
+        console.log(h5html);
 
+    }
     public play(element: any = this.actualElement) {
 
         if (!this.switch) {
