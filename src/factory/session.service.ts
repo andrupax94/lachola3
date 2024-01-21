@@ -14,10 +14,10 @@ export class SessionService {
     private userCookie = new BehaviorSubject<any>(null);
     SDuserCookie$ = this.userCookie.asObservable();
     constructor(private http: HttpClient, private router: Router) {
-
+        this.user = { state: false, data: [], mensaje: '' };
     }
     SetUserCookie(nuevosDatos: any) {
-        localStorage.setItem('user', nuevosDatos);
+        localStorage.setItem('user', JSON.stringify(nuevosDatos));
         this.userCookie.next(nuevosDatos);
     }
     public getToken(): Observable<any> {
@@ -41,7 +41,7 @@ export class SessionService {
         // Realiza la solicitud POST y obtiene la respuesta completa
         return this.http.post(url, params, { observe: 'response', withCredentials: true });
     }
-    public user: any;
+    public user: { state: boolean, data: [], mensaje: string };
 
 
 

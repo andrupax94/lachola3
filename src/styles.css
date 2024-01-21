@@ -1,5 +1,4 @@
 @import '~bootstrap-icons/font/bootstrap-icons.css';
-
 @font-face {
     font-family: 'inter';
     src: url('assets/fonts/Inter/Inter-VariableFont_slntwght.ttf') format('woff');
@@ -22,16 +21,24 @@
     top: 0;
     left: 0;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     z-index: 1000;
     align-content: center;
 }
 
-#no_login h5 {
-    font-size: 40px;
+#no_login h2 {
+    font-size: 20px;
     text-align: center;
-    color: black;
+    color: rgb(83, 83, 83);
+}
+
+#no_login button {
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    box-shadow: black 1px 1px 1px 1px;
 }
 
 [disabled],
@@ -415,7 +422,6 @@ div#mensajes {
     0% {
         transform: rotate(0deg);
     }
-
     100% {
         transform: rotate(360deg);
     }

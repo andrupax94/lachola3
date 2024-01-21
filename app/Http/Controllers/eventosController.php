@@ -61,6 +61,16 @@ class eventosController extends Controller
                 // Usar solo las extensiones .jpg o .png
                 $extensionPermitida = in_array($extension, ['jpg', 'png', 'jpeg']) ? $extension : 'jpg';
                 $identificadorUnico = uniqid();
+                $imagenUrl = misFunciones::limpiarURL($imagenUrl);
+                $options = [
+                    'http' => [
+                        'header' => "User-Agent: Mozilla/5.0\r\n" .
+                        "Referer: http://www.example.com\r\n",
+                    ],
+                ];
+
+                $context = stream_context_create($options);
+                $dataImg = file_get_contents($imagenUrl, false, $context);
 
                 $options = [
                     'headers' => [
@@ -70,7 +80,7 @@ class eventosController extends Controller
                     'multipart' => [
                         [
                             'name' => 'file',
-                            'contents' => file_get_contents($imagenUrl),
+                            'contents' => $dataImg,
                             'filename' => $identificadorUnico . '.' . $extensionPermitida,
                         ],
                     ],
@@ -144,7 +154,8 @@ class eventosController extends Controller
             }
 
         } else {
-            $eventos = $request->input('eventos');
+            $eventos = json_decode($request->input('eventos'), true);
+
         }
         $eventosWP = $this->getEventos($request, true);
 
@@ -566,12 +577,13 @@ class eventosController extends Controller
             $per_page = $request->input('per_page');
             $order = $request->input('order');
             $dateStart = $request->input('dateStart');
-            $onlyFilter = $request->input('onlyFilter') !== null;
             $dateEnd = $request->input('dateEnd');
             $fee = json_decode($request->input('fee'));
             $source = json_decode($request->input('source'));
             $source = misFunciones::convertirArrayAsociativoALista($source);
         }
+        $onlyFilter = $request->input('onlyFilter') !== null;
+
         $params = [
             '_fields' => 'id,acf.tasa,acf.url,acf.fuente,acf.facebook,acf.correoElectronico,acf.nombre,acf.fechaInicio,acf.fechaLimite,acf.ubicacion,acf.imagen,acf.tipoMetraje,acf.tipoFestival,acf.categoria,acf.banner,acf.web,acf.instagram,acf.youtube,acf.industrias,acf.telefono,acf.twitterX,acf.descripcion',
             // 'page' => $page,

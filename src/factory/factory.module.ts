@@ -1,13 +1,15 @@
 
 import { Injectable, Component, OnInit, Renderer2 } from '@angular/core';
+import { Router } from '@angular/router';
 @Injectable({
     providedIn: 'root',
 })
 export class FactoryService {
 
-    constructor() { }
+    constructor(private router: Router) { }
     // segnda verson de getsvg agrega el svg pero con la propiedad mask-image en un elemento img sin ninguna etiqueta
     //  dentro nada dentro de el, el elemento tiene que tener un width y height
+
     public agregarOEliminarElemento<T extends { id: any }>(elemento: T, array: T[], onlyReturn: boolean = false): T[] | boolean {
         const elementoId = elemento.id;
 

@@ -2,7 +2,10 @@ import { HttpClient, HttpClientXsrfModule, HttpHeaders, HttpParams } from '@angu
 import { Component } from '@angular/core';
 import { SessionService } from '../factory/session.service';
 import { CargaService } from 'src/factory/carga.service';
-
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
+import { FactoryService } from 'src/factory/factory.module';
+import { authGuard } from './guards/auth.guard';
 
 @Component({
     selector: 'app-root',
@@ -13,18 +16,21 @@ export class AppComponent {
     title = 'lachola';
 
     public user: any;
-    constructor(private http: HttpClient, private session: SessionService, private carga: CargaService) {
-        this.user = localStorage.getItem('user');
+    constructor(private auth: authGuard, private session: SessionService, private carga: CargaService, private router: Router, private location: Location) {
+        this.user = { state: false, data: [], mensaje: '' };
         this.carga.to('body');
         this.carga.play();
     }
-
+    reload() {
+        this.auth.reload();
+    }
     ngOnInit() {
         this.session.SDuserCookie$.subscribe((data) => {
-            this.user = data;
+            if (data !== null)
+                this.user = data;
         })
         setTimeout(() => {
-            this.user = localStorage.getItem('user');
+            this.user = JSON.parse(localStorage.getItem('user')!);
         }, 500)
     }
 }

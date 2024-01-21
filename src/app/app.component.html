@@ -1,12 +1,13 @@
-<header *ngIf="user!==null" class="d-flex flex-column justify-content-center align-content-center container-fluid row">
+<header *ngIf="user.state!==false" class="d-flex flex-column justify-content-center align-content-center container-fluid row">
     <img class="col-10" width="220" src="http://www.marcotoledo.es/wp-content/uploads/2022/07/cropped-logo_MARCO_TOLEDO_blanco-1280x641.png">
-    <input class="col-12" type="text" placeholder="buscar">
+    <!-- <input class="col-12" type="text" placeholder="buscar"> -->
 </header>
 <main>
     <app-filter></app-filter>
     <router-outlet></router-outlet>
 </main>
 <pop-ups></pop-ups>
-<div id="no_login" *ngIf="user===null">
-    <h2>No Login</h2>
+<div id="no_login" *ngIf="user.state===false">
+    <h2>{{user.mensaje}}</h2>
+    <button (click)="reload()">Recargar Pagina</button>
 </div>

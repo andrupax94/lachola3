@@ -7,7 +7,7 @@ BACKEND
 en cuanto a sobrescribir sensillamente se añaden elementos iguales siempre y cuando tengan diferentes fuentes, si son iguales las fuentes se sobrescribe.
 *?????verificar numero maximo de solicitudes en laravel para evitar error por limite de la mismas
 *arreglar movibeta.
-*introducir mensajes de estado para la animacion de carga del front.
+*-----introducir mensajes de estado para la animacion de carga del front.
 *Hacer que el plugin(lacholaplugin) envie a el backend de laravel(setToken) el token bearer.
 *revisar si existen dependencias COMPOSER que no uso.
 *optimizar y quitar codigo redundante.
@@ -19,9 +19,9 @@ FRONEND
 *-----crear un servicio que se envarge de renovar las variables en el cache eventos y eventosG
 *-----terminar de arreglar la paginacion que teniendo 15 paginas no muestra ni la ultima ni las que vienen despues de 10.
 *-----hay una redundancia de codigo cuando el componente filter llama a verEventos para mostrarlos.
-*implementar la animacion de carga con los mensajes que arroja el backend.
-*ver los modales que ya he hecho para ver si existe un mensaje de confirmacion.
-*configurar comportamiento al no haber un token que muestre el mensaje de error y tenga un boton para reintentar;
+*-----implementar la animacion de carga con los mensajes que arroja el backend.
+*-----ver los modales que ya he hecho para ver si existe un mensaje de confirmacion.
+*?????configurar comportamiento al no haber un token o no halla conexion que muestre el mensaje de error y tenga un boton para reintentar o recargar;
 *revisar si existen dependencias NPM que no uso.
 *+++++optimizar y quitar codigo redundante.
 

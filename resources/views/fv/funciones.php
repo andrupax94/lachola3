@@ -11,6 +11,14 @@ use Barryvdh\Debugbar\Facades\Debugbar;
 
 class misFunciones
 {
+    public static function limpiarURL($url)
+    {
+        // Obtener información sobre la ruta del archivo
+        $url_limpia = preg_replace('/\.(jpg|png).*$/i', '.$1', $url);
+
+        return $url_limpia;
+
+    }
 
     public static function esArrayNoAsociativo($array)
     {

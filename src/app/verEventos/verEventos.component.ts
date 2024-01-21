@@ -86,6 +86,7 @@ export class VerEventosComponent {
         this.filter.pageSD$.subscribe(page => {
             this.pageFilter = page;
             this.eventoP = [];
+            this.eventoAdd = [];
             this.totalPages = 1;
             this.visiblePages = [1];
             this.page = 1;
@@ -180,12 +181,14 @@ export class VerEventosComponent {
         this.http.post<any>(environment.back + url, params, { observe: 'response', withCredentials: true }).subscribe({
             next: (data: any) => {
                 this.it = false;
+                this.carga.pause();
                 this.contador = 0;
                 console.log(data);
 
 
             }, error: (error) => {
                 this.it = false;
+                this.carga.pause();
                 this.contador = 0;
                 console.log(error);
             }
