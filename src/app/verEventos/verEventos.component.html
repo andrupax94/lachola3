@@ -71,14 +71,15 @@
 
 <!-- INFO NUMERACIONES -->
 <div class="numerations">
-    <div (click)="page=1; accionesPage(pageFilter)" [class.active]="page === 1">1</div>
+    <div (click)="page=1; accionesPage(pageFilter)" [class.active]="page === 1" [class.disabled]="eventoP.length===0">1
+    </div>
 
     <ng-container *ngFor="let _ of visiblePages; let i = index">
         <div *ngIf="i > 0 && i<=totalPages" (click)="page=i+startPage; accionesPage(pageFilter)"
             [class.active]="i+startPage === page">
             {{(i+startPage)}}</div>
     </ng-container>
-    <div *ngIf="totalPages!==1" (click)="page=totalPages; accionesPage(pageFilter)"
-        [class.active]="page === totalPages">{{totalPages}}
+    <div *ngIf="totalPages>1" (click)="page=totalPages; accionesPage(pageFilter)" [class.active]="page === totalPages">
+        {{totalPages}}
     </div>
 </div>

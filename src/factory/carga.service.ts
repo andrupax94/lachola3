@@ -21,6 +21,7 @@ export class CargaService {
         this.mensaje.add('error', error);
     }
     public to(element: any, size: string = 'mid', opacity?: boolean) {
+        this.info = "Cargando";
         element = $(element);
         this.actualElement = element;
         switch (size) {

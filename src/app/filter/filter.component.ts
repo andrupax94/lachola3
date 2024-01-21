@@ -2,6 +2,8 @@ import { FilterService } from './filter.service';
 import { Component } from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { CargaService } from 'src/factory/carga.service';
+import { ModalesService } from 'src/factory/modales.service';
 @Component({
     selector: 'app-filter',
     templateUrl: './filter.component.html',
@@ -21,7 +23,7 @@ export class FilterComponent {
     public fuenteImgs: { [key: number]: string } = [];
 
     // INFO CONSTRUCTOR
-    constructor(private filter: FilterService, private formBuilder: FormBuilder) {
+    constructor(private filter: FilterService, private formBuilder: FormBuilder, private carga: CargaService, private modales: ModalesService) {
         this.eventosForm = this.formBuilder.group({
             order: String,
             dateStart: Date,
@@ -55,8 +57,20 @@ export class FilterComponent {
     }
 
     public eventosSubmit(onlyFilter = 'false', typeOp: string = 'none') {
-        this.aplicarCambiosFiltros(onlyFilter);
-        this.filter.compartirFiltros(this.pageFilter, typeOp);
+        let callback = () => {
+            this.carga.to('body');
+            this.carga.play();
+            this.aplicarCambiosFiltros(onlyFilter);
+            this.filter.compartirFiltros(this.pageFilter, typeOp);
+        }
+        if (onlyFilter === 'false') {
+            this.modales.abrirPregunta('Forzar Busqueda', 'Desea forzar la busqueda de eventos, hacer uso de esta de manera desmedida puede generar problemas del lado del servidor, desea continuar?', callback, () => { });
+        }
+        else {
+            callback();
+        }
+
+
     }
 
 
@@ -65,6 +79,7 @@ export class FilterComponent {
 
 
     cambiaPagina(e: MouseEvent, page: string = 'none') {
+
         this.filter.compartirPagina(page);
     }
     actualizaColor(pagina: string) {

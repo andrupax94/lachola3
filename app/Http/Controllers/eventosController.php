@@ -36,6 +36,8 @@ class eventosController extends Controller
     }
     public function saveImgs(Request $request)
     {
+        Cache::put('procesing', 'Guardando Imagenes En Wordpress', 50);
+
         $apiUrl = config('app.urlWp') . '/wp-json/wp/v2/media';
         $imagenes = $request->input('imgs');
         $token = 'Bearer ' . session('token');
@@ -46,8 +48,10 @@ class eventosController extends Controller
         // Array para almacenar los IDs de las imágenes guardadas
         $imageIds = [];
 
-        foreach ($imagenes as $imagenUrl) {
+        foreach ($imagenes as $i => $imagenUrl) {
             try {
+                Cache::put('procesing', 'Guardando Imagenen N°:' . $i . ' En Wordpress', 50);
+
                 // Preparar las opciones de la solicitud para cada imagen
                 $extension = pathinfo($imagenUrl, PATHINFO_EXTENSION);
 
@@ -94,6 +98,8 @@ class eventosController extends Controller
 
     public function eliminarDuplicados($array1, $array2)
     {
+        Cache::put('procesing', 'Eliminando Datos Duplicados', 50);
+
         // Función para comparar elementos sin otras propiedades
         $compararElementos = function ($obj) {
             return [
@@ -127,7 +133,7 @@ class eventosController extends Controller
 
     public function saveEvents(Request $request, $all = false)
     {
-        Cache::put('procesing', 'iniciando', 50);
+        Cache::put('procesing', 'Preparando Guardar Eventos', 50);
 
         if ($all) {
             if (Cache::has('eventosG')) {
@@ -170,7 +176,7 @@ class eventosController extends Controller
         }
 
         foreach ($eventos as $key => $evento) {
-            Cache::put('procesing', 'Guardando Evento:' . $key + 1, 50);
+            Cache::put('procesing', 'Guardando Evento N°:' . $key + 1, 50);
 
             $nombre = $evento["nombre"];
             $imagen = $evento["imagen"];
@@ -225,7 +231,7 @@ class eventosController extends Controller
     }
     public function extractFestivalDataGroup(Request $request)
     {
-        Cache::put('procesing', 'iniciando', 50);
+        Cache::put('procesing', 'Preparando Extraccion De Eventos', 50);
         $page = $request->input('page');
         $orderby = $request->input('orderby');
         $per_page = $request->input('per_page');
@@ -258,6 +264,8 @@ class eventosController extends Controller
             }
         }
         Cache::put('eventosG', $eventos);
+        Cache::put('procesing', 'Filtrando Eventos', 50);
+
         $eventos = misFunciones::filtrarEventosConFiltros($eventos, $dateStart, $dateEnd, $fee, $source);
         $eventos = misFunciones::paginacion($eventos, $page, $per_page, $order, $orderby);
         Cache::put('procesing', true, 3);
@@ -267,12 +275,13 @@ class eventosController extends Controller
     public function extractFestivalData(Request $request, $group = false)
     {
 
-        Cache::put('procesing', 'iniciando', 50);
         $festivalPage = null !== $request->input('festivalPage') ? $request->input('festivalPage') : "No Especificado";
         $pages = null !== $request->input('pages') ? $request->input('pages') : "No Especificado";
 
         $dataTotal = [];
         $data = [];
+        Cache::put('procesing', 'Extrayendo Eventos De:' . $festivalPage, 50);
+
         switch ($festivalPage) {
             case 'festhome':
                 $client = HttpClient::create([
@@ -548,7 +557,7 @@ class eventosController extends Controller
     }
     public function getEventos(Request $request, $saveMode = false)
     {
-        Cache::put('procesing', 'iniciando', 50);
+        Cache::put('procesing', 'Preparando Obtencion De Eventos', 50);
         // Establecer el indicador de bloqueo
         $apiUrl = config('app.urlWp') . '/wp-json/wp/v2/eventos';
         if (!$saveMode) {
@@ -557,6 +566,7 @@ class eventosController extends Controller
             $per_page = $request->input('per_page');
             $order = $request->input('order');
             $dateStart = $request->input('dateStart');
+            $onlyFilter = $request->input('onlyFilter') !== null;
             $dateEnd = $request->input('dateEnd');
             $fee = json_decode($request->input('fee'));
             $source = json_decode($request->input('source'));
@@ -573,10 +583,9 @@ class eventosController extends Controller
         // Construir la URL con los parámetros
         $url = $apiUrl . '?' . http_build_query($params);
         $eventos = [];
-        if (Cache::has('eventos')) {
+        if (Cache::has('eventos') && $onlyFilter) {
             Cache::put('procesing', 'Obteniendo Datos Local', 50);
             $eventos = Cache::get('eventos');
-
             Cache::put('eventos', $eventos);
 
         } else {

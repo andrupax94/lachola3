@@ -92,6 +92,8 @@ export class VerEventosComponent {
             switch (page) {
 
                 case 'verEventos':
+                    this.carga.to('body');
+                    this.carga.play();
                     this.buscaEventosIt();
                     break;
                 case 'exEventos':
@@ -120,6 +122,8 @@ export class VerEventosComponent {
         }
     }
     public accionesPage(accion: string) {
+        this.carga.to('body');
+        this.carga.play();
         switch (accion) {
             case 'verEventos':
                 this.onlyFilter = 'true';
@@ -141,6 +145,9 @@ export class VerEventosComponent {
     }
     async exEventosIt() {
         this.it = true;
+        if (!(this.it && this.contador < 2)) {
+            this.carga.pause();
+        }
         while (this.it && this.contador < 2) {
             this.buscaEventos('extractFestivalDataGroup');
             await this.esperar(1000);
@@ -281,8 +288,9 @@ export class VerEventosComponent {
                             id: aux.id
                         }
                         this.eventoP.push(aux4);
-                        this.carga.pause();
+
                     });
+                    this.carga.pause();
                     this.getVisiblePages();
                     if (this.pageFilter === 'exEventos')
                         this.verificaCheckBoxes();
