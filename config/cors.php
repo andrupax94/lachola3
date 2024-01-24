@@ -22,9 +22,9 @@ return [
     'allowed_origins' => [
         'http://lachola.test:4200',
         'http://sub.lachola.test:4200',
-],
+    ],
 
-    'allowed_origins_patterns' => ['*'],
+    'allowed_origins_patterns' => ['/.*\.lachola\.test/'],
 
     'allowed_headers' => ['*'],
 
