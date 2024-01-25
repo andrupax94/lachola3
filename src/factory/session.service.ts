@@ -23,21 +23,21 @@ export class SessionService {
     public getToken(): Observable<any> {
 
         let params = new HttpParams({ fromString: 'name=term' });
-        const url = 'http://lachola.test/api/getToken';
+        const url = environment.back + 'getToken';
         // Realiza la solicitud POST y obtiene la respuesta completa
         return this.http.post(url, params, { observe: 'response', withCredentials: true });
     }
     public getUser(): Observable<any> {
 
         let params = new HttpParams({ fromString: 'name=term' });
-        const url = 'http://lachola.test/api/getUser';
+        const url = environment.back + 'getUser';
         // Realiza la solicitud POST y obtiene la respuesta completa
         return this.http.post(url, params, { observe: 'response', withCredentials: true });
     }
     public logIn(): Observable<any> {
 
         let params = new HttpParams({ fromString: 'name=term' });
-        const url = 'http://lachola.test/api/logIn';
+        const url = environment.back + 'logIn';
         // Realiza la solicitud POST y obtiene la respuesta completa
         return this.http.post(url, params, { observe: 'response', withCredentials: true });
     }

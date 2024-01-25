@@ -292,13 +292,31 @@ class eventosController extends Controller
         $dataTotal = [];
         $data = [];
         Cache::put('procesing', 'Extrayendo Eventos De:' . $festivalPage, 50);
+        $local_file = 'C:/laragon/etc/ssl/cacert.pem'; // Ruta al archivo de configuración local
+
+        if (file_exists($local_file)) {
+            $config1 = [
+                'verify_peer' => true,
+                'cafile' => 'C:/laragon/etc/ssl/cacert.pem', // Ajusta la ruta según tu configuración
+            ];
+            $config2 = [
+                'verify_peer' => false,
+                'cafile' => 'C:/laragon/etc/ssl/cacert.pem', // Ajusta la ruta según tu configuración
+            ];
+
+        } else {
+            $config1 = [
+                'verify_peer' => true,
+            ];
+            $config2 = [
+                'verify_peer' => false,
+            ];
+
+        }
 
         switch ($festivalPage) {
             case 'festhome':
-                $client = HttpClient::create([
-                    'verify_peer' => true,
-                    'cafile' => 'C:/laragon/etc/ssl/cacert.pem', // Ajusta la ruta según tu configuración
-                ]);
+                $client = HttpClient::create($config1);
                 $response = $client->request('GET', 'https://festhome.com/festival-list/page:' . $pages);
                 $htmlContent = $response->getContent();
                 $crawler = new Crawler($htmlContent);
@@ -358,10 +376,7 @@ class eventosController extends Controller
                 $dataTotal = $dataTotal + $data;
                 break;
             case 'movibeta':
-                $client = HttpClient::create([
-                    'verify_peer' => false,
-                    // 'verify_peer_name' => false,
-                ]);
+                $client = HttpClient::create($config2);
                 $response = $client->request('GET', 'https://festival.movibeta.com/festivals?page=' . $pages);
                 $content = $response->getContent();
 
@@ -390,10 +405,7 @@ class eventosController extends Controller
 
                 break;
             case 'animationfestivals':
-                $client = HttpClient::create([
-                    'verify_peer' => false,
-                    'cafile' => 'C:/laragon/etc/ssl/cacert.pem', // Ajusta la ruta según tu configuración
-                ]);
+                $client = HttpClient::create($config2);
                 $response = $client->request('GET', 'https://www.animation-festivals.com/festivals-list/page/' . $pages);
                 $htmlContent = $response->getContent();
                 $crawler = new Crawler($htmlContent);
@@ -446,10 +458,7 @@ class eventosController extends Controller
                 $dataTotal = $dataTotal + $data;
                 break;
             case 'filmfreeaway':
-                $client = HttpClient::create([
-                    'verify_peer' => false,
-                    'cafile' => 'C:/laragon/etc/ssl/cacert.pem', // Ajusta la ruta según tu configuración
-                ]);
+                $client = HttpClient::create($config2);
                 $url = 'https://filmfreeway.com/festivals?page=' . $pages . '&per_page=50&sort=all_deadlines';
                 $response = $client->request('GET', $url);
                 $htmlContent = $response->getContent();
@@ -498,10 +507,7 @@ class eventosController extends Controller
 
                 break;
             case 'shortfilmdepot':
-                $client = HttpClient::create([
-                    'verify_peer' => false,
-                    'cafile' => 'C:/laragon/etc/ssl/cacert.pem', // Ajusta la ruta según tu configuración
-                ]);
+                $client = HttpClient::create($config2);
                 $url = 'https://www.shortfilmdepot.com';
                 $response = $client->request('GET', $url);
                 $htmlContent = $response->getContent();

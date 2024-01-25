@@ -1,7 +1,7 @@
 export const environment = {
     production: true,
     apiUrl: '',
-    back: 'http://lachola.test/api/',
+    back: 'https://laravel.andreseduardo.es/api/',
     public: '',
     baseRef: '/'
 };
