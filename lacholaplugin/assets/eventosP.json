@@ -1,131 +1,381 @@
-[
-    {
-        "Id_evento": 1,
-        "Nombre": "Festival Internacional de cine de Lebu(24)",
-        "Descripcion": "Festival de cortometrajes",
-        "Categoria": ["Animación", "Ficción", "Documental"],
-        "Tipo_de_metraje": ["Cortometraje"],
-        "Fecha_Inicio": "2024-04-05",
-        "Fecha_final": "2024-04-11",
-        "Imagen": "imagen1.jpg",
-        "Id_social": 1,
-        "Tasa": 0,
-        "Tipo": "B"
-    },
-    {
-        "Id_evento": 2,
-        "Nombre": "Cartagena International Film Festival",
-        "Descripcion": "Festival de cortometrajes y largometrajes",
-        "Categoria": ["Documental", "Ficción", "Animación", "Fantástico", "Terror", "Experimental"],
-        "Tipo_de_metraje": ["Cortometraje", "Largometraje"],
-        "Fecha_Inicio": "2024-04-16",
-        "Fecha_final": "2024-02-21",
-        "Imagen": "imagen2.jpg",
-        "Id_social": 2,
-        "Tasa": "60€",
-        "Tipo": "B"
-    },
-    {
-        "Id_evento": 3,
-        "Nombre": "Quirino Awards",
-        "Descripcion": "Festival de cortometrajes y largometrajes",
-        "Categoria": ["Animación"],
-        "Tipo_de_metraje": ["Cortometraje", "Largometraje"],
-        "Fecha_Inicio": "2024-05-11",
-        "Fecha_final": "2024-05-11",
-        "Imagen": "imagen3.jpg",
-        "Id_social": 3,
-        "Tasa": 0,
-        "Tipo": "C"
-    },
-    {
-        "Id_evento": 4,
-        "Nombre": "Skyline Benidorm Film Festival",
-        "Descripcion": "Festival de Cortometrajes",
-        "Categoria": ["Ficción", "Documental", "Animación", "Fantástico", "Terror"],
-        "Tipo_de_metraje": ["Cortometraje"],
-        "Fecha_Inicio": "2024-04-13",
-        "Fecha_final": "2024-04-20",
-        "Imagen": "imagen4.jpg",
-        "Id_social": 1,
-        "Tasa": "1,26€",
-        "Tipo": "B"
-    },
-    {
-        "Id_evento": 5,
-        "Nombre": "Festival de Málaga",
-        "Descripcion": "Festival de cortometrajes y largometrajes",
-        "Categoria": ["Ficción", "Documental", "Animación"],
-        "Tipo_de_metraje": ["Cortometraje", "Largometraje"],
-        "Fecha_Inicio": "2024-03-01",
-        "Fecha_final": "2024-03-10",
-        "Imagen": "imagen5.jpg",
-        "Id_social": 2,
-        "Tasa": 0,
-        "Tipo": "A"
-    },
-    {
-        "Id_evento": 6,
-        "Nombre": "Festival de Cine de Paterna 'Antonio Ferrandis'",
-        "Descripcion": "Festival de Cortometrajes",
-        "Fecha_Inicio": "24-06-18",
-        "Fecha_final": "2024-06-15",
-        "Imagen": "imagen6.jpg",
-        "Id_social": 3,
-        "Tasa": 0,
-        "Tipo": "B"
-    },
-    {
-        "Id_evento": 7,
-        "Nombre": "Festifil",
-        "Descripcion": "28 Festival La Fila de Cortometrajes",
-        "Categoria": ["Ficción", "Documental", "Animación"],
-        "Tipo_de_metraje": ["Cortometraje"],
-        "Fecha_Inicio": "2024-02-15",
-        "Fecha_final": "2024-02-18",
-        "Imagen": "imagen7.jpg",
-        "Id_social": 1,
-        "Tasa": 0,
-        "Tipo": "B"
-    },
-    {
-        "Id_evento": 8,
-        "Nombre": "Medina del Campo Film Festival",
-        "Descripcion": "El festival es sinónimo de compromiso hacia el cortometraje",
-        "Categoria": ["Ciencia Ficción"],
-        "Tipo_de_metraje": ["Cortometraje"],
-        "Fecha_Inicio": "2024-02-23",
-        "Fecha_final": "2024-02-24",
-        "Imagen": "imagen8.jpg",
-        "Id_social": 2,
-        "Tasa": 0,
-        "Tipo": "C"
-    },
-    {
-        "Id_evento": 9,
-        "Nombre": "EMOVE Festival Escolar y Universitario de las Artes Audiovisuales",
-        "Descripcion": "El Festival Escolar y Universitario de las Artes Audiovisuales, en su 7ª convocatoria, tiene una duración de un curso escolar.",
-        "Categoria": ["Ficción", "Documental", "Animación", "Experimental", "Musical"],
-        "Tipo_de_metraje": ["Cortometraje"],
-        "Fecha_Inicio": "2023-11-11",
-        "Fecha_final": "2023-11-12",
-        "Imagen": "imagen9.jpg",
-        "Id_social": 3,
-        "Tasa": 0,
-        "Tipo": "B"
-    },
-    {
-        "Id_evento": 10,
-        "Nombre": "Popayán",
-        "Descripcion": "Festival de cine colombiano",
-        "Categoria": ["Ficción", "Documental", "Animación", "Experimental", "Musical"],
-        "Tipo_de_metraje": ["Cortometraje", "Largometraje"],
-        "Fecha_Inicio": "2024-10-19",
-        "Fecha_final": "2024-10-21",
-        "Imagen": "imagen10.jpg",
-        "Id_social": 1,
-        "Tasa": 0,
-        "Tipo": "B"
-    }
-]     
-   
+{
+    "status": true,
+    "data": [{
+            "nombre": "3D Wire",
+            "ubicacion": "Spain",
+            "tipoFestival": "A",
+            "tipoMetraje": [
+                "No Especificado"
+            ],
+            "imagen": "https://www.animation-festivals.com/wp-content/uploads/3D-Wire-logo-310x310.jpg",
+            "banner": "No Especificado",
+            "url": "https://www.animation-festivals.com/festivals/3d-wire/",
+            "tasa": [
+                "FREE to enter",
+                "12"
+            ],
+            "fechaLimite": [false, "1-01-2024"]
+        },
+        {
+            "nombre": "Abidjan Animation Film Festival (FFAA)",
+            "ubicacion": "Ivory Coast",
+            "tipoFestival": "A",
+            "tipoMetraje": [
+                "No Especificado"
+            ],
+            "imagen": "https://www.animation-festivals.com/wp-content/uploads/Abidjan-Animation-Film-Festival-FFAA-logo.jpg",
+            "banner": "No Especificado",
+            "url": "https://www.animation-festivals.com/festivals/abidjan-animation-film-festival-ffaa/",
+            "tasa": [
+                "Entry fee applies"
+            ],
+            "fechaLimite": [false, "27-12-2023"]
+        },
+        {
+            "nombre": "accordi @ DISACCORDI International Short Film Festival",
+            "ubicacion": "Italy",
+            "tipoFestival": "B",
+            "tipoMetraje": [
+                "No Especificado"
+            ],
+            "imagen": "https://www.animation-festivals.com/wp-content/uploads/rsz_logo_di_accordi_e_disaccordi_miniaturizzato-450x450.jpg",
+            "banner": "No Especificado",
+            "url": "https://www.animation-festivals.com/festivals/accordi-disaccordi-international-short-film-festival/",
+            "tasa": [
+                "FREE to enter"
+            ],
+            "fechaLimite": [false, "23-09-2022"]
+        },
+        {
+            "nombre": "Acid’Anime Contest",
+            "ubicacion": "France",
+            "tipoFestival": "C",
+            "tipoMetraje": [
+                "No Especificado"
+            ],
+            "imagen": "https://www.animation-festivals.com/wp-content/uploads/AcidAnime-Logo2-450x450.jpg",
+            "banner": "No Especificado",
+            "url": "https://www.animation-festivals.com/festivals/acidanime-contest/",
+            "tasa": [
+                "FREE to enter"
+            ],
+            "fechaLimite": [false, "01-04-2023"]
+        },
+        {
+            "nombre": "Ajayu International Animation Festival",
+            "ubicacion": "Peru",
+            "tipoFestival": "A",
+            "tipoMetraje": [
+                "No Especificado"
+            ],
+            "imagen": "https://www.animation-festivals.com/wp-content/uploads/Ajayu-International-Animation-Festival-logo-310x310.jpg",
+            "banner": "No Especificado",
+            "url": "https://www.animation-festivals.com/festivals/ajayu-international-animation-festival/",
+            "tasa": [
+                "12"
+            ],
+            "fechaLimite": [false, "27-08-2022"]
+        },
+        {
+            "nombre": "Amazing Fantasy Fest",
+            "ubicacion": "USA",
+            "tipoFestival": "A",
+            "tipoMetraje": [
+                "No Especificado"
+            ],
+            "imagen": "https://www.animation-festivals.com/wp-content/uploads/AFF-square-450-X-450.jpg",
+            "banner": "No Especificado",
+            "url": "https://www.animation-festivals.com/festivals/amazing-fantasy-fest/",
+            "tasa": [
+                "Free",
+                "Entry fee applies"
+            ],
+            "fechaLimite": [false, "17-07-2024"]
+        },
+        {
+            "nombre": "American Documentary And Animation Film Festival",
+            "ubicacion": "USA",
+            "tipoFestival": "C",
+            "tipoMetraje": [
+                "No Especificado"
+            ],
+            "imagen": "https://www.animation-festivals.com/wp-content/uploads/American-Documentary-And-Animation-Film-Festival-2023-450x450.jpg",
+            "banner": "No Especificado",
+            "url": "https://www.animation-festivals.com/festivals/american-documentary-and-animation-film-festival/",
+            "tasa": [
+                "Entry fee applies"
+            ],
+            "fechaLimite": [false, "13-01-2023"]
+        },
+        {
+            "nombre": "Anchorage Film Festival",
+            "ubicacion": "USA",
+            "tipoFestival": "A",
+            "tipoMetraje": [
+                "No Especificado"
+            ],
+            "imagen": "https://www.animation-festivals.com/wp-content/uploads/Anchorage-Film-Festival.jpg",
+            "banner": "No Especificado",
+            "url": "https://www.animation-festivals.com/festivals/anchorage-film-festival/",
+            "tasa": [
+                "Entry fee applies"
+            ],
+            "fechaLimite": [false, "01-08-2022"]
+        },
+        {
+            "nombre": "Anibar Animation Festival",
+            "ubicacion": "Kosovo",
+            "tipoFestival": "A",
+            "tipoMetraje": [
+                "No Especificado"
+            ],
+            "imagen": "https://www.animation-festivals.com/wp-content/uploads/anibar-logo-2018-310x310.jpg",
+            "banner": "No Especificado",
+            "url": "https://www.animation-festivals.com/festivals/anibar-animation-festival/",
+            "tasa": [
+                "Entry fee applies"
+            ],
+            "fechaLimite": [false, "31-03-2024"]
+        },
+        {
+            "nombre": "Anifilm – International Festival of Animated Films (Liberec)",
+            "ubicacion": "Czech Republic",
+            "tipoFestival": "A",
+            "tipoMetraje": [
+                "No Especificado"
+            ],
+            "imagen": "https://www.animation-festivals.com/wp-content/uploads/LOGO_FB_NEUTRAL-450x450.jpg",
+            "banner": "No Especificado",
+            "url": "https://www.animation-festivals.com/festivals/anifilm-international-festival-of-animated-films/",
+            "tasa": [
+                "FREE to enter"
+            ],
+            "fechaLimite": [false, "31-12-2023"]
+        },
+        {
+            "nombre": "Anilogue International Animation Festival",
+            "ubicacion": "Hungary",
+            "tipoFestival": "A",
+            "tipoMetraje": [
+                "No Especificado"
+            ],
+            "imagen": "https://www.animation-festivals.com/wp-content/uploads/Anilogue-International-Animation-Festival-logo-310x310.jpg",
+            "banner": "No Especificado",
+            "url": "https://www.animation-festivals.com/festivals/anilogue-international-animation-festival/",
+            "tasa": [
+                "FREE to enter"
+            ],
+            "fechaLimite": [false, "25-08-2022"]
+        },
+        {
+            "nombre": "ANIMA – Córdoba International Animation Festival",
+            "ubicacion": "Argentina",
+            "tipoFestival": "A",
+            "tipoMetraje": [
+                "No Especificado"
+            ],
+            "imagen": "https://www.animation-festivals.com/wp-content/uploads/anima_small-310x310.png",
+            "banner": "No Especificado",
+            "url": "https://www.animation-festivals.com/festivals/anima-cordoba-international-animation-festival/",
+            "tasa": [
+                "FREE to enter"
+            ],
+            "fechaLimite": [false, "15-04-2022"]
+        },
+        {
+            "nombre": "Anima Cinefest",
+            "ubicacion": "USA",
+            "tipoFestival": "A",
+            "tipoMetraje": [
+                "No Especificado"
+            ],
+            "imagen": "https://www.animation-festivals.com/wp-content/uploads/OS-Anima-Cinefest-Logo-450x450-1.png",
+            "banner": "No Especificado",
+            "url": "https://www.animation-festivals.com/festivals/anima-cinefest/",
+            "tasa": [
+                "FREE to enter"
+            ],
+            "fechaLimite": [false, "31-07-2023"]
+        },
+        {
+            "nombre": "ANIMA LATINA, V Latin American Animation Film Festival",
+            "ubicacion": "Argentina",
+            "tipoFestival": "A",
+            "tipoMetraje": [
+                "No Especificado"
+            ],
+            "imagen": "https://www.animation-festivals.com/wp-content/uploads/Anima-Latina-2018-355x355-min-310x310.jpg",
+            "banner": "No Especificado",
+            "url": "https://www.animation-festivals.com/festivals/anima-latina-latin-american-animation-film-festival/",
+            "tasa": [
+                "FREE to enter"
+            ],
+            "fechaLimite": [false, "30-11-2022"]
+        },
+        {
+            "nombre": "Anima: Brussels Animation Film Festival",
+            "ubicacion": "Belgium",
+            "tipoFestival": "A",
+            "tipoMetraje": [
+                "No Especificado"
+            ],
+            "imagen": "https://www.animation-festivals.com/wp-content/uploads/Anima-Brussels-Animation-Film-Festival-logo-310x310.jpg",
+            "banner": "No Especificado",
+            "url": "https://www.animation-festivals.com/festivals/anima-brussels-cartoon-and-animation-film-festival/",
+            "tasa": [
+                "FREE to enter"
+            ],
+            "fechaLimite": [false, "03-10-2022"]
+        },
+        {
+            "nombre": "Animac: International Animation Film Festival",
+            "ubicacion": "Spain",
+            "tipoFestival": "A",
+            "tipoMetraje": [
+                "No Especificado"
+            ],
+            "imagen": "https://www.animation-festivals.com/wp-content/uploads/animx.jpg",
+            "banner": "No Especificado",
+            "url": "https://www.animation-festivals.com/festivals/animac-international-animation-film-festival/",
+            "tasa": [
+                "FREE to enter"
+            ],
+            "fechaLimite": [false, "16-10-2023"]
+        },
+        {
+            "nombre": "Animadeba",
+            "ubicacion": "Spain",
+            "tipoFestival": "A",
+            "tipoMetraje": [
+                "No Especificado"
+            ],
+            "imagen": "https://www.animation-festivals.com/wp-content/uploads/Animadeba-animation-festival-logo.jpg",
+            "banner": "No Especificado",
+            "url": "https://www.animation-festivals.com/festivals/animadeba/",
+            "tasa": [
+                "FREE to enter"
+            ],
+            "fechaLimite": [false, "04-05-2022"]
+        },
+        {
+            "nombre": "Animae Caribe International Animation & Digital Media Festival",
+            "ubicacion": "Trinidad and Tobago",
+            "tipoFestival": "A",
+            "tipoMetraje": [
+                "No Especificado"
+            ],
+            "imagen": "https://www.animation-festivals.com/wp-content/uploads/AC21LogoSquareFIN-450x450.jpg",
+            "banner": "No Especificado",
+            "url": "https://www.animation-festivals.com/festivals/animae-caribe-animation-and-digital-media-festival/",
+            "tasa": [
+                "FREE to enter"
+            ],
+            "fechaLimite": [false, "31-08-2022"]
+        },
+        {
+            "nombre": "Animafantasia – International Student Animated Film Festival",
+            "ubicacion": "Romania",
+            "tipoFestival": "A",
+            "tipoMetraje": [
+                "No Especificado"
+            ],
+            "imagen": "https://www.animation-festivals.com/wp-content/uploads/ANIMAFANTASIA-real-logo-450x4501-1.png",
+            "banner": "No Especificado",
+            "url": "https://www.animation-festivals.com/festivals/animafantasia-international-student-animated-film-festival/",
+            "tasa": [
+                "FREE to enter"
+            ],
+            "fechaLimite": [false, "30-09-2023"]
+        },
+        {
+            "nombre": "Animafest ZAGREB",
+            "ubicacion": "Croatia",
+            "tipoFestival": "A",
+            "tipoMetraje": [
+                "No Especificado"
+            ],
+            "imagen": "https://www.animation-festivals.com/wp-content/uploads/Animafest-Zagreb-logo-310x310.jpg",
+            "banner": "No Especificado",
+            "url": "https://www.animation-festivals.com/festivals/animafest-zagreb-world-festival-of-animated-film/",
+            "tasa": [
+                "FREE to enter"
+            ],
+            "fechaLimite": [false, "01-02-2024"]
+        },
+        {
+            "nombre": "ANIMAFILM International Animation Festival",
+            "ubicacion": "Azerbaijan",
+            "tipoFestival": "A",
+            "tipoMetraje": [
+                "No Especificado"
+            ],
+            "imagen": "https://www.animation-festivals.com/wp-content/uploads/ANIMAFILM-International-Animation-Festival-logo.jpg",
+            "banner": "No Especificado",
+            "url": "https://www.animation-festivals.com/festivals/animafilm-baku-international-animation-festival/",
+            "tasa": [
+                "Entry fee applies"
+            ],
+            "fechaLimite": [false, "01-07-2023"]
+        },
+        {
+            "nombre": "ANIMAGE – International Animation Festival of Pernambuco",
+            "ubicacion": "Brazil",
+            "tipoFestival": "B",
+            "tipoMetraje": [
+                "No Especificado"
+            ],
+            "imagen": "https://www.animation-festivals.com/wp-content/uploads/avatar.png",
+            "banner": "No Especificado",
+            "url": "https://www.animation-festivals.com/festivals/animage-international-animation-festival-of-pernambuco/",
+            "tasa": [
+                "FREE to enter"
+            ],
+            "fechaLimite": [false, "20-07-2021"]
+        },
+        {
+            "nombre": "Animahenasyon: The Philippine Animation Festival",
+            "ubicacion": "Philippines",
+            "tipoFestival": "C",
+            "tipoMetraje": [
+                "No Especificado"
+            ],
+            "imagen": "https://www.animation-festivals.com/wp-content/uploads/Untitled-1-450x450.jpg",
+            "banner": "No Especificado",
+            "url": "https://www.animation-festivals.com/festivals/animahenasyon-the-philippine-animation-festival/",
+            "tasa": [
+                "FREE to enter"
+            ],
+            "fechaLimite": [false, "16-09-2021"]
+        },
+        {
+            "nombre": "AniMaji Festival",
+            "ubicacion": "USA",
+            "tipoFestival": "A",
+            "tipoMetraje": [
+                "No Especificado"
+            ],
+            "imagen": "https://www.animation-festivals.com/wp-content/uploads/logob-450x450.jpg",
+            "banner": "No Especificado",
+            "url": "https://www.animation-festivals.com/festivals/animaji-festival/",
+            "tasa": [
+                "Entry fee applies"
+            ],
+            "fechaLimite": [false, "31-07-2023"]
+        },
+        {
+            "nombre": "Animakom FEST",
+            "ubicacion": "Spain",
+            "tipoFestival": "A",
+            "tipoMetraje": [
+                "No Especificado"
+            ],
+            "imagen": "https://www.animation-festivals.com/wp-content/uploads/Animakom-Bilbao-Animation-Festival-logo.jpg",
+            "banner": "No Especificado",
+            "url": "https://www.animation-festivals.com/festivals/animakom-fest/",
+            "tasa": [
+                "FREE to enter"
+            ],
+            "fechaLimite": [false, "20-10-2023"]
+        }
+    ]
+}

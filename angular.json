@@ -20,8 +20,9 @@
                             "zone.js"
                         ],
                         "baseHref": "/",
-                        "ngswConfigPath": "/wp-admin/admin.php?page=subdominio-plugin",
+                        "ngswConfigPath": "/",
                         "tsConfig": "tsconfig.app.json",
+
                         "assets": [
                             "src/favicon.ico",
                             "src/assets",

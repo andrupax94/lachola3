@@ -85,14 +85,14 @@
 }
 
 .bg-festhome:nth-child(1)>div:nth-child(1) {
-    background-image: url(/assets/festivalPages/festhome_white.svg);
+    background-image: url(assets/festivalPages/festhome_white.svg);
     background-color: #4d4d4d;
     background-position: center;
     background-size: contain;
 }
 
 .bg-movibeta:nth-child(2)>div:nth-child(1) {
-    background-image: url(/assets/festivalPages/Movibeta.svg);
+    background-image: url(assets/festivalPages/Movibeta.svg);
     background-color: white;
     background-position: center;
     background-size: contain;
@@ -101,7 +101,7 @@
 }
 
 .bg-animationfestivals:nth-child(3)>div:nth-child(1) {
-    background-image: url(/assets/festivalPages/animation-festivals-logo-icon.png);
+    background-image: url(assets/festivalPages/animation-festivals-logo-icon.png);
     background-size: contain;
     background-position: left;
     background-repeat: no-repeat;
@@ -121,7 +121,7 @@
 }
 
 .bg-filmfreeaway:nth-child(4)>div:nth-child(1) {
-    background-image: url(/assets/festivalPages/FilmFreeway.jpg);
+    background-image: url(assets/festivalPages/FilmFreeway.jpg);
     background-color: #fc6064;
     background-size: contain;
     background-repeat: no-repeat;
@@ -129,7 +129,7 @@
 }
 
 .bg-shortfilmdepot:nth-child(5)>div:nth-child(1) {
-    background-image: url(/assets/festivalPages/shortfilmdepot.jpg);
+    background-image: url(assets/festivalPages/shortfilmdepot.jpg);
     background-color: white;
     background-size: contain;
     background-repeat: no-repeat;
@@ -283,7 +283,7 @@ div#mensajes {
 
 .mensajeError>div:nth-child(1)>div:nth-child(1) {
     background-color: #ED6467;
-    background-image: url("/assets/modales/error.svg");
+    background-image: url("assets/modales/error.svg");
 }
 
 .mensaje>div:nth-child(1)>div:nth-child(2) {
@@ -355,7 +355,7 @@ div#mensajes {
 
 .mensajeInfo>div:nth-child(1)>div:nth-child(1) {
     background-color: #4285C5;
-    background-image: url(/assets/modales/info.svg);
+    background-image: url(assets/modales/info.svg);
     background-size: 22%;
 }
 
@@ -377,7 +377,7 @@ div#mensajes {
 
 .mensajeOk>div:nth-child(1)>div:nth-child(1) {
     background-color: #77BB41;
-    background-image: url(/assets/modales/ok.svg);
+    background-image: url(assets/modales/ok.svg);
     background-size: 41%;
 }
 
@@ -399,7 +399,7 @@ div#mensajes {
 
 .mensajeWarning>div:nth-child(1)>div:nth-child(1) {
     background-color: #FED01A;
-    background-image: url(/assets/modales/warning.svg);
+    background-image: url(assets/modales/warning.svg);
     background-size: 37%;
 }
 
