@@ -6,13 +6,46 @@ Description: Muestra una página web de un subdominio e inicia sesión automáti
 Version: 1.0
 Author: Tu Nombre
  */
-// #quitar Si no funka
-//     RewriteEngine on
-//     RewriteCond %{HTTP:Authorization} ^(.*)
-//     RewriteRule ^(.*) - [E=HTTP_AUTHORIZATION:%1]
 use Firebase\JWT\JWT;
 define('JWT_AUTH_SECRET_KEY', 'labamba');
+function custom_image_url_endpoint()
+{
+    // Registra el endpoint para obtener la URL de la imagen por ID
+    register_rest_route('custom/v1', '/image/(?P<id>\d+)', array(
+        'methods' => 'GET',
+        'callback' => 'get_image_by_id',
+    ));
+}
 
+add_action('rest_api_init', 'custom_image_url_endpoint');
+
+function get_image_by_id($data)
+{
+    $attachment_id = $data['id'];
+    $image_url = wp_get_attachment_url($attachment_id);
+
+    if ($image_url) {
+        // Obtiene el tipo de contenido de la imagen
+        $filetype = wp_check_filetype($image_url, null);
+
+        // Configura las cabeceras para la respuesta
+        header("Content-Type: {$filetype['type']}");
+        header('Content-Disposition: inline; filename="' . basename($image_url) . '"');
+
+        // Lee y envía la imagen al navegador
+        readfile($image_url);
+        exit;
+    } else {
+        // Maneja el caso en el que la imagen no se encuentre
+        return new WP_Error('image_not_found', 'Imagen no encontrada', array('status' => 404));
+    }
+}
+function maximum_api_filter($query_params)
+{
+    $query_params['per_page']["maximum"] = 1000;
+    return $query_params;
+}
+add_filter('rest_evento_collection_params', 'maximum_api_filter');
 // Hook para ejecutar la función después de iniciar sesión
 add_action('wp_login', 'generar_token_despues_de_iniciar_sesion', 10, 2);
 function obtenerURLActual($subdominio = null)
@@ -83,7 +116,6 @@ function generar_token_despues_de_iniciar_sesion($user_login, $user)
 
 // Cerrar la solicitud cURL
     curl_close($curl);
-
 }
 
 // Esta función se ejecutará cuando se active el plugin

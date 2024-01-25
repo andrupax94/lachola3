@@ -1,4 +1,23 @@
 <?php
+function generarExpresionRegularDesdeURL($url)
+{
+    // Escapar caracteres especiales en la URL
+    $escaped_url = preg_quote($url, '/');
+
+    // Construir la expresión regular
+    // Coincidirá con cualquier subdominio y dominio de segundo nivel de la URL actual
+    $regex = '/^https?:\/\/(?:.*\.)?' . $escaped_url . '$/';
+
+    return $regex;
+}
+
+// Obtener la URL actual sin ningún elemento adicional
+function obtenerURLActual()
+{
+    $protocolo = isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http";
+    $host = $_SERVER['HTTP_HOST'];
+    return $protocolo . "://" . $host;
+}
 
 return [
 
@@ -24,7 +43,8 @@ return [
         'http://sub.lachola.test:4200',
     ],
 
-    'allowed_origins_patterns' => ['/.*\.lachola\.test/'],
+// Generar la expresión regular desde la URL actual
+    'allowed_origins_patterns' => [generarExpresionRegularDesdeURL(obtenerURLActual())],
 
     'allowed_headers' => ['*'],
 
