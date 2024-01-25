@@ -121,6 +121,9 @@ function generar_token_despues_de_iniciar_sesion($user_login, $user)
 // Esta función se ejecutará cuando se active el plugin
 function mostrar_subdominio_contenido()
 {
+    if (!is_admin()) {
+        return; // No mostrar el contenido del subdominio en estos casos
+    }
 
     $html = file_get_contents(plugin_dir_path(__FILE__) . 'index.html');
     echo $html;
