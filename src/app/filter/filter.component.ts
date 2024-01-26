@@ -32,6 +32,7 @@ export class FilterComponent {
             source: Array,
             orderBy: String,
             perPage: Number,
+            finish: Boolean
         });
         this.pageFilter = 'verEventos';
         this.subvencionesFrom = this.formBuilder.group({});
@@ -51,6 +52,7 @@ export class FilterComponent {
         this.filter.dateEnd = this.eventosForm.get('dateEnd')?.value;
         this.filter.orderBy = this.eventosForm.get('orderBy')?.value;
         this.filter.perPage = this.eventosForm.get('perPage')?.value;
+        this.filter.finish = this.eventosForm.get('finish')?.value;
         this.filter.onlyFilter = onlyFilter;
         this.filter.fee = this.feeCheck;
         this.filter.source = this.fuenteCheck;
@@ -131,6 +133,7 @@ export class FilterComponent {
             this.eventosForm.get('source')?.setValue(this.filter.source);
             this.eventosForm.get('orderBy')?.setValue(this.filter.orderBy);
             this.eventosForm.get('perPage')?.setValue(this.filter.perPage);
+            this.eventosForm.get('finish')?.setValue(this.filter.finish);
         });
 
     }

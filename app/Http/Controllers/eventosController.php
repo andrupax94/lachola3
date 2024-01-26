@@ -582,7 +582,16 @@ class eventosController extends Controller
             $orderby = $request->input('orderby');
             $per_page = $request->input('per_page');
             $order = $request->input('order');
+            $finish = ($request->input('finish') !== null) ? $request->input('finish') : false;
             $dateStart = $request->input('dateStart');
+
+            $fecha = \DateTime::createFromFormat('Y-m-d', $dateStart);
+            $fecha_actual = new \DateTime();
+
+            // Comparar las fechas
+            if ($fecha < $fecha_actual && ($finish === "false" || $finish === false)) {
+                $dateStart = $fecha_actual->format('Y-m-d');
+            }
             $dateEnd = $request->input('dateEnd');
             $fee = json_decode($request->input('fee'));
             $source = json_decode($request->input('source'));

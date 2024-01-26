@@ -23,6 +23,7 @@ export class VerEventosComponent {
     public orderBy: string = 'fechaLimite';
     public order: string = 'asc';
     public perPage: number = 5;
+    public finish: boolean = true;
     public totalPages: number = 1;
     public startPage: number = 1;
     public endPage: number = 1;
@@ -71,6 +72,7 @@ export class VerEventosComponent {
                 this.source = this.filter.source;
                 this.orderBy = this.filter.orderBy;
                 this.perPage = this.filter.perPage;
+                this.finish = this.filter.finish;
                 this.onlyFilter = this.filter.onlyFilter;
                 switch (page.filtros) {
                     case 'verEventos':
@@ -213,6 +215,7 @@ export class VerEventosComponent {
         params = params.set('page', this.page);
         params = params.set('orderby', this.orderBy);
         params = params.set('per_page', this.perPage); // Corregí this.orderBy por this.perPage
+        params = params.set('finish', this.finish); // Corregí this.orderBy por this.perPage
         params = params.set('dateStart', this.dateStart); // Corregí this.orderBy por this.perPage
         params = params.set('dateEnd', this.dateEnd); // Corregí this.orderBy por this.perPage
         params = params.set('fee', JSON.stringify(this.fee)); // Corregí this.orderBy por this.perPage
