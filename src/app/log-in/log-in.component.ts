@@ -38,7 +38,7 @@ export class LogInComponent {
 
 
     ngOnInit() {
-
+        this.carga.pause();
         $('.message a').click(function () {
             $('form').animate({ height: "toggle", opacity: "toggle" }, "slow");
         });

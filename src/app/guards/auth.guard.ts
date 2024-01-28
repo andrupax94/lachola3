@@ -7,6 +7,7 @@ import { Location } from '@angular/common';
     providedIn: 'root',
 })
 export class authGuard implements CanActivate {
+
     constructor(private router: Router, private http: HttpClient, private session: SessionService, private location: Location) {
 
     }
@@ -21,19 +22,11 @@ export class authGuard implements CanActivate {
             return this.session.getToken().subscribe({
                 next: (data) => {
                     if (data.body !== true) {
-                        this.session.logIn().subscribe({
-                            next: (data) => {
-                                if (data.body === true) {
-                                    const currentPath = this.location.path();
-                                    this.router.navigate([currentPath]);
-                                }
-                            },
-                            error: (e) => {
-                                user.mensaje = "Error Al Iniciar Sesion";
-                                this.session.SetUserCookie(user);
-                                resolve(false);
-                            }
-                        })
+
+                        user.mensaje = "Error Al Iniciar Sesion";
+                        this.session.SetUserCookie(user);
+                        this.router.navigate(['logIn']);
+                        resolve(true);
 
                     }
                     else {
@@ -43,7 +36,8 @@ export class authGuard implements CanActivate {
                                 if (data.body.username === null) {
                                     user.mensaje = "No hay datos de usuario";
                                     this.session.SetUserCookie(user);
-                                    resolve(false);
+                                    this.router.navigate(['logIn']);
+                                    resolve(true);
                                 }
                                 else {
                                     user.mensaje = "Iniciado Correctamente";
@@ -57,7 +51,8 @@ export class authGuard implements CanActivate {
                             error: (error) => {
                                 user.mensaje = "Error Al Obtener Datos De Usuario";
                                 this.session.SetUserCookie(user);
-                                resolve(false);
+                                this.router.navigate(['logIn']);
+                                resolve(true);
                             }
                         });
 
@@ -68,7 +63,8 @@ export class authGuard implements CanActivate {
                 error: (error) => {
                     user.mensaje = error;
                     this.session.SetUserCookie(user);
-                    resolve(false);
+                    this.router.navigate(['logIn']);
+                    resolve(true);
                 }
             });
 

@@ -15,7 +15,7 @@ const routes: Routes = [
     { path: 'exEventos', component: ExEventosComponent, canActivate: [procesing, authGuard] },
     { path: 'verSubvenciones', component: VerSubvencionesComponent, canActivate: [procesing, authGuard] },
     { path: 'exSubvenciones', component: ExSubvencionesComponent, canActivate: [procesing, authGuard] },
-    { path: 'logIn', component: LogInComponent, canActivate: [procesing, authGuard] },
+    { path: 'logIn', component: LogInComponent, canActivate: [procesing] },
     // Puedes agregar más rutas según sea necesario
 ];
 
