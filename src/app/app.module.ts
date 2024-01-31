@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 import { LogInComponent } from './log-in/log-in.component';
 import { PopUpsModule } from 'src/pop-ups/pop-ups.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EmptyArrayPipe } from './pipes/empty-array.pipe';
+
 import { FilterComponent } from './filter/filter.component';
 import { ExEventosComponent } from './ex-eventos/ex-eventos.component';
 import { ExSubvencionesComponent } from './ex-subvenciones/ex-subvenciones.component';
@@ -26,7 +26,6 @@ import { ErrorInterceptor } from 'src/app/httpInterceptor';
         AppComponent,
         LogInComponent,
         VerEventosComponent,
-        EmptyArrayPipe,
         FilterComponent,
         ExEventosComponent,
         ExSubvencionesComponent,

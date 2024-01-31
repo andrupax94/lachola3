@@ -4,8 +4,8 @@ import { VerEventosComponent } from './verEventos/verEventos.component';
 import { ExEventosComponent } from './ex-eventos/ex-eventos.component';
 import { VerSubvencionesComponent } from './ver-subvenciones/ver-subvenciones.component';
 import { ExSubvencionesComponent } from './ex-subvenciones/ex-subvenciones.component';
-import { authGuard } from './guards/auth.guard';
-import { procesing } from './guards/procesing.guard';
+import { authGuard } from '../guards/auth.guard';
+import { procesing } from '../guards/procesing.guard';
 import { LogInComponent } from './log-in/log-in.component';
 
 

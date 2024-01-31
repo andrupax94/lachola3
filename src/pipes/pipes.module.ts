@@ -8,28 +8,28 @@ import { RellenarConCerosPipe } from './rellenar-con-ceros.pipe';
 import { QuitarCaracterPipe } from './quitar-caracter.pipe';
 import { RgbToHexPipe } from './rgb-to-hex.pipe';
 import { PrecioPipe } from './precio.pipe';
-
+import { EmptyArrayPipe } from './empty-array.pipe';
 
 @NgModule({
-  declarations: [RevertirFechaPipe,
-    SplitPipe,
-    StringToArrayPipe,
-    ArrayToStringPipe,
-    RellenarConCerosPipe,
-    QuitarCaracterPipe,
-    RgbToHexPipe,
-    PrecioPipe],
-  imports: [
-    CommonModule
-  ],
-  exports:[
-    SplitPipe,
-    StringToArrayPipe,
-    ArrayToStringPipe,
-    RellenarConCerosPipe,
-    QuitarCaracterPipe,
-    RgbToHexPipe,
-    PrecioPipe
-  ]
+    declarations: [RevertirFechaPipe,
+        SplitPipe,
+        StringToArrayPipe,
+        ArrayToStringPipe,
+        RellenarConCerosPipe,
+        QuitarCaracterPipe,
+        RgbToHexPipe,
+        PrecioPipe],
+    imports: [
+        CommonModule
+    ],
+    exports: [
+        SplitPipe,
+        StringToArrayPipe,
+        ArrayToStringPipe,
+        RellenarConCerosPipe,
+        QuitarCaracterPipe,
+        RgbToHexPipe,
+        PrecioPipe
+    ]
 })
 export class PipesModule { }

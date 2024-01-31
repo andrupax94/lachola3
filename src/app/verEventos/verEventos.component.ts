@@ -1,4 +1,4 @@
-import { eventoP } from '../tiposDatos/eventosP';
+import { eventoP } from '../../tiposDatos/eventosP';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, ViewEncapsulation } from '@angular/core';
 import { environment } from 'src/environments/environment';

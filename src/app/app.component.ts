@@ -5,7 +5,7 @@ import { CargaService } from 'src/factory/carga.service';
 import { Location } from '@angular/common';
 import { NavigationEnd, Router } from '@angular/router';
 import { FactoryService } from 'src/factory/factory.module';
-import { authGuard } from './guards/auth.guard';
+import { authGuard } from '../guards/auth.guard';
 
 @Component({
     selector: 'app-root',
