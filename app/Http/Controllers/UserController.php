@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -116,19 +116,27 @@ class UserController extends Controller
     {
         $client = new Client();
 
+        $username = $request->input('username') !== null ? $request->input('username') : '';
+        $password = $request->input('password') !== null ? $request->input('password') : '';
+        if ($username === '' || $password === '') {
+
+            return response()->json('<strong>Error</strong>: Sin Datos De Usuario');
+        }
+
         $formParams = [
-            "username" => "andros",
-            "password" => ".Ana*123",
+            "username" => $username,
+            "password" => $password,
         ];
 
         $response = $client->post(config('app.urlWp') . '/wp-json/jwt-auth/v1/token', [
             'verify' => false,
+            'http_errors' => false,
             'form_params' => $formParams,
         ]);
 
         $responseData = json_decode($response->getBody(), true);
-        $token = $responseData["token"];
-        if (isset($token)) {
+        $token = isset($responseData["token"]) ? $responseData["token"] : false;
+        if ($token) {
             session(['token' => $token]);
             $validate = UserController::validar($request);
             if ($validate !== true) {
@@ -136,22 +144,16 @@ class UserController extends Controller
             }
             return response()->json($validate);
         } else {
-            return response()->json($responseData["code"]);
+
+            return response()->json($responseData["message"]);
         }
 
     }
-    public function dropAll(Request $request)
+    public function logOut(Request $request)
     {
-        $sessionPath = storage_path('framework/sessions');
 
-// Obtén todos los archivos de sesiones
-        $files = File::files($sessionPath);
-
-// Elimina cada archivo de sesión
-        foreach ($files as $file) {
-            File::delete($file);
-        }
-
-        return response()->json('Variables Eliminadas');
+        Session::flush();
+        return response()->json('Cerro Sesion Correctamente');
     }
+
 }

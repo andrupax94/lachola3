@@ -34,9 +34,18 @@ export class SessionService {
         // Realiza la solicitud POST y obtiene la respuesta completa
         return this.http.post(url, params, { observe: 'response', withCredentials: true });
     }
-    public logIn(): Observable<any> {
+    public logOut(): Observable<any> {
 
         let params = new HttpParams({ fromString: 'name=term' });
+        const url = environment.back + 'logOut';
+        // Realiza la solicitud POST y obtiene la respuesta completa
+        return this.http.post(url, params, { observe: 'response', withCredentials: true });
+    }
+    public logIn(username: string, password: string): Observable<any> {
+
+        let params = new HttpParams({ fromString: 'name=term' });
+        params = params.append('username', username);
+        params = params.append('password', password);
         const url = environment.back + 'logIn';
         // Realiza la solicitud POST y obtiene la respuesta completa
         return this.http.post(url, params, { observe: 'response', withCredentials: true });

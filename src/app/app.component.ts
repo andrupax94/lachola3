@@ -25,6 +25,9 @@ export class AppComponent {
     reload() {
         this.auth.reload();
     }
+    shouldShowFilter: boolean = false;
+
+
     ngOnInit() {
         this.router.events.subscribe(event => {
             if (event instanceof NavigationEnd) {
@@ -32,12 +35,12 @@ export class AppComponent {
             }
         });
         this.session.SDuserCookie$.subscribe((data) => {
-            if (data !== null)
-                this.user = data;
+            if (data !== null) {
+                setTimeout(() => {
+                    this.user = JSON.parse(localStorage.getItem('user')!);
+                }, 500);
+            }
         })
-        setTimeout(() => {
 
-            this.user = JSON.parse(localStorage.getItem('user')!);
-        }, 500)
     }
 }

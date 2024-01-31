@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Session;
 use Symfony\Component\HttpFoundation\Response;
 
 class tokenMiddleware
@@ -31,6 +32,9 @@ class tokenMiddleware
                 return response()->json($validate);
             }
         } else {
+
+// En tu controlador o en cualquier lugar donde tengas acceso a la sesión
+            Session::flush();
             $response = response()->json('Sin Token Bearer');
             return $response;
 

@@ -20,14 +20,11 @@ Route::post('/wpDirect', function (Request $request) {
     return view('index');
 });
 Route::post('/getToken', [UserController::class, 'getToken'])->middleware(['token']);
-Route::get('/getToken', [UserController::class, 'getToken']);
-Route::post('/setToken', [UserController::class, 'setToken']);
-Route::post('/getUser', [UserController::class, 'getUser']);
+Route::post('/getUser', [UserController::class, 'getUser'])->middleware(['token']);
 Route::post('/procesingDelete', [UserController::class, 'procesingDelete']);
 
-//pendiente Eliminar
 Route::post('/logIn', [UserController::class, 'logIn']);
-Route::post('/dropAll', [UserController::class, 'dropAll']);
+Route::post('/logOut', [UserController::class, 'logOut']);
 
 $mEventos = ['procesing', 'token'];
 
