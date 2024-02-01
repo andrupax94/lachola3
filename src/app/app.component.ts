@@ -1,5 +1,5 @@
 import { HttpClient, HttpClientXsrfModule, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { SessionService } from '../factory/session.service';
 import { CargaService } from 'src/factory/carga.service';
 import { Location } from '@angular/common';
@@ -10,7 +10,8 @@ import { authGuard } from '../guards/auth.guard';
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+    styleUrls: ['./app.component.css'],
+    // encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
     title = 'lachola';
@@ -27,7 +28,15 @@ export class AppComponent {
     }
     shouldShowFilter: boolean = false;
 
-
+    logOut() {
+        this.carga.to('body');
+        this.carga.changeInfo(undefined, 'Cerrando Sesion');
+        this.carga.play();
+        this.session.logOut();
+        setTimeout(() => {
+            this.router.navigate(['logIn']);
+        }, 500);
+    }
     ngOnInit() {
         this.router.events.subscribe(event => {
             if (event instanceof NavigationEnd) {

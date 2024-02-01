@@ -1,5 +1,7 @@
 <header class="container-fluid row">
-    <button>LogOut</button>
+    <div id="logOut" (click)="logOut()" *ngIf="user.state!==false&&currentPath!=='/logIn'">
+        <i class="bi bi-box-arrow-right"></i>
+    </div>
     <div class="d-flex flex-column justify-content-center align-content-center ">
         <img class="col-10" width="220"
             src="http://www.marcotoledo.es/wp-content/uploads/2022/07/cropped-logo_MARCO_TOLEDO_blanco-1280x641.png">

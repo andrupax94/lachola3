@@ -1,17 +1,17 @@
 <div class="login-page">
     <div class="form">
         <form [formGroup]="logInForm" (ngSubmit)="submitLogIn()" class="login-form">
-            <input type="text" (keyup)="borraMensaje()" placeholder="username" formControlName="username" />
-            <div class="form__error"
+            <input type="text" (keyup)="borraMensaje()" placeholder="Nombre De Usuario" formControlName="username" />
+            <div class="form_error"
                 *ngIf="logInForm.controls['username'].invalid && (logInForm.controls['username'].dirty || logInForm.controls['username'].touched)">
-                <div *ngIf="logInForm.controls['username'].errors?.['required']">Nombre es requerido.</div>
+                <div *ngIf="logInForm.controls['username'].errors?.['required']">Nombre De usuario es requerido.</div>
 
             </div>
-            <input type="password" (keyup)="borraMensaje()" placeholder="password" formControlName="password" />
+            <input type="password" (keyup)="borraMensaje()" placeholder="Contraseña" formControlName="password" />
             <div class="form_error"
                 *ngIf="logInForm.controls['password'].invalid && (logInForm.controls['password'].dirty || logInForm.controls['password'].touched)">
-                <div *ngIf="logInForm.controls['password'].errors?.['required']">Password es requerido.</div>
-                <div *ngIf="logInForm.controls['password'].errors?.['minlength']">Password debe tener al menos 4
+                <div *ngIf="logInForm.controls['password'].errors?.['required']">La Contraseña es requerida.</div>
+                <div *ngIf="logInForm.controls['password'].errors?.['minlength']">La Contraseña debe tener al menos 4
                     caracteres.
                 </div>
             </div>

@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
 .login-page {
     width: 360px;
     padding: 8% 0 0;
@@ -32,21 +33,22 @@
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     outline: 0;
-    background: #4CAF50;
+    background: #bc0f0f;
     width: 100%;
     border: 0;
     padding: 15px;
     color: #FFFFFF;
     font-size: 14px;
     -webkit-transition: all 0.3 ease;
-    transition: all 0.3 ease;
+    transition: all 0.3s linear;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 .form button:hover,
 .form button:active,
 .form button:focus {
-    background: #43A047;
+    background: #a10c0c;
 }
 
 .form .message {
@@ -56,13 +58,27 @@
 }
 
 .form .message a {
-    color: #4CAF50;
+    color: #bc0f0f;
     text-decoration: none;
 }
 
 .form .register-form {
     display: none;
 }
+
+.form_error {
+    margin-top: -14px;
+    margin-bottom: 10px;
+}
+
+.form_error div {}
+
+.form_error>div {
+    font-size: 12px;
+    color: red;
+}
+
+.form_error strong {}
 
 .container {
     position: relative;
@@ -106,10 +122,6 @@
 }
 
 body {
-    background: #76b852;
-    /* fallback for old browsers */
-    background: rgb(141, 194, 111);
-    background: linear-gradient(90deg, rgba(141, 194, 111, 1) 0%, rgba(118, 184, 82, 1) 50%);
     font-family: "Roboto", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

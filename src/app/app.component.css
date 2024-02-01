@@ -6,11 +6,11 @@ ul {
 img {
     background-color: rgb(71, 70, 70);
     padding: 10px;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
     margin: 0 auto;
 }
 
@@ -36,15 +36,51 @@ input::placeholder {
 header {
     color: black;
     justify-content: space-evenly;
-    height: 300px;
+    height: auto;
     overflow: hidden;
     width: 50vw;
     margin: 0 auto;
+    margin-top: 100px;
 }
 
 nav {
     justify-content: center;
     margin: 0 auto;
+}
+
+#logOut {
+    cursor: pointer;
+    opacity: 0.9;
+    transition: linear 0.1s all;
+    justify-content: center;
+    flex-direction: column;
+    display: flex;
+    text-align: center;
+    border-radius: 5px;
+    background-color: rgb(69, 69, 69);
+    height: 40px;
+    width: 40px;
+    top: 20px;
+    right: 20px;
+    position: absolute;
+}
+
+#logOut i {
+    color: white;
+    transition: linear 0.1s all;
+    -webkit-transition: linear 0.1s all;
+    -moz-transition: linear 0.1s all;
+    -ms-transition: linear 0.1s all;
+    -o-transition: linear 0.1s all;
+}
+
+#logOut:hover {
+    background-color: #9c2929;
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
 }
 
 nav li {

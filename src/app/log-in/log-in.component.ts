@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { MensajesService } from 'src/factory/mensajes.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CargaService } from 'src/factory/carga.service';
@@ -10,7 +10,9 @@ import { SessionService } from 'src/factory/session.service';
 @Component({
     selector: 'app-log-in',
     templateUrl: './log-in.component.html',
-    styleUrls: ['./log-in.component.css']
+    styleUrls: ['./log-in.component.css',
+    ],
+    // encapsulation: ViewEncapsulation.None
 })
 export class LogInComponent {
     public logInForm: FormGroup;
@@ -40,8 +42,9 @@ export class LogInComponent {
 
         this.session.logIn(this.logInForm.get('username')?.value, this.logInForm.get('password')?.value).subscribe({
             next: (data) => {
-                this.carga.pause();
+
                 if (data.body !== true) {
+                    this.carga.pause();
                     this.logInErrorMensaje = data.body;
                 }
                 else {
