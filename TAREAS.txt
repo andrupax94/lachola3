@@ -1,10 +1,17 @@
 BACKEND
 *?????verificar numero maximo de solicitudes en laravel para evitar error por limite de la mismas
 *arreglar movibeta.
+*intentar ser mas preciso a la hora de devolver resultados, por ejemplo con las tasas, algunas dice "tipo no compatible" lo que no tiene sentido
 *revisar si existen dependencias COMPOSER que no uso.
 *optimizar y quitar codigo redundante.
 
 FRONEND
+*aplicar banderas a las ubicaciones
+*poner las imagenes de los eventos en una columna aparte para que se vean mas grandes
+*poner color quisas iconos a los botones de "acciones"
+*hacer que los logos de paginas de eventos en "fuente" no se repita.
+*agregar logos a la columna fuente.
+*limitar el ancho maximo del body para que no se vea estirado en pantalla completa
 *revisar si existen dependencias NPM que no uso.
 *+++++optimizar y quitar codigo redundante.
 
