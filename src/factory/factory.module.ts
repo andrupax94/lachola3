@@ -9,40 +9,58 @@ export class FactoryService {
     constructor(private router: Router) { }
 
 
-    public buscarPais(cadena: string, paises: { name: string, country: string, code: string }[]): string {
+    public buscarPais(cadena: string, paises: { name: string, nameESP: string, nameALT?: string, country: string, code: string }[]): string {
         // Normalizar la cadena eliminando acentos y convirtiéndola a minúsculas
         const cadenaNormalizada = cadena.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
         if (paises === undefined || paises === null)
-            return "EU";
+            return "eu";
         // Recorrer el array de países
         for (let pais of paises) {
             const nombrePaisNormalizado = pais.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+            const nombrePaisEspNormalizado = pais.nameESP.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+            const nombrePaisAltNormalizado = pais.nameALT ? pais.nameALT.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase() : null;
             const paisNormalizado = pais.country.toLowerCase();
             const codigoNormalizado = pais.code.toLowerCase();
-            if (cadenaNormalizada === nombrePaisNormalizado || cadenaNormalizada === paisNormalizado || cadenaNormalizada === codigoNormalizado) {
-                return pais.country;
+            if (
+                cadenaNormalizada === nombrePaisNormalizado ||
+                cadenaNormalizada === nombrePaisEspNormalizado ||
+                (pais.nameALT && cadenaNormalizada === nombrePaisAltNormalizado) ||
+                cadenaNormalizada === paisNormalizado ||
+                cadenaNormalizada === codigoNormalizado
+            ) {
+                return pais.country.toLowerCase();
             }
         }
 
         // Verificar coincidencia con las primeras tres palabras de la cadena
         const primerasTresPalabras = cadena.split(' ').slice(0, 3).join(' ');
         for (let pais of paises) {
-            if (primerasTresPalabras.toLowerCase().includes(pais.name.toLowerCase())) {
-                return pais.country;
+            if (
+                primerasTresPalabras.toLowerCase().includes(pais.name.toLowerCase()) ||
+                primerasTresPalabras.toLowerCase().includes(pais.nameESP.toLowerCase()) ||
+                (pais.nameALT && primerasTresPalabras.toLowerCase().includes(pais.nameALT.toLowerCase()))
+            ) {
+                return pais.country.toLowerCase();
             }
         }
 
         // Verificar coincidencia con las tres últimas palabras de la cadena
         const ultimasTresPalabras = cadena.split(' ').slice(-3).join(' ');
         for (let pais of paises) {
-            if (ultimasTresPalabras.toLowerCase().includes(pais.name.toLowerCase())) {
-                return pais.country;
+            if (
+                ultimasTresPalabras.toLowerCase().includes(pais.name.toLowerCase()) ||
+                ultimasTresPalabras.toLowerCase().includes(pais.nameESP.toLowerCase()) ||
+                (pais.nameALT && ultimasTresPalabras.toLowerCase().includes(pais.nameALT.toLowerCase()))
+            ) {
+                return pais.country.toLowerCase();
             }
         }
 
         // Si no se encontró ninguna coincidencia, devolver "EU"
-        return "EU";
+        return "eu";
     }
+
+
     public agregarOEliminarElemento<T extends { id: any }>(elemento: T, array: T[], onlyReturn: boolean = false): T[] | boolean {
         const elementoId = elemento.id;
 
@@ -94,7 +112,7 @@ export class FactoryService {
         const time2 = date2.getTime();
 
         // Calcular la diferencia en milisegundos
-        const timeDiff = Math.abs(time1 - time2);
+        const timeDiff = time1 - time2;
 
         // Calcular la diferencia en días
         const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));

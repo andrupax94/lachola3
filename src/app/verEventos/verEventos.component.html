@@ -25,8 +25,11 @@
                 <span>{{evento.nombre}}</span>
             </div>
         </td>
-        <td>
-            <div>{{evento.ubicacion}}</div>
+        <td class="festivalUbicacion">
+            <div title="{{evento.ubicacion}}">
+                <span [style.backgroundImage]="'url(assets/flags/png100px/'+evento.ubicacionFlag+'.png)'"></span>
+                <div>{{evento.ubicacion}}</div>
+            </div>
         </td>
         <td>
             <span class="tasa tasa_n" title="{{evento.tasa.text}}" *ngIf="evento.tasa.bool===0"><i
@@ -48,15 +51,19 @@
             </span>
         </td> -->
         <td>
-            <div class="badge"
+            <div class="badge fechalimite_badge"
                 [class.bg-primary]="compararFechas(evento.fechaLimite.fecha)>=3&&compararFechas(evento.fechaLimite.fecha)<10"
                 [class.bg-danger]="compararFechas(evento.fechaLimite.fecha)<3&&compararFechas(evento.fechaLimite.fecha)>0"
-                [class.bg-warning]="compararFechas(evento.fechaLimite.fecha)<=0"
+                [class.bg-secondary]="compararFechas(evento.fechaLimite.fecha)<=0"
                 [class.bg-success]="compararFechas(evento.fechaLimite.fecha)>=10">
                 {{evento.fechaLimite.fecha}}</div>
         </td>
         <td>
-            <div class="badge bg-secondary" *ngFor="let evt of evento.fuente">{{evt}}</div>
+
+            <div class="fuente_button bg-evento bg-evento_check bg-{{evt.toLocaleLowerCase()}}"
+                *ngFor="let evt of evento.fuente">
+                <div></div>
+            </div>
         </td>
         <td *ngIf="pageFilter==='exEventos'" (click)="$event.stopPropagation()"><input type="checkbox"
                 (change)="agregarEventoEx($event,i)" [checked]="evento.check"></td>

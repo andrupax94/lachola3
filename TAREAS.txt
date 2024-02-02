@@ -6,12 +6,12 @@ BACKEND
 *optimizar y quitar codigo redundante.
 
 FRONEND
-*aplicar banderas a las ubicaciones
-*poner las imagenes de los eventos en una columna aparte para que se vean mas grandes
+*-----aplicar banderas a las ubicaciones
+*-----hacer que los logos de paginas de eventos en "fuente" no se repita.
+*-----agregar logos a la columna fuente.
+*-----limitar el ancho maximo del body para que no se vea estirado en pantalla completa
 *poner color quisas iconos a los botones de "acciones"
-*hacer que los logos de paginas de eventos en "fuente" no se repita.
-*agregar logos a la columna fuente.
-*limitar el ancho maximo del body para que no se vea estirado en pantalla completa
+*poner las imagenes de los eventos en una columna aparte para que se vean mas grandes
 *revisar si existen dependencias NPM que no uso.
 *+++++optimizar y quitar codigo redundante.
 
