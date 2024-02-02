@@ -23,6 +23,7 @@ export type eventoP = {
     check: boolean
     fuente: fuente,
     ubicacion: string
+    ubicacionFlag: string
     categoria: Set<categoria> // Propiedad opcional
     tipoMetraje: Set<tipo_metraje>
     tipoFestival: tipo_festival

@@ -17,8 +17,12 @@ import { CargaService } from 'src/factory/carga.service';
     encapsulation: ViewEncapsulation.None
 })
 export class VerEventosComponent {
+    constructor(private http: HttpClient, private factory: FactoryService, private filter: FilterService, private carga: CargaService) {
+        this.compararFechas = factory.differenceInDays;
+    }
     public eventoP: eventoP[] = [];
     public eventoAdd: eventoP[] = [];
+    public countries: any[] = [];
     public page: number = 1;
     public orderBy: string = 'fechaLimite';
     public order: string = 'asc';
@@ -45,10 +49,19 @@ export class VerEventosComponent {
         'shortfilmdepot': true
     };
 
-    constructor(private http: HttpClient, private factory: FactoryService, private filter: FilterService, private carga: CargaService) {
-        this.compararFechas = factory.differenceInDays;
-    }
 
+    private getCountries() {
+        this.http.get<any>('assets/flags/countries.json').subscribe({
+            next: (data) => {
+                this.countries = data;
+            },
+            error: (error) => {
+                console.log('====================================');
+                console.log('error Al Obtener Las Countries');
+                console.log('====================================');
+            }
+        });
+    }
     public abreUrl(url: string) {
         window.open(url, '_blank');
     }
@@ -59,8 +72,8 @@ export class VerEventosComponent {
 
     }
     ngOnInit() {
+        this.getCountries();
         this.carga.changeInfo(undefined, 'Cargando Eventos');
-
         this.filter.compartirPagina('verEventos');
         this.filter.filtrosSD$.subscribe(page => {
             //PATCH se dispara este evento pero no se porque por eso le pongo la condicion de null
@@ -264,6 +277,7 @@ export class VerEventosComponent {
                         }
 
                         aux.ubicacion = evt["ubicacion"];
+                        aux.ubicacionFlag = this.factory.buscarPais(evt["ubicacion"], this.countries);
                         aux.url = evt["url"];
                         aux.fuente = this.factory.stringToArray(evt["fuente"]);
                         aux.fechaLimite = {};
@@ -285,6 +299,7 @@ export class VerEventosComponent {
                             tasa: aux.tasa,
                             categoria: aux.categoria,
                             ubicacion: aux.ubicacion,
+                            ubicacionFlag: aux.ubicacionFlag,
                             url: aux.url,
                             fuente: aux.fuente,
                             fechaLimite: aux.fechaLimite,

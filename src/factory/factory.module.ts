@@ -7,9 +7,42 @@ import { Router } from '@angular/router';
 export class FactoryService {
 
     constructor(private router: Router) { }
-    // segnda verson de getsvg agrega el svg pero con la propiedad mask-image en un elemento img sin ninguna etiqueta
-    //  dentro nada dentro de el, el elemento tiene que tener un width y height
 
+
+    public buscarPais(cadena: string, paises: { name: string, country: string, code: string }[]): string {
+        // Normalizar la cadena eliminando acentos y convirtiéndola a minúsculas
+        const cadenaNormalizada = cadena.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        if (paises === undefined || paises === null)
+            return "EU";
+        // Recorrer el array de países
+        for (let pais of paises) {
+            const nombrePaisNormalizado = pais.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+            const paisNormalizado = pais.country.toLowerCase();
+            const codigoNormalizado = pais.code.toLowerCase();
+            if (cadenaNormalizada === nombrePaisNormalizado || cadenaNormalizada === paisNormalizado || cadenaNormalizada === codigoNormalizado) {
+                return pais.country;
+            }
+        }
+
+        // Verificar coincidencia con las primeras tres palabras de la cadena
+        const primerasTresPalabras = cadena.split(' ').slice(0, 3).join(' ');
+        for (let pais of paises) {
+            if (primerasTresPalabras.toLowerCase().includes(pais.name.toLowerCase())) {
+                return pais.country;
+            }
+        }
+
+        // Verificar coincidencia con las tres últimas palabras de la cadena
+        const ultimasTresPalabras = cadena.split(' ').slice(-3).join(' ');
+        for (let pais of paises) {
+            if (ultimasTresPalabras.toLowerCase().includes(pais.name.toLowerCase())) {
+                return pais.country;
+            }
+        }
+
+        // Si no se encontró ninguna coincidencia, devolver "EU"
+        return "EU";
+    }
     public agregarOEliminarElemento<T extends { id: any }>(elemento: T, array: T[], onlyReturn: boolean = false): T[] | boolean {
         const elementoId = elemento.id;
 
