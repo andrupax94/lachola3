@@ -59,7 +59,13 @@ class misFunciones
                 }
             }
         } else {
-            $aux = $valor;
+            if (is_numeric($valor)) {
+                $aux = [strval($valor)];
+
+            } else {
+                $aux = [$valor];
+            }
+
         }
 
         return $aux;

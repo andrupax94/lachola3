@@ -381,27 +381,29 @@ class eventosController extends Controller
                 $content = $response->getContent();
 
                 $crawler = new Crawler($content);
-                sleep(10);
                 $festivals = [];
-                $crawler->filter('#app')->html();
-                $crawler->filter('table tbody tr')->each(function (Crawler $row) use (&$festivals) {
-                    $festival = [
-                        'nombre' => $row->filter('td:nth-child(1) h6')->text(),
-                        'ubicacion' => $row->filter('td:nth-child(4)')->text(),
+                $html = $crawler->filter('#app')->attr('data-page');
+                $dataJSON = json_decode($html);
+                $eventosJSON = $dataJSON->props->projects;
+// Guardar el HTML en un archivo de texto
+
+                foreach ($eventosJSON as $festival) {
+                    $data[] = [
+                        'nombre' => $festival->nombre,
+                        'categoria' => 'No Especificado',
+                        'ubicacion' => $festival->paisOrigen,
                         'tipoMetraje' => 'No Especificado',
-                        'tipoFestival' => 'No Especificado',
-                        'imagen' => $row->filter('td:nth-child(1) img')->attr('src'),
+                        'tipoFestival' => $festival->tipo,
+                        'imagen' => $festival->logoLink,
                         'banner' => 'No Especificado',
-                        'tasa' => (int) $row->filter('td:nth-child(4)')->text(),
-                        'fechaLimite' => \DateTime::createFromFormat('d/m/Y', $row->filter('td:nth-child(6)')->text()),
-                        'url' => $row->filter('td:nth-child(7) a')->attr('href'),
-                        'fuente' => 'Movibeta',
+                        'url' => 'https://festival.movibeta.com/festivals/' . $festival->id,
+                        'tasa' => $festival->fee,
+                        'fechaLimite' => $festival->fechaFinSubida,
+                        'fuente' => 'movibeta',
+                        // Añade más campos según sea necesario
                     ];
-
-                    $festivals[] = $festival;
-                });
-
-                $dataTotal = $dataTotal + $festivals;
+                }
+                $dataTotal = $dataTotal + $data;
 
                 break;
             case 'animationfestivals':

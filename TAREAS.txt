@@ -6,7 +6,7 @@
 
 BACKEND
 *??????verificar numero maximo de solicitudes en laravel para evitar error por limite de la mismas
-*arreglar movibeta.
+*------arreglar movibeta.
 *intentar ser mas preciso a la hora de devolver resultados, por ejemplo con las tasas, algunas dice "tipo no compatible" lo que no tiene sentido
 
 

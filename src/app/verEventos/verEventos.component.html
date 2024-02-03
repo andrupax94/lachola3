@@ -53,8 +53,8 @@
         <td>
             <div class="badge fechalimite_badge"
                 [class.bg-primary]="compararFechas(evento.fechaLimite.fecha)>=3&&compararFechas(evento.fechaLimite.fecha)<10"
-                [class.bg-danger]="compararFechas(evento.fechaLimite.fecha)<3&&compararFechas(evento.fechaLimite.fecha)>0"
-                [class.bg-secondary]="compararFechas(evento.fechaLimite.fecha)<=0"
+                [class.bg-danger]="compararFechas(evento.fechaLimite.fecha)<3&&compararFechas(evento.fechaLimite.fecha)>=0"
+                [class.bg-secondary]="compararFechas(evento.fechaLimite.fecha)<0"
                 [class.bg-success]="compararFechas(evento.fechaLimite.fecha)>=10">
                 {{evento.fechaLimite.fecha}}</div>
         </td>
