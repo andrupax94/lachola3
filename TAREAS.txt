@@ -1,24 +1,33 @@
+* Tarea
+? se realizaron tareas pero desconocimiento de funcionamiento
+- la tarea se completo
+| la tarea puede no ser necesaria o no tan importante
++ la tarea esta adelantada pero no completa
+
 BACKEND
-*?????verificar numero maximo de solicitudes en laravel para evitar error por limite de la mismas
+*??????verificar numero maximo de solicitudes en laravel para evitar error por limite de la mismas
 *arreglar movibeta.
 *intentar ser mas preciso a la hora de devolver resultados, por ejemplo con las tasas, algunas dice "tipo no compatible" lo que no tiene sentido
-*revisar si existen dependencias COMPOSER que no uso.
-*optimizar y quitar codigo redundante.
+
 
 FRONEND
 *-----aplicar banderas a las ubicaciones
 *-----hacer que los logos de paginas de eventos en "fuente" no se repita.
 *-----agregar logos a la columna fuente.
 *-----limitar el ancho maximo del body para que no se vea estirado en pantalla completa
+
 *poner color quisas iconos a los botones de "acciones"
-*poner las imagenes de los eventos en una columna aparte para que se vean mas grandes
-*revisar si existen dependencias NPM que no uso.
-*+++++optimizar y quitar codigo redundante.
+*|||||poner las imagenes de los eventos en una columna aparte para que se vean mas grandes
+
+
 
 WORDPRESS
 
 OTROS
-*revisar si existen archivos inutiles.
+*+++++revisar si existen archivos inutiles.
 
 PARA UN FUTURO
-crear un ttask en php que elimine eventos que ya pasaron con sus respectivas imagenes.
+*revisar si existen dependencias COMPOSER y NPM que no uso.
+*optimizar y quitar codigo redundante.
++hacer que filtro sea una ventana lateral para que no storve tanto.
++crear un task en php que elimine eventos que ya pasaron con sus respectivas imagenes.
