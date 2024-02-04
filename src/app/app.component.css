@@ -4,14 +4,14 @@ ul {
 }
 
 img {
-    background-color: rgb(71, 70, 70);
-    padding: 10px;
     border-radius: 4px;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     -ms-border-radius: 4px;
     -o-border-radius: 4px;
     margin: 0 auto;
+    width: 100%;
+    height: 100%;
 }
 
 input {
@@ -35,22 +35,103 @@ input::placeholder {
 
 header {
     color: black;
-    justify-content: space-evenly;
+    justify-content: space-between;
     height: 60px;
-    background-color: #3b5998;
+    background-color: #424242;
     overflow: hidden;
     width: 100vw;
     margin: 0 auto;
     margin-bottom: 50px;
+    display: flex;
+    position: fixed;
+    top: 0;
+    box-shadow: black 1px 1px 6px -2px;
 }
 
-header>i {}
+header>.group>i {
+    justify-content: center;
+    cursor: pointer;
+    flex-direction: column;
+    display: flex;
+    height: 60px;
+    width: 60px;
+    padding: 16px;
+    font-size: 29px;
+    color: white;
+    opacity: 0.8;
+    transition: all linear 0.1s;
+}
 
-header>#user {}
+header>.group>i:hover {
+    opacity: 1;
+    font-size: 31px;
+}
 
-header>#user>span {}
+header>.group>i header nav {
+    width: 50%;
+    margin: 0;
+    padding: 0 !important;
+}
 
-header>#user>div {}
+header nav>button {
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    color: #bcbcbc;
+    background-color: transparent;
+}
+
+header nav>button:hover,
+.active {
+    color: white;
+    background-color: grey;
+}
+
+.group {
+    width: auto;
+    display: flex;
+}
+
+.group1 {
+    width: 25%;
+    width: 25% !important;
+}
+
+.group2 {
+    width: 25%;
+}
+
+header>.group>#user {
+    position: relative;
+    right: -10px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    display: flex;
+}
+
+header>.group>#user>span {
+    color: white;
+    font-size: 12px;
+    text-align: right;
+}
+
+header>.group>#user>div {
+    height: 30px;
+    width: 30px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 20px;
+    margin: 0px 16px;
+    margin-left: 7px;
+}
+
+#logo_container {
+    position: relative;
+    max-width: 100px;
+    height: 57px;
+    padding: 0 !important;
+}
 
 #logOut {
     cursor: pointer;
@@ -60,17 +141,15 @@ header>#user>div {}
     flex-direction: column;
     display: flex;
     text-align: center;
-    border-radius: 5px;
-    background-color: rgb(69, 69, 69);
-    height: 40px;
-    width: 40px;
-    top: 20px;
-    right: 20px;
-    position: absolute;
+    border-radius: 10px;
+    height: 35px;
+    width: 35px;
+    margin: auto 0;
 }
 
 #logOut i {
     color: white;
+    font-size: 21px;
     transition: linear 0.1s all;
     -webkit-transition: linear 0.1s all;
     -moz-transition: linear 0.1s all;
@@ -88,6 +167,7 @@ header>#user>div {}
 }
 
 nav {
+    width: 50% !important;
     justify-content: center;
     margin: 0 auto;
 }

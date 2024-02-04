@@ -1,11 +1,30 @@
 <header class="container-fluid row">
-    <i class="bi bi-list"></i>
-    <div id="user">
-        <span>Bienvenido: {{user.data.username}}</span>
-        <div [style.backgroundImage]="user.data.avatar"></div>
+    <div class="group group1">
+
+        <i (click)="abrirCerrarFiltro()" [style.backgroundColor]="bgColor" class="bi bi-list"></i>
+        <div id="logo_container" class="d-flex flex-column justify-content-center">
+            <img src="assets/PNGs/marcoslogo.png">
+        </div>
     </div>
-    <div id="logOut" (click)="logOut()" *ngIf="user.state!==false&&currentPath!=='/logIn'">
-        <i class="bi bi-box-arrow-right"></i>
+    <nav class="group d-flex flex-row">
+        <button (click)="cambiaPagina($event,'verEventos')" [class.active]="pageFilter==='verEventos'"
+            class="filter_top_button">Ver
+            Eventos</button>
+        <button (click)="cambiaPagina($event,'exEventos')" [class.active]="pageFilter==='exEventos'"
+            class="filter_top_button">Extraer Eventos</button>
+        <button (click)="cambiaPagina($event)" [class.active]="pageFilter==='verSubvenciones'" class="filter_top_button"
+            disabled>Ver Subvenciones</button>
+        <button (click)="cambiaPagina($event)" [class.active]="pageFilter==='exSubvenciones'" class="filter_top_button"
+            disabled>Extraer Subvenciones</button>
+    </nav>
+    <div class="group group2">
+        <div id="user">
+            <span>Bienvenido: {{user.data.username}}</span>
+            <div [style.backgroundImage]="'url('+user.data.avatar+')'"></div>
+        </div>
+        <div id="logOut" (click)="logOut()" *ngIf="user.state!==false&&currentPath!=='/logIn'">
+            <i class="bi bi-box-arrow-right"></i>
+        </div>
     </div>
 
     <!-- <input class="col-12" type="text" placeholder="buscar"> -->

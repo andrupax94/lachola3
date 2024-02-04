@@ -1,21 +1,12 @@
 <div id="filtros_s_cont" class="d-flex flex-column container-fluid">
-    <!-- INFO BOTONES DE SELECTOR DE PAGINA(VEREVENTOS,EXTRAER EVENTOS,SUBVENCIONES.ETC) -->
-    <nav class="d-flex flex-row">
-        <button (click)="cambiaPagina($event,'verEventos')" [class.active]="pageFilter==='verEventos'"
-            class="filter_top_button">Ver
-            Eventos</button>
-        <button (click)="cambiaPagina($event,'exEventos')" [class.active]="pageFilter==='exEventos'"
-            class="filter_top_button">Extraer Eventos</button>
-        <button (click)="cambiaPagina($event)" [class.active]="pageFilter==='verSubvenciones'" class="filter_top_button"
-            disabled>Ver Subvenciones</button>
-        <button (click)="cambiaPagina($event)" [class.active]="pageFilter==='exSubvenciones'" class="filter_top_button"
-            disabled>Extraer Subvenciones</button>
-    </nav>
 
+    <h5 [style.backgroundColor]="bgColor" *ngIf="pageFilter==='verEventos'">Ver Eventos Wordpress</h5>
+    <h5 [style.backgroundColor]="bgColor" *ngIf="pageFilter==='exEventos'">Extraer Eventos De Paginas</h5>
+    <h5 [style.backgroundColor]="bgColor" *ngIf="pageFilter==='verSubvenciones'">Ver Subvenciones Wordpress</h5>
+    <h5 [style.backgroundColor]="bgColor" *ngIf="pageFilter==='exSubvenciones'">Extraer Suvbenciones de Paginas</h5>
     <!-- INFO CONTAINER DE FILTROS-->
     <div id="filtros_cont" class="d-flex flex-column">
-        <h2 (click)="abrirCerrarFiltro()" [style.backgroundColor]="bgColor"><span>Opciones</span><i
-                [class.filtro_open]="filtroOpen" class="bi bi-caret-right-fill"></i></h2>
+
         <div id="filtros">
 
             <form class="row" *ngIf="pageFilter==='none'"></form>
@@ -181,8 +172,6 @@
         </div>
 
         <!-- INFO BOTON DE ABRIR Y CERRAR FILTROS -->
-        <div (click)="abrirCerrarFiltro()" [style.backgroundColor]="(!filtroOpen)?bgColor:'#4a4a4a'">
-            <span *ngIf="filtroOpen">Cerrar</span><span *ngIf="!filtroOpen">Abrir</span> Filtros
-        </div>
+
     </div>
 </div>

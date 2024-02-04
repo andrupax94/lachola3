@@ -113,7 +113,7 @@ export class VerEventosComponent {
                     this.buscaEventosIt();
                     break;
                 case 'exEventos':
-
+                    this.carga.pause();
                     break;
             }
         });

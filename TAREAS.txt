@@ -16,6 +16,7 @@ FRONEND
 *-----agregar logos a la columna fuente.
 *-----limitar el ancho maximo del body para que no se vea estirado en pantalla completa
 *poner color quisas iconos a los botones de "acciones"
+*+++++hacer que filtro sea una ventana lateral para que no storve tanto.
 *|||||poner las imagenes de los eventos en una columna aparte para que se vean mas grandes
 
 
@@ -26,7 +27,7 @@ OTROS
 *+++++revisar si existen archivos inutiles.
 
 PARA UN FUTURO
-*hacer que filtro sea una ventana lateral para que no storve tanto.
+
 *crear un task en php que elimine eventos que ya pasaron con sus respectivas imagenes.
 *revisar si existen dependencias COMPOSER y NPM que no uso.
 *optimizar y quitar codigo redundante.

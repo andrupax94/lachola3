@@ -8,7 +8,7 @@ import { ModalesService } from 'src/factory/modales.service';
     selector: 'app-filter',
     templateUrl: './filter.component.html',
     styleUrls: ['./filter.component.css'],
-    encapsulation: ViewEncapsulation.None
+    // encapsulation: ViewEncapsulation.None
 })
 export class FilterComponent {
     public eventosForm: FormGroup;
@@ -18,8 +18,6 @@ export class FilterComponent {
     public bgColor = 'grey';
     public fuenteCheck: { [key: string]: boolean } = {};
     public feeCheck: [boolean, boolean, boolean] = [true, true, true];
-    public filtroOpen = true;
-    public filtroHeight: number | undefined = 0;
     public fuenteImgs: { [key: number]: string } = [];
 
     // INFO CONSTRUCTOR
@@ -81,7 +79,6 @@ export class FilterComponent {
 
 
     cambiaPagina(e: MouseEvent, page: string = 'none') {
-
         this.filter.compartirPagina(page);
     }
     actualizaColor(pagina: string) {
@@ -108,21 +105,7 @@ export class FilterComponent {
         }
     }
 
-    abrirCerrarFiltro() {
 
-        if (this.filtroOpen) {
-            this.filtroHeight = $('#filtros').height();
-            $('#filtros').height(this.filtroHeight + 'px');
-            $('#filtros').height('0px');
-        }
-        else {
-            $('#filtros').height(this.filtroHeight + 'px');
-            setTimeout(() => {
-                $('#filtros').height('auto');
-            }, 200);
-        }
-        this.filtroOpen = !this.filtroOpen;
-    }
     ngOnInit() {
         this.filter.pageSD$.subscribe(nuevosDatos => {
             this.actualizaColor(nuevosDatos)

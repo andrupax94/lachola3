@@ -17,11 +17,7 @@ main {
     max-width: 1000px;
     margin: 0 auto;
     padding: 0px 50px;
-}
-
-#logo_container {
-    max-width: 500px;
-    background-color: grey;
+    margin-top: 100px;
 }
 
 #no_login {
@@ -61,11 +57,12 @@ main {
 }
 
 .bg-evento>div:nth-child(1) {
-    width: 93%;
+    width: 100%;
     height: 100%;
     z-index: 1;
     position: absolute;
     left: 0;
+    top: 0;
     border-radius: 3px;
     background-color: grey;
 }
@@ -91,7 +88,9 @@ main {
 }
 
 .bg-evento {
+    position: relative;
     min-width: 100px;
+    height: 30px;
 }
 
 .bg-evento>div:nth-child(1) {
