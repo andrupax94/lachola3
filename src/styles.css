@@ -21,6 +21,7 @@ main {
 
 #logo_container {
     max-width: 500px;
+    background-color: grey;
 }
 
 #no_login {

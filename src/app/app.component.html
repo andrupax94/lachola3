@@ -1,11 +1,13 @@
 <header class="container-fluid row">
+    <i class="bi bi-list"></i>
+    <div id="user">
+        <span>Bienvenido: {{user.data.username}}</span>
+        <div [style.backgroundImage]="user.data.avatar"></div>
+    </div>
     <div id="logOut" (click)="logOut()" *ngIf="user.state!==false&&currentPath!=='/logIn'">
         <i class="bi bi-box-arrow-right"></i>
     </div>
-    <div id="logo_container" class="d-flex flex-column justify-content-center align-content-center ">
-        <img class="col-10" width="220"
-            src="http://www.marcotoledo.es/wp-content/uploads/2022/07/cropped-logo_MARCO_TOLEDO_blanco-1280x641.png">
-    </div>
+
     <!-- <input class="col-12" type="text" placeholder="buscar"> -->
 </header>
 <main>

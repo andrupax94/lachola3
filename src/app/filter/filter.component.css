@@ -1,6 +1,12 @@
 #filtros_s_cont {
     margin: 0 auto;
     padding: 0;
+    position: fixed;
+    top: 0;
+    left: -50%;
+    width: 100%;
+    max-width: 300px;
+    height: 100vh;
 }
 
 #filtros_s_cont>nav {

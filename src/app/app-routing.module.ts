@@ -7,10 +7,11 @@ import { ExSubvencionesComponent } from './ex-subvenciones/ex-subvenciones.compo
 import { authGuard } from '../guards/auth.guard';
 import { procesing } from '../guards/procesing.guard';
 import { LogInComponent } from './log-in/log-in.component';
+import { MainComponent } from './main/main.component';
 
 
 const routes: Routes = [
-    { path: '', component: VerEventosComponent, canActivate: [procesing, authGuard] },
+    { path: '', component: MainComponent, canActivate: [procesing, authGuard] },
     { path: 'verEventos', component: VerEventosComponent, canActivate: [procesing, authGuard] },
     { path: 'exEventos', component: ExEventosComponent, canActivate: [procesing, authGuard] },
     { path: 'verSubvenciones', component: VerSubvencionesComponent, canActivate: [procesing, authGuard] },

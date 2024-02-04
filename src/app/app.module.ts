@@ -19,6 +19,8 @@ import { VerEventosComponent } from './verEventos/verEventos.component';
 import * as $from from 'jquery';
 import gsap from 'gsap';
 import { ErrorInterceptor } from 'src/app/httpInterceptor';
+import { MainComponent } from './main/main.component';
+
 
 
 @NgModule({
@@ -30,6 +32,8 @@ import { ErrorInterceptor } from 'src/app/httpInterceptor';
         ExEventosComponent,
         ExSubvencionesComponent,
         VerSubvencionesComponent,
+        MainComponent,
+
     ],
     imports: [
         BrowserModule,
