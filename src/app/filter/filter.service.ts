@@ -26,7 +26,7 @@ export class FilterService {
         'shortfilmdepot': true
     }; orderBy: string = 'fechaLimite';
     perPage: number = 5;
-    finish: boolean = true;
+    finish: boolean = false;
 
     compartirPagina(pagina: any) {
         this.page.next(pagina);

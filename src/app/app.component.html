@@ -1,4 +1,4 @@
-<header class="container-fluid row">
+<header *ngIf="user.state!==false&&currentPath!=='/logIn'" class="container-fluid row">
     <div class="group group1">
 
         <i (click)="abrirCerrarFiltro()" [style.backgroundColor]="bgColor" class="bi bi-list"></i>

@@ -4,14 +4,17 @@ ul {
 }
 
 img {
+    position: relative;
     border-radius: 4px;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     -ms-border-radius: 4px;
     -o-border-radius: 4px;
     margin: 0 auto;
-    width: 100%;
-    height: 100%;
+    height: 60px;
+    width: 124px;
+    left: 11px;
+    top: -4px;
 }
 
 input {
@@ -58,7 +61,6 @@ header>.group>i {
     padding: 16px;
     font-size: 29px;
     color: white;
-    opacity: 0.8;
     transition: all linear 0.1s;
 }
 
@@ -124,13 +126,6 @@ header>.group>#user>div {
     border-radius: 20px;
     margin: 0px 16px;
     margin-left: 7px;
-}
-
-#logo_container {
-    position: relative;
-    max-width: 100px;
-    height: 57px;
-    padding: 0 !important;
 }
 
 #logOut {

@@ -27,7 +27,7 @@ export class VerEventosComponent {
     public orderBy: string = 'fechaLimite';
     public order: string = 'asc';
     public perPage: number = 5;
-    public finish: boolean = true;
+    public finish: boolean = false;
     public totalPages: number = 1;
     public startPage: number = 1;
     public endPage: number = 1;

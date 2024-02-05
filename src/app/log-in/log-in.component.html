@@ -1,4 +1,7 @@
 <div class="login-page">
+    <div id="logo_container_logIn" class="d-flex flex-column justify-content-center align-content-center ">
+        <img class="col-10" width="220" src="assets/PNGs/marcoslogo.png">
+    </div>
     <div class="form">
         <form [formGroup]="logInForm" (ngSubmit)="submitLogIn()" class="login-form">
             <input type="text" (keyup)="borraMensaje()" placeholder="Nombre De Usuario" formControlName="username" />
