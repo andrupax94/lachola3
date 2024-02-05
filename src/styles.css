@@ -6,11 +6,18 @@
     /* Puedes agregar otros formatos de fuente aquí si es necesario */
 }
 
+@font-face {
+    font-family: 'protest';
+    src: url('assets/fonts/Protest/ProtestGuerrilla-Regular.ttf') format('woff');
+    /* Puedes agregar otros formatos de fuente aquí si es necesario */
+}
+
 :root {
     --color-primary: red;
     --color-secondary: rgb(38, 38, 38);
     --color-terciary: rgb(74, 74, 74);
     --font1: 'inter';
+    --font2: 'protest';
 }
 
 main {
