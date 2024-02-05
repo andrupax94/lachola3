@@ -18,6 +18,8 @@
     --color-terciary: rgb(74, 74, 74);
     --font1: 'inter';
     --font2: 'protest';
+    --logo1: url('assets/PNGs/marcoslogo.png');
+    --logo2: url('assets/PNGs/androslogo.svg');
 }
 
 main {
