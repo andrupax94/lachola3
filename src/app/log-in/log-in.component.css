@@ -1,5 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
-
 .login-page {
     width: 360px;
     padding: 2% 0 0;
@@ -29,6 +28,11 @@
     background-color: #575757;
     border-radius: 5px;
     margin-bottom: 62px;
+    height: 176px;
+}
+
+#logo_container_logIn>img {
+    height: 173px;
 }
 
 .form input {

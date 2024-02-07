@@ -1,9 +1,12 @@
 <div id="filtros_s_cont" class="d-flex flex-column container-fluid">
-
-    <h5 [style.backgroundColor]="bgColor" *ngIf="pageFilter==='verEventos'">Ver Eventos Wordpress</h5>
+    <span [style.backgroundColor]="bgColor"></span>
+    <span></span>
+    <h2><span [style.color]="bgColor">M</span>enu <span [style.color]="bgColor">L</span>ateral<span [style.color]="bgColor">.</span></h2>
+    <span [style.backgroundColor]="bgColor"></span>
+    <!-- <h5 [style.backgroundColor]="bgColor" *ngIf="pageFilter==='verEventos'">Ver Eventos Wordpress</h5>
     <h5 [style.backgroundColor]="bgColor" *ngIf="pageFilter==='exEventos'">Extraer Eventos De Paginas</h5>
     <h5 [style.backgroundColor]="bgColor" *ngIf="pageFilter==='verSubvenciones'">Ver Subvenciones Wordpress</h5>
-    <h5 [style.backgroundColor]="bgColor" *ngIf="pageFilter==='exSubvenciones'">Extraer Suvbenciones de Paginas</h5>
+    <h5 [style.backgroundColor]="bgColor" *ngIf="pageFilter==='exSubvenciones'">Extraer Suvbenciones de Paginas</h5> -->
     <!-- INFO CONTAINER DE FILTROS-->
     <div id="filtros_cont" class="d-flex flex-column">
 
@@ -21,7 +24,7 @@
                         <option value="desc">Decendente</option>
                     </select>
                 </div>
-                <div class="col-12 ">
+                <div class="col-12">
                     <h5>Ordenar Por:</h5>
                     <hr>
                     <select type="text" placeholder="Ordenar Por:" formControlName="orderBy">
@@ -73,33 +76,23 @@
                     <h5>Fuente:</h5>
                     <hr>
                     <div class="row row-cols-3 gap-2">
-                        <div (click)="fuenteCheck['festhome']=!fuenteCheck['festhome'];"
-                            [class.bg-evento_check]="fuenteCheck['festhome']"
-                            class="col fuente_button bg-evento bg-festhome">
+                        <div (click)="fuenteCheck['festhome']=!fuenteCheck['festhome'];" [class.bg-evento_check]="fuenteCheck['festhome']" class="col fuente_button bg-evento bg-festhome">
                             <div></div>
 
                         </div>
-                        <div (click)="fuenteCheck['movibeta']=!fuenteCheck['movibeta'];"
-                            [class.bg-evento_check]="fuenteCheck['movibeta']"
-                            class="col fuente_button bg-evento bg-movibeta">
+                        <div (click)="fuenteCheck['movibeta']=!fuenteCheck['movibeta'];" [class.bg-evento_check]="fuenteCheck['movibeta']" class="col fuente_button bg-evento bg-movibeta">
                             <div></div>
 
                         </div>
-                        <div (click)="fuenteCheck['animationfestivals']=!fuenteCheck['animationfestivals'];"
-                            [class.bg-evento_check]="fuenteCheck['animationfestivals']"
-                            class="col fuente_button bg-evento bg-animationfestivals">
+                        <div (click)="fuenteCheck['animationfestivals']=!fuenteCheck['animationfestivals'];" [class.bg-evento_check]="fuenteCheck['animationfestivals']" class="col fuente_button bg-evento bg-animationfestivals">
                             <div></div>
 
                         </div>
-                        <div (click)="fuenteCheck['filmfreeaway']=!fuenteCheck['filmfreeaway'];"
-                            [class.bg-evento_check]="fuenteCheck['filmfreeaway']"
-                            class="col fuente_button bg-evento bg-filmfreeaway">
+                        <div (click)="fuenteCheck['filmfreeaway']=!fuenteCheck['filmfreeaway'];" [class.bg-evento_check]="fuenteCheck['filmfreeaway']" class="col fuente_button bg-evento bg-filmfreeaway">
                             <div></div>
 
                         </div>
-                        <div (click)="fuenteCheck['shortfilmdepot']=!fuenteCheck['shortfilmdepot'];"
-                            [class.bg-evento_check]="fuenteCheck['shortfilmdepot']"
-                            class="col fuente_button bg-evento bg-shortfilmdepot">
+                        <div (click)="fuenteCheck['shortfilmdepot']=!fuenteCheck['shortfilmdepot'];" [class.bg-evento_check]="fuenteCheck['shortfilmdepot']" class="col fuente_button bg-evento bg-shortfilmdepot">
                             <div></div>
 
                         </div>
@@ -139,34 +132,31 @@
             </form>
 
             <!-- INFO FILTROS DE VER Y ESTRAER SUVBENCIONES -->
-            <form [formGroup]="subvencionesFrom" (ngSubmit)="verSubvencionesSubmit()" class="row"
-                *ngIf="pageFilter==='verSubvenciones'">verSubvenciones</form>
+            <form [formGroup]="subvencionesFrom" (ngSubmit)="verSubvencionesSubmit()" class="row" *ngIf="pageFilter==='verSubvenciones'">verSubvenciones</form>
         </div>
         <hr>
         <!-- INFO BOTONES DE ACCIONES -->
         <div id="acciones" class="col-12 d-flex flex-column">
 
             <div id="buttons_container" class="row row-cols-2">
-                <div *ngIf="pageFilter==='verEventos'" [class.buttonEnable]="pageFilter==='verEventos'"><button class=""
-                        (click)=" eventosSubmit('true')">Ver
+                <div *ngIf="pageFilter==='verEventos'" [class.buttonEnable]="pageFilter==='verEventos'"><button class="" (click)=" eventosSubmit('true')">Ver
                         Eventos</button></div>
-                <div *ngIf="pageFilter==='verEventos'" [class.buttonEnable]="pageFilter==='verEventos'"><button class=""
-                        (click)="eventosSubmit()">Force Ver
+                <div *ngIf="pageFilter==='verEventos'" [class.buttonEnable]="pageFilter==='verEventos'"><button class="" (click)="eventosSubmit()">Force Ver
                         Eventos</button></div>
-                <div *ngIf="pageFilter==='exEventos'" [class.buttonEnable]="pageFilter==='exEventos'"><button class=""
-                        (click)="eventosSubmit('true','Extraer')">Extraer
+                <div *ngIf="pageFilter==='exEventos'" [class.buttonEnable]="pageFilter==='exEventos'"><button class="" (click)="eventosSubmit('true','Extraer')">Extraer
                         Eventos</button></div>
-                <div *ngIf="pageFilter==='exEventos'" [class.buttonEnable]="pageFilter==='exEventos'"><button class=""
-                        (click)="eventosSubmit('false','Forzar')">Forzar
+                <div *ngIf="pageFilter==='exEventos'" [class.buttonEnable]="pageFilter==='exEventos'"><button class="" (click)="eventosSubmit('false','Forzar')">Forzar
                         Extraer
                         Eventos</button></div>
-                <div *ngIf="pageFilter==='exEventos'" [class.buttonEnable]="pageFilter==='exEventos'"><button class=""
-                        (click)="eventosSubmit('true','Guardar')">Guardar
+                <div *ngIf="pageFilter==='exEventos'" [class.buttonEnable]="pageFilter==='exEventos'"><button class="" (click)="eventosSubmit('true','Guardar')">Guardar
                         Eventos
                         Seleccionados</button></div>
-                <div *ngIf="pageFilter==='exEventos'" [class.buttonEnable]="pageFilter==='exEventos'"><button class=""
-                        (click)="eventosSubmit('true','GuardarTodo')">Guardar
+                <div *ngIf="pageFilter==='exEventos'" [class.buttonEnable]="pageFilter==='exEventos'"><button class="" (click)="eventosSubmit('true','GuardarTodo')">Guardar
                         Todos</button></div>
+            </div>
+            <div id="acciones_bottom">
+                <span></span>
+                <span>Lacholaeventextractor v1.0.0</span>
             </div>
         </div>
         <!-- INFO BOTON DE ABRIR Y CERRAR FILTROS -->

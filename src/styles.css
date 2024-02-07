@@ -1,5 +1,4 @@
 @import '~bootstrap-icons/font/bootstrap-icons.css';
-
 @font-face {
     font-family: 'inter';
     src: url('assets/fonts/Inter/Inter-VariableFont_slntwght.ttf') format('woff');
@@ -10,6 +9,41 @@
     font-family: 'protest';
     src: url('assets/fonts/Protest/ProtestGuerrilla-Regular.ttf') format('woff');
     /* Puedes agregar otros formatos de fuente aquí si es necesario */
+}
+
+
+/* Para Chrome, Safari y Edge */
+
+::-webkit-scrollbar {
+    width: 12px;
+    /* Ancho del scrollbar */
+    background-color: transparent;
+    /* Fondo del scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(228, 228, 228, 0.5);
+    /* Color del thumb (scroll) */
+    border-radius: 6px;
+    /* Borde redondeado del thumb */
+}
+
+
+/* Para Firefox */
+
+
+/* Necesitamos usar !important para anular los estilos predeterminados de Firefox */
+
+* {
+    scrollbar-color: rgba(228, 228, 228, 0.5) transparent !important;
+    /* Color del thumb y fondo del scrollbar */
+}
+
+
+/* Personalizamos el ancho del scrollbar para Firefox */
+
+* {
+    scrollbar-width: thin !important;
 }
 
 :root {
@@ -459,7 +493,6 @@ div#mensajes {
     0% {
         transform: rotate(0deg);
     }
-
     100% {
         transform: rotate(360deg);
     }
