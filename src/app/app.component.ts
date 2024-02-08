@@ -7,6 +7,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { FactoryService } from 'src/factory/factory.module';
 import { authGuard } from '../guards/auth.guard';
 import { FilterService } from './filter/filter.service';
+import { ChangeColorService } from 'src/factory/change-color.service';
 
 @Component({
     selector: 'app-root',
@@ -26,6 +27,7 @@ export class AppComponent {
     constructor(
         private auth: authGuard,
         private session: SessionService,
+        private colorService: ChangeColorService,
         private carga: CargaService,
         private router: Router,
         private location: Location,
@@ -64,29 +66,9 @@ export class AppComponent {
         }
         this.filtroOpen = !this.filtroOpen;
     }
-    actualizaColor(pagina: string) {
-        if (pagina === null) {
-            this.filter.compartirPagina('none');
-            this.bgColor = 'gray';
-        }
-        else {
-            switch (pagina) {
-                case 'verEventos':
-                    this.bgColor = '#e20303';
-                    break;
-                case 'exEventos':
-                    this.bgColor = '#3c61bc';
-                    break;
-                case 'verSubvenciones':
-                    this.bgColor = '#cccccc';
-                    break;
-                case 'exSubvenciones':
-                    this.bgColor = 'gray';
-                    break;
-            }
-            this.pageFilter = pagina;
-        }
-    }
+
+
+
     cambiaPagina(e: MouseEvent, page: string = 'none') {
         this.carga.to('body');
         this.carga.play();
@@ -107,7 +89,8 @@ export class AppComponent {
             }
         })
         this.filter.pageSD$.subscribe(nuevosDatos => {
-            this.actualizaColor(nuevosDatos);
+            this.pageFilter = nuevosDatos;
+            this.bgColor = this.colorService.actualizaColor(nuevosDatos);
         });
 
     }

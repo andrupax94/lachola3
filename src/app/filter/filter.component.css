@@ -68,7 +68,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: bottom;
-    top: -29px;
+    top: -28px;
     left: 0px;
     position: absolute;
     width: 100%;
@@ -381,6 +381,29 @@
     padding-bottom: 16px;
 }
 
+#per_page>div:last-child {
+    display: grid;
+    width: 200px;
+    grid-template-columns: repeat(auto-fill, 30px);
+    gap: 3px;
+    grid-auto-flow: dense;
+    justify-content: center;
+}
+
+#per_page>div:last-child>label {
+    background-color: gray;
+    height: 26px;
+    display: flex;
+    width: 26px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+#per_page>div:last-child>.selected {}
+
 #buttons_container>div>h5 {}
 
 #buttons_container>div {
@@ -390,11 +413,24 @@
     margin-top: 0px;
 }
 
+#fechas>div:last-child {
+    width: 200px;
+    justify-content: space-between;
+    display: flex;
+}
+
+#fechas>div:last-child>input {
+    top: 0;
+    left: 0;
+    width: 96px;
+    padding: 9px;
+}
+
 #buttons_container>div>button {
     width: 90%;
     border: none;
     border-radius: 2px;
-    background-color: #b6b6b6;
+    background-color: #2d2d2d;
     font-size: 12px;
     color: white;
     height: 31px;
@@ -415,7 +451,7 @@
 }
 
 #buttons_container>div:nth-child(4)>button {
-    background-color: green;
+    background-color: grey;
 }
 
 #buttons_container>div:nth-child(3)>button {

@@ -1,8 +1,9 @@
 import { FilterService } from './filter.service';
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
 import { ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { CargaService } from 'src/factory/carga.service';
+import { ChangeColorService } from 'src/factory/change-color.service';
 import { ModalesService } from 'src/factory/modales.service';
 @Component({
     selector: 'app-filter',
@@ -19,9 +20,12 @@ export class FilterComponent {
     public fuenteCheck: { [key: string]: boolean } = {};
     public feeCheck: [boolean, boolean, boolean] = [true, true, true];
     public fuenteImgs: { [key: number]: string } = [];
-
+    public valoresRadios: number[] = [5, 8, 11, 14, 17, 20, 23];
     // INFO CONSTRUCTOR
-    constructor(private filter: FilterService, private formBuilder: FormBuilder, private carga: CargaService, private modales: ModalesService) {
+    constructor(private filter: FilterService,
+        private colorService: ChangeColorService,
+        private renderer: Renderer2,
+        private formBuilder: FormBuilder, private carga: CargaService, private modales: ModalesService) {
         this.eventosForm = this.formBuilder.group({
             order: String,
             dateStart: Date,
@@ -81,34 +85,16 @@ export class FilterComponent {
     cambiaPagina(e: MouseEvent, page: string = 'none') {
         this.filter.compartirPagina(page);
     }
-    actualizaColor(pagina: string) {
-        if (pagina === null) {
-            this.filter.compartirPagina('none');
-            this.bgColor = 'gray';
-        }
-        else {
-            switch (pagina) {
-                case 'verEventos':
-                    this.bgColor = '#e20303';
-                    break;
-                case 'exEventos':
-                    this.bgColor = '#3c61bc';
-                    break;
-                case 'verSubvenciones':
-                    this.bgColor = '#cccccc';
-                    break;
-                case 'exSubvenciones':
-                    this.bgColor = 'gray';
-                    break;
-            }
-            this.pageFilter = pagina;
-        }
-    }
+
 
 
     ngOnInit() {
         this.filter.pageSD$.subscribe(nuevosDatos => {
-            this.actualizaColor(nuevosDatos)
+            this.bgColor = this.colorService.actualizaColor(nuevosDatos);
+            if (nuevosDatos === null) {
+                this.filter.compartirPagina('none');
+            }
+            this.pageFilter = nuevosDatos;
             this.eventosForm.get('order')?.setValue(this.filter.order);
             this.eventosForm.get('dateEnd')?.setValue(this.filter.dateEnd);
             this.eventosForm.get('dateStart')?.setValue(this.filter.dateStart);

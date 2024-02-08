@@ -6,6 +6,7 @@ import { FactoryService } from 'src/factory/factory.module';
 import { FilterService } from '../filter/filter.service';
 import { Observable, filter } from 'rxjs';
 import { CargaService } from 'src/factory/carga.service';
+import { ChangeColorService } from 'src/factory/change-color.service';
 
 
 
@@ -17,7 +18,9 @@ import { CargaService } from 'src/factory/carga.service';
     encapsulation: ViewEncapsulation.None
 })
 export class VerEventosComponent {
-    constructor(private http: HttpClient, private factory: FactoryService, private filter: FilterService, private carga: CargaService) {
+    constructor(private http: HttpClient,
+        private colorService: ChangeColorService,
+        private factory: FactoryService, private filter: FilterService, private carga: CargaService) {
         this.compararFechas = factory.differenceInDays;
     }
     public eventoP: eventoP[] = [];
@@ -34,6 +37,7 @@ export class VerEventosComponent {
     public visiblePages = [1];
     public compararFechas!: Function;
     public it = false;
+    public bgColor = 'grey';
     public onlyFilter: string = 'true';
     public contador = 0;
     public dateStart: any = '1/1/1999';
@@ -99,6 +103,7 @@ export class VerEventosComponent {
         });
 
         this.filter.pageSD$.subscribe(page => {
+            this.bgColor = this.colorService.actualizaColor(page);
             this.pageFilter = page;
             this.eventoP = [];
             this.eventoAdd = [];

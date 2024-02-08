@@ -1,4 +1,5 @@
 @import '~bootstrap-icons/font/bootstrap-icons.css';
+
 @font-face {
     font-family: 'inter';
     src: url('assets/fonts/Inter/Inter-VariableFont_slntwght.ttf') format('woff');
@@ -493,6 +494,7 @@ div#mensajes {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }

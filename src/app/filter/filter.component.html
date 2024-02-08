@@ -45,28 +45,32 @@
                     </select>
 
                 </div>
-                <div class="col-12">
+                <div id="per_page" class="col-12">
                     <h5>Eventos a mostrar:</h5>
                     <div class="hr_cont">
                         <hr><span [style.backgroundColor]="bgColor"></span>
                     </div>
-                    <input type="number" placeholder="N. De Elementos:" formControlName="perPage">
+                    <div>
+                        <label (click)="eventosForm.get('perPage')?.setValue(valor)"
+                            *ngFor="let valor of valoresRadios; let i = index"
+                            [style.backgroundColor]="(eventosForm.get('perPage')!.value === valor)?bgColor:''">
+
+                            {{ valor }}
+                        </label>
+                    </div>
 
                 </div>
-                <div class="col-12">
-                    <h5>Fecha Desde:</h5>
+                <div id="fechas" class="col-12">
+                    <h5>Fecha Desde/Hasta:</h5>
                     <div class="hr_cont">
                         <hr><span [style.backgroundColor]="bgColor"></span>
                     </div>
-                    <input type="date" placeholder="Fecha De:" formControlName="dateStart">
-                </div>
-                <div class="col-12 ">
-                    <h5>Fecha Hasta:</h5>
-                    <div class="hr_cont">
-                        <hr><span [style.backgroundColor]="bgColor"></span>
+                    <div>
+                        <input type="date" placeholder="Fecha De:" formControlName="dateStart">
+                        <input type="date" placeholder="Fecha Hasta:" formControlName="dateEnd">
                     </div>
-                    <input type="date" placeholder="Fecha Hasta:" formControlName="dateEnd">
                 </div>
+
                 <div class="col-12  d-flex flex-column">
                     <h5>Otros Filtros:</h5>
                     <div class="hr_cont">
@@ -168,22 +172,19 @@
             <div id="buttons_container" class="row row-cols-2">
                 <h5>Accione<span [style.color]="bgColor">s</span>:</h5>
                 <div *ngIf="pageFilter==='verEventos'" [class.buttonEnable]="pageFilter==='verEventos'"><button class=""
-                        (click)=" eventosSubmit('true')">Ver
-                        Eventos</button></div>
+                        (click)=" eventosSubmit('true')">Buscar</button></div>
                 <div *ngIf="pageFilter==='verEventos'" [class.buttonEnable]="pageFilter==='verEventos'"><button class=""
-                        (click)="eventosSubmit()">Force Ver
-                        Eventos</button></div>
+                        (click)="eventosSubmit()">Forzar</button></div>
                 <div *ngIf="pageFilter==='exEventos'" [class.buttonEnable]="pageFilter==='exEventos'"><button class=""
                         (click)="eventosSubmit('true','Extraer')">Extraer
-                        Eventos</button></div>
+                    </button></div>
                 <div *ngIf="pageFilter==='exEventos'" [class.buttonEnable]="pageFilter==='exEventos'"><button class=""
                         (click)="eventosSubmit('false','Forzar')">Forzar
                         Extraer
-                        Eventos</button></div>
+                    </button></div>
                 <div *ngIf="pageFilter==='exEventos'" [class.buttonEnable]="pageFilter==='exEventos'"><button class=""
                         (click)="eventosSubmit('true','Guardar')">Guardar
-                        Eventos
-                        Seleccionados</button></div>
+                        Chekeados</button></div>
                 <div *ngIf="pageFilter==='exEventos'" [class.buttonEnable]="pageFilter==='exEventos'"><button class=""
                         (click)="eventosSubmit('true','GuardarTodo')">Guardar
                         Todos</button></div>
