@@ -8,7 +8,7 @@
     </div>
     <nav class="group d-flex flex-row">
         <button (click)="cambiaPagina($event,'verEventos')" [class.active]="pageFilter==='verEventos'" class="filter_top_button">Ver
-            Eventos</button>
+            <i [getSvg3]="'icons/eventSearch.svg,white'"></i>Eventos</button>
         <button (click)="cambiaPagina($event,'exEventos')" [class.active]="pageFilter==='exEventos'" class="filter_top_button">Extraer Eventos</button>
         <button (click)="cambiaPagina($event)" [class.active]="pageFilter==='verSubvenciones'" class="filter_top_button" disabled>Ver Subvenciones</button>
         <button (click)="cambiaPagina($event)" [class.active]="pageFilter==='exSubvenciones'" class="filter_top_button" disabled>Extraer Subvenciones</button>

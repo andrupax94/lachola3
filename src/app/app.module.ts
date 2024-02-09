@@ -20,6 +20,7 @@ import * as $from from 'jquery';
 import gsap from 'gsap';
 import { ErrorInterceptor } from 'src/app/httpInterceptor';
 import { MainComponent } from './main/main.component';
+import { DirectivesModule } from 'src/directives/directives.module';
 
 
 
@@ -39,6 +40,7 @@ import { MainComponent } from './main/main.component';
         BrowserModule,
         PopUpsModule,
         FormsModule,
+        DirectivesModule,
         ReactiveFormsModule,
         AppRoutingModule,
         HttpClientModule

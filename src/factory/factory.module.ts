@@ -140,7 +140,7 @@ export class FactoryService {
             final = svg[0];
         }
         if (final.indexOf('assets') === -1)
-            final = '/assets/' + final;
+            final = 'assets/' + final;
         let elementChild;
         if (version === '') {
             $.get(final, (htmlexterno) => {
