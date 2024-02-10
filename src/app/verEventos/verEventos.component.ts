@@ -268,19 +268,29 @@ export class VerEventosComponent {
                         aux.nombre = evt["nombre"];
                         aux.categoria = (evt["categoria"] === undefined) ? ['No Especificado'] : this.factory.stringToArray(evt["categoria"]);
                         aux.tasa = {};
-                        let tasaA = this.factory.stringToArray(evt["tasa"]).length;
-                        aux.tasa.text = this.factory.arrayToString(evt["tasa"]);
-                        if (tasaA > 1)
-                            aux.tasa.bool = 2;
-                        else {
-                            if (aux.tasa.text.indexOf('FREE') !== -1 || aux.tasa.text.indexOf('free') !== -1 || aux.tasa.text === '0') {
-                                aux.tasa.bool = 1;
+                        if (evt["tasa"]["text"] !== undefined) {
+                            aux.tasa.text = evt["tasa"]['text'];
+                            if (aux.tasa.text === 'Tiene Tasas')
+                                aux.tasa.bool = 2;
+                            else
+                                aux.tasa.bool = parseInt(evt["tasa"]['bool']);
+                        } else {
+                            if (typeof evt["tasa"] === 'number') {
+                                evt["tasa"] = evt["tasa"].toString();
                             }
+                            let tasaA = this.factory.stringToArray(evt["tasa"]).length;
+                            aux.tasa.text = this.factory.arrayToString(evt["tasa"]);
+                            if (tasaA > 1)
+                                aux.tasa.bool = 2;
                             else {
-                                aux.tasa.bool = 0;
+                                if (aux.tasa.text.indexOf('FREE') !== -1 || aux.tasa.text.indexOf('free') !== -1 || aux.tasa.text === '0') {
+                                    aux.tasa.bool = 1;
+                                }
+                                else {
+                                    aux.tasa.bool = 0;
+                                }
                             }
                         }
-
                         aux.ubicacion = evt["ubicacion"];
                         aux.ubicacionFlag = this.factory.buscarPais(evt["ubicacion"], this.countries);
                         aux.url = evt["url"];

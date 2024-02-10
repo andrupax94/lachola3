@@ -281,6 +281,9 @@ export class FactoryService {
             return valor;
         else if (Array.isArray(valor) && valor.length === 0)
             return '';
+        else if (typeof (valor) === 'object') {
+            valor = [valor];
+        }
 
         if (Array.isArray(valor)) {
             valor.forEach((element, i) => {
@@ -302,7 +305,7 @@ export class FactoryService {
                 }
             });
         } else {
-            return 'Tipo no compatible';
+            return 'Tipo No Compatible';
         }
 
         return aux;

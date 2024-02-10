@@ -11,11 +11,9 @@ import { MainComponent } from './main/main.component';
 
 
 const routes: Routes = [
-    { path: '', component: MainComponent, canActivate: [procesing, authGuard] },
+    { path: '', redirectTo: '/verEventos', pathMatch: 'full' },
     { path: 'verEventos', component: VerEventosComponent, canActivate: [procesing, authGuard] },
-    { path: 'exEventos', component: ExEventosComponent, canActivate: [procesing, authGuard] },
     { path: 'verSubvenciones', component: VerSubvencionesComponent, canActivate: [procesing, authGuard] },
-    { path: 'exSubvenciones', component: ExSubvencionesComponent, canActivate: [procesing, authGuard] },
     { path: 'logIn', component: LogInComponent, canActivate: [procesing] },
     // Puedes agregar más rutas según sea necesario
 ];

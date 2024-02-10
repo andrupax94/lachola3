@@ -163,10 +163,10 @@ class eventosController extends Controller
         $imgs = [];
 
         foreach ($eventos as $key => $evento) {
-            if (!$all) {
-                $eventos[$key]["fechaLimite"] = misFunciones::arrayToString($evento["fechaLimite"]["fecha"]);
-                $evento["tasa"] = $evento["tasa"]["text"];
-            }
+
+            $eventos[$key]["fechaLimite"] = misFunciones::arrayToString($evento["fechaLimite"]["fecha"]);
+            $evento["tasa"] = $evento["tasa"]["text"];
+            $eventos[$key]["tasa"] = $evento["tasa"];
 
             $eventos[$key]["fuente"] = misFunciones::arrayToString($evento["fuente"]);
             $eventos[$key]["categoria"] = misFunciones::arrayToString(isset($evento["categoria"]) ? 'No Especificado' : $evento["categoria"]);

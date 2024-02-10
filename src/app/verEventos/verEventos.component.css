@@ -218,12 +218,24 @@ table {
     opacity: 1;
 }
 
+h2:first-of-type {
+    color: #7a7a7a;
+    text-align: center;
+    font-family: var(--font2);
+    font-size: 40px;
+}
+
+h2:first-of-type::first-letter {
+    color: black;
+    /* Cambia el color segÃºn lo que desees */
+}
+
 .numerations .active {
     background-color: var(--color-primary);
 }
 
 #noData {
-    width: 100%;
+    width: 700px;
     margin: 0 auto;
     background-color: #ececec;
     border: solid lightgrey 2px;

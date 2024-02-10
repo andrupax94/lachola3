@@ -11,7 +11,7 @@ img {
     -ms-border-radius: 4px;
     -o-border-radius: 4px;
     margin: 0 auto;
-    height: 60px;
+    height: 65px;
     width: 124px;
     left: 11px;
     top: -4px;
@@ -39,7 +39,7 @@ input::placeholder {
 header {
     color: black;
     justify-content: space-between;
-    height: 60px;
+    height: 65px;
     background-color: #424242;
     overflow: hidden;
     width: 100vw;
@@ -47,6 +47,7 @@ header {
     margin-bottom: 50px;
     display: flex;
     position: fixed;
+    z-index: 1;
     top: 0;
     box-shadow: black 1px 1px 6px -2px;
 }
@@ -56,7 +57,7 @@ header>.group>i {
     cursor: pointer;
     flex-direction: column;
     display: flex;
-    height: 60px;
+    height: 65px;
     width: 60px;
     padding: 16px;
     font-size: 29px;
