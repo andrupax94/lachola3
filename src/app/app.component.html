@@ -1,4 +1,5 @@
-<header [style.borderBottom]="bgColor+' solid 4px'" *ngIf="user.state!==false&&currentPath!=='/logIn'" class="container-fluid row">
+<header [style.borderBottom]="bgColor+' solid 4px'" *ngIf="user.state!==false&&currentPath!=='/logIn'"
+    class="container-fluid row">
     <div class="group group1">
 
         <i (click)="abrirCerrarFiltro()" [style.backgroundColor]="bgColor" class="bi bi-list"></i>
@@ -7,11 +8,19 @@
         </div>
     </div>
     <nav class="group d-flex flex-row">
-        <button (click)="cambiaPagina($event,'verEventos')" [class.active]="pageFilter==='verEventos'" class="filter_top_button">Ver
-            <i [getSvg3]="'icons/eventSearch.svg,white'"></i>Eventos</button>
-        <button (click)="cambiaPagina($event,'exEventos')" [class.active]="pageFilter==='exEventos'" class="filter_top_button">Extraer Eventos</button>
-        <button (click)="cambiaPagina($event)" [class.active]="pageFilter==='verSubvenciones'" class="filter_top_button" disabled>Ver Subvenciones</button>
-        <button (click)="cambiaPagina($event)" [class.active]="pageFilter==='exSubvenciones'" class="filter_top_button" disabled>Extraer Subvenciones</button>
+        <button (click)="cambiaPagina($event,'verEventos')" [class.active]="pageFilter==='verEventos'"
+            class="filter_top_button">
+            <i class="d-none d-lg-flex" [getSvg3]="'icons/eventSearch.svg,gray'"></i>Ver Eventos</button>
+        <button (click)="cambiaPagina($event,'exEventos')" [class.active]="pageFilter==='exEventos'"
+            class="filter_top_button"><i class="d-none d-lg-flex" [getSvg3]="'icons/eventExtract.svg,#bcbcbc'"></i>
+            Extraer
+            Eventos</button>
+        <button (click)="cambiaPagina($event)" [class.active]="pageFilter==='verSubvenciones'" class="filter_top_button"
+            disabled><i class="d-none d-lg-flex" [getSvg3]="'icons/subSearch_1.svg,#bcbcbc'"></i> Ver
+            Subvenciones</button>
+        <button (click)="cambiaPagina($event)" [class.active]="pageFilter==='exSubvenciones'" class="filter_top_button"
+            disabled><i class="d-none d-lg-flex" [getSvg3]="'icons/subExtract.svg,#bcbcbc'"></i> Extraer
+            Subvenciones</button>
     </nav>
     <div class="group group2">
         <div id="user">
@@ -19,6 +28,7 @@
             <div [style.backgroundImage]="'url('+user.data.avatar+')'"></div>
         </div>
         <div id="logOut" (click)="logOut()" *ngIf="user.state!==false&&currentPath!=='/logIn'">
+            <div [style.backgroundColor]="bgColor"></div>
             <i class="bi bi-box-arrow-right"></i>
         </div>
     </div>

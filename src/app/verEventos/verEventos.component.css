@@ -223,7 +223,7 @@ table {
 }
 
 #noData {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     background-color: #ececec;
     border: solid lightgrey 2px;

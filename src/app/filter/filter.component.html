@@ -172,21 +172,26 @@
             <div id="buttons_container" class="row row-cols-2">
                 <h5>Accione<span [style.color]="bgColor">s</span>:</h5>
                 <div *ngIf="pageFilter==='verEventos'" [class.buttonEnable]="pageFilter==='verEventos'"><button class=""
-                        (click)=" eventosSubmit('true')">Buscar</button></div>
+                        (click)=" eventosSubmit('true')"><i
+                            [getSvg3]="'icons/eventSearch.svg,white'"></i>Buscar</button>
+                </div>
                 <div *ngIf="pageFilter==='verEventos'" [class.buttonEnable]="pageFilter==='verEventos'"><button class=""
-                        (click)="eventosSubmit()">Forzar</button></div>
+                        (click)="eventosSubmit()"><i [getSvg3]="'icons/forceSearch.svg,white'"></i>Forzar</button></div>
                 <div *ngIf="pageFilter==='exEventos'" [class.buttonEnable]="pageFilter==='exEventos'"><button class=""
-                        (click)="eventosSubmit('true','Extraer')">Extraer
+                        (click)="eventosSubmit('true','Extraer')"><i
+                            [getSvg3]="'icons/eventExtract.svg,white'"></i>Extraer
                     </button></div>
                 <div *ngIf="pageFilter==='exEventos'" [class.buttonEnable]="pageFilter==='exEventos'"><button class=""
-                        (click)="eventosSubmit('false','Forzar')">Forzar
+                        (click)="eventosSubmit('false','Forzar')"><i
+                            [getSvg3]="'icons/forceExtract.svg,white'"></i>Forzar
                         Extraer
                     </button></div>
                 <div *ngIf="pageFilter==='exEventos'" [class.buttonEnable]="pageFilter==='exEventos'"><button class=""
-                        (click)="eventosSubmit('true','Guardar')">Guardar
+                        (click)="eventosSubmit('true','Guardar')"><i [getSvg3]="'icons/saveCheck.svg,white'"></i>Guardar
                         Chekeados</button></div>
                 <div *ngIf="pageFilter==='exEventos'" [class.buttonEnable]="pageFilter==='exEventos'"><button class=""
-                        (click)="eventosSubmit('true','GuardarTodo')">Guardar
+                        (click)="eventosSubmit('true','GuardarTodo')"><i
+                            [getSvg3]="'icons/saveAll.svg,white'"></i>Guardar
                         Todos</button></div>
             </div>
             <div id="acciones_bottom">

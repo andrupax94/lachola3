@@ -161,7 +161,7 @@
     z-index: 1;
 }
 
-@media (min-width: 1200px) {
+@media (min-height: 1100px) {
     #acciones {
         position: absolute;
     }
@@ -378,6 +378,7 @@
     margin: 0 auto;
     margin-top: 19px;
     width: 100%;
+    padding: 0px 17px;
     padding-bottom: 16px;
 }
 
@@ -411,6 +412,7 @@
     justify-content: center;
     margin-bottom: 12px;
     margin-top: 0px;
+    padding: 4px;
 }
 
 #fechas>div:last-child {
@@ -427,7 +429,7 @@
 }
 
 #buttons_container>div>button {
-    width: 90%;
+    width: 98%;
     border: none;
     border-radius: 2px;
     background-color: #2d2d2d;
@@ -449,6 +451,23 @@
     -webkit-filter: none !important;
     cursor: pointer !important;
 }
+
+#buttons_container>div>button>i {
+    margin-right: 6px;
+    position: relative;
+    top: 1px;
+    height: 17px;
+    width: 20px;
+}
+
+#buttons_container>div>button {
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    display: flex;
+}
+
+#buttons_container>div>button>i>div {}
 
 #buttons_container>div:nth-child(4)>button {
     background-color: grey;

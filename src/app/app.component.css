@@ -81,12 +81,30 @@ header nav>button {
     font-size: 13px;
     color: #bcbcbc;
     background-color: transparent;
+    display: flex;
+    align-items: center;
+    padding-right: 17px;
+    padding-left: 10px;
 }
+
+header nav>button>i {
+    width: 20px;
+    display: block;
+    height: 20px;
+    margin-right: 10px;
+}
+
+header nav>button>i>div {}
 
 header nav>button:hover,
 .active {
     color: white;
     background-color: grey;
+}
+
+header nav>button:hover>i>div,
+.active>i>div {
+    background-color: white !important;
 }
 
 .group {
@@ -101,6 +119,9 @@ header nav>button:hover,
 
 .group2 {
     width: 25%;
+    right: 0;
+    position: relative;
+    justify-content: end;
 }
 
 header>.group>#user {
@@ -129,6 +150,7 @@ header>.group>#user>div {
 }
 
 #logOut {
+    position: relative;
     cursor: pointer;
     opacity: 0.9;
     transition: linear 0.1s all;
@@ -136,13 +158,32 @@ header>.group>#user>div {
     flex-direction: column;
     display: flex;
     text-align: center;
-    border-radius: 10px;
+    border-radius: 50px;
     height: 35px;
     width: 35px;
+    overflow: hidden;
     margin: auto 0;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+}
+
+#logOut>div {
+    z-index: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.1s linear;
+    -webkit-transition: opacity 0.1s linear;
+    -moz-transition: opacity 0.1s linear;
+    -ms-transition: opacity 0.1s linear;
+    -o-transition: opacity 0.1s linear;
 }
 
 #logOut i {
+    z-index: 1;
     color: white;
     font-size: 21px;
     transition: linear 0.1s all;
@@ -153,12 +194,15 @@ header>.group>#user>div {
 }
 
 #logOut:hover {
-    background-color: #9c2929;
-    transform: scale(1.2);
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    -o-transform: scale(1.2);
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+}
+
+#logOut:hover>div {
+    opacity: 1;
 }
 
 nav {
