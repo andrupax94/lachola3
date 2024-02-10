@@ -303,7 +303,7 @@ export class VerEventosComponent {
                         else if (aux3 === 'object') {
                             aux.fechaLimite["varias"] = true;
                         }
-                        aux.fechaLimite["fecha"] = evt["fechaLimite"];
+                        aux.fechaLimite["fecha"] = this.factory.convertirFormatoFecha(evt["fechaLimite"]);
                         aux.tipoFestival = (String)(evt["tipoFestival"]).toLowerCase();
                         aux.tipoMetraje = this.factory.stringToArray(evt["tipoMetraje"]);
                         aux.checked = false;

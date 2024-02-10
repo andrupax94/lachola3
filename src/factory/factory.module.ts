@@ -88,6 +88,32 @@ export class FactoryService {
             reader.readAsDataURL(file);
         });
     }
+    public convertirFormatoFecha(fecha: string): string {
+        // Verificar si la fecha ya está en el formato correcto
+        if (/^\d{2}\/\d{2}\/\d{4}$/.test(fecha)) {
+            return fecha; // Devolver la fecha intacta si ya está en el formato DD/MM/YYYY
+        }
+
+        let partes = fecha.split('-');
+
+        // Verificar el formato de entrada
+        if (partes.length !== 3) {
+            throw new Error('Formato de fecha inválido. Debe ser YYYY-MM-DD o DD-MM-YYYY');
+        }
+
+        // Determinar el orden de las partes de la fecha
+        const esFormatoYMD = fecha.indexOf('-') === 4; // Verifica si hay un guion en el índice 4
+
+        // Reorganizar las partes de la fecha según el formato deseado (DD/MM/YYYY)
+        if (esFormatoYMD) {
+            fecha = `${partes[2]}/${partes[1]}/${partes[0]}`;
+        } else {
+            fecha = `${partes[0]}/${partes[1]}/${partes[2]}`;
+        }
+
+        return fecha;
+    }
+
     public static isValidDateFormat3(dateString: string) {
         // Expresión regular para el formato "DD-MM-YYYY"
         const regex = /^\d{2}-\d{2}-\d{4}$/;
@@ -96,18 +122,18 @@ export class FactoryService {
         return regex.test(dateString);
     }
     public differenceInDays(valor: string, date2: Date = new Date()): number {
-        // Convertir las fechas a milisegundos desde el 1 de enero de 1970 (época)
-        let date1;
-        if (FactoryService.isValidDateFormat3(valor)) {
-            let partes = valor.split("-");
-            // Crear un nuevo string con el formato reconocido por Date ("YYYY-MM-DD")
-            let nuevoFormato = partes[2] + "-" + partes[1] + "-" + partes[0];
-            // Crear la fecha utilizando el nuevo formato
+        let date1: Date;
+
+        // Verificar si la fecha está en formato 'DD/MM/YYYY'
+        if (/^\d{2}\/\d{2}\/\d{4}$/.test(valor)) {
+            const partes = valor.split('/');
+            const nuevoFormato = `${partes[2]}-${partes[1]}-${partes[0]}`;
             date1 = new Date(nuevoFormato);
-        }
-        else {
+        } else {
             date1 = new Date(valor);
         }
+
+        // Convertir las fechas a milisegundos desde la época
         const time1 = date1.getTime();
         const time2 = date2.getTime();
 
@@ -119,6 +145,7 @@ export class FactoryService {
 
         return daysDiff;
     }
+
     public getsvg(element: HTMLElement, version: string = '', renderer?: Renderer2) {
 
         let svg: any = element.getAttribute('getsvg' + version);
