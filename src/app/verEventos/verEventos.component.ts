@@ -195,8 +195,13 @@ export class VerEventosComponent {
     async saveEventos(url: string) {
         this.eventoAdd.forEach((element, key) => {
             let aux = this.eventoAdd[key].ubicacion;
-            aux = '(' + this.factory.buscarPais(aux, this.countries, false) + ')' + aux;
-            this.eventoAdd[key].ubicacion = aux;
+
+            let aux2 = '(' + this.factory.buscarPais(aux, this.countries, false) + ')';
+            if (aux.indexOf(aux2) === -1) {
+                aux = aux2 + aux;
+                this.eventoAdd[key].ubicacion = aux;
+            }
+
         });
         this.contador++;
         let params = new HttpParams({ fromString: 'name=term' });
