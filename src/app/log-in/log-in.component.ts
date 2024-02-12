@@ -12,7 +12,7 @@ import { SessionService } from 'src/factory/session.service';
     templateUrl: './log-in.component.html',
     styleUrls: ['./log-in.component.css',
     ],
-    // encapsulation: ViewEncapsulation.None
+    encapsulation: ViewEncapsulation.None
 })
 export class LogInComponent {
     public logInForm: FormGroup;
@@ -38,6 +38,7 @@ export class LogInComponent {
     }
     public submitLogIn() {
         this.carga.to('body', '', true);
+        this.carga.changeInfo(undefined, 'Iniciando Sesion');
         this.carga.play();
 
         this.session.logIn(this.logInForm.get('username')?.value, this.logInForm.get('password')?.value).subscribe({
@@ -51,6 +52,7 @@ export class LogInComponent {
                     this.router.navigate(['/']);
                 }
             }, error: (error) => {
+                this.logInErrorMensaje = 'Error Interno Del Servidor';
                 console.log(error);
                 this.carga.pause();
             }

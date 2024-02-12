@@ -61,7 +61,7 @@ export class authGuard implements CanActivate {
 
                 },
                 error: (error) => {
-                    user.mensaje = error;
+                    user.mensaje = 'Error Desconocido';
                     this.session.SetUserCookie(user);
                     this.router.navigate(['logIn']);
                     resolve(true);

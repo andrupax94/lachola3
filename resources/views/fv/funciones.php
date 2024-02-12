@@ -117,16 +117,89 @@ class misFunciones
 
         return $eventosFiltrados;
     }
+    public static function convertirFormatoFecha($entrada)
+    {
+        // Si la entrada es un string, se procesa directamente
+        if (is_string($entrada)) {
+            return misFunciones::convertirFechaAux($entrada);
+        }
+
+        // Si la entrada es un array, se analizan y procesan sus elementos
+        if (is_array($entrada)) {
+            foreach ($entrada as $clave => $valor) {
+                $entrada[$clave] = misFunciones::convertirFormatoFecha($valor);
+            }
+            return $entrada;
+        }
+
+        // Si la entrada es un objeto, se analizan y procesan sus propiedades
+        if (is_object($entrada)) {
+            foreach ($entrada as $clave => $valor) {
+                $entrada->$clave = misFunciones::convertirFormatoFecha($valor);
+            }
+            return $entrada;
+        }
+
+        // Si no es un string, array o objeto, se devuelve tal cual
+        return $entrada;
+    }
+
+// Función auxiliar para convertir la fecha si es necesario
+    public static function convertirFechaAux($fecha)
+    {
+        // Verificar si la fecha ya está en el formato correcto
+        if (preg_match('/^\d{2}\-\d{2}\-\d{4}$/', $fecha)) {
+            return $fecha; // Devolver la fecha intacta si ya está en el formato DD/MM/YYYY
+        }
+
+        $partes = explode('/', $fecha);
+        $partes2 = explode('-', $fecha);
+        $parte = '/';
+        if (count($partes2) === 3) {
+            $partes = $partes2;
+            $parte = '-';
+        }
+        // Verificar el formato de entrada
+        if (count($partes) !== 3 && count($partes2) !== 3) {
+            return $fecha; // Si no es un formato de fecha válido, se devuelve intacta
+        }
+
+        // Determinar el orden de las partes de la fecha
+        $esFormatoYMD = strpos($fecha, $parte) === 4; // Verifica si hay un guion en el índice 4
+
+        // Reorganizar las partes de la fecha según el formato deseado (DD/MM/YYYY)
+        if ($esFormatoYMD) {
+            $fecha = $partes[2] . '-' . $partes[1] . '-' . $partes[0];
+        } else {
+            $fecha = $partes[0] . '-' . $partes[1] . '-' . $partes[2];
+        }
+
+        return $fecha;
+    }
 
     public static function paginacion($eventos, $page, $per_page, $order, $orderby)
     {
 
         // Aplicar ordenamiento
-        $sortedEventos = ($order == 'asc') ?
-        collect($eventos)->sortBy($orderby)->values() :
-        collect($eventos)->sortByDesc($orderby)->values();
+        $sortedEventos = collect($eventos);
 
-        // Calcular el índice de inicio y fin para la paginación
+        // Verificar si el campo de orden es una fecha
+        if (misFunciones::esFecha(misFunciones::convertirFechaAux($sortedEventos->first()[$orderby]))) {
+            $sortedEventos = ($order == 'asc') ?
+            $sortedEventos->sortBy(function ($evento) use ($orderby) {
+                // Convertir la fecha al formato Y-m-d para asegurar una ordenación correcta
+                return strtotime(misFunciones::convertirFechaAux($evento[$orderby]));
+            })->values() :
+            $sortedEventos->sortByDesc(function ($evento) use ($orderby) {
+                // Convertir la fecha al formato Y-m-d para asegurar una ordenación correcta
+                return strtotime(misFunciones::convertirFechaAux($evento[$orderby]));
+            })->values();
+        } else {
+            // Ordenar según el campo de orden tal cual
+            $sortedEventos = ($order == 'asc') ?
+            $sortedEventos->sortBy($orderby)->values() :
+            $sortedEventos->sortByDesc($orderby)->values();
+        }
 
         // Calcular el índice de inicio y fin para la paginación
         $startIndex = ($page - 1) * $per_page;
@@ -144,8 +217,43 @@ class misFunciones
         ];
     }
 
+// Función auxiliar para verificar si una cadena es una fecha
+    private static function esFecha($cadena)
+    {
+        return (bool) strtotime($cadena);
+    }
+    private static function convertirAFechaDatetime($fecha)
+    {
+        if (count(explode('-', $fecha)) > 1) {
+            return $fecha;
+        }
+        // Verificar si la entrada ya es un objeto DateTime
+
+        // Separar la fecha en día, mes y año
+        if (count(explode('/', $fecha)) <= 1) {
+            return $fecha;
+        }
+
+        $aux = explode('/', $fecha);
+
+        // Crear un objeto DateTime con la fecha
+        $fechaDatetime = new DateTime("$aux[2]-$aux[1]-$aux[0]");
+
+        // Devolver la fecha como un string en el formato deseado
+        return $fechaDatetime->format('d-m-Y');
+    }
+
     public static function convertirFecha($fecha, $tipoConversion)
     {
+        $formatos = [
+            1 => 'd/m/Y',
+            2 => 'Y/m/d',
+            3 => 'Y-m-d',
+            4 => 'd-m-Y',
+            5 => 'Ymd',
+            // Agrega más formatos según tus necesidades
+        ];
+
         // Verificar si la entrada contiene "Today" o "Hoy"
         if (stripos($fecha, 'Today') !== false || stripos($fecha, 'Hoy') !== false) {
             // Obtener la fecha actual
@@ -157,19 +265,12 @@ class misFunciones
             $year = $matches[3];
             $fechaObj = new DateTime("$month $day, $year");
         } else {
-            // Convertir la fecha a un objeto DateTime
-            $fechaObj = new DateTime($fecha);
+
+            $fechaObj = new DateTime(misFunciones::convertirAFechaDatetime($fecha));
+
         }
 
         // Definir los formatos de salida según el tipo de conversión
-        $formatos = [
-            1 => 'd/m/Y',
-            2 => 'd-m-Y',
-            3 => 'd-m-Y',
-            4 => 'd-m-Y',
-            5 => 'Ymd',
-            // Agrega más formatos según tus necesidades
-        ];
 
         // Verificar si el tipo de conversión existe en la lista
         if (array_key_exists($tipoConversion, $formatos)) {

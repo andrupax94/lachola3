@@ -526,14 +526,14 @@ div#mensajes {
     position: relative;
     top: calc(50% - 25px);
     margin: 0 auto;
-    width: 170px;
-    height: 170px;
+    width: 155px;
+    height: 155px;
     background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 23px;
+    border-radius: 7px;
     box-shadow: black 1px 1px 4px -2px;
 }
 
@@ -555,6 +555,7 @@ div#mensajes {
     font-size: 15px;
     text-shadow: white 0px 0px 3px;
     text-align: center;
+    font-weight: bold;
 }
 
 table {}

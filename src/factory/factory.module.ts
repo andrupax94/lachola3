@@ -9,7 +9,7 @@ export class FactoryService {
     constructor(private router: Router) { }
 
 
-    public buscarPais(cadena: string, paises: { name: string, nameESP: string, nameALT?: string, country: string, code: string }[]): string {
+    public buscarPais(cadena: string, paises: { name: string, nameESP: string, nameALT?: string, country: string, code: string }[], abbr = true): string {
         // Normalizar la cadena eliminando acentos y convirtiéndola a minúsculas
         const cadenaNormalizada = cadena.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
         if (paises === undefined || paises === null)
@@ -28,7 +28,10 @@ export class FactoryService {
                 cadenaNormalizada === paisNormalizado ||
                 cadenaNormalizada === codigoNormalizado
             ) {
-                return pais.country.toLowerCase();
+                if (abbr)
+                    return pais.country.toLowerCase();
+                else
+                    return pais.name.toLowerCase();
             }
         }
 
@@ -40,7 +43,10 @@ export class FactoryService {
                 primerasTresPalabras.toLowerCase().includes(pais.nameESP.toLowerCase()) ||
                 (pais.nameALT && primerasTresPalabras.toLowerCase().includes(pais.nameALT.toLowerCase()))
             ) {
-                return pais.country.toLowerCase();
+                if (abbr)
+                    return pais.country.toLowerCase();
+                else
+                    return pais.name.toLowerCase();
             }
         }
 
@@ -52,7 +58,10 @@ export class FactoryService {
                 ultimasTresPalabras.toLowerCase().includes(pais.nameESP.toLowerCase()) ||
                 (pais.nameALT && ultimasTresPalabras.toLowerCase().includes(pais.nameALT.toLowerCase()))
             ) {
-                return pais.country.toLowerCase();
+                if (abbr)
+                    return pais.country.toLowerCase();
+                else
+                    return pais.name.toLowerCase();
             }
         }
 

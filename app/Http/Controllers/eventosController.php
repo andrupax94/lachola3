@@ -278,6 +278,7 @@ class eventosController extends Controller
         Cache::put('procesing', 'Filtrando Eventos', 50);
 
         $eventos = misFunciones::filtrarEventosConFiltros($eventos, $dateStart, $dateEnd, $fee, $source);
+        $eventos = misFunciones::convertirFormatoFecha($eventos);
         $eventos = misFunciones::paginacion($eventos, $page, $per_page, $order, $orderby);
         Cache::put('procesing', true, 3);
 
@@ -385,7 +386,6 @@ class eventosController extends Controller
                 $html = $crawler->filter('#app')->attr('data-page');
                 $dataJSON = json_decode($html);
                 $eventosJSON = $dataJSON->props->projects;
-// Guardar el HTML en un archivo de texto
 
                 foreach ($eventosJSON as $festival) {
                     $data[] = [
@@ -690,6 +690,7 @@ class eventosController extends Controller
         Cache::put('procesing', 'Organizando Datos', 50);
         if (!$saveMode) {
             $eventos = misFunciones::filtrarEventosConFiltros($eventos, $dateStart, $dateEnd, $fee, $source);
+            $eventos = misFunciones::convertirFormatoFecha($eventos);
             $eventos = misFunciones::paginacion($eventos, $page, $per_page, $order, $orderby);
             Cache::put('procesing', true, 3);
         }

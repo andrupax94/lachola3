@@ -2,9 +2,7 @@ import { HttpClient, HttpClientXsrfModule, HttpHeaders, HttpParams } from '@angu
 import { Component, ViewEncapsulation } from '@angular/core';
 import { SessionService } from '../factory/session.service';
 import { CargaService } from 'src/factory/carga.service';
-import { Location } from '@angular/common';
 import { NavigationEnd, Router } from '@angular/router';
-import { FactoryService } from 'src/factory/factory.module';
 import { authGuard } from '../guards/auth.guard';
 import { FilterService } from './filter/filter.service';
 import { ChangeColorService } from 'src/factory/change-color.service';
@@ -30,7 +28,6 @@ export class AppComponent {
         private colorService: ChangeColorService,
         private carga: CargaService,
         private router: Router,
-        private location: Location,
         private filter: FilterService) {
         this.user = { state: false, data: [], mensaje: '' };
         this.carga.to('body');
