@@ -35,3 +35,4 @@ Route::post('/extractFestivalDataGroup', [eventosController::class, 'extractFest
 Route::post('/saveImgs', [eventosController::class, 'saveImgs'])->middleware($mEventos);
 Route::post('/saveEvents', [eventosController::class, 'saveEvents'])->middleware($mEventos);
 Route::post('/saveEventsAll', [eventosController::class, 'saveEventsAll'])->middleware($mEventos);
+Route::delete('/delEvents', [eventosController::class, 'delEvents'])->middleware($mEventos);

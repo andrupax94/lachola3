@@ -154,7 +154,11 @@ class eventosController extends Controller
             }
 
         } else {
-            $eventos = json_decode($request->input('eventos'), true);
+            if (gettype($request->input('eventos')) === 'array') {
+                $eventos = $request->input('eventos');
+            } else {
+                $eventos = json_decode($request->input('eventos'), true);
+            }
 
         }
         $eventosWP = $this->getEventos($request, true);
@@ -217,7 +221,7 @@ class eventosController extends Controller
             ];
 
             $url = $apiUrl . '?' . http_build_query($params);
-            $eventos = $request->input('eventos');
+
             $token = 'Bearer ' . session('token');
 
             $response = Http::withOptions([
@@ -240,6 +244,43 @@ class eventosController extends Controller
     {
         return $this->saveEvents($request, true);
     }
+    public function delEvents(Request $request)
+    {
+        Cache::put('procesing', 'Preparando Eliminar Eventos', 50);
+        if (gettype($request->input('eventos')) === 'array') {
+            $eventos = $request->input('eventos');
+        } else {
+            $eventos = json_decode($request->input('eventos'), true);
+        }
+
+        $apiUrl = config('app.urlWp') . '/wp-json/wp/v2/eventos';
+
+        foreach ($eventos as $key => $evento) {
+            Cache::put('procesing', 'Eliminando Evento N°:' . $key + 1, 50);
+
+            $id = $evento["id"];
+
+            $url = $apiUrl . '/' . $id;
+            $eventos = $request->input('eventos');
+            $token = 'Bearer ' . session('token');
+
+            $response = Http::withOptions([
+
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                    'Authorization' => $token,
+                ],
+                'verify' => false])
+                ->delete($url);
+        }
+
+        Cache::put('procesing', true, 3);
+
+        Cache::forget('eventosG');
+        Cache::forget('eventos');
+        return response()->json('Se Eliminaron los eventos correctamente');
+    }
+
     public function extractFestivalDataGroup(Request $request)
     {
         Cache::put('procesing', 'Preparando Extraccion De Eventos', 50);
