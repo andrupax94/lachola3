@@ -169,25 +169,30 @@
             <div id="buttons_container" class="row row-cols-2">
                 <h5>Accione<span [style.color]="bgColor">s</span>:</h5>
                 <div *ngIf="pageFilter==='verEventos'" [class.buttonEnable]="pageFilter==='verEventos'"><button class=""
-                        (click)=" eventosSubmit('true')"><i
+                        (click)=" eventosSubmit(undefined,'Ver')"><i
                             [getSvg3]="'icons/eventSearch.svg,white'"></i>Buscar</button>
                 </div>
                 <div *ngIf="pageFilter==='verEventos'" [class.buttonEnable]="pageFilter==='verEventos'"><button class=""
-                        (click)="eventosSubmit()"><i [getSvg3]="'icons/forceSearch.svg,white'"></i>Forzar</button></div>
+                        (click)="eventosSubmit('Utilice esta opcion para cargar los eventos directamente de wordpress en lugar de la cache','ForzarVer')"><i
+                            [getSvg3]="'icons/forceSearch.svg,white'"></i>Forzar</button></div>
+                <div *ngIf="pageFilter==='verEventos'" [class.buttonEnable]="pageFilter==='verEventos'"><button class=""
+                        (click)="eventosSubmit('Esta seguro que desea eliminar los elementos seleccionados?','Eliminar')"><i
+                            [getSvg3]="'icons/forceSearch.svg,white'"></i>Eliminar Eventos</button></div>
                 <div *ngIf="pageFilter==='exEventos'" [class.buttonEnable]="pageFilter==='exEventos'"><button class=""
-                        (click)="eventosSubmit('true','Extraer')"><i
+                        (click)="eventosSubmit(undefined,'Extraer')"><i
                             [getSvg3]="'icons/eventExtract.svg,white'"></i>Extraer
                     </button></div>
                 <div *ngIf="pageFilter==='exEventos'" [class.buttonEnable]="pageFilter==='exEventos'"><button class=""
-                        (click)="eventosSubmit('false','Forzar')"><i
+                        (click)="eventosSubmit('Desea forzar la busqueda de eventos, hacer uso de esta de manera desmedida puede generar problemas del lado del servidor, desea continuar?','ForzarVer')"><i
                             [getSvg3]="'icons/forceExtract.svg,white'"></i>Forzar
                         Extraer
                     </button></div>
                 <div *ngIf="pageFilter==='exEventos'" [class.buttonEnable]="pageFilter==='exEventos'"><button class=""
-                        (click)="eventosSubmit('true','Guardar')"><i [getSvg3]="'icons/saveCheck.svg,white'"></i>Guardar
+                        (click)="eventosSubmit(undefined,'Guardar')"><i
+                            [getSvg3]="'icons/saveCheck.svg,white'"></i>Guardar
                         Chekeados</button></div>
                 <div *ngIf="pageFilter==='exEventos'" [class.buttonEnable]="pageFilter==='exEventos'"><button class=""
-                        (click)="eventosSubmit('true','GuardarTodo')"><i
+                        (click)="eventosSubmit('Esta Seguro Que Desea Guardar Todos Los Elementos Extraidos? Esto puede tomar tiempo dependiendo de la cantidad de elementos','GuardarTodo')"><i
                             [getSvg3]="'icons/saveAll.svg,white'"></i>Guardar
                         Todos</button></div>
             </div>

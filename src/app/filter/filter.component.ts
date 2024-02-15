@@ -55,20 +55,22 @@ export class FilterComponent {
         this.filter.orderBy = this.eventosForm.get('orderBy')?.value;
         this.filter.perPage = this.eventosForm.get('perPage')?.value;
         this.filter.finish = this.eventosForm.get('finish')?.value;
+        if (onlyFilter !== 'false')
+            onlyFilter = 'true';
         this.filter.onlyFilter = onlyFilter;
         this.filter.fee = this.feeCheck;
         this.filter.source = this.fuenteCheck;
     }
 
-    public eventosSubmit(onlyFilter = 'false', typeOp: string = 'none') {
+    public eventosSubmit(mensaje = 'false', typeOp: string = 'none') {
         let callback = () => {
             this.carga.to('body');
             this.carga.play();
-            this.aplicarCambiosFiltros(onlyFilter);
+            this.aplicarCambiosFiltros(mensaje);
             this.filter.compartirFiltros(this.pageFilter, typeOp);
         }
-        if (onlyFilter === 'false') {
-            this.modales.abrirPregunta('Forzar Busqueda', 'Desea forzar la busqueda de eventos, hacer uso de esta de manera desmedida puede generar problemas del lado del servidor, desea continuar?', callback, () => { });
+        if (mensaje !== 'false') {
+            this.modales.abrirPregunta('Forzar?', mensaje, callback, () => { });
         }
         else {
             callback();

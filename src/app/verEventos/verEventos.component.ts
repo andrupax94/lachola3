@@ -7,6 +7,7 @@ import { FilterService } from '../filter/filter.service';
 import { Observable, filter } from 'rxjs';
 import { CargaService } from 'src/factory/carga.service';
 import { ChangeColorService } from 'src/factory/change-color.service';
+import { MensajesService } from 'src/factory/mensajes.service';
 
 
 
@@ -20,7 +21,10 @@ import { ChangeColorService } from 'src/factory/change-color.service';
 export class VerEventosComponent {
     constructor(private http: HttpClient,
         private colorService: ChangeColorService,
-        private factory: FactoryService, private filter: FilterService, private carga: CargaService) {
+        private factory: FactoryService,
+        private filter: FilterService,
+        private mensaje: MensajesService,
+        private carga: CargaService) {
         this.compararFechas = factory.differenceInDays;
     }
     public eventoP: eventoP[] = [];
@@ -44,7 +48,7 @@ export class VerEventosComponent {
     public dateEnd: any = '1/1/2999';
     public fee = [true, true, true];
     public pageFilter: string = 'none';
-
+    private agregarOEliminarElemento = this.factory.agregarOEliminarElemento;
     public source: { [key: string]: boolean } = {
         'festhome': true,
         'movibeta': true,
@@ -60,20 +64,20 @@ export class VerEventosComponent {
                 this.countries = data;
             },
             error: (error) => {
-                console.log('====================================');
+
                 console.log('error Al Obtener Las Countries');
-                console.log('====================================');
+
             }
         });
     }
     public abreUrl(url: string) {
         window.open(url, '_blank');
     }
-    private agregarOEliminarElemento = this.factory.agregarOEliminarElemento;
+
     public agregarEventoEx(e: Event, index: number) {
         e.stopPropagation();
-        this.eventoAdd = this.agregarOEliminarElemento(this.eventoP[index], this.eventoAdd) as eventoP[];
-
+        let aux = this.eventoP;
+        this.eventoAdd = this.agregarOEliminarElemento(aux[index], this.eventoAdd) as eventoP[];
     }
     ngOnInit() {
         this.getCountries();
@@ -93,7 +97,7 @@ export class VerEventosComponent {
                 this.onlyFilter = this.filter.onlyFilter;
                 switch (page.filtros) {
                     case 'verEventos':
-                        this.buscaEventosIt();
+                        this.accionesVer(page.typeOp);
                         break;
                     case 'exEventos':
                         this.accionesExtraer(page.typeOp);
@@ -111,7 +115,6 @@ export class VerEventosComponent {
             this.visiblePages = [1];
             this.page = 1;
             switch (page) {
-
                 case 'verEventos':
                     this.carga.to('body');
                     this.carga.play();
@@ -123,6 +126,23 @@ export class VerEventosComponent {
             }
         });
 
+    }
+    public accionesVer(accion: string) {
+        switch (accion) {
+            case 'Ver':
+                this.onlyFilter = 'true';
+                this.buscaEventosIt();
+                break;
+            case 'ForzarVer':
+                this.onlyFilter = 'false';
+                this.buscaEventosIt();
+                break;
+            case 'Eliminar':
+
+                this.delEventosIt();
+                break;
+
+        }
     }
     public accionesExtraer(accion: string) {
         switch (accion) {
@@ -188,54 +208,19 @@ export class VerEventosComponent {
             await this.esperar(1000);
         }
     }
+    async delEventosIt() {
+        this.it = true;
+        while (this.it && this.contador < 2) {
+            this.delEventos('delEvents');
+            await this.esperar(1000);
+        }
+    }
     esperar(ms: number): Promise<void> {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    async saveEventos(url: string) {
-        this.eventoAdd.forEach((element, key) => {
-            let aux = this.eventoAdd[key].ubicacion;
-
-            let aux2 = '(' + this.factory.buscarPais(aux, this.countries, false) + ')';
-            if (aux.indexOf(aux2) === -1) {
-                aux = aux2 + aux;
-                this.eventoAdd[key].ubicacion = aux;
-            }
-
-        });
-        this.contador++;
-        let params = new HttpParams({ fromString: 'name=term' });
-
-        params = params.set('eventos', JSON.stringify(this.eventoAdd)); // Corregí this.orderBy por this.perPage
-
-        this.http.post<any>(environment.back + url, params, { observe: 'response', withCredentials: true }).subscribe({
-            next: (data: any) => {
-                this.it = false;
-                this.carga.pause();
-                this.contador = 0;
-                console.log(data);
 
 
-            }, error: (error) => {
-                this.it = false;
-                this.carga.pause();
-                this.contador = 0;
-                console.log(error);
-            }
-        });
-
-    }
-    private filtrarPorValorVerdadero(objeto: { [key: string]: boolean }): string[] {
-        // Obtiene pares clave-valor del objeto
-        const pares = Object.entries(objeto);
-
-        // Filtra aquellos cuyo valor booleano sea true
-        const resultado = pares
-            .filter(([clave, valor]) => valor === true)
-            .map(([clave]) => clave);
-
-        return resultado;
-    }
     async buscaEventos(request: string = 'getEventos') {
         this.contador++;
 
@@ -317,7 +302,8 @@ export class VerEventosComponent {
                         aux.tipoFestival = (String)(evt["tipoFestival"]).toLowerCase();
                         aux.tipoMetraje = this.factory.stringToArray(evt["tipoMetraje"]);
                         aux.checked = false;
-                        aux.id = ((this.page - 1) * (this.perPage)) + (index + 1);
+                        // aux.id = ((this.page - 1) * (this.perPage)) + (index + 1);
+                        aux.id = evt["id"];
                         let aux4: eventoP = {
                             imagen: aux.imagen,
                             nombre: aux.nombre,
@@ -351,6 +337,70 @@ export class VerEventosComponent {
 
 
     }
+    async saveEventos(url: string) {
+        this.eventoAdd.forEach((element, key) => {
+            let aux = this.eventoAdd[key].ubicacion;
+
+            let aux2 = '(' + this.factory.buscarPais(aux, this.countries, false) + ')';
+            if (aux.indexOf(aux2) === -1) {
+                aux = aux2 + aux;
+                this.eventoAdd[key].ubicacion = aux;
+            }
+
+        });
+        this.contador++;
+        let params = new HttpParams({ fromString: 'name=term' });
+
+        params = params.set('eventos', JSON.stringify(this.eventoAdd)); // Corregí this.orderBy por this.perPage
+
+        this.http.post<any>(environment.back + url, params, { observe: 'response', withCredentials: true }).subscribe({
+            next: (data: any) => {
+                this.it = false;
+                this.carga.pause();
+                this.contador = 0;
+                console.log(data);
+
+
+            }, error: (error) => {
+                this.it = false;
+                this.carga.pause();
+                this.contador = 0;
+                console.log(error);
+            }
+        });
+
+    }
+    async delEventos(url: string) {
+
+        this.contador++;
+        let params = new HttpParams({ fromString: 'name=term' });
+
+        params = params.set('eventos', JSON.stringify(this.eventoAdd)); // Corregí this.orderBy por this.perPage
+
+        this.http.post<any>(environment.back + url, params, { observe: 'response', withCredentials: true }).subscribe({
+            next: (data: any) => {
+                this.it = false;
+                this.carga.pause();
+                this.contador = 0;
+                setTimeout(() => {
+                    this.carga.to('body');
+                    this.carga.play();
+                    this.onlyFilter = 'false';
+                    this.buscaEventosIt();
+                }, 500);
+                // this.mensaje.add('ok', 'Se Eliminaron Los Eventos Correctamente');
+                console.log(data);
+
+
+            }, error: (error) => {
+                this.it = false;
+                this.carga.pause();
+                this.contador = 0;
+                console.log(error);
+            }
+        });
+
+    }
     public getVisiblePages() {
         const totalPages = this.totalPages;
         const maxVisiblePages = 10;
@@ -370,5 +420,16 @@ export class VerEventosComponent {
                 element.check = true;
             }
         });
+    }
+    private filtrarPorValorVerdadero(objeto: { [key: string]: boolean }): string[] {
+        // Obtiene pares clave-valor del objeto
+        const pares = Object.entries(objeto);
+
+        // Filtra aquellos cuyo valor booleano sea true
+        const resultado = pares
+            .filter(([clave, valor]) => valor === true)
+            .map(([clave]) => clave);
+
+        return resultado;
     }
 }
