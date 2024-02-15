@@ -15,6 +15,7 @@ type fechalimite = {
 }
 export type eventoP = {
     id: number
+    idWp: number
     imagen: string
     nombre: string
     tasa: tasa

@@ -340,6 +340,7 @@ div#mensajes {
 }
 
 .mensaje {
+    display: flex;
     justify-content: start;
     height: 50px;
     position: relative;

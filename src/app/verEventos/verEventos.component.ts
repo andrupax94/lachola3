@@ -40,7 +40,7 @@ export class VerEventosComponent {
     public endPage: number = 1;
     public visiblePages = [1];
     public compararFechas!: Function;
-    public it = false;
+    private it = false;
     public bgColor = 'grey';
     public onlyFilter: string = 'true';
     public contador = 0;
@@ -248,6 +248,7 @@ export class VerEventosComponent {
                 }
                 else if (data.status === undefined) {
                     this.contador = 0;
+                    this.carga.pause();
                     this.it = false;
                 }
                 else {
@@ -302,8 +303,8 @@ export class VerEventosComponent {
                         aux.tipoFestival = (String)(evt["tipoFestival"]).toLowerCase();
                         aux.tipoMetraje = this.factory.stringToArray(evt["tipoMetraje"]);
                         aux.checked = false;
-                        // aux.id = ((this.page - 1) * (this.perPage)) + (index + 1);
-                        aux.id = evt["id"];
+                        aux.id = ((this.page - 1) * (this.perPage)) + (index + 1);
+                        aux.idWp = evt["id"];
                         let aux4: eventoP = {
                             imagen: aux.imagen,
                             nombre: aux.nombre,
@@ -317,7 +318,8 @@ export class VerEventosComponent {
                             tipoFestival: aux.tipoFestival,
                             tipoMetraje: aux.tipoMetraje,
                             check: aux.checked,
-                            id: aux.id
+                            id: aux.id,
+                            idWp: aux.idWp
                         }
                         this.eventoP.push(aux4);
 
@@ -355,10 +357,25 @@ export class VerEventosComponent {
 
         this.http.post<any>(environment.back + url, params, { observe: 'response', withCredentials: true }).subscribe({
             next: (data: any) => {
-                this.it = false;
-                this.carga.pause();
-                this.contador = 0;
-                console.log(data);
+                data = data.body;
+                if (data.status !== true && data.status !== undefined) {
+                    this.carga.changeInfo(undefined, data.status)
+                    this.contador--;
+                }
+                else if (data.status === undefined) {
+                    this.contador = 0;
+                    this.carga.pause();
+                    this.it = false;
+                }
+                else {
+
+                    this.carga.pause();
+                    if (this.it) {
+                        this.mensaje.add('ok', 'Se Añadieron Los Eventos Correctamente');
+                    }
+                    this.contador = 0;
+                    this.it = false;
+                }
 
 
             }, error: (error) => {
@@ -379,17 +396,34 @@ export class VerEventosComponent {
 
         this.http.post<any>(environment.back + url, params, { observe: 'response', withCredentials: true }).subscribe({
             next: (data: any) => {
-                this.it = false;
-                this.carga.pause();
-                this.contador = 0;
-                setTimeout(() => {
-                    this.carga.to('body');
-                    this.carga.play();
-                    this.onlyFilter = 'false';
-                    this.buscaEventosIt();
-                }, 500);
-                // this.mensaje.add('ok', 'Se Eliminaron Los Eventos Correctamente');
-                console.log(data);
+                data = data.body;
+                if (data.status !== true && data.status !== undefined) {
+                    this.carga.changeInfo(undefined, data.status)
+                    this.contador--;
+                }
+                else if (data.status === undefined) {
+                    this.contador = 0;
+                    this.carga.pause();
+                    this.it = false;
+                }
+                else {
+                    this.eventoP = [];
+                    this.eventoAdd = [];
+                    this.carga.pause();
+                    if (this.it) {
+                        setTimeout(() => {
+                            this.carga.to('body');
+                            this.carga.play();
+                            this.onlyFilter = 'false';
+                            this.buscaEventosIt();
+                        }, 500);
+                        this.mensaje.add('ok', 'Se Eliminaron Los Eventos Correctamente');
+                    }
+                    console.log(data);
+                    this.contador = 0;
+                    this.it = false;
+
+                }
 
 
             }, error: (error) => {

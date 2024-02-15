@@ -238,7 +238,9 @@ class eventosController extends Controller
 
         Cache::forget('eventosG');
         Cache::forget('eventos');
-        return response()->json('se añadieron los eventos correctamente');
+        return response()->json(['mensaje' => 'Se añadieron los eventos correctamente',
+            'status' => true]);
+
     }
     public function saveEventsAll(Request $request)
     {
@@ -258,7 +260,7 @@ class eventosController extends Controller
         foreach ($eventos as $key => $evento) {
             Cache::put('procesing', 'Eliminando Evento N°:' . $key + 1, 50);
 
-            $id = $evento["id"];
+            $id = $evento["idWp"];
 
             $url = $apiUrl . '/' . $id;
             $eventos = $request->input('eventos');
@@ -278,7 +280,8 @@ class eventosController extends Controller
 
         Cache::forget('eventosG');
         Cache::forget('eventos');
-        return response()->json('Se Eliminaron los eventos correctamente');
+        return response()->json(['mensaje' => 'Se Eliminaron los eventos correctamente',
+            'status' => true]);
     }
 
     public function extractFestivalDataGroup(Request $request)
