@@ -15,7 +15,3 @@ Route::get('/', [IndexController::class, 'index']);
 | be assigned to the "web" middleware group. Make something great!
 |
  */
-
-Route::get('/prueba', function () {
-    return response()->json('hola');
-});
