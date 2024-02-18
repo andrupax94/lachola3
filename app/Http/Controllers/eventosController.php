@@ -34,8 +34,10 @@ class eventosController extends Controller
             'verify' => false])
             ->post($url);
     }
+
     public function saveImgs(Request $request)
     {
+
         Cache::put('procesing', 'Guardando Imagenes En Wordpress', 50);
 
         $apiUrl = config('app.urlWp') . '/wp-json/wp/v2/media';
@@ -64,14 +66,34 @@ class eventosController extends Controller
                 $imagenUrl = misFunciones::limpiarURL($imagenUrl);
                 $options = [
                     'http' => [
-                        'header' => "User-Agent: Mozilla/5.0\r\n" .
-                        "Referer: http://www.example.com\r\n",
+                        'header' => "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36 Edg/121.0.0.0\r\n" .
+                        "Referer: https://lachola.andreseduardo.es\r\n" .
+                        "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7\r\n" .
+                        "Accept-Encoding: gzip, deflate, br\r\n" .
+                        "Accept-Language: es,es-ES;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6\r\n" .
+                        "Cache-Control: no-cache\r\n" .
+                        "Pragma: no-cache\r\n" .
+                        "Sec-Ch-Ua: \"Not A(Brand\";v=\"99\", \"Microsoft Edge\";v=\"121\", \"Chromium\";v=\"121\"\r\n" .
+                        "Sec-Ch-Ua-Mobile: ?0\r\n" .
+                        "Sec-Ch-Ua-Platform: \"Windows\"\r\n" .
+                        "Sec-Fetch-Dest: document\r\n" .
+                        "Sec-Fetch-Mode: navigate\r\n" .
+                        "Sec-Fetch-Site: none\r\n" .
+                        "Sec-Fetch-User: ?1\r\n" .
+                        "Upgrade-Insecure-Requests: 1\r\n",
                     ],
                 ];
 
                 $context = stream_context_create($options);
-                $dataImg = file_get_contents($imagenUrl, false, $context);
 
+                try {
+                    // Intenta obtener el contenido de la URL
+                    $dataImg = file_get_contents($imagenUrl, false, $context);
+                    // Restaurar el manejador de errores predeterminado
+
+                } catch (ErrorException $e) {
+
+                }
                 $options = [
                     'headers' => [
                         'Authorization' => $token,
@@ -96,7 +118,6 @@ class eventosController extends Controller
                 $imageIds[] = isset($responseData['id']) ? $responseData['id'] : 0;
 
             } catch (Exception $e) {
-                throw new Exception($e, 1);
 
                 $imageIds[] = 0;
             }
