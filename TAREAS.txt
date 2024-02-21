@@ -9,13 +9,13 @@ BACKEND
 *------arreglar movibeta.
 *+++++intentar ser mas preciso a la hora de devolver resultados, por ejemplo con las tasas, algunas dice "tipo no compatible" lo que no tiene sentido
 
+*------forzar extraer no funciona.
 *animation festivals no se muestra en ver eventos.
-*forzar extraer no funciona.
 FRONEND
 *-----aplicar banderas a las ubicaciones
 *-----hacer que los logos de paginas de eventos en "fuente" no se repita.
 *-----agregar logos a la columna fuente.
-*-----limitar el ancho maximo del body para que no se vea estirado en pantalla completa
+*-----limitarh el ancho maximo del body para que no se vea estirado en pantalla completa
 *-----poner color quisas iconos a los botones de "acciones"
 *+++++hacer que filtro sea una ventana lateral para que no storve tanto.
 *|||||poner las imagenes de los eventos en una columna aparte para que se vean mas grandes

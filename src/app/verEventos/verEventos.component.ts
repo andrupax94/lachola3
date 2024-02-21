@@ -138,7 +138,6 @@ export class VerEventosComponent {
                 this.buscaEventosIt();
                 break;
             case 'Eliminar':
-
                 this.delEventosIt();
                 break;
 

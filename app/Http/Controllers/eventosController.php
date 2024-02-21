@@ -313,6 +313,14 @@ class eventosController extends Controller
         $per_page = $request->input('per_page');
         $order = $request->input('order');
         $dateStart = $request->input('dateStart');
+        $finish = ($request->input('finish') !== null) ? $request->input('finish') : false;
+        $fecha = \DateTime::createFromFormat('Y-m-d', $dateStart);
+        $fecha_actual = new \DateTime();
+
+        if ($fecha < $fecha_actual && ($finish === "false" || $finish === false)) {
+            $dateStart = $fecha_actual->format('Y-m-d');
+        }
+
         $dateEnd = $request->input('dateEnd');
         $onlyFilter = $request->has('onlyFilter') ? $request->input('onlyFilter') : false;
         $fee = json_decode($request->input('fee'));
