@@ -341,7 +341,7 @@ div#mensajes {
 
 .mensaje {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     height: 50px;
     position: relative;
     left: 0px;
